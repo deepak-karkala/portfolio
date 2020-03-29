@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Let's Save Water</title>
+	<meta name="description" content="Scrollama Demo: Fixed JS">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/style.css" rel="stylesheet"></style>
+    <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""/>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar_style fixed-top" id="mainNav">
+      <a class="nav-link" href="../../../../index.html">Home</a>
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarNavDropdown" class="navbar-collapse collapse">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="../about/index.html">About this project</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../../index.html#projects_portfolio">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../../index.html#about_me">About me</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../../index.html#contact_me">Contact</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+
+<body style="background-color:#e0e0e0;">
+	<!--
+	<section id='intro'>
+		<p class='intro__overline'>
+			<a href='https://github.com/russellgoldenberg/scrollama'>scrollama.js</a>
+		</p>
+		<h1 class='intro__hed'>Demo: Sticky Graphic Position</h1>
+		<p class='intro__dek'>
+			Start scrolling to see how it works.
+		</p>
+	</section>
+	-->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+            	<h1 class="main_title text-center">Every drop counts: let us save water</h2>
+			</div>
+		</div>
+	</div>
+
+	<section class="description" id="introduction">
+		<div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+            <p>
+				It is well known that there will be water scarcity in the future. 
+				But do we really understand the magnitude of the problem on hand ? How far into the future are we talking about ? How many people will get affected by this ?
+				A look into the numbers and the projections are outright disastrous. 
+				To make matters worse, the countries which are affected the most are all developing/under-developing. As a result, there are hardly any attempt to 
+				This is an attempt to make people aware of the truly devastating future we are heading into and what we all can do today in order to leave this planet in a better place for the next generation.
+            </p>
+            <p class="text-center">Keep scrolling to learn more.</p>
+            <!--
+            <a href="#scroll1" class="btn btn-circle js-scroll-trigger">
+                <i class="fas fa-angle-double-down animated"></i>
+            </a>
+        	-->
+          </div>
+        </div>
+      </div>
+	</section>
+
+	<section id='scroll1'>
+		<div class='scroll__graphic1'>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div id="blank_title" class="blank_title text-center"></div>
+						<div id="circle_pack_water" class="circle_pack_water"></div>
+					</div>
+					<div class="col-lg-6">
+						<div id="year_title" class="year_title text-center"></div>
+						<div id="circle_pack_population" class="circle_pack_population"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text1'>
+			<div class='step1' data-step='1'>
+				<p>Roughly 3/4th of Earth's surface is made up of water. The circles to the right represent all the water of Earth.</p>
+			</div>
+			<div class='step1' data-step='2'>
+				<p>But of those, onle 3% is fresh water. The rest 97% is saline and unfit for human use.</p>
+			</div>
+			<div class='step1' data-step='3'>
+				<p>Little less than 3% is hard to access leaving us with only 0.01% of all the water which is both fresh and easily accessible. </p>
+			</div>
+			<div class='step1' data-step='4'>
+				<p>The water that supports all of humanity is contained within just 1/10 th of one circle shown on the right.</p>
+			</div>
+			<div class='step1' data-step='5'>
+				<p>While the total usable water has remained the same, the world population on the other hand has exploded over the last few centuries.</p>
+			</div>
+			<div class='step1' data-step='6'>
+				<p>In 10,000 BC, there were only 4 million humans on Earth. Today we are over 7 billion of us. Scroll down to see how explosive the growth was.</p>
+			</div>
+			<div class='step1 long-step' data-step='7'>
+			</div>
+			<div class='step1 long-step' data-step='8'>
+			</div>
+			<div class='step1 long-step' data-step='9'>
+			</div>
+			<div class='step1 long-step' data-step='10'>
+			</div>
+			<div class='step1 long-step' data-step='11'>
+			</div>
+			<div class='step1' data-step='12'>
+				<p>The world population is estimated to reach close to 11 billion in the year 2100.</p>
+			</div>
+			<div class='step1 short-step' data-step='13'>
+			</div>
+		</div>
+	</section>
+
+<!--
+	<section class="description" id="content">
+		<div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+            <h2 class="text-center">Startling numbers</h2>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+          </div>
+        </div>
+      </div>
+	</section>
+-->
+
+	<div class="transition" id="transition2">Startling numbers</div>
+
+	<section id='scroll2'>
+		<div class='scroll__graphic2'>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="population_matrix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="container data_source">
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<div id="data_source2"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text2'>
+			<div class='step2' data-step='1'>
+				<p>The circles on the right represent all the people on Earth today. Scroll down to see how many people get affected by lack of safe water.</p>
+			</div>
+			<div class='step2' data-step='2'>
+				<p>340000 children under five die every year from diarrhoeal diseases.</p>
+			</div>
+			<div class='step2' data-step='3'>
+				<p>892 million still practice open defecation.</p>
+			</div>
+			<div class='step2' data-step='4'>
+				<p>2.1 billion people lack access to safely managed drinking water services.</p>
+			</div>
+			<div class='step2' data-step='5'>
+				<p>4.5 billion people lack safely managed sanitation services.</p>
+			</div>
+			<div class='step2' data-step='6'>
+			</div>
+		</div>
+	</section>
+
+	<div class="transition" id="transition3">Water scarcity risk in the future</div>
+
+	<section id='scroll3'>
+		<div class='scroll__graphic3'>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="country_water_scarcity"></div>
+					</div>
+				</div>
+			</div>
+			<div class="container data_source">
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<div id="data_source3"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text3'>
+			<div class='step3' data-step='1'>
+				<p>Using an ensemble of climate models and socioeconomic scenarios, WRI (World Resources Institute) scored and ranked future water stress in 167 countries by 2030.</p>
+			</div>
+			<div class='step3' data-step='2'>
+				<p>The water stress scores for different countries in 2030 are shown on the right.</p>
+			</div>
+			<div class='step3' data-step='3'>
+				<p>14 of the 33 likely most water stressed countries in 2040 are in the Middle East.</p>
+			</div>
+			<div class='step3' data-step='4'>
+				<p>Global superpowers such as the United States, China and India face water risks of their own. High water stress in all three countries are projected to remain roughly constant through 2040.</p>
+			</div>
+			<div class='step3' data-step='5'>
+				<p>Yet one country stands out in particular when it comes to water scarcity. 18 percent of the world's population resides in India but India has access to only 4 percent of usable water sources.</p>
+			</div>
+			<div class='step3' data-step='6'>
+				<p>With over a billion people and high water scarcity score, India will be at epicentre of the water scarcity risk in the future. We now turn our focus on the dire situation in India.</p>
+			</div>
+		</div>
+	</section>
+
+<!--
+	<section id='india'>
+		<div class="parallax">
+		  <div class="parallax__group">
+		    <div class="parallax__layer parallax__layer--back">
+		      Back layer 1
+		    </div>
+		    <div class="parallax__layer parallax__layer--base">
+		      Base layer 1
+		    </div>
+		  </div>
+		  <div class="parallax__group">
+		    <div class="parallax__layer parallax__layer--back">
+		      Back layer 2
+		    </div>
+		    <div class="parallax__layer parallax__layer--base">
+		      Base layer 2
+		    </div>
+		  </div>
+		</div>
+	</section>
+-->
+
+	<div class="transition" id="transition4">India: Epicenter of water crisis ?</div>
+	
+	<section id='scroll4'>
+		<div class='scroll__graphic4'>
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<div id="india_title"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="row text-center">
+							<div class="col-lg-12">
+								<div id="india_water_stat" class="india_water_stat"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div id="india_water_plot"></div>
+								<!--<svg id="fillgauge1" width="97%" height="250"></svg>-->
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="india_water_text text-center" id="india_water_text"></div>
+								<div id="india_water_map" style="height: 400px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container data_source">
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<div id="data_source4"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text4'>
+			<div class='step4' data-step='1'>
+				<p>At the end of 2018, India's population stands at over 1.36 billion</p>
+			</div>
+			<div class='step4' data-step='2'>
+				<p>163 M people in India lack access to safe water. 600,000 children under five in India die each year, largely because of inadequate water supply and poor sanitation.</p>
+			</div>
+			<div class='step4' data-step='3'>
+				<p>524 million people or 40% of the India's population practice open defecation. 58% of the total population lives on less than US $3.10 per day.</p>
+			</div>
+			<div class='step4' data-step='4'>
+			</div>
+		</div>
+	</section>
+
+	<section id='scroll5'>
+		<div class='scroll__graphic5'>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="country_water_agriculture"></div>
+						<svg id="country_water_agriculture_gauge" width="97%" height="500"></svg>
+					</div>
+				</div>
+			</div>
+			<div class="container data_source">
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<div id="data_source5"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text5'>
+			<div class='step5' data-step='1'>
+				<p>India’s agricultural sector accounts for over 80 percent of total water drawn.</p>
+			</div>
+			<div class='step5' data-step='2'>
+				<p>Agriculture and allied sectors contributes upto 60% of India's population.</p>
+			</div>
+			<div class='step5' data-step='3'>
+				<p>Yet it contributes only 13.7% of India's Gross Domestic Product.</p>
+			</div>
+			<div class='step5' data-step='4'>
+				<p>At 157.3 million hectares, India holds the world’s second largest agricultural land area.</p>
+			</div>
+			<div class='step5' data-step='5'>
+				<p>As much as 79.5% of India's farmland relies on flooding during monsoon season, so inadequate rainfall can cause droughts, making crop failure more common. </p>
+			</div>
+			<div class='step5' data-step='6'>
+				<p>In 2016, a whopping 300 districts (or nearly half of India’s 640 districts) were under the spell of an acute drinking water shortage across India.</p>
+			</div>
+		</div>
+	</section>
+
+<!--
+	<section id='scroll6'>
+		<div class='scroll__graphic6'>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="circle_zoom_out"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text6'>
+			<div class='step6' data-step='1'>
+				<p></p>
+			</div>
+		</div>
+	</section>
+-->
+	<div class="transition" id="transition7">Simple measures can go a long way...</div>
+
+	<section id='scroll7'>
+		<div class='scroll__graphic7'>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="time_to_act"></div>
+					</div>
+				</div>
+			</div>
+			<div class="container data_source">
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<div id="data_source7"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text7'>
+			<div class='step7' data-step='1'>
+				<h4 class="text-center">Lifestyle Choices</h4>
+				<p>An average American golf course uses about 300,000 gallons per day. That is, each course each day consumes as much water as an American family of four uses in one year.</p>
+			</div>
+			<div class='step7' data-step='2'>
+				<h4 class="text-center">Dietary Choices</h4>
+				<p>It takes 140 liters (35 gallons) of water to make just one cup of coffee, 1,000 liters (270 gallons) to make one liter of milk, and 16,000 liters (4200 gallons) to make one pound of beef.</p>
+			</div>
+			<div class='step7' data-step='3'>
+				<p>In the time it took you to read this,</p>
+			</div>
+			<div class='step7' data-step='4'>
+				<p>While we take these things for granted, it may not be so for our future generations.</p>
+			</div>
+			<!--
+			<div class='step7' data-step='5'>
+				<p>Time to act is now !</p>
+			</div>
+			-->
+		</div>
+	</section>
+
+	<div class="transition" id="transition8">Time to act is now !</div>
+
+
+	<!-- Footer -->
+    <footer class="footer" name="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <p>
+              All the code for this project can be found on <a href="https://github.com/deepak-karkala/articles/tree/master/water">Github</a>.
+            </p>
+            <p>
+              This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://d3js.org/">d3js</a>. The template for this html page was adapted from <a href="https://github.com/russellgoldenberg/scrollama">scrollama.js</a>, a very handy Javascript library for scrollytelling by <a href="https://twitter.com/codenberg?lang=en">Russell Goldenberg</a>. The design of this project is inspired from <a href="http://letsfreecongress.org/">http://letsfreecongress.org/</a> by <a href="https://twitter.com/tonyhschu/">Tony Chu</a>.
+            </p>
+            <h5 class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a></h5>
+            <p class="text-center">Copyright &copy; Deepak Karkala 2019</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+<!--
+	<section id='outro'></section>
+	<div class='debug'></div>
+-->
+
+	<!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery3.3.1/jquery.min.js"></script>
+    <script src="/vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing1.4.1/jquery.easing.min.js"></script>
+    <script src="js/grayscale.js"></script>
+
+	<script src='/vendor/d3.v4.min.js'></script>
+	<script src='js/stickyfill.min.js'></script>
+	<script src='https://unpkg.com/intersection-observer@0.5.0/intersection-observer.js'></script>
+	<script src='js/scrollama.min.js'></script>
+	<!--<script src="d3.hexbin.min.js"></script>-->
+
+	<script src='js/plot_circle_pack_water.js'></script>
+	<script src='js/script1.js'></script>
+	<script src='js/script2.js'></script>
+
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.js"></script>
+	<script src='js/plot_country_water_scarcity.js'></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+	<script src='js/script3.js'></script>
+
+	<script src='js/script4.js'></script>
+
+	<script src="https://d3js.org/topojson.v1.min.js"></script>
+	<script src="js/hexbin.js"></script>
+   	<script src="js/liquidFillGauge.js"></script>
+	<script src='js/script5.js'></script>
+
+	<script src='js/script7.js'></script>
+	<!--
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+	-->
+
+</body>

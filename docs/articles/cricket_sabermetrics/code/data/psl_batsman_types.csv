@@ -1,0 +1,5 @@
+type,start_avg,end_avg,start_sr,end_sr,color_id
+Duds,16,22,100,130,0
+Accumulators,22,32,125,145,1
+Aggressors,30,36,140,170,2
+Hitters,20,28,150,170,4

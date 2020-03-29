@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="expires" content="0">
+
+    <title>Religious diversity map of India</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.css" rel="stylesheet">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+
+  </head>
+
+
+  <nav class="navbar navbar-expand-lg navbar_style fixed-top" id="mainNav">
+      <a class="nav-link" href="../../../../index.html">Home</a>
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarNavDropdown" class="navbar-collapse collapse">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="../about/index.html">About this project</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../../index.html#projects_portfolio">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../../index.html#about_me">About me</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../../index.html#contact_me">Contact</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <!--
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">HOME</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="http://deepak-karkala-portfolio.herokuapp.com/">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    -->
+
+    <!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h1 class="brand-heading">Religious diversity map of India</h1>
+              <p class="intro-text">Insights into population and diversity of various religions across all the districts of India.
+                <br></p>
+              <a href="#india_districts" class="btn btn-circle js-scroll-trigger">
+                <i class="fas fa-angle-double-down animated"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="vis" id="india_districts">
+
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10">
+            <span class="intro-text">There are a total of 240,150 dots. Each dot represents 5,000 Indians. Zoom in to explore the diversity and the religions present in different regions of the country. Click on <span class="button_select_text">Religion</span> to view the district wise population of different religions. Click on <span class="button_select_text">Diversity</span> to view the district wise religious diversity index across the country.</span>
+            <div class="btn-toolbar plot_type_buttongroup  justify-content-center" id="plottype_buttongroup">
+              <button type="button" class="button mr-1 active" id="religion">Religion</button>
+              <button type="button" class="button mr-1" id="diversity">Diversity</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row legend justify-content-center text-center">
+          <div class="col-lg-4 col-md-6 col-12 mx-auto">
+              <div id="legend"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="india_districts_map" style="height: 60vh;"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" name="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <p>
+              All the code for this project can be found on <a href="https://github.com/deepak-karkala/articles/tree/master/india_religion">Github</a>.
+            </p>
+            <p>
+              The data for population of various religions for each district in India comes from <a href="https://www.censusindia.co.in/districts">2011 Census</a>. The dots are randomly placed within the district's boundaries. As a result, the position is accurate upto only district level and not taluk or any sub-district levels. Also because of random placement, some of the dots may get placed over nearby water bodies. 
+            </p>
+            <p>
+              The geojson data for district boundaries in India was obtained from <a href="https://github.com/geohacker/india">here</a>. The diversity index for districts were computed using <a href="https://en.wikipedia.org/wiki/Diversity_index">Simpson index</a> which is a statistical measure used to determine the diversity in an area given the population distribution of different groups in that area.
+            </p>
+            <p>
+              This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://www.mapbox.com/">mapbox</a>. The template for this html page was adapted from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>.
+            </p>
+            <p class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a></p>
+            <p class="text-center">Copyright &copy; Deepak Karkala 2019</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery3.3.1/jquery.min.js"></script>
+    <script src="/vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing1.4.1/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>-->
+
+    <!-- D3js -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/grayscale.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <script src="js/draw_districts.js"></script>
+
+  </body>
+
+</html>

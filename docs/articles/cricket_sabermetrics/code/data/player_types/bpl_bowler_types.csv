@@ -1,0 +1,6 @@
+type,start_econ,end_econ,start_sr,end_sr,color_id
+Flops,8.5,9.5,21,24,0
+Average,7,9,14,20,1
+Containers,5.5,7.5,20,24,2
+Ideal,5,7,12,16,3
+Strikers,7,9,12,14,4

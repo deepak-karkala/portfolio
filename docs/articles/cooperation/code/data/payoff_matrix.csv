@@ -1,0 +1,26 @@
+player,opponent,payoff
+Cooperator,Cooperator,3.0
+Cooperator,Defector,0.0
+Cooperator,Tit For Tat,3.0
+Cooperator,Grudger,3.0
+Cooperator,Random,1.545
+Defector,Cooperator,5.0
+Defector,Defector,1.0
+Defector,Tit For Tat,1.02
+Defector,Grudger,1.02
+Defector,Random,3.056
+Tit For Tat,Cooperator,3.0
+Tit For Tat,Defector,0.995
+Tit For Tat,Tit For Tat,3.0
+Tit For Tat,Grudger,3.0
+Tit For Tat,Random,2.244
+Grudger,Cooperator,3.0
+Grudger,Defector,0.995
+Grudger,Tit For Tat,3.0
+Grudger,Grudger,3.0
+Grudger,Random,2.968
+Random,Cooperator,3.97
+Random,Defector,0.486
+Random,Tit For Tat,2.252
+Random,Grudger,0.531
+Random,Random,2.27

@@ -1,0 +1,142 @@
+
+body {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+.btn-toolbar a, a:visited, a:active {
+  color: black;
+}
+
+a:hover {
+  color: #3366BB;
+}
+
+.navbar a {
+  color: white;
+  opacity: 0.5;
+}
+
+.navbar a:hover {
+  /*color: #3366BB;*/
+  color: white;
+  opacity: 1.0;
+}
+
+.container {
+  /*max-width: 900px;*/
+  margin: auto;
+}
+
+.button {
+  /*min-width: 130px;*/
+  padding: 3px 2px;
+  margin: 2px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.90rem;
+  font-weight: bold;
+  border: 1px solid #ffffff;
+  background: #f1e0d6;
+  color: black;
+}
+
+.button.active {
+  background: #000;
+  color: #fff;
+  border: 1px solid #ffffff;
+}
+
+#vis {
+  height: 50vh;
+  clear: both;
+}
+
+.graphic {
+  position: relative;
+}
+
+.chart {
+  position: -webkit-sticky;
+  position: sticky;
+  width: 100%;
+}
+
+.vis_helper_text {
+  color: #f1e0d6;
+  font-size: 1rem;
+}
+
+#toolbar {
+  margin-top: 0px;
+}
+
+.footer {
+  text-align: center;
+}
+
+.footer_text {
+  font-family: Times New Roman;
+}
+
+.footer_text a {
+  color: #3366BB;
+}
+
+.title_buttons {
+  padding-top: 0px;
+}
+
+.btn-toolbar {
+  padding-top: 0px;
+}
+
+.main_title {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.label {
+    fill: white;
+    font-family: Times New Roman;
+    font-size: 1.0rem;
+}
+
+@media (max-width: 500px) {
+}
+
+@media (min-width: 350px) {
+  .btn-toolbar {
+    padding-top: 0px;
+  }
+  #vis {
+    height: 50vh;
+  }
+}
+
+@media (min-width: 768px) {
+  #vis {
+    height: 65vh;
+    margin-top: 0px;
+  }
+  .main_title {
+    font-size: 32px;
+  }
+  .footer_text {
+    font-size: 16px;
+  }
+}
+
+.navbar_style {
+  background-color: black;
+  color: white;
+  padding-bottom: 0px;
+}
+
+.copyright_footer {
+  background-color: black;
+  color: white;
+  font-size: 0.75rem;
+}

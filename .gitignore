@@ -1,0 +1,5 @@
+docs/articles/airbnb/code/vendor/*
+vendor/*
+docs/articles/airbnb/code/data/*
+*.DS_Store
+*.swp

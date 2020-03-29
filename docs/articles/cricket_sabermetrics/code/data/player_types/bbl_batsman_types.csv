@@ -1,0 +1,6 @@
+type,start_avg,end_avg,start_sr,end_sr,color_id
+Flops,15,25,105,120,0
+Accumulators,22,40,120,140,1
+Aggressors,30,45,140,155,2
+Ideal,45,55,145,160,3
+Hitters,18,30,145,160,4

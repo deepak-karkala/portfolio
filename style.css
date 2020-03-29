@@ -1,0 +1,182 @@
+body {
+	background: #C6E2FF; /*#F1E0D6; /*#E9E9E9;*/
+	font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#blog-landing {
+	position: relative;
+	max-width: 100%;
+	width: 100%;
+}
+
+img {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+
+video {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+
+.white-panel {
+	position: absolute;
+	background: white;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.3);
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.white-panel h1 {
+	font-size: 1em;
+}
+
+.white-panel h1 a {
+	/*color: #A92733;*/
+}
+
+.white-panel a {
+	color: black;
+}
+
+.white-panel .button {
+	color: white;
+}
+
+.white-panel:hover {
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.75);
+  margin-top: -5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.profile_image_round img {
+    height: auto;
+    width: 100%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.intro_name {
+	font-size: 4.0rem;
+	font-weight: bolder;
+}
+
+.intro_description {
+	padding-top: 10px;
+}
+
+.intro_contact {
+	padding-top: 10px;
+}
+
+.outro_contact {
+	padding-bottom: 50px;
+}
+
+.intro_contact a, .outro_contact a {
+	color: black;
+	font-weight: bold;
+}
+
+.intro_icon {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.intro_container {
+	margin-bottom: 40px;
+}
+
+.article_title {
+	color: black; /*#BF988F; #C0334D*/
+	font-size: 2.0rem;
+	font-weight: bold;
+}
+
+.article_description {
+	font-size: 1.5rem;
+}
+
+.article_date {
+	color: black;
+	font-size: 1.25rem;
+	opacity: 0.6;
+}
+
+.article_tags {
+	padding-top: 10px;
+	color: #B22222;
+	font-size: 1.25rem;
+}
+
+.button {
+  /*min-width: 130px;*/
+  padding: 3px 5px;
+  margin: 2px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.25rem;
+  border: 0.04rem solid black;
+  border-radius: 5px;
+  background: #007fff; /*#00B2EE; /*#f1e0d6;*/
+  color: white; /*#3366BB;*/
+  font-weight: bold;
+}
+
+.navbar_style {
+	font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	background: #C6E2FF; /*#F1E0D6; /*#E9E9E9;*/
+	color: black;
+	font-size: 1.75rem;
+	font-weight: bold;
+}
+
+.section_title {
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: bold;
+}
+
+.about_me_image {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+
+.about_me_image_wrapper {
+	background-color: white;
+	border-radius: 5px;
+}
+
+.marketing {
+}
+
+@media (max-width: 500px) {
+	.marketing {
+		padding-bottom: 20vh;
+	}
+}
+
+.section_about_me {
+	margin-top: 50px;
+}
+
+.section_contact_me {
+	margin-top: 50px;
+}
+
+.contact_link {
+	color: #007fff;
+}
+
+.footer {
+	padding-bottom: 20px;
+}

@@ -1,0 +1,1325 @@
+gender,religion,agegroup,ruralurban,language,employment,poverty,tax,sanitation,state,literacy
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Jammu and Kashmir,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Rajasthan,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Buddhist,4,1,Konkani,3,1,1,1,Meghalaya,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Odisha,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Haryana,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Urdu,2,1,1,1,Kerala,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Christian,4,1,Assamese,2,1,1,1,Haryana,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,0
+Female,Muslim,3,1,Malayalam,2,1,1,1,Assam,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,1,1,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Marathi,1,1,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Delhi,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Sikh,4,1,Gondi,3,1,1,1,Himachal Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Marathi,1,1,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Haryana,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Sikh,4,1,Santali,2,1,1,1,Jammu and Kashmir,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Female,Sikh,4,1,Santali,3,1,1,1,Jammu and Kashmir,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,0
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Female,Other,4,1,Bodo,3,1,1,1,Arunachal Pradesh,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,0
+Female,Muslim,3,1,Malayalam,2,1,1,1,Assam,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Buddhist,4,1,Sindhi,3,1,1,1,Himachal Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Rajasthan,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Muslim,3,1,Assamese,2,1,1,1,Haryana,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Buddhist,4,1,Dogri,3,1,1,1,Tripura,1
+Female,Hindu,2,1,Telugu,2,1,1,1,Karnataka,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Sikh,4,1,Gondi,3,1,1,1,Himachal Pradesh,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,1,1,Hindi,1,0,1,1,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Jammu and Kashmir,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Christian,4,1,Maithili,2,1,1,1,Haryana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Delhi,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Other,4,1,Khasi,3,1,1,1,Mizoram,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Assam,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Female,Hindu,2,1,Marathi,1,1,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Haryana,0
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Muslim,2,1,Urdu,2,1,1,1,Kerala,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Jammu and Kashmir,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Assam,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,2,1,Urdu,2,1,1,1,Kerala,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Sikh,4,1,Nepali,3,1,1,1,Himachal Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Muslim,2,1,Urdu,2,1,1,1,Kerala,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Haryana,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Sikh,4,1,Nepali,3,1,1,1,Himachal Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Sikh,4,1,Kashmiri,3,1,1,1,Uttarakhand,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Not stated,4,1,Tripuri,3,1,1,1,Lakshadweep,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Haryana,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,1,Hindi,1,0,1,1,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Muslim,4,1,Assamese,2,1,1,1,Haryana,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,4,1,Assamese,2,1,1,1,Haryana,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Muslim,3,1,Assamese,2,1,1,1,Haryana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Sikh,4,1,Kashmiri,3,1,1,1,Uttarakhand,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Assam,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Odisha,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Marathi,1,1,1,1,Rajasthan,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Sikh,4,1,Santali,3,1,1,1,Uttarakhand,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Jammu and Kashmir,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Female,Sikh,4,1,Sindhi,3,1,1,1,Himachal Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Male,Hindu,1,1,Hindi,0,0,1,0,Bihar,1
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,0
+Female,Hindu,2,1,Telugu,2,1,1,1,Karnataka,1
+Male,Hindu,1,1,Hindi,1,0,1,1,West Bengal,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Sikh,4,1,Kashmiri,3,1,1,1,Uttarakhand,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Buddhist,4,1,Dogri,3,1,1,1,Tripura,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Christian,4,1,Assamese,2,1,1,1,Haryana,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Female,Muslim,4,1,Assamese,2,1,1,1,Haryana,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Other,4,1,Meitei (Manipuri),3,1,1,1,Goa,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Odisha,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Haryana,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Female,Other,4,1,Bodo,3,1,1,1,Puducherry,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Female,Muslim,2,1,Urdu,2,1,1,1,Kerala,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Sikh,4,1,Nepali,3,1,1,1,Himachal Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Female,Not stated,4,1,Garo,3,1,1,1,Daman Diu,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Sikh,4,1,Santali,3,1,1,1,Uttarakhand,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Jammu and Kashmir,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,1,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Rajasthan,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Haryana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,1,1,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Assam,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Sikh,4,1,Santali,3,1,1,1,Jammu and Kashmir,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Marathi,1,1,1,1,Rajasthan,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Muslim,3,1,Assamese,2,1,1,1,Haryana,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Other,4,1,Ho,3,1,1,1,Sikkim,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Sikh,4,1,Santali,2,1,1,1,Jammu and Kashmir,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Sikh,4,1,Kashmiri,3,1,1,1,Uttarakhand,1
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Jammu and Kashmir,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,0
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Sikh,4,1,Santali,3,1,1,1,Jammu and Kashmir,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Delhi,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Muslim,3,1,Assamese,2,1,1,1,Haryana,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Jain,4,1,Khandeshi,3,1,1,1,Manipur,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Sikh,4,1,Kashmiri,3,1,1,1,Uttarakhand,1
+Male,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Female,Muslim,3,1,Assamese,2,1,1,1,Haryana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Rajasthan,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Haryana,0
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Jain,4,1,Tulu,3,1,1,1,Nagaland,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Delhi,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Female,Muslim,2,1,Urdu,2,1,1,1,Kerala,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Female,Other,4,1,Meitei (Manipuri),3,1,1,1,Goa,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,1,1,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,1,1,Hindi,1,0,1,1,West Bengal,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Assam,1
+Female,Sikh,4,1,Kashmiri,3,1,1,1,Uttarakhand,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Female,Buddhist,4,1,Sindhi,3,1,1,1,Himachal Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Rajasthan,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Jain,4,1,Khandeshi,3,1,1,1,Manipur,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Urdu,2,1,1,1,Kerala,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Sikh,4,1,Kashmiri,3,1,1,1,Uttarakhand,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Jain,4,1,Tulu,3,1,1,1,Nagaland,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Jain,4,1,Kurukh,3,1,1,1,Manipur,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Buddhist,4,1,Kurukh,3,1,1,1,Meghalaya,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,1,1,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Muslim,3,1,Assamese,2,1,1,1,Haryana,1
+Female,Hindu,2,1,Marathi,1,1,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Female,Other,4,1,Ho,3,1,1,1,Andaman Nicobar,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Female,Buddhist,4,1,Konkani,3,1,1,1,Tripura,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Chhattisgarh,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Buddhist,4,1,Dogri,3,1,1,1,Tripura,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Male,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Rajasthan,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Rajasthan,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Bihar,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Christian,4,1,Bhili/Bhilodi,2,1,1,1,Jammu and Kashmir,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Punjab,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Muslim,4,1,Assamese,2,1,1,1,Haryana,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Christian,4,1,Assamese,2,1,1,1,Haryana,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Female,Buddhist,4,1,Konkani,3,1,1,1,Meghalaya,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Kerala,0
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,0
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Muslim,2,1,Odia,2,1,1,1,Assam,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Muslim,3,1,Assamese,2,1,1,1,Haryana,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Sikh,4,1,Santali,3,1,1,1,Jammu and Kashmir,1
+Female,Muslim,3,1,Assamese,2,1,1,1,Haryana,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,0
+Female,Sikh,4,1,Kashmiri,3,1,1,1,Uttarakhand,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Andhra Pradesh,0
+Female,Hindu,2,1,Urdu,2,1,1,1,Odisha,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Female,Hindu,2,1,Telugu,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Female,Other,4,1,Khasi,3,1,1,1,Chandigarh,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Assamese,2,1,1,1,Haryana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Odisha,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Haryana,0
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Christian,4,1,Santali,2,1,1,1,Jammu and Kashmir,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Andhra Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Muslim,3,1,Assamese,2,1,1,1,Haryana,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Other,4,1,Mundari,3,1,1,1,Dadra Nagar Haveli,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Muslim,3,1,Odia,2,1,1,1,Assam,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,1,1,Hindi,1,0,1,1,Madhya Pradesh,0
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,0
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Female,Hindu,2,1,Urdu,2,1,1,1,Telangana,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,1
+Male,Hindu,1,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Male,Hindu,1,1,Hindi,1,0,1,1,West Bengal,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Haryana,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Female,Muslim,3,1,Punjabi,2,1,1,1,Chhattisgarh,0
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Female,Hindu,2,1,Marathi,1,1,1,1,Rajasthan,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,2,1,Odia,2,1,1,1,Jharkhand,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Madhya Pradesh,1
+Female,Muslim,2,1,Kannada,2,1,1,1,Kerala,1
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,0
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Female,Hindu,2,1,Telugu,1,1,1,1,Karnataka,1
+Female,Sikh,4,1,Gondi,3,1,1,1,Uttarakhand,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,0
+Male,Hindu,1,1,Hindi,1,0,1,1,West Bengal,1
+Female,Hindu,2,1,Tamil,2,1,1,1,Gujarat,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Rajasthan,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,1,Hindi,0,0,1,0,West Bengal,0
+Female,Muslim,2,1,Kannada,2,1,1,1,Jharkhand,0
+Female,Hindu,2,1,Gujarati,2,1,1,1,Odisha,0
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Male,Hindu,2,1,Bengali,1,0,1,1,Tamil Nadu,1
+Female,Hindu,2,1,Marathi,1,0,1,1,Tamil Nadu,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,0,0,Hindi,0,0,0,0,Uttar Pradesh,0
+Male,Hindu,0,0,Hindi,0,0,1,0,Maharashtra,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Female,Muslim,3,1,Malayalam,2,1,1,1,Assam,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Male,Hindu,1,0,Hindi,0,0,1,0,Bihar,1
+Male,Hindu,0,0,Hindi,0,0,1,0,Uttar Pradesh,1
+Male,Hindu,1,1,Hindi,0,0,1,1,West Bengal,1
+Female,Christian,4,1,Maithili,2,1,1,1,Delhi,1
