@@ -1,39 +1,12 @@
+# Portfolio Projects
+
+# Portfolio template
 Mediademon Pinterest Grid
 JQuery Plugin for creating a Pinterest style repsonsive grid.
-
-Usage:
-
-$(document).ready(function() {
-
-    // basic initialisation
-    $('#container_selector').pinterest_grid();
-
-
-    // or with all the parameters set
-    $('#container_selector').pinterest_grid({
-        no_columns: 4,
-        padding_x: 10,
-        padding_y: 10,
-        margin_bottom: 50,
-        single_column_breakpoint: 700
-    });
-
-});
-
-
-Notes:
-
-The container should be positioned relatively and the items should have position:absolute set via CSS for everything to work.
-
-
-Example:
-
-See the example file for example usage.
-
-
 jQuery Plugin by Mediademon
 www.mediademon.com
 
+# License
 The MIT License (MIT)
 
 Copyright (c) <year> <copyright holders>
