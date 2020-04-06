@@ -76,9 +76,10 @@ var toPointLength = 0;
         var bb = d3.select(idname).node().offsetWidth;
         var width_scale_factor = 1.0;
         var height_scale_factor = 0.40;
-        var margin = {top: 20, right: 20, bottom: 30, left: 50};
+        var margin = {top: 20, right: 20, bottom: 30, left: 20};
         base_width = bb*width_scale_factor - margin.left - margin.right;
         base_height = bb*height_scale_factor - margin.top - margin.bottom;
+        var file = "data/tesla_change_daily.csv";
 
         if (data_step_id<=2) {
             var idname = "#graphic5";
@@ -86,80 +87,55 @@ var toPointLength = 0;
             var bb = d3.select(idname).node().offsetWidth;
             var width_scale_factor = 1.0;
             var height_scale_factor = 0.40;
-            var margin = {top: 20, right: 20, bottom: 30, left: 50};
+            var margin = {top: 20, right: 20, bottom: 30, left: 20};
             base_width = bb*width_scale_factor - margin.left - margin.right;
             base_height = bb*height_scale_factor - margin.top - margin.bottom;
             var file = "data/tesla_change_daily.csv";
             plot_stock_time_step(idname, file, base_width, base_height);
         } else if (data_step_id==3) {
-            var idname = "#graphic5";
-            path = d3.select(idname).selectAll(".path_line");
-            var totalLength = path.node().getTotalLength();
             date_from = new Date(2013,0,3);
+            date_to = new Date(2013,9,1);
+            plot_stock_time_step_animate_top(idname, file, date_from, date_to, base_width, base_height);
+            
+            //var start_offset = totalLength - get_length_at_point(idname, file, date_from, base_width, base_height);
+            //var end_offset = totalLength - get_length_at_point(idname, file, date_to, base_width, base_height);
+            //plot_stock_time_step_dot_animate(idname, date_from, date_to);
+        } else if (data_step_id==4) {
+            date_from = new Date(2013,9,1);
             date_to = new Date(2014,0,1);
-            
-            
-            var file = "data/tesla_change_daily.csv";
-            var start_offset = totalLength - get_length_at_point(idname, file, date_from, base_width, base_height);
-            var end_offset = totalLength - get_length_at_point(idname, file, date_to, base_width, base_height);
-            
-
-            //start_offset = 9538;
-            //end_offset = 8641; //9538 - 896.80;
-
-            console.log(start_offset);
-            console.log(end_offset);
-
-            plot_stock_time_step_animate(idname, start_offset, end_offset);
-            //plot_stock_time_step_dot_animate(idname, date_from, date_to);
+            plot_stock_time_step_animate_top(idname, file, date_from, date_to, base_width, base_height);
         } else if (data_step_id==5) {
-            var idname = "#graphic5";
             date_from = new Date(2014,0,1);
-            date_to = new Date(2015,0,1);
-            start_offset = 4000
-            end_offset = 3500;
-            plot_stock_time_step_animate(idname, date_from, date_to, start_offset, end_offset);
-            //plot_stock_time_step_dot_animate(idname, date_from, date_to);
-        } else if (data_step_id==6) {
-            var idname = "#graphic5";
-            date_from = new Date(2015,0,1);
             date_to = new Date(2016,0,1);
-            start_offset = 3500
-            end_offset = 3000;
-            //plot_stock_time_step_dot_animate(idname, date_from, date_to);
-            plot_stock_time_step_animate(idname, date_from, date_to, start_offset, end_offset);
-        } else if (data_step_id==7) {
-            var idname = "#graphic5";
+            plot_stock_time_step_animate_top(idname, file, date_from, date_to, base_width, base_height);
+        } else if (data_step_id==6) {
             date_from = new Date(2016,0,1);
             date_to = new Date(2017,0,1);
-            start_offset = 3000
-            end_offset = 2500;
-            plot_stock_time_step_animate(idname, date_from, date_to, start_offset, end_offset);
-            //plot_stock_time_step_dot_animate(idname, date_from, date_to);
-        } else if (data_step_id==8) {
-            var idname = "#graphic5";
+            plot_stock_time_step_animate_top(idname, file, date_from, date_to, base_width, base_height);
+        } else if (data_step_id==7) {
             date_from = new Date(2017,0,1);
             date_to = new Date(2018,0,1);
-            start_offset = 2500
-            end_offset = 2000;
-            plot_stock_time_step_animate(idname, date_from, date_to, start_offset, end_offset);
-            //plot_stock_time_step_dot_animate(idname, date_from, date_to);
-        } else if (data_step_id==9) {
-            var idname = "#graphic5";
+            plot_stock_time_step_animate_top(idname, file, date_from, date_to, base_width, base_height);
+        } else if (data_step_id==8) {
             date_from = new Date(2018,0,1);
-            date_to = new Date(2019,0,1);
-            start_offset = 2000
-            end_offset = 1500;
-            plot_stock_time_step_animate(idname, date_from, date_to, start_offset, end_offset);
-            //plot_stock_time_step_dot_animate(idname, date_from, date_to);
+            date_to = new Date(2019,5,1);
+            plot_stock_time_step_animate_top(idname, file, date_from, date_to, base_width, base_height);
+        } else if (data_step_id==9) {
+            date_from = new Date(2019,5,1);
+            date_to = new Date(2019,7,1);
+            plot_stock_time_step_animate_top(idname, file, date_from, date_to, base_width, base_height);
         } else if (data_step_id==10) {
-            var idname = "#graphic5";
-            date_from = new Date(2019,0,1);
+            date_from = new Date(2019,7,1);
             date_to = new Date(2020,0,1);
-            start_offset = 1500
-            end_offset = 0;
-            plot_stock_time_step_animate(idname, date_from, date_to, start_offset, end_offset);
-            //plot_stock_time_step_dot_animate(idname, date_from, date_to);
+            plot_stock_time_step_animate_top(idname, file, date_from, date_to, base_width, base_height);
+        } else if (data_step_id==11) {
+            date_from = new Date(2020,0,1);
+            date_to = new Date(2020,1,15);
+            plot_stock_time_step_animate_top(idname, file, date_from, date_to, base_width, base_height);
+        } else if (data_step_id==12) {
+            date_from = new Date(2020,1,16);
+            date_to = new Date(2020,2,30);
+            plot_stock_time_step_animate_top(idname, file, date_from, date_to, base_width, base_height);
         }
     }
 
@@ -190,6 +166,69 @@ var toPointLength = 0;
 
 })();
 
+function plot_stock_time_step_animate_top(idname, file, date_from, date_to, width, height) {
+    // parse the date / time
+    var parseTime = d3.timeParse("%Y-%m-%d");
+
+    // set the ranges
+    var x = d3.scaleTime().range([0, width]);
+    var y = d3.scaleLinear().range([height, 0]);
+
+    /*
+    var svg = d3.select(idname).append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    */
+    svg = d3.select(idname).select("svg");
+
+    // Get the data
+    d3.csv(file, function(error, data) {
+        if (error) throw error;
+
+        // format the data
+        data.forEach(function(d) {
+            d.date = parseTime(d.date);
+            d.close = +d.close;
+        });
+
+        // define the line
+        var valueline = d3.line()
+            .x(function(d) {  return x(d.date); })
+            .y(function(d) {  return y(d.close); });
+
+        // Scale the range of the data
+        x.domain(d3.extent(data, function(d) { return d.date; }));
+        y.domain([0, d3.max(data, function(d) { return d.close; })]);
+
+        // Add the valueline path.
+        var path_step_from = svg.append("path")
+            .attr("class", "path_line_to_be_removed")
+            .data([data.filter(function(d) { return d.date.getTime() <= date_from.getTime(); })])
+            .attr("d", valueline)
+            .style("opacity", 0);
+        fromPointLength = path_step_from.node().getTotalLength();
+
+        // Add the valueline path.
+        var path_step_to = svg.append("path")
+            .attr("class", "path_line_to_be_removed")
+            .data([data.filter(function(d) { return d.date.getTime() <= date_to.getTime(); })])
+            .attr("d", valueline)
+            .style("opacity", 0);
+        toPointLength = path_step_to.node().getTotalLength();
+        
+        path = d3.select(idname).selectAll(".path_line");
+        var totalLength = path.node().getTotalLength();
+
+        start_offset = totalLength - fromPointLength;
+        end_offset = totalLength - toPointLength;
+        plot_stock_time_step_animate(idname, start_offset, end_offset);
+        //d3.select(idname).select("svg").selectAll(".path_line_to_be_removed").remove();
+    });
+}
+
 function plot_stock_time_step_animate(idname, start_offset, end_offset) {
     path = d3.select(idname).selectAll(".path_line");
     var totalLength = path.node().getTotalLength();
@@ -197,7 +236,8 @@ function plot_stock_time_step_animate(idname, start_offset, end_offset) {
         .attr("stroke-dasharray", totalLength + " " + totalLength)
         .attr("stroke-dashoffset", start_offset)
         .transition()
-          .duration(2000)
+          .duration(3000)
+          .delay(1000)
           .ease(d3.easeLinear)
           .attr("stroke-dashoffset", end_offset)
           .style("opacity", 1);
@@ -278,12 +318,11 @@ function get_length_at_point(idname, file, date_point, width, height) {
             .style("opacity", 0);
 
         toPointLength = path_step.node().getTotalLength();
-        //console.log(totalLength);
+        console.log(toPointLength);
 
         d3.select(idname).select("svg").selectAll(".path_line_to_be_removed").remove();
     });
     
-    console.log(toPointLength);
     //toPointLength = 5;
     return toPointLength;
 }

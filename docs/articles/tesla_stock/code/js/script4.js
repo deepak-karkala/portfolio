@@ -22,17 +22,21 @@ shape_width = shape_width_factor(bb);
 loss_gain_legend(idname, base_width, base_height, shape_width);
 
 $('#dropdown-gain a').on('click', function(){
-    id = parseInt(this.text.split(" ")[1]);
+    //console.log(this.attributes["value"].value);
+    //id = parseInt(this.text.split(" ")[1]);
+    id = parseInt(this.attributes["value"].value);
     filename = "data/top_gain_loss.csv";
     setup_dropdown_menu(filename, id);
 });
 $('#dropdown-loss a').on('click', function(){
-    id = 5 + parseInt(this.text.split(" ")[1]);
+    //id = 10 + parseInt(this.text.split(" ")[1]);
+    id = 9 + parseInt(this.attributes["value"].value);
     filename = "data/top_gain_loss.csv";
     setup_dropdown_menu(filename, id);
 });
 $('#dropdown-tweet a').on('click', function(){
-    id = 10 + parseInt(this.text.split(" ")[1]);
+    //id = 19 + parseInt(this.text.split(" ")[1]);
+    id = 17 + parseInt(this.attributes["value"].value);
     filename = "data/top_gain_loss.csv";
     setup_dropdown_menu(filename, id);
 });
@@ -50,6 +54,7 @@ $('#show_all_days_button').on('click', function() {
     highlight_stock_day("#plot_explore_2017", selected_date);
     highlight_stock_day("#plot_explore_2018", selected_date);
     highlight_stock_day("#plot_explore_2019", selected_date);
+    highlight_stock_day("#plot_explore_2020", selected_date);
 });
 
 function setup_dropdown_menu(filename, id) {
@@ -81,6 +86,7 @@ function setup_dropdown_menu(filename, id) {
         highlight_stock_day("#plot_explore_2017", selected_date, highlight_all);
         highlight_stock_day("#plot_explore_2018", selected_date, highlight_all);
         highlight_stock_day("#plot_explore_2019", selected_date, highlight_all);
+        highlight_stock_day("#plot_explore_2020", selected_date, highlight_all);
 
     });
 
@@ -111,7 +117,7 @@ function highlight_stock_day(id, selected_date, highlight_all) {
                     if (d.date.getTime() == selected_date.getTime()) {
                         return 1;
                     } else {
-                        return 0.3;
+                        return 0.1;
                     }
                 } else {
                     return 1;
@@ -162,7 +168,7 @@ function plot_stock_time_box() {
     var col_gap_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([10, 15]);
     var box_width_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([6.0, 8.0]);
 
-    var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.20, 0.04]);
+    var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.20, 0.06]);
     var height_scale_factor = height_scale_factor_width(bb);
     base_height = bb*height_scale_factor - margin.top - margin.bottom;
 
@@ -179,6 +185,8 @@ function plot_stock_time_box() {
     plot_boxes("#plot_explore_2018", "data/tesla_change_daily_2018.csv", base_width, base_height,
                 margin, num_dots_per_row_width, row_gap_factor, box_width_factor, col_gap_factor);
     plot_boxes("#plot_explore_2019", "data/tesla_change_daily_2019.csv", base_width, base_height,
+                margin, num_dots_per_row_width, row_gap_factor, box_width_factor, col_gap_factor);
+    plot_boxes("#plot_explore_2020", "data/tesla_change_daily_2020.csv", base_width, base_height,
                 margin, num_dots_per_row_width, row_gap_factor, box_width_factor, col_gap_factor);
     
 }
@@ -372,7 +380,7 @@ var margin = {top: 20, right: 20, bottom: 50, left: 60};
 base_width = bb*width_scale_factor - margin.left - margin.right;
 var xname = "percentage_change";
 var yname = "short_description";
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.8, 0.65]);
+var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.8, 0.8]);
 var height_scale_factor = height_scale_factor_width(bb);
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 
@@ -420,11 +428,11 @@ function plot_horizontal_bar(idname, filename, width, height, margin, xname, yna
           */
           .attr("fill", function(d) {
             if (d.type == "gain") {
-                return "#77DD77"; //"#B5EAD7"; //"green";
+                return "#009900"; //"#00CC00"; //"#77DD77"; //"#B5EAD7"; //"green";
             } else if (d.type == "loss") {
-                return "#FFB7B2"; //"red";
+                return "#CC0000"; //"#FFB7B2"; //"red";
             } else if (d.type == "tweet") {
-                return "#FFFFBA"; //"blue";
+                return "#FF9900"; //"#FFFFBA"; //"blue";
             }
           })
           //.attr("stroke", "black")
@@ -456,24 +464,27 @@ function plot_horizontal_bar(idname, filename, width, height, margin, xname, yna
           })
           .text(function (d) { return d.date + ": " + d[xname].toFixed(1)+"%"; })
           //.text(function (d) { return d[xname].toFixed(1)+"%"; })
-          .attr("fill", "black")
-          .style("font-size", "0.4rem");
+          .attr("fill", "white")
+          .attr("stroke", "none")
+          .style("font-size", "0.6rem");
           //.style("font-weight", "bold");
           //.text(function (d) { return Math.abs(x(d[xname]) - x(0)); });
 
       // add the x Axis
       svg.append("g")
           .attr("transform", "translate(0," + height + ")")
-          .call(d3.axisBottom(x))
-          .style("font-size", "0.5rem")
+          .call(d3.axisBottom(x).tickSize(4))
+          .style("font-size", "0.75rem")
+          .attr("stroke", "#c0c0c0")
         .append("text")
           .attr("class", "impact_label")
           .attr("x", width)
           .attr("y", 30)
           .style("text-anchor", "end")
           .text("% change in Tesla stock price on the day")
-          .attr("fill", "black")
-          .style("font-size", "0.5rem");
+          .attr("fill", "#c0c0c0")
+          .attr("stroke", "none")
+          .style("font-size", "0.75rem");
 
       // add the y Axis
       let yAxisGroup = svg.append("g")
@@ -487,7 +498,21 @@ function plot_horizontal_bar(idname, filename, width, height, margin, xname, yna
         .attr('x', function(d,i){return d[xname]<0?9:-9;})
         .style('text-anchor', function(d,i){return d[xname]<0?'start':'end';})
         .attr("class", "xfactor_label")
-        .style("font-size", "0.45rem");
+        .style("fill", "#99ddff")
+        .style("font-size", "0.7rem");
+
+
+    svg.selectAll("path")
+        .style("stroke", "white");
+
+    svg.selectAll("line")
+        .style("stroke", "white");
+
+    svg.selectAll("tick")
+        .style("fill", "white");
+
+    svg.selectAll("text")
+        .style("shape-rendering", "crispEdges");
 
   });
 }

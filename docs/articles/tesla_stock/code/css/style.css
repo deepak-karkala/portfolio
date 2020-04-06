@@ -6,7 +6,8 @@ html,
 body {
 	margin: 0;
 	padding: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	/*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;*/
+  	font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 body {
 	min-height: 1280px;
@@ -59,43 +60,45 @@ a:hover {
 	height: 640px;
 }
 /* scrollama */
-#scroll1, #scroll2, #scroll3, #scroll4, #scroll5, #scroll6, #scroll7 {
+#scroll1 {
+	position: relative;
+	background-color:black;
+	color:white;
+}
+
+#scroll5 {
 	position: relative;
 	/*border-top: 2px dashed #000;*/
 	/*border-bottom: 2px dashed #000;*/
 	/*margin-bottom: 320px;*/
-
 }
-.scroll__graphic1, .scroll__graphic2, .scroll__graphic3, .scroll__graphic4, .scroll__graphic5, .scroll__graphic6, .scroll__graphic7 {
+
+.scroll__graphic1 {
 	position: absolute;
 	top: 0;
-	right: 1rem; /*1rem;*/
+	right: 0; 
 	bottom: auto;
 	-webkit-transform: translate3d(0, 0, 0);
 	-moz-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
-	/*
-	background-color: #ddd;
-	border: 1px solid #000;
-    */
     padding-top: 10px;
     padding-bottom: 10px;
-    /*padding-left: 10px;*/
+    z-index: 10;
+}
+
+.scroll__graphic5 {
+	position: absolute;
+	top: 0;
+	right: 3rem; 
+	bottom: auto;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .scroll__graphic1.is-fixed{ 
-	position: fixed;
-}
-
-.scroll__graphic2.is-fixed {
-	position: fixed;
-}
-
-.scroll__graphic3.is-fixed {
-	position: fixed;
-}
-
-.scroll__graphic4.is-fixed {
 	position: fixed;
 }
 
@@ -103,19 +106,12 @@ a:hover {
 	position: fixed;
 }
 
-.scroll__graphic6.is-fixed {
-	position: fixed;
-}
-
-.scroll__graphic7.is-fixed {
-	position: fixed;
-}
-
-.scroll__graphic1.is-bottom, .scroll__graphic2.is-bottom, .scroll__graphic3.is-bottom, .scroll__graphic4.is-bottom, .scroll__graphic5.is-bottom, .scroll__graphic6.is-bottom, .scroll__graphic7.is-bottom{
+.scroll__graphic1.is-bottom, .scroll__graphic5.is-bottom {
 	bottom: 0;
 	top: auto;
 }
-.scroll__graphic1 p, .scroll__graphic2 p, .scroll__graphic3 p, .scroll__graphic4 p, .scroll__graphic5 p, .scroll__graphic6 p, .scroll__graphic7 p {
+
+.scroll__graphic1 p, .scroll__graphic5 p {
 	text-align: center;
 	padding: 1rem;
 	position: absolute;
@@ -129,17 +125,18 @@ a:hover {
 	color: #666;
 }
 
-.scroll__text1, .scroll__text2, .scroll__text3, .scroll__text4, .scroll__text5, .scroll__text6, .scroll__text7 {
+.scroll__text1 {
 	position: relative;
 	padding: 0 1rem;
 	max-width: 50rem;
-	width: 100%;
+	width: 40%;
+	z-index: 20;
 }
 
-.scroll__text1, .scroll__text2 {
+.scroll__text5 {
 	position: relative;
 	padding: 0 1rem;
-	max-width: 80rem;
+	max-width: 50rem;
 	width: 100%;
 }
 
@@ -148,7 +145,7 @@ a:hover {
 }
 
 .scroll__graphic1 {
-	background-color: #d3d3d3;
+	background-color: black; 
 	border-radius: 3px;
 }
 
@@ -156,38 +153,28 @@ a:hover {
 	border-color: black;
 }
 
+/*
 @media (max-width: 767px) {
 	.scroll__graphic2, .scroll__graphic3, .scroll__graphic4, .scroll__graphic6, .scroll__graphic7 {
 		position: absolute;
 		top: 0;
-		right: 10px; /*1rem;*/
+		right: 10px;
 		bottom: auto;
 		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
-		/*
-		background-color: #ddd;
-		border: 1px solid #000;
-	    */
 	    padding-top: 10px;
-	    /*padding-left: 10px;*/
 	}
 
 	.scroll__graphic1, .scroll__graphic5, .scroll__graphic7, .scroll__graphic3 {
 		position: absolute;
 		bottom: 0;
-		right: 10px; /*1rem;*/
+		right: 10px;
 		bottom: auto;
 		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
-		/*
-		background-color: #ddd;
-		border: 1px solid #000;
-	    */
 	    padding-top: 40vh;
-	    /*padding-left: 10px;*/
-	    /*color: #f58231;*/
 	}
 
 	.scroll__graphic1 p, .scroll__graphic2 p, .scroll__graphic3 p, .scroll__graphic4 p, .scroll__graphic5 p, .scroll__graphic6 p, .scroll__graphic7 p {
@@ -196,7 +183,6 @@ a:hover {
 		position: absolute;
 		top: 50%;
 		right: 1rem;
-		/*left: 50%;*/
 		-moz-transform: translate(-50%, -50%);
 		-webkit-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
@@ -225,13 +211,11 @@ a:hover {
 		width: 100%;
 	}
 }
+*/
 
-.step1, .step2, .step3, .step4, .step5, .step6, .step7 {
+.step1, .step5 {
 	margin: 0 auto 25rem auto;
-	/*border: 1px solid #333;*/
-	/* border-bottom: none; */
 }
-
 
 .long-step {
 	margin-bottom: 0;
@@ -240,7 +224,13 @@ a:hover {
 	height: 0;
 }
 
-.step1:last-child, .step2:last-child, .step3:last-child, .step4:last-child, .step5:last-child, .step6:last-child {
+.step1:last-child {
+	background-color: black;
+	z-index: 0;
+} 
+
+.step5:last-child {
+	background-color: #cccccc;
 	/*border-bottom: 1px solid #333;*/
 }
 
@@ -256,14 +246,28 @@ a:hover {
 	height: 80%;
 }
 
-
-.step1 p, .step2 p, .step3 p, .step4 p, .step5 p, .step7 p {
+.step1 p {
 	text-align: center;
 	padding: 1rem;
 	font-size: 1rem;
 	font-weight: bold;
+	background-color: white;
+	color: black;
 }
 
+.step5 p {
+	text-align: center;
+	padding: 1rem;
+	margin-right: 2rem;
+	font-size: 1rem;
+	font-weight: bold;
+	background-color: #212121;
+	color: white;
+}
+
+.step5 .short-step p {
+	background-color: #ccccc;
+}
 
 .data_source {
 	width: 100%;
@@ -344,12 +348,9 @@ footer p {
 	margin-top: 30px;
 }
 
-
-
-
-
 .short-step {
 	height: 0;
+	background-color: #cccccc;
 }
 
 .outlier_text {
@@ -385,8 +386,6 @@ footer p {
   }
 }
 
-
-
 /*
 .tweet_list_outer {
 	display: inline-block;
@@ -419,14 +418,51 @@ footer p {
 	fill: white;
 }
 
-.gain_loss_comparison_title {
+.gain_loss_comparison_title, .daily_change_plot_title {
+	font-size: 1.25rem;
 	font-weight: bold;
+	color: white;
+}
+
+.daily_change_plot_subtitle {
+	font-size: 0.75rem;
+	color: white;
 }
 
 .plot_legend_title {
-	font-size: 0.5rem;
+	font-size: 0.75rem;
 }
 
 .hotel_legend_text {
-	font-size: 0.5rem;
+	font-size: 0.75rem;
+}
+
+.graphic_legend {
+	font-size: 0.75rem;
+}
+
+.tooltip1 {   
+  position: absolute;           
+  text-align: center;           
+  width: 260px;                  
+  height: 100px;                 
+  padding: 2px;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: normal;
+  background: #fafafa;   
+  border: 0px;      
+  border-radius: 4px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+}
+
+.company_name {
+	font-size: 0.85rem;
+	font-weight: bold;
+}
+
+.dot {
+	z-index:40;
 }

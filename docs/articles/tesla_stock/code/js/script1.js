@@ -1,381 +1,3 @@
-var idname = "#plot_wild_ride";
-d3.select(idname).select("svg").remove();
-var bb = d3.select(idname).node().offsetWidth;
-var width_scale_factor = 1.0;
-var height_scale_factor = 0.40;
-var margin = {top: 20, right: 20, bottom: 30, left: 50};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-var file = "data/tesla_processed_09032020.csv";
-plot_stock_time(idname, file, base_width, base_height);
-
-/*
-var idname = "#plot_mcap_av";
-d3.select(idname).select("svg").remove();
-var bb = d3.select(idname).node().offsetWidth;
-var width_scale_factor = 1.0;
-var height_scale_factor = 0.40;
-var margin = {top: 20, right: 20, bottom: 30, left: 50};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-var file = "data/nasdaq_filtered_av_mcap.csv";
-plot_mcap_av(idname, file, base_width, base_height);
-*/
-
-function plot_stock_time(idname, file, width, height) {
-    // set the dimensions and margins of the graph
-        //width = 960 - margin.left - margin.right,
-        //height = 500 - margin.top - margin.bottom;
-
-    // parse the date / time
-    var parseTime = d3.timeParse("%Y-%m-%d");
-
-    // set the ranges
-    var x = d3.scaleTime().range([0, width]);
-    var y = d3.scaleLinear().range([height, 0]);
-
-    // append the svg obgect to the body of the page
-    // appends a 'group' element to 'svg'
-    // moves the 'group' element to the top left margin
-    //var svg = d3.select("body").append("svg")
-    var svg = d3.select(idname).append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-        .attr("transform",
-              "translate(" + margin.left + "," + margin.top + ")");
-    
-
-    // Get the data
-    d3.csv(file, function(error, data) {
-      if (error) throw error;
-
-      // format the data
-      data.forEach(function(d) {
-          d.date = parseTime(d.date);
-          d.close = +d.close;
-      });
-
-    // define the line
-    var valueline = d3.line()
-        .x(function(d) {  return x(d.date); })
-        .y(function(d) {  return y(d.close); });
-
-      // Scale the range of the data
-      x.domain(d3.extent(data, function(d) { return d.date; }));
-      y.domain([0, d3.max(data, function(d) { return d.close; })]);
-
-      // Add the valueline path.
-      var path = svg.append("path")
-            .data([data])
-            .attr("class", "stock_time_line")
-            .attr("d", valueline)
-            .attr("stroke", "darkgrey")
-            .attr("stroke-width", "2")
-            .attr("fill", "none");
-        /*
-          .style("opacity", 0)
-            .transition()
-                .delay(function(d, i) { console.log(i); return i*100; })
-                .duration(function(d, i) { return i*100; })
-                .style("opacity", 1);
-        */
-      var totalLength = path.node().getTotalLength();
-      repeat();
-
-        function repeat() {
-            path
-                .attr("stroke-dasharray", totalLength + " " + totalLength)
-                .attr("stroke-dashoffset", totalLength)
-                .transition()
-                  .duration(3000)
-                  .ease(d3.easeLinear)
-                  .attr("stroke-dashoffset", 0)
-                  .on("end", repeat);
-        }
-
-      // Add the X Axis
-      svg.append("g")
-          .attr("transform", "translate(0," + height + ")")
-          .call(d3.axisBottom(x));
-
-      // Add the Y Axis
-      svg.append("g")
-          .call(d3.axisLeft(y));
-
-    });
-
-}
-
-function plot_mcap_av_axes(id, file, width, height, include_outliers, scale) {
-    var margin = {top: 20, right: 50, bottom: 30, left: 30};
-
-    var x = d3.scaleLinear().range([0, width]);
-    var y = d3.scaleLinear().range([height, 0]);
-
-    var svg = d3.select(id).append("svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    d3.csv(file, function(error, data) {
-        if (error) throw error;
-
-        data.forEach(function(d) {
-            if (include_outliers == 1) {
-                d.av = +d.av;
-                d.name = d.name;
-                d.symbol = d.symbol;
-                d.lastClose = +d.lastClose;
-                d.mcap = +d.mcap;
-            } else {
-                if (d.mcap <= 1e11) {
-                    d.av = +d.av;
-                    d.name = d.name;
-                    d.symbol = d.symbol;
-                    d.lastClose = +d.lastClose;
-                    d.mcap = +d.mcap;
-                }
-            }
-        });
-
-        //x.domain(d3.extent(data, function(d) { return d.lastClose+40;} ));
-        //y.domain(d3.extent(data, function(d) { return d.av;} ));
-        x.domain([0, d3.max(data, function(d) { return d.lastClose;}) ]);
-        y.domain([-0.1, d3.max(data, function(d) { return d.av+0.1;}) ]);
-
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x)
-                //.tickValues(d3.range(240))
-                .tickFormat( (d,i) => {
-                  if(d%40 === 0) return d;
-                }))
-            .style("font-size", "0.75rem")
-          .append("text")
-            .attr("class", "label")
-            .attr("x", width)
-            .attr("y", -6)
-            .style("text-anchor", "end")
-            .text("Stock price")
-            .attr("fill", "#3f3f3f")
-            .style("font-size", "1rem");
-
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(d3.axisLeft(y))
-            .style("font-size", "0.75rem")
-          .append("text")
-            .attr("class", "label")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".71em")
-            .style("text-anchor", "end")
-            .text("Annualized volatility")
-            .attr("fill", "#3f3f3f")
-            .style("font-size", "1rem");
-    });
-}
-
-function plot_mcap_av_transition(id, file, width, height, include_outliers, scale) {
-    var x = d3.scaleLinear().range([0, width]);
-    var y = d3.scaleLinear().range([height, 0]);
-
-    d3.csv(file, function(error, data) {
-        if (error) throw error;
-
-        data.forEach(function(d) {
-            if (include_outliers == 1) {
-                d.av = +d.av;
-                d.name = d.name;
-                d.symbol = d.symbol;
-                d.lastClose = +d.lastClose;
-                d.mcap = +d.mcap;
-            } else {
-                if (d.mcap <= 1e11) {
-                    d.av = +d.av;
-                    d.name = d.name;
-                    d.symbol = d.symbol;
-                    d.lastClose = +d.lastClose;
-                    d.mcap = +d.mcap;
-                }
-            }
-        });
-
-        //x.domain(d3.extent(data, function(d) { return d.lastClose;} ));
-        //y.domain(d3.extent(data, function(d) { return d.av;} ));
-        x.domain([0, d3.max(data, function(d) { return d.lastClose;}) ]);
-        y.domain([-0.1, d3.max(data, function(d) { return d.av+0.1;}) ]);
-
-        if (include_outliers == 1) {
-            var svg = d3.select(id);
-            svg.select(".x")
-                .transition()
-                .call(d3.axisBottom(x));
-
-            svg.selectAll(".dot")
-                .transition()
-                .duration(1000)
-                    .attr("cx", function(d) { return x(d.lastClose); })
-                    .attr("cy", function(d) { return y(d.av); })
-                    .attr("r", function(d) { return d.mcap/scale; })
-                    .attr("stroke", "black");
-
-            svg.selectAll(".text")
-                .transition()
-                .duration(1000) 
-                    .attr("x", function(d) { return x(d.lastClose+3); })
-                    .attr("y", function(d) { return y(d.av); })
-                    .text(function(d) { return d.symbol; })
-                    .attr("fill", function(d) {
-                        if (d.symbol == "TSLA") {
-                            return "#cc0000";
-                        } else {
-                            return "black";
-                        }
-                    })
-                    .style("font-size", "0.75rem");
-        } else {
-            var svg = d3.select(id);
-
-            svg.selectAll(".dot")
-                .data(data)
-                .enter().append("circle")
-                    .attr("class", "dot")
-                    .attr("cx", function(d) { return x(d.lastClose); })
-                    .attr("cy", function(d) { return y(d.av); })
-                    .attr("r", function(d) { return d.mcap/scale; })
-                    .attr("stroke", "black");
-
-            svg.selectAll(".text")
-                .data(data.filter(function(d) {return d.symbol == "TSLA";} ))
-                .enter().append("text")
-                    .attr("class", "text")
-                    .attr("x", function(d) { return x(d.lastClose+3); })
-                    .attr("y", function(d) { return y(d.av); })
-                    .text(function(d) { return d.symbol; })
-                    .attr("fill", function(d) {
-                        if (d.symbol == "TSLA") {
-                            return "#cc0000";
-                        } else {
-                            return "black";
-                        }
-                    })
-                    .style("font-size", "0.75rem");
-        }
-
-        
-    });
-}
-
-function plot_mcap_av(id, file, width, height, include_outliers, scale) {
-    var margin = {top: 20, right: 50, bottom: 30, left: 30};
-
-    var x = d3.scaleLinear().range([0, width]);
-    var y = d3.scaleLinear().range([height, 0]);
-
-    var xaxis = d3.axisBottom(x);
-    var yaxis = d3.axisLeft(y);
-
-    var svg = d3.select(id).append("svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    d3.csv(file, function(error, data) {
-        if (error) throw error;
-
-        data.forEach(function(d) {
-            if (include_outliers == 1) {
-                d.av = +d.av;
-                d.name = d.name;
-                d.symbol = d.symbol;
-                d.lastClose = +d.lastClose;
-                d.mcap = +d.mcap;
-            } else {
-                if (d.mcap <= 1e11) {
-                    d.av = +d.av;
-                    d.name = d.name;
-                    d.symbol = d.symbol;
-                    d.lastClose = +d.lastClose;
-                    d.mcap = +d.mcap;
-                }
-            }
-        });
-
-        //x.domain(d3.extent(data, function(d) { return d.lastClose+40;} ));
-        //y.domain(d3.extent(data, function(d) { return d.av;} ));
-        x.domain([0, d3.max(data, function(d) { return d.lastClose;}) ]);
-        y.domain([-0.1, d3.max(data, function(d) { return d.av+0.1;}) ]);
-
-        svg.selectAll(".dot")
-            .data(data)
-            .enter().append("circle")
-                .attr("class", "dot")
-                .attr("cx", function(d) { return x(d.lastClose); })
-                .attr("cy", function(d) { return y(d.av); })
-                .attr("r", function(d) { return d.mcap/scale; })
-                .attr("opacity", 0)
-                .attr("stroke", "black")
-                .attr("fill", function(d) {
-                    if (d.symbol == "TSLA") {
-                        return "#cc0000";
-                    } else {
-                        return "black";
-                    }
-                })
-                .transition()
-                .duration(500)
-                    .attr("opacity", 1);
-
-        svg.selectAll(".text")
-            .data(data.filter(function(d) {return (d.symbol == "TSLA") || (d.mcap >= 10e9) ;} ))
-            .enter().append("text")
-                .attr("class", "text")
-                .attr("x", function(d) { return x(d.lastClose+3); })
-                .attr("y", function(d) { return y(d.av); })
-                .text(function(d) { return d.symbol; })
-                //.attr("fill", "yellow")
-                .style("font-size", "0.75rem");
-
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x)
-                //.tickValues(d3.range(240))
-                .tickFormat( (d,i) => {
-                  if(d%40 === 0) return d;
-                }))
-            .style("font-size", "0.75rem")
-          .append("text")
-            .attr("class", "label")
-            .attr("x", width)
-            .attr("y", -6)
-            .style("text-anchor", "end")
-            .text("Stock price")
-            .attr("fill", "#3f3f3f")
-            .style("font-size", "1rem");
-
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(d3.axisLeft(y))
-            .style("font-size", "0.75rem")
-          .append("text")
-            .attr("class", "label")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".71em")
-            .style("text-anchor", "end")
-            .text("Annualized volatility")
-            .attr("fill", "#3f3f3f")
-            .style("font-size", "1rem");
-    });
-}
-
-
 (function() {
     // using d3 for convenience
     var container = d3.select('#scroll1');
@@ -453,54 +75,174 @@ function plot_mcap_av(id, file, width, height, include_outliers, scale) {
         var maxDeviceWidth = 1024;
         var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.8, 0.4]);
 
-        var idname = "#graphic1";
-        d3.select(idname).select("svg").remove();
-        var bb = d3.select(idname).node().offsetWidth;
-        var width_scale_factor = 1.0;
-        var height_scale_factor =  height_scale_factor_width(bb); //0.40;
-        var margin = {top: 20, right: 20, bottom: 30, left: 20};
-        base_width = bb*width_scale_factor - margin.left - margin.right;
-        base_height = bb*height_scale_factor - margin.top - margin.bottom;
-        var file = "data/nasdaq_filtered_av_mcap.csv";
+        //var graphic_text = document.getElementById("graphic_text");
+        //graphic_text.innerHTML = "";
+        //var graphic_legend = document.getElementById("graphic_legend");
+        //graphic_legend.innerHTML = "";
 
+        var idname = "#graphic1";
+        var width_scale_factor = 0.90;
+        var margin = {right:40, left:40, top:10, bottom:20};
+        var bb = d3.select(idname).node().offsetWidth;
+        base_width = bb*width_scale_factor - margin.left - margin.right;
+        var height_scale_factor = 0.4;
+        base_height = bb*height_scale_factor - margin.top - margin.bottom;
+        var sector_array = ['Technology', 'Health Care', 'Consumer Services', 'Transportation',
+                            'Miscellaneous', 'Consumer Non-Durables', 'Consumer Durables',
+                            'Capital Goods', 'Public Utilities', 'Finance'];
+        var sector_colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#9A6324',
+                            '#46f0f0', '#f032e6', '#bcf60c', '#a9a9a9'];
+        var sectorColors = d3.scaleOrdinal()
+                                .domain(sector_array)
+                                .range(sector_colors);
+        
         if (data_step_id==0) {
+            d3.select(idname).select("svg").remove();
+            var graphic_legend = document.getElementById("graphic_legend");
+            graphic_legend.innerHTML = "";
             
-            graphic_text = document.getElementById("graphic_text");
-            graphic_text.innerHTML = "To get a sense of the variations of stocks, let us compare the stock prices and Annualized volatility of various companies.";
+            var file = "data/all_companies_all_data.csv";
+            var is_random_x = 1;
+            var is_random_y = 1;
+            var show_x_axis = 0;
+            var show_y_axis = 0;
+            var show_colors = 0;
+            var is_same_radius = 1;
+            var show_symbol = 1;
+            var show_xaxis = 0;
+            var show_yaxis = 0;
+            plot_company_circles(idname, file, base_width, base_height, is_random_x, is_random_y,
+                show_x_axis, show_y_axis, show_colors, is_same_radius, sectorColors, show_symbol,
+                show_only_auto, show_xaxis, show_yaxis);
+
+            //graphic_text = document.getElementById("graphic_text");
+            //graphic_text.innerHTML = "Each circle denotes a company listed in NASDAQ Top 100. The circles can be identified by the associated company stock symbols.";
 
         } else if (data_step_id==1) {
             var idname = "#graphic1";
-            d3.select(idname).select("svg").remove();
-            graphic_text = document.getElementById("graphic_text");
-            graphic_text.innerHTML = "The graph compares the stock price and Annualized volatility of various companies. The horizontal and vertical axes represent the stock price and Annualized volatility respectively.";
+            //graphic_text = document.getElementById("graphic_text");
+            //graphic_text.innerHTML = "Let us the change the color of the companies based on the sectors they operate in";
 
-            
-            include_outliers = 0;
-            scale = 5e9;
-            plot_mcap_av_axes(idname, file, base_width, base_height, include_outliers, scale);
+            /*
+            var sector_array = ['Technology', 'Health Care', 'Consumer Services', 'Transportation',
+                            'Miscellaneous', 'Consumer Non-Durables', 'Consumer Durables',
+                            'Capital Goods', 'Public Utilities', 'Finance'];
+            var sector_colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4',
+                            '#46f0f0', '#f032e6', '#bcf60c', '#fabebe'];
+            */
+            graphic_legend = document.getElementById("graphic_legend");
+            graphic_legend.innerHTML = ""
+            for(var i=0; i<sector_array.length; i++) {
+                graphic_legend.innerHTML += `<svg height="20" width="20"><circle cx="10" cy="15" r="5" fill="`+sector_colors[i]+`" /></svg>`+sector_array[i];
+            }
 
+            var is_random_x = 1;
+            var is_random_y = 1;
+            var show_x_axis = 0;
+            var show_y_axis = 0;
+            var show_colors = 1;
+            var is_same_radius = 1;
+            var show_symbol = 1;
+            var show_xaxis = 0;
+            var show_yaxis = 0;
+            var idname = "#graphic1";
+            var file = "data/all_companies_all_data.csv";
+            transition_company_circles(idname, file, base_width, base_height, is_random_x, is_random_y,
+                show_x_axis, show_y_axis, show_colors, is_same_radius, sectorColors, show_symbol,
+                show_only_auto, show_xaxis, show_yaxis);
+           
         } else if (data_step_id==2) {
             var idname = "#graphic1";
-            d3.select(idname).select("svg").remove();
-            graphic_text = document.getElementById("graphic_text");
-            graphic_text.innerHTML = "The horizontal and vertical axes represent the stock price and Annualized volatility respectively. The data for TESLA is shown in red circle.";
+            //graphic_text = document.getElementById("graphic_text");
+            //graphic_text.innerHTML = "Let us arrange the companies on horizontal axis based on their stock price. Companies with higher stock price are placed on the right.";
 
-            include_outliers = 0;
-            scale = 5e9;
-            plot_mcap_av(idname, file, base_width, base_height, include_outliers, scale);
-            //plot_mcap_av_transition(idname, file, base_width, base_height, include_outliers, scale);
+            var is_random_x = 0;
+            var is_random_y = 1;
+            var show_x_axis = 0;
+            var show_y_axis = 0;
+            var show_colors = 1;
+            var is_same_radius = 1;
+            var show_symbol = 1;
+            var show_xaxis = 1;
+            var show_yaxis = 0;
+            var idname = "#graphic1";
+            var file = "data/all_companies_all_data.csv";
+            transition_company_circles(idname, file, base_width, base_height, is_random_x, is_random_y,
+                show_x_axis, show_y_axis, show_colors, is_same_radius, sectorColors, show_symbol,
+                show_only_auto, show_xaxis, show_yaxis);
 
         } else if (data_step_id==3) {
             var idname = "#graphic1";
-            //d3.select(idname).select("svg").remove();
-            graphic_text = document.getElementById("graphic_text");
-            graphic_text.innerHTML = "Notice the large market cap and high share price of tech giants Amazon and Google.";
+            //graphic_text = document.getElementById("graphic_text");
+            //graphic_text.innerHTML = "Let us change the size of the circles based on the market capitalisation of companies";
 
-            include_outliers = 1;
-            scale = 50e9;
-            //plot_mcap_av(idname, file, base_width, base_height, include_outliers, scale);
-            plot_mcap_av_transition(idname, file, base_width, base_height, include_outliers, scale);
+            var is_random_x = 0;
+            var is_random_y = 1;
+            var show_x_axis = 0;
+            var show_y_axis = 0;
+            var show_colors = 1;
+            var is_same_radius = 0;
+            var show_symbol = 1;
+            var show_xaxis = 1;
+            var show_yaxis = 0;
+            var idname = "#graphic1";
+            var file = "data/all_companies_all_data.csv";
+            transition_company_circles(idname, file, base_width, base_height, is_random_x, is_random_y,
+                show_x_axis, show_y_axis, show_colors, is_same_radius, sectorColors, show_symbol,
+                show_only_auto, show_xaxis, show_yaxis);
+
+        } else if (data_step_id==4) {
+            var idname = "#graphic1";
+            //graphic_text = document.getElementById("graphic_text");
+            //graphic_text.innerHTML = "Let us place the companies on vertical axis based on their <em>Annualised Volatility</em>. Investopedia defines <em>Volatility</em> as a statistical measure of the dispersion of returns for a stock. Higher the volatility, higher is the variation in the company stock price";
+
+            var is_random_x = 0;
+            var is_random_y = 0;
+            var show_x_axis = 0;
+            var show_y_axis = 0;
+            var show_colors = 1;
+            var is_same_radius = 0;
+            var show_symbol = 1;
+            var show_xaxis = 1;
+            var show_yaxis = 1;
+            var idname = "#graphic1";
+            var file = "data/all_companies_all_data.csv";
+            transition_company_circles(idname, file, base_width, base_height, is_random_x, is_random_y,
+                show_x_axis, show_y_axis, show_colors, is_same_radius, sectorColors, show_symbol,
+                show_only_auto, show_xaxis, show_yaxis);
+
+        } else if (data_step_id==5) {
+            var idname = "#graphic1";
+            //graphic_text = document.getElementById("graphic_text");
+            //graphic_text.innerHTML = "Let us now look at how the stock price and volatility of the NASDAQ Top 100 companies have evolved over the years. The Market Cap (size) is kept as a constant";
+
+        } else if (data_step_id==6) {
+            var idname = "#graphic1";
+            //graphic_text = document.getElementById("graphic_text");
+            //graphic_text.innerHTML = "Let us now consider only those companies operating in <em>Auto-Manufacturing</em> industry. Let us also include prominent auto companies trading on platforms other than NASDAQ";
+
+            var is_random_x = 0;
+            var is_random_y = 0;
+            var show_x_axis = 0;
+            var show_y_axis = 0;
+            var show_colors = 1;
+            var is_same_radius = 0;
+            var show_symbol = 1;
+            var show_only_auto = 1;
+            var show_xaxis = 1;
+            var show_yaxis = 1;
+            var idname = "#graphic1";
+            var file = "data/all_companies_all_data.csv";
+            transition_company_circles(idname, file, base_width, base_height, is_random_x, is_random_y,
+                show_x_axis, show_y_axis, show_colors, is_same_radius, sectorColors, show_symbol,
+                show_only_auto, show_xaxis, show_yaxis);
+
+        } else if (data_step_id==7) {
+            d3.select(idname).select("svg").remove();
+            var graphic_legend = document.getElementById("graphic_legend");
+            graphic_legend.innerHTML = "";
         }
+
     }
 
     function init() {
@@ -527,5 +269,474 @@ function plot_mcap_av(id, file, width, height, include_outliers, scale) {
     }
     // kick things off
     init();
+
+    function transition_company_circles(id, file, width, height, is_random_x, is_random_y,
+        show_x_axis, show_y_axis, show_colors, is_same_radius, sectorColors, show_symbol,
+        show_only_auto, show_xaxis, show_yaxis) {
+
+        var x = d3.scaleLog()
+              .range([0, width]);
+        var y = d3.scaleLinear()
+              .range([height, 0]);
+
+
+        d3.csv(file, function(error, data) {
+            if (error) throw error;
+
+            data.forEach(function(d, i) {
+                d.id = i;
+                d.x = +d.prev_close;
+                d.y = +d.av;
+                d.name = d.name;
+                d.symbol = d.symbol;
+                d.market_cap = +d.market_cap;
+                d.sector = d.Sector;
+            });
+
+            xmin = d3.min(data, function(d) { return d.x; });
+            xmax = d3.max(data, function(d) { return d.x; })+500;
+            ymin = d3.min(data, function(d) { return d.y; })-0.05;
+            ymax = d3.max(data, function(d) { return d.y; });
+            x.domain([xmin, xmax]);
+            y.domain([ymin, ymax]);
+            var radiusScale = d3.scaleLinear()
+                                .domain([d3.min(data, function(d) { return d.market_cap; }), d3.max(data, function(d) { return d.market_cap; })])
+                                .range([0.25, 1.5]);
+            d3.select(id)
+                .selectAll(".dot")
+                .transition()
+                    .delay(1000)
+                    .duration(2000)
+                    .attr("r", function(d) {
+                        if (is_same_radius==1) {
+                            return "0.25rem";
+                        } else {
+                            return radiusScale(d.market_cap)+"rem";
+                        }
+                    })
+                    .attr("cx", function(d) {
+                        if (is_random_x==1) {
+                            return x(d.random_x);
+                        } else {
+                            return x(d.x);
+                        }
+                    })
+                    .attr("cy", function(d) {
+                        if (is_random_y==1) {
+                            return y(d.random_y);
+                        } else{
+                            return y(d.y);
+                        }
+                    })
+                    .style("fill", function(d) { 
+                        if (show_colors==1) {
+                            return sectorColors(d.sector);
+                        } else {
+                            return "#aaffc3";
+                        }
+                    })
+                    .style("opacity", function(d,i) {
+                        if (show_only_auto==1) {
+                            if (d.Industry=="Auto Manufacturing") {
+                                return 1;
+                            } else {
+                                return 0.1;
+                            }
+                        } else {
+                            return 1;
+                        }
+                    });
+
+            d3.select(id)
+                .selectAll(".x_axis")
+                .transition()
+                    .delay(1000)
+                    .duration(2000)
+                    .style("opacity", function() {
+                        if (show_xaxis==1) {
+                            return 1;
+                        } else{
+                            return 0;
+                        }
+                    });
+            d3.select(id)
+                .selectAll(".xlabel")
+                .transition()
+                    .delay(1000)
+                    .duration(2000)
+                    .style("opacity", function() {
+                        if (show_xaxis==1) {
+                            return 1;
+                        } else{
+                            return 0;
+                        }
+                    });
+
+            d3.select(id)
+                .selectAll(".y_axis")
+                .transition()
+                    .delay(1000)
+                    .duration(2000)
+                    .style("opacity", function() {
+                        if (show_yaxis==1) {
+                            return 1;
+                        } else{
+                            return 0;
+                        }
+                    });
+
+            d3.select(id)
+                .selectAll(".ylabel")
+                .transition()
+                    .delay(1000)
+                    .duration(2000)
+                    .style("opacity", function() {
+                        if (show_yaxis==1) {
+                            return 1;
+                        } else{
+                            return 0;
+                        }
+                    });
+
+            d3.select(id)
+                .selectAll(".company_symbol")
+                .transition()
+                    .delay(1000)
+                    .duration(2000)
+                    .attr("x", function(d, i) {
+                        if (is_random_x==1) {
+                            return x(d.random_x);
+                        } else {
+                            return x(d.x);
+                        }
+                    })
+                    .attr("y", function(d, i) {
+                        if (is_random_y==1) {
+                            return y(d.random_y);
+                        } else{
+                            return y(d.y);
+                        }
+                    })
+                    .style("opacity", function(d,i) {
+                        if (show_symbol==1) {
+                            if (show_only_auto==1) {
+                                if (d.Industry=="Auto Manufacturing") {
+                                    return 1;
+                                } else {
+                                    return 0.1;
+                                }
+                            } else {
+                                return 1;
+                            }
+                        } else {
+                            return 0;
+                        }
+                    });
+
+       });
+    }
+
+    function plot_company_circles(id, file, width, height, is_random_x, is_random_y,
+        show_x_axis, show_y_axis, show_colors, is_same_radius, sectorColors, show_symbol,
+        show_only_auto, show_xaxis, show_yaxis) {
+
+        var x = d3.scaleLog()
+              .range([0, width]);
+        var y = d3.scaleLinear()
+              .range([height, 0]);
+
+        var xAxis = d3.axisBottom(x);
+        var yAxis = d3.axisRight(y);
+
+        var svg = d3.select(id).append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var colorScale = d3.scaleSequential(d3.interpolateYlOrRd);
+
+
+        // Tooltip
+        var tooltip = d3.select("body")
+            .append("div")
+            .attr("class", "tooltip1")
+            /*.style("position", "absolute")*/
+            .style("z-index", "50")
+            .style("visibility", "hidden");
+
+
+        // Expert bubbles
+        d3.csv(file, function(error, data) {
+            if (error) throw error;
+
+            data.forEach(function(d, i) {
+                d.id = i;
+                d.x = +d.prev_close;
+                d.y = +d.av;
+                d.name = d.name;
+                d.symbol = d.symbol;
+                d.market_cap = +d.market_cap;
+                d.sector = d.Sector;
+                d.name = d.name;
+            });
+
+            //x.domain([0, 10]);
+            //y.domain([0, 10]);
+            xmin = d3.min(data, function(d) { return d.x; });
+            xmax = d3.max(data, function(d) { return d.x; })+500;
+            ymin = d3.min(data, function(d) { return d.y; })-0.05;
+            ymax = d3.max(data, function(d) { return d.y; });
+            x.domain([xmin, xmax]);
+            y.domain([ymin, ymax]);
+            xmin = 40;
+            xmax = 1000;
+            ymin = 0.25;
+            ymax = 0.45;
+            var radiusScale = d3.scaleLinear()
+                                .domain([d3.min(data, function(d) { return d.market_cap; }), d3.max(data, function(d) { return d.market_cap; })])
+                                .range([0.25, 1.5]);
+
+            if ((is_random_x==1) && (is_random_y==1)) {
+                data.forEach(function(d,i) {
+                    d.random_x = getRandomArbitrary(xmin, xmax);
+                    d.random_y = getRandomArbitrary(ymin, ymax);
+                });
+            } else if ((is_random_x==1) && (is_random_y==0)) {
+                data.forEach(function(d,i) {
+                    d.random_x = getRandomArbitrary(xmin, xmax);
+                });
+            } else if ((is_random_x==0) && (is_random_y==1)) {
+                data.forEach(function(d,i) {
+                    d.random_y = getRandomArbitrary(ymin, ymax);
+                });
+            }
+
+            // x-axis
+            svg.append("g")
+                .attr("class", "x_axis")
+                .attr("transform", "translate(0," + height + ")")
+                .style("font-size", "0.65rem")
+                .call(xAxis
+                        .tickFormat( (d,i) => {
+                            if ( ((d<=200)&&(d%20==0)) || (d%200==0) ) {
+                                return d;
+                            }
+                        })
+                        .ticks(20, ",.1s")
+                    )
+                .style("opacity", function() {
+                    if (show_xaxis==1) {
+                        return 1;
+                    } else{
+                        return 0;
+                    }
+                })
+              .append("text")
+                .attr("class", "xlabel")
+                .attr("x", width-20)
+                .attr("y", -6)
+                .style("text-anchor", "end")
+                .text("Stock price (Log scale)")
+                .attr("fill", "white")
+                .style("font-size", "0.75rem")
+                .style("opacity", function() {
+                    if (show_xaxis==1) {
+                        return 1;
+                    } else{
+                        return 0;
+                    }
+                });
+
+            // y-axis
+            svg.append("g")
+                .attr("class", "y_axis")
+                .attr("transform", "translate("+(width-20)+",0)")
+                .style("font-size", "0.65rem")
+                .call(yAxis)
+                .style("opacity", function() {
+                    if (show_yaxis==1) {
+                        return 1;
+                    } else{
+                        return 0;
+                    }
+                })
+              .append("text")
+                .attr("class", "ylabel")
+                .attr("transform", "rotate(-90)")
+                .attr("y", -20)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Annualised Volatility")
+                .attr("fill", "white")
+                .style("font-size", "0.75rem")
+                .style("opacity", function() {
+                    if (show_yaxis==1) {
+                        return 1;
+                    } else{
+                        return 0;
+                    }
+                });
+
+            svg.selectAll(".dot")
+                .data(data
+                    .filter( (d,i) => {
+                        if ((d.market_cap>=2e10) || (d.Industry=="Auto Manufacturing")) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    })
+                )
+              .enter().append("circle")
+                .attr("class", "dot")
+                .attr("r", function(d) {
+                    if (is_same_radius==1) {
+                        return "0.25rem";
+                    } else {
+                        return radiusScale(d.market_cap)+"rem";
+                    }
+                })
+                .attr("cx", function(d) {
+                    if (is_random_x==1) {
+                        return x(d.random_x);
+                    } else {
+                        return x(d.x);
+                    }
+                })
+                .attr("cy", function(d) {
+                    if (is_random_y==1) {
+                        return y(d.random_y);
+                    } else{
+                        return y(d.y);
+                    }
+                })
+                .style("fill", function(d) { 
+                    if (show_colors==1) {
+                        return sectorColors(d.sector);
+                    } else {
+                        return "#aaffc3";
+                    }
+                })
+                .style("opacity", function(d,i) {
+                    if (show_only_auto==1) {
+                        if (d.Industry=="Auto Manufacturing") {
+                            return 1;
+                        } else {
+                            return 0.25;
+                        }
+                    } else {
+                        return 1;
+                    }
+                })
+                /*
+                .style("fill", function(d) { 
+                    console.log(d);
+                    return colorScale(d.dangerous*0.75/10);
+                })
+                */
+                .style("stroke", "white")
+                .style("stroke-width", "0.75px")
+                .style("opacity", 1.0)
+                .style("z-index", "10")
+                .on("mouseover", function(d, i) {
+                    if ( ((d.market_cap>=2e10) || (d.Industry=="Auto Manufacturing")) || (show_only_auto==1 && (d.Industry=="Auto Manufacturing")) ) {
+                          //return tooltip.text(d.city).style("visibility", "visible");
+                          //d3.select(this).style('stroke', 'white').style("opacity", 1.0).style("stroke-width", 2).style("stroke-opacity", 1.0);
+                          return tooltip.html(
+                            '<div class="row flex-container">' +
+                                '<div class="col-lg-12 col-12">' +
+                                    '<span class="company_name">' + d.name + '</span></br>' +
+                                    'Sector: <span class="company_sector"><b>' + d.sector + '</b></span></br>' +
+                                    'Market Cap: <span class="company_mcap"><b>USD ' + Math.round(d.market_cap/1e9, 4) + ' Billion</b></span></br>' +
+                                    'Stock price: <span class="company_close"><b>$' + d.x + '</b></span></br>' +
+                                '</div>' +
+                            '</div>'
+                            )
+                          .style("visibility", "visible");
+                    }
+                })
+                .on("mousemove", function(){
+                  return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+                })
+                .on("mouseout", function(d, i){
+                  //d3.select(this).style('stroke', 'white').style("opacity", 1.0).style("stroke-width", 1).style("stroke-opacity", 1.0);
+                  return tooltip.style("visibility", "hidden");
+                });
+                /*
+              .append("svg:image")
+                .attr("xlink:href", "https://images.sftcdn.net/images/t_app-cover-l,f_auto/p/ce2ece60-9b32-11e6-95ab-00163ed833e7/260663710/the-test-fun-for-friends-screenshot.jpg")
+                .attr("x", function(d) { return x(d.dangerous);})
+                .attr("y", function(d) { return y(d.promising);})
+                .attr("height", 50)
+                .attr("width", 50);
+    */
+            svg.selectAll(".text")
+                .data(data.filter(function(d,i) { 
+                        if ( (d.market_cap>=1e11) || (d.Industry=="Auto Manufacturing") ){
+                            if (["AMGN"].includes(d.symbol)) {
+                                return 0;
+                            } else {
+                                return 1;
+                            }
+                        } else {
+                            return 0;
+                        }
+                    })
+                )
+              .enter().append("text")
+                .attr("class", "company_symbol")
+                .attr("x", function(d, i) {
+                    if (is_random_x==1) {
+                        return x(d.random_x);
+                    } else {
+                        return x(d.x);
+                    }
+                })
+                .attr("y", function(d, i) {
+                    if (is_random_y==1) {
+                        return y(d.random_y);
+                    } else{
+                        return y(d.y);
+                    }
+                })
+                .text(function(d) { return d.symbol;})
+                .style("fill", "white")
+                .style("font-size", "0.75rem")
+                .style("opacity", function(d,i) {
+                    if (show_symbol==1) {
+                        if (show_only_auto==1) {
+                            if (d.Industry=="Auto Manufacturing") {
+                                return 1;
+                            } else {
+                                return 0.25;
+                            }
+                        } else {
+                            return 1;
+                        }
+                    } else {
+                        return 0;
+                    }
+                });
+
+            svg.selectAll("path")
+                .style("stroke", "white");
+
+            svg.selectAll("line")
+                .style("stroke", "white");
+
+            svg.selectAll("tick")
+                .style("fill", "white");
+
+            svg.selectAll("text")
+                .style("fill", "white")
+                .style("shape-rendering", "crispEdges");
+           
+        });
+    }
+
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
 
 })();

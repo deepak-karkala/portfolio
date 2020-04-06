@@ -9,6 +9,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="css/style.css" rel="stylesheet"></style>
     <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+  <link rel='stylesheet' href='style/style.css'>
 </head>
 
 <!--<body style="background-color:#212121; color:#cc0000;">-->
@@ -67,31 +70,52 @@
 		</div>
 	</div>
 
-	<section id='scroll1' style="background-color:#d3d3d3;">
+	<!--<section id='scroll1' style="background-color:#d3d3d3;">-->
+	<section id='scroll1' >
 	<!--<section id='scroll1'>-->
 		<div class='scroll__graphic1'>
 			<!--<div class="graphic" id="graphic1"></div>-->
-			<div class="col-lg-10 mx-auto justify-content-center">
-				<div class="graphic_text text-center" id="graphic_text"></div>
-				<div class="graphic" id="graphic1"></div>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-12 mx-auto">
+						<!--<div class="graphic_text text-center" id="graphic_text"></div>-->
+						<div class="graphic" id="graphic1" style="margin-top: 50px;"></div>
+						<div class="graphic_legend text-center" id="graphic_legend"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 
 		<div class='scroll__text1'>
+			<div class='step1' data-step='-1'>
+				<p style="background-color: black;"></p>
+			</div>
 			<div class='step1' data-step='0'>
-				<p></p>
+				<p>Each circle denotes a company listed in NASDAQ Top 100. The circles can be identified by the associated company stock symbols</p>
 			</div>
 			<div class='step1' data-step='1'>
-				<p></p>
+				<p>Let us the change the color of the companies based on the sectors they operate in.</p>
 			</div>
 			<div class='step1' data-step='2'>
-				<p></p>
+				<p>Let us arrange the companies on horizontal axis based on their stock price. Companies with higher stock price are placed on the right</p>
 			</div>
 			<div class='step1' data-step='3'>
-				<p></p>
+				<p>Let us change the size of the circles based on the market capitalisation of companies</p>
 			</div>
-			<div class='step1 short-step' data-step='4'>
-				<p></p>
+			<div class='step1' data-step='4'>
+				<p>Let us place the companies on vertical axis based on their <em>Annualised Volatility</em>. Investopedia defines <em>Volatility</em> as a statistical measure of the dispersion of returns for a stock. Higher the volatility, higher is the variation in the company stock price</p>
+			</div>
+			<div class='step1' data-step='5'>
+				<p>Let us now look at how the stock price and volatility of the NASDAQ Top 100 companies have evolved over the years. The Market Cap (size) is kept as a constant</p>
+			</div>
+			<div class='step1' data-step='6'>
+				<p>Let us now consider only those companies operating in <em>Auto-Manufacturing</em> industry. Let us also include prominent auto companies trading on platforms other than NASDAQ</p>
+			</div>
+			<div class='step1' data-step='7'>
+				<p>So what makes TESLA stock special ? Why is it valued so highly and why does it fluctuate so much ?</p>
+			</div>
+			<div class='step1 short-step' data-step='8' style="z-index:0;">
+				<p style="background-color: black;"></p>
 			</div>
 		</div>
 	</section>
@@ -149,7 +173,19 @@
 
 		<!--<div class="graphic_explore"style="background-color:#d3d3d3; margin-top:20px; margin-bottom:20px;">-->
 		<!--#212121;">-->
-		<div class="graphic_explore"style="background-color:#212121; margin-top:20px; margin-bottom:20px;">
+		<div class="graphic_explore"style="background-color:#212121; margin-top:20px; margin-bottom:20px; padding-bottom: 0px;">
+
+				<div class="row mx-auto justify-content-center text-center">
+					<div class="daily_change_plot_title col-lg-12" id="daily_change_plot_title">
+						Daily changes in TESLA stock price
+					</div>
+				</div>
+
+				<div class="row mx-auto justify-content-center text-center">
+					<div class="daily_change_plot_subtitle col-lg-12" id="daily_change_plot_subtitle">
+						Click on below buttons to view days with most rise, fall and also days with Elon's market moving tweets.
+					</div>
+				</div>
 
 				<div clss="row">
 					<div class="col-lg-12">
@@ -161,29 +197,36 @@
 					            </div>
 					        	-->
 								<div class="btn-group">
-								  <button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								    Top 5 Gains
-								  </button>
+								  	<button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" id="dropdown-gain-button" aria-haspopup="true" aria-expanded="false">
+								    Top Daily Gains
+									</button>
 								  <div class="dropdown-menu" id="dropdown-gain">
-								    <a class="dropdown-item">First quarterly profit since the company went public</a>
-								    <a class="dropdown-item">Gain 2</a>
-								    <a class="dropdown-item">Gain 3</a>
-								    <a class="dropdown-item">Gain 4</a>
-								    <a class="dropdown-item">Gain 5</a>
+								    <a value="1" class="dropdown-item">First quarterly profit since the company went public</a>
+								    <a value="2" class="dropdown-item">Strong 2019 fourth-quarter financials</a>
+								    <a value="3" class="dropdown-item">Capital raise before coronavirus outbreak</a>
+								    <a value="4" class="dropdown-item">Profitable 2019 third-quarter</a>
+								    <a value="5" class="dropdown-item">'Taking private' tweet charges settled with SEC</a>
+								    <a value="6" class="dropdown-item">Model S cleared of defects after crashes involving fire</a>
+								    <a value="7" class="dropdown-item">Stimulus bill to aid the economy amid the pandemic</a>
+								    <a value="8" class="dropdown-item">Optimistic second quarter earnings report</a>
+								    <a value="9" class="dropdown-item">Model S deliveries beats forecast</a>
 								  </div>
 								</div>
 							</div>
 							<div class="col-lg-3 col-6 top_loss_dropdown" id="top_loss_dropdown" style="padding-top: 10px;">
 								<div class="btn-group">
 								  <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								    Top 5 Losses
+								    Top Daily Losses
 								  </button>
 								  <div class="dropdown-menu" id="dropdown-loss">
-								    <a class="dropdown-item">Loss 1</a>
-								    <a class="dropdown-item">Loss 2</a>
-								    <a class="dropdown-item">Loss 3</a>
-								    <a class="dropdown-item">Loss 4</a>
-								    <a class="dropdown-item">Loss 5</a>
+								    <a value="1" class="dropdown-item">Stock price target cut due to coronavirus panic</a>
+								    <a value="2" class="dropdown-item">Delayed deliveries of Model 3 in China due to coronavirus</a>
+								    <a value="3" class="dropdown-item">Bay Area factory shut due to coronavirus</a>
+								    <a value="4" class="dropdown-item">Poor 3rd quarter, third Model S fire</a>
+								    <a value="5" class="dropdown-item">Goldman Sachs undervalues Tesla stock price</a>
+								    <a value="6" class="dropdown-item">SEC sues Elon Musk for 'funding secured' tweet</a>
+								    <a value="7" class="dropdown-item">Disappointing revenue, departure of CTO</a>
+								    <a value="8" class="dropdown-item">Announcement of 7% job cut, rising competition</a>
 								  </div>
 								</div>
 							</div>
@@ -193,11 +236,13 @@
 								    Elon's tweets
 								  </button>
 								  <div class="dropdown-menu" id="dropdown-tweet">
-								    <a class="dropdown-item">Tweet 1</a>
-								    <a class="dropdown-item">Tweet 2</a>
-								    <a class="dropdown-item">Tweet 3</a>
-								    <a class="dropdown-item">Tweet 4</a>
-								    <a class="dropdown-item">Tweet 5</a>
+								    <a value="1" class="dropdown-item">Taking TESLA private</a>
+								    <a value="2" class="dropdown-item">Pedophile cave diver</a>
+								    <a value="3" class="dropdown-item">Misleading production projection tweet</a>
+								    <a value="4" class="dropdown-item">April Fools' tweet</a>
+								    <a value="5" class="dropdown-item">Tweet criticising media coverage of Autopilot accidents</a>
+								    <a value="6" class="dropdown-item">Boring boneheaded tweet</a>
+								    <a value="7" class="dropdown-item">Marijuana interview tweet</a>
 								  </div>
 								</div>
 							</div>
@@ -265,6 +310,11 @@
 							<div id="plot_explore_2019"></div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-lg-12 mx-auto justify-content-center">
+							<div id="plot_explore_2020"></div>
+						</div>
+					</div>
 
 					<div class="row" style="padding-top: 5px;">
 						<div class="col-lg-8 col-sm-12 mx-auto justify-content-center text-center">
@@ -290,7 +340,8 @@
 			</div>
 		</div>
 
-		<div class="gain_loss_comparison_top" style="background-color:#d3d3d3; margin-top:20px; margin-bottom:20px;">
+		<!--<div class="gain_loss_comparison_top" style="background-color:#d3d3d3; margin-top:20px; margin-bottom:20px;">-->
+		<div class="gain_loss_comparison_top" style="background-color:black; margin-top:20px; margin-bottom:20px;">
 			<div class="row mx-auto justify-content-center text-center">
 				<div class="gain_loss_comparison_title col-lg-12" id="gain_loss_comparison_title">
 					TESLA stock's biggest gains and falls compared to Elon's market moving tweets
@@ -302,16 +353,16 @@
 				</div>
 			</div>
 
-			<div class="row justify-content-center text-center" style="padding-bottom:20px;">
+			<div class="row justify-content-center text-center" style="padding-top:0px; padding-bottom:20px; color:white">
 	          <div class="col-lg-12">
 	            <div class="hotel_legend_text" id="hotel_legend_text">
-	              <svg height="10" width="20"><rect width="55" height="15" stroke="black"  fill="#77DD77" /></svg>
+	              <svg height="10" width="20"><rect width="55" height="15" stroke="black"  fill="#009900" /></svg>
 	              Days with most rise
 	              &nbsp &nbsp
-	              <svg height="10" width="20"><rect width="55" height="15" stroke="black"  fill="#FFFFBA" /></svg>
+	              <svg height="10" width="20"><rect width="55" height="15" stroke="black"  fill="#FF9900" /></svg>
 	              Elon's market moving tweets
 	              &nbsp &nbsp
-	              <svg height="10" width="20"><rect width="55" height="15" stroke="black"  fill="#FFB7B2" /></svg>
+	              <svg height="10" width="20"><rect width="55" height="15" stroke="black"  fill="#CC0000" /></svg>
 	              Days with most fall 
 	            </div>
 	          </div>
@@ -349,28 +400,37 @@
 				<p>Tesla was founded in July 2003, by engineers Martin Eberhard and Marc Tarpenning, under the name Tesla Motors. Elon Musk led the Series A round of investment in February 2004, joining Tesla's board of directors as its chairman. </p>
 			</div>
 			<div class='step5' data-step='3'>
-				<p>In April 2013, Tesla reported its first quarterly profit since the company went public. The news sent Tesla’s share price skyrocketing 15.94% to end the session at $43.93. After April 15, 2013, this stock gained extraordinary momentum. Its intraday high of $194.23 on Oct. 1, 2013 was more than four times as high as its closing price on April 1 of that year.</p>
+				<p>In April 2013, Tesla reported its first quarterly profit since the company went public. The stock price responded promptly and went from $40 in April to $190 by September 2013.</p>
 			</div>
 			<div class='step5' data-step='4'>
-				<p>Step 4</p>
+				<p>In Nov 2013, Tesla's stock fell more than 20 percent, following news of a third Model S fire. But during December, TSLA finally got some momentum following reports that the Model S was cleared of any defect by the German Federal Motor Transport Authority.</p>
 			</div>
 			<div class='step5' data-step='5'>
-				<p>Step 5</p>
+				<p>Tesla raised $2 billion from bonds for building GigaFactory and $738 million in stock for the Model X in 2014 and 2015 respectively. Tesla reported a net loss of $74 million during 2013 and a net loss of $294 million during 2014. The stock hovered around the $200 mark.</p>
 			</div>
 			<div class='step5' data-step='6'>
-				<p>Step 6</p>
+				<p>In Feb 2016, Tesla shares reached their lowest closing price in two years following the 2015 earnings report indicating a loss of $888 million. During 2016, Tesla unveiled Model 3, raised $1.46 billion in stock and agreed to acquire SolarCity for $2.6 billion in stock.</p>
 			</div>
 			<div class='step5' data-step='7'>
-				<p>Step 7</p>
+				<p>In April 2017, Tesla issued a worldwide recall of 70% of its vehicles it sold in 2016 due to faulty parking brakes. In July 2017, Tesla stock crashes on disappointing news about missed deliveries for its Model X and Model S. The company loses more than $12 billion.</p>
 			</div>
 			<div class='step5' data-step='8'>
-				<p>Step 8</p>
+				<p>In Aug 2018, CEO Musk was sued by the U.S. SEC for the tweet claiming that funding had been secured for taking Tesla private. Musk later settled the charges with the SEC. Model S with global sales of 250,000 units, ranked as the world's best selling plug-in electric car.</p>
 			</div>
 			<div class='step5' data-step='9'>
-				<p>Step 9</p>
+				<p>In July 2019, Tesla shares suffered a steep drop after the electric car maker reported a wider than expected loss and disappointing revenue and announced the departure of co-founder and CTO JB Straubel from the executive ranks.</p>
 			</div>
 			<div class='step5' data-step='10'>
-				<p>Step 10</p>
+				<p>But in Oct 2019, Tesla turned in an unexpectedly profitable third-quarter and better than anticipated progress toward getting its Shanghai factory operational. It defied Wall Street Analyst forecasts that called for a quarterly loss. </p>
+			</div>
+			<div class='step5' data-step='11'>
+				<p>In early 2020, shares soared to record levels reaching $900 with market cap exceeding $100 Billion. This was spurred by positive ratings by Argus Research and Morgan Stanley following Tesla’s strong fourth-quarter financials, which exceeded Wall Street’s expectations.</p>
+			</div>
+			<div class='step5' data-step='12'>
+				<p>The steep rise was followed by a dramatic fall due to the coronavirus outbreak. The company delayed deliveries of Model 3 vehicles in China and had to shut down its Fremont factory due to the pandemic.</p>
+			</div>
+			<div class='step5 short-step' data-step='13' >
+				<p style="background-color: #cccccc;"></p>
 			</div>
 		</div>
 	</section>
@@ -428,8 +488,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
 
 	<script src='js/script1.js'></script>
-	<script src='js/script2.js'></script>
-	<script src='js/script3.js'></script>
+	<script src='js/plot_stock_time.js'></script>
+	<!--<script src='js/script2.js'></script>-->
+	<!--<script src='js/script3.js'></script>-->
 	<script src="js/d3-tip.js"></script>
 	<script src='js/script4.js'></script>
 	<script src='js/script5_path_animation.js'></script>
