@@ -464,3 +464,10 @@ img::-moz-selection {
 .navbar_style {
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
+.article_author, .article_date {
+  color: #F27200;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+}

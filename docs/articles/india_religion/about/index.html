@@ -101,7 +101,7 @@
             <div class="col-lg-6 col-12">
                 <div id="toolbar" class="btn-toolbar justify-content-center">
                   <a href="../code/index.html" class="button active">View Project</a>
-                  <a href="https://github.com/deepak-karkala/articles/tree/master/india_religion/code" class="button">View Code</a>
+                  <a href="https://github.com/deepak-karkala/portfolio/tree/master/docs/articles/india_religion" class="button">View Code</a>
                   <!--<a href="https://github.com/deepak-karkala/articles/tree/master/cricket_sabermetrics/data" class="button">Download Data</a>-->
               </div>
             </div>
@@ -127,7 +127,22 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-10 col-12">
-              <h1 class="section_heading">Storyboarding</h1>
+              <h1 class="section_heading">Project design</h1>
+              <p>
+                This project uses dots to represents population. There are a total of 240,150 dots. Each dot represents 5,000 Indians. The reader can zoom in to explore the diversity and the religions in different regions of the country. There are two buttons. By clicking on <em>Religion</em>, the reader can view the district wise population of different religions. And by clicking on <em>Diversity</em> the reader can view the district wise religious diversity index across the country. The diversity index for districts were computed using <a href="https://en.wikipedia.org/wiki/Diversity_index">Simpson index</a> which is a statistical measure used to determine the diversity in an area given the population distribution of different groups in that area.
+              </p>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-12">
+              <img class="design_image" src="docs/religion.jpg">
+            </div>
+          </div>
+           <div class="row justify-content-center">
+            <div class="col-lg-10 col-12">
+              <p>
+                The geojson data for district boundaries in India was obtained from <a href="https://github.com/geohacker/india">here</a>. The data for population of various religions for each district in India comes from <a href="https://www.censusindia.co.in/districts">2011 Census</a>. The dots are randomly placed within the district's boundaries. As a result, the position is accurate upto only district level and not taluk or any sub-district levels. Also because of random placement, some of the dots may get placed over nearby water bodies.
+              </p>
             </div>
           </div>
         </div>

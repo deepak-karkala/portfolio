@@ -41,7 +41,7 @@ $('#dropdown-opponent-type a').on('click', function(){
 */
 $('#dropdownMenuButton').on('click', function(){
     alert("Clicked !");
-}
+});
 
 function myFunction() {
     alert("Clicked !");

@@ -19,6 +19,7 @@ body {
 
 .navbar_style {
 	background-color: black;
+  height: 7vh;
 }
 .nav-link {
 	color: white;
@@ -93,9 +94,4 @@ video {
 	background-color: black;
 	color: white;
 	font-size: 0.75rem;
-}
-
-.design_image {
-  width: 100%;
-  height: auto;
 }

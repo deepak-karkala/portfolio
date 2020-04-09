@@ -128,7 +128,7 @@ a:focus, a:hover {
   */
   text-align: center;
   color: white;
-  background: url("../img/intro-bg-1.jpg") no-repeat bottom center scroll;
+  background: url("../img/cooperation_cover.jpeg") no-repeat bottom center scroll;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -143,9 +143,9 @@ a:focus, a:hover {
 }
 
 .masthead .intro-body .brand-heading {
-  padding-top: 5vh;
+  padding-top: 25vh;
   font-size: 4rem;
-  color: #FF5A60;
+  color: white; /*#FF5A60;*/
 }
 
 .masthead .intro-body .intro-text {
@@ -163,8 +163,13 @@ a:focus, a:hover {
     font-size: 4rem;
   }
   .masthead .intro-body .intro-text {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
+}
+
+.intro-text {
+  color: black;
+  font-weight: bold;
 }
 
 .btn-circle {
@@ -377,6 +382,11 @@ img::-moz-selection {
   background-color: #BF988F;
 }
 
+.player_icon {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 .plot_eco_results_legend {
   font-size: 0.75rem;
 }
@@ -451,10 +461,12 @@ img::-moz-selection {
 .article_author {
   font-size: 1.25rem;
   font-weight: bold;
+  color: black;
 }
 
 .article_date {
   opacity: 0.75;
+  color: black;
 }
 
 img {

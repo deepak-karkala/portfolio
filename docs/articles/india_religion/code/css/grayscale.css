@@ -347,3 +347,9 @@ img::-moz-selection {
 a {
   color: #7ec4fc;
 }
+
+.article_author, .article_date {
+  color: #F27200;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}

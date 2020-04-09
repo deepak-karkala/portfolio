@@ -125,7 +125,7 @@ a:focus, a:hover {
   color: white;
   /*background: url("../img/intro-bg.jpg") no-repeat bottom center scroll;*/
   /*background: url("../img/cover_individual.png") no-repeat center center scroll;*/
-  background: url("../img/cover.gif") no-repeat center center scroll;
+  background: url("../img/cover.gif") no-repeat top center scroll;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -140,7 +140,7 @@ a:focus, a:hover {
 }
 
 .masthead .intro-body .brand-heading {
-  padding-top: 70vh;
+  padding-top: 50vh;
   font-size: 4rem;
   color: #FF5A60;
 }
@@ -254,6 +254,7 @@ ul.banner-social-buttons {
 
 footer {
   background-color: #c0c0c0;
+  margin-top: 30px;
   padding: 50px 0 20px 0;
   color: black;
 }
@@ -617,4 +618,12 @@ select.classic {
   color: #f1e0d6;
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+.article_author, .article_date {
+  color: #F27200;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1.25rem;
 }

@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <meta http-equiv="expires" content="0">
 
-    <title>Evolution of Cooperation</title>
+    <title>Deconstructed: Trust and cooperation in humans</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -65,8 +65,8 @@
       <div class="intro-body">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-              <h1 class="brand-heading">Evolution of Cooperation</h1>
+            <div class="col-lg-12 col-md-10 col-sm-10 col-12 mx-auto">
+              <h1 class="brand-heading">Deconstructed: Trust and cooperation in humans</h1>
               <p class="intro-text">What a game of Prisoner's Dilemma teaches us about cooperation in human behaviour
                 </p>
               <p><span class="article_author">Deepak Karkala</span><br/><span class="article_date">October 2019</span></p>
@@ -191,8 +191,8 @@
             <ul>
                 <li><b>Cooperator</b>: Always cooperate</li>
                 <li><b>Defector</b>: Always defect</li>
-                <li><b>Grudger</b>: Defects if opponent defects in previous move</li>
-                <li><b>Tit For Tat</b>: Repeat opponen</li>
+                <li><b>Grudger</b>: Starts by cooperating but will defect if at any point the opponent defects.</li>
+                <li><b>Tit For Tat</b>: Repeat opponent's previous move</li>
                 <li><b>Random</b>: Cooperate or defect randomly</li>
             </ul>
             <p>
@@ -236,10 +236,15 @@
             <div class="row">
 
               <div class="col-lg-4 col-5 user_card user_card_human">
-                <div class="row" style="padding: 20px 0 20px 0;">
+                <div class="row">
+                  <div class="col-lg-12 col-12 text-center">
+                    <h4>You</h4>
+                  </div>
+                </div>
+                <div class="row">
                   <div class="col-lg-4 col-8 text-center mx-auto user_avatar">
-                      <i style="font-size: 3rem; color: black;" class="fas fa-user"></i>
-                      <br/>
+                      <!--<i style="font-size: 3rem; color: black;" class="fas fa-user"></i>-->
+                      <img class="player_icon" src="img/person.png">
                       <span>You</span>
                   </div>
                 </div>
@@ -263,10 +268,15 @@
               </div>
 
               <div class="col-lg-4 col-5 user_card user_card_machine">
-                <div class="row" style="padding: 20px 0 20px 0;">
+                <div class="row">
+                  <div class="col-lg-12 col-12 text-center">
+                    <h4>Computer</h4>
+                  </div>
+                </div>
+                <div class="row">
                   <div class="col-lg-6 col-8 text-center mx-auto user_avatar">
-                      <i style="font-size: 3rem; color: black;" class="fas fa-laptop"></i>
-                      <br/>
+                      <!--<i style="font-size: 3rem; color: black;" class="fas fa-laptop"></i>-->
+                      <img class="player_icon" src="img/computer.png">
                       <span id="opponent-name">Random</span>
                   </div>
                 </div>
@@ -544,22 +554,25 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <p>
+              All the code for this project can be found on <a href="https://github.com/deepak-karkala/portfolio/tree/master/docs/articles/cooperation">Github</a>.
+            </p>
+            <p>
+              This project was inspired from <a href="https://ncase.me/polygons/">Parable of the Polygons: A playable post on the shape of society</a> by Vi Hart and Nicky Case.
+            </p>
+            <p>
+              The simulations of Axelrod tournaments were done using <a href="https://axelrod.readthedocs.io/en/stable/index.html">this Python library</a>.
+            </p>
+            <p>
+              This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://d3js.org/">d3js</a>.
+            </p>
+            <p>
+              The icons used in cover image and elsewhere are from <a href="https://thenounproject.com/">The Noun Project</a> and are listed <a href="../about/index.html#credits">here</a>.
+            </p>
+            <h5 class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a>. You can also send me an email at <a href="mailto:dkarkala01@gmail.com" target="_top"><span class="contact_link">dkarkala01@gmail.com</span></a></h5>
             <!--
-            <p>
-              All the code for this project can be found on <a href="https://github.com/deepak-karkala/articles/tree/master/cricket_sabermetrics">Github</a>.
-            </p>
-            <p>
-              The data for this research article was obtained from this <a href="https://www.kaggle.com/manasgarg/ipl">dataset</a> on Kaggle and also from <a href="https://www.cricbuzz.com/cricket-series/2676/indian-premier-league-2018/matches">Cricbuzz</a> website.
-            </p>
-            <p>
-              Mathematical equations are avoided in this article. Contact the author for more details regarding  mathematical models and the underlying algorithms. Reach out at <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a>.
-            </p>
-            <p>
-              This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://d3js.org/">d3js</a>. The template for this html page was adapted from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>. The banner image was obtained from <a href="https://www.flickr.com/photos/74576085@N00/5460870340/sizes/l">here</a> courtesy <a href="https://www.flickr.com/photos/74576085@N00/">slalit</a>.
-            </p>
-            <h5 class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a></h5>
-            -->
             <p class="text-center">Copyright &copy; Deepak Karkala 2019</p>
+            -->
           </div>
         </div>
       </div>
