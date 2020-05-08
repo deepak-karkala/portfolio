@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Top Twitter Accounts</title>
+	<meta name="description" content="Scrollama Demo: Fixed JS">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/style_dark.css" rel="stylesheet"></style>
+    <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/vendor/fontawesome/css/brands.min.css">
+	<link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  	<link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar_style fixed-top" id="mainNav">
+    <a class="nav-link" href="../../../../index.html">Home</a>
+    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarNavDropdown" class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="../about/index.html">About this project</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="../../../../index.html#projects_portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../../../../index.html#about_me">About me</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../../../../index.html#contact_me">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--<body style="background-color:#e0e0e0;">-->
+<body style="background-color:black; color:white;">
+	<!--
+	<section id='intro'>
+		<p class='intro__overline'>
+			<a href='https://github.com/russellgoldenberg/scrollama'>scrollama.js</a>
+		</p>
+		<h1 class='intro__hed'>Demo: Sticky Graphic Position</h1>
+		<p class='intro__dek'>
+			Start scrolling to see how it works.
+		</p>
+	</section>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+            	<h1 class="text-center">Top Twitter Accounts</h2>
+			</div>
+		</div>
+	</div>
+	-->
+
+	<!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row justify-content-center">
+          	<div class="col-lg-4 cover_img">
+          		<img src="images/top_account_network.png">
+          	</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
+              <h1 class="brand-heading">Top Twitter accounts of 2018</h1>
+              <p class="intro-text text-center">An analysis of how the most followed celebrities use their Twitter accounts.
+                <br></p>
+              <p class="article_author text-center">Deepak Karkala</p>
+              <p class="article_date text-center">March 2019</p>
+              <a href="#introduction" class="btn btn-circle js-scroll-trigger" style="color:white; border: 1px solid white; font-size: 26px;">
+                <i class="fa fa-angle-double-down animated"><span ></span></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+	<section class="description" id="introduction">
+		<div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+            <p>
+				Twitter has evolved from being just another social media tool to being official platform for world leaders to communicate their views, celebrities to announce their new projects, companies to advertise their latest products. In this article, we analyse trends in the Top Twitter accounts of the world during the year 2018.
+            </p>
+            <p class="text-center scroll_text">Keep scrolling to explore more.</p>
+          </div>
+        </div>
+      </div>
+	</section>
+
+	<div class="transition" id="transition1">Which are the most popular Twitter Accounts ?</div>
+
+	<section id='scroll1'>
+		<div class='scroll__graphic1'>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-12">
+						<div id="blank_title" class="blank_title text-center"></div>
+						<div id="circle_pack" class="circle_pack"></div>
+					</div>
+				</div>
+				<div class="row text-center">
+	              <div class="col-lg-8">
+	                <div class="legend_text" id="legend_text">
+	                </div>
+	              </div>
+	            </div>
+			</div>
+		</div>
+		<div class='scroll__text1'>
+			<div class='step1' data-step='0'>
+				<p></p>
+			</div>
+			<div class='step1' data-step='1'>
+				<p>Twitter Accounts with most number of followers.</p>
+			</div>
+			<div class='step1' data-step='2'>
+				<p>Number of people followed by top Accounts.</p>
+			</div>
+			<div class='step1' data-step='3'>
+				<p>Number of tweets by top Accounts.</p>
+			</div>
+			<div class='step1' data-step='4'>
+				<p>Number of likes by top Accounts.</p>
+			</div>
+			<div class='step1 empty_end_step' data-step='5'>
+				<p></p>
+			</div>
+		</div>
+	</section>
+
+	<div class="transition" id="transition2">Most liked tweets of top accounts</div>
+
+	<section id='scroll2'>
+		<div class='scroll__graphic2'>
+			<div class="container">
+				<div class="row text-center justify-content-center">
+					<div class="col-lg-6 col-12">
+						<div id="dropdown_likes" class="dropdown_likes"></div>
+					</div>
+				</div>
+				<div class="row text-center justify-content-center">
+					<div class="col-lg-6 offset-lg-2 col-8">
+						<div id="table_title"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="top_tweets_table"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text2'>
+			<div class='step2' data-step='0'>
+				<p></p>
+			</div>
+			<div class='step2' data-step='1'>
+				<p>Top 5 most liked tweets of <span class="twitter_name">@BarackObama</span></p>
+			</div>
+			<div class='step2' data-step='2'>
+				<p>Top 5 most liked tweets of <span class="twitter_name">@realDonaldTrump</span></p>
+			</div>
+			<div class='step2' data-step='3'>
+				<p>Top 5 most liked tweets of <span class="twitter_name">@KevinHart4real</span></p>
+			</div>
+			<div class='step2' data-step='4'>
+				<p>Select an account to view their most liked tweets</p>
+			</div>
+			<div class='step2' data-step='5'>
+				<p></p>
+			</div>
+		</div>
+	</section>
+
+	<div class="transition_no_bottom_margin" id="transition3">What do they tweet about ?</div>
+
+	<section id='scroll3' style="background-color:white;">
+		<div class='scroll__graphic3'>
+			<div class="container">
+				<div class="row text-center justify-content-center">
+					<div class="col-lg-6 col-12">
+						<div id="dropdown_cloud" class="dropdown_cloud"></div>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-lg-4">
+						<div id="word_cloud_title" class="word_cloud_title"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="word_cloud"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text3'>
+			<div class='step3' data-step='0'>
+				<p></p>
+			</div>
+			<div class='step3' data-step='1'>
+				<p><span class="twitter_name">@BillGates</span> tweets about...</p>
+			</div>
+			<div class='step3' data-step='2'>
+				<p><span class="twitter_name">@realDonaldTrump</span> tweets about...</p>
+			</div>
+			<div class='step3' data-step='3'>
+				<p><span class="twitter_name">@cnnbrk</span> tweets about...</p>
+			</div>
+			<div class='step3' data-step='4'>
+				<p>Select an account to view what they tweet about.</p>
+			</div>
+			<div class='step3' data-step='5'>
+				<p></p>
+			</div>
+		</div>
+	</section>
+
+	<div class="transition" id="transition4">Links between top accounts</div>
+
+	<section id='scroll4' style="background-color:black;">
+		<div class='scroll__graphic4'>
+			<div class="container">
+				<div class="row text-center">
+	              <div class="col-lg-10">
+	                <div class="legend_text" id="link_legend_text">
+	                </div>
+	              </div>
+	            </div>
+				<div class="row">
+					<div class="col-lg-10">
+						<div id="links"></div>
+					</div>
+				</div>
+				
+	            <!--
+				<div class="row  text-center">
+	              <div class="col-lg-8">
+	                <div class="legend_text" id="legend_text">
+	                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="1" fill="#ffe119" /></svg>
+	                  Tweets sent to
+	                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="1" fill="#f58231" /></svg>
+	                  Tweets received from
+	                </div>
+	              </div>
+	            </div>
+	        	-->
+			</div>
+		</div>
+		<div class='scroll__text4'>
+			<div class='step4' data-step='0'>
+				<p></p>
+			</div>
+			<div class='step4' data-step='1'>
+				<p>Shows the link between top Twitter accounts</p>
+			</div>
+			<div class='step4' data-step='2'>
+				<p><span class="twitter_name">@TheEllenShow</span> has links to...</p>
+			</div>
+			<div class='step4' data-step='3'>
+				<p><span class="twitter_name">@ArianaGrande</span> has links to...</p>
+			</div>
+			<div class='step4' data-step='4'>
+				<p>Hover over an account to view its links.</p>
+			</div>
+			<div class='step4' data-step='5'>
+				<p></p>
+			</div>
+		</div>
+	</section>
+<!--
+	<div class="transition" id="transition4">Links between top accounts</div>
+	
+	<section id='scroll4'>
+		<div class='scroll__graphic4'>
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<div id="india_title"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="row text-center">
+							<div class="col-lg-12">
+								<div id="india_water_stat" class="india_water_stat"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div id="india_water_plot"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="india_water_text text-center" id="india_water_text"></div>
+								<div id="india_water_map" style="height: 400px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container data_source">
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<div id="data_source4"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text4'>
+			<div class='step4' data-step='1'>
+				<p>At the end of 2018, India's population stands at over 1.36 billion</p>
+			</div>
+			<div class='step4' data-step='2'>
+				<p>163 M people in India lack access to safe water. 600,000 children under five in India die each year, largely because of inadequate water supply and poor sanitation.</p>
+			</div>
+			<div class='step4' data-step='3'>
+				<p>524 million people or 40% of the India's population practice open defecation. 58% of the total population lives on less than US $3.10 per day.</p>
+			</div>
+			<div class='step4' data-step='4'>
+			</div>
+		</div>
+	</section>
+
+	<section id='scroll5'>
+		<div class='scroll__graphic5'>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="country_water_agriculture"></div>
+						<svg id="country_water_agriculture_gauge" width="97%" height="500"></svg>
+					</div>
+				</div>
+			</div>
+			<div class="container data_source">
+				<div class="row text-center">
+					<div class="col-lg-12">
+						<div id="data_source5"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='scroll__text5'>
+			<div class='step5' data-step='1'>
+				<p>India’s agricultural sector accounts for over 80 percent of total water drawn.</p>
+			</div>
+			<div class='step5' data-step='2'>
+				<p>Agriculture and allied sectors contributes upto 60% of India's population.</p>
+			</div>
+			<div class='step5' data-step='3'>
+				<p>Yet it contributes only 13.7% of India's Gross Domestic Product.</p>
+			</div>
+			<div class='step5' data-step='4'>
+				<p>At 157.3 million hectares, India holds the world’s second largest agricultural land area.</p>
+			</div>
+			<div class='step5' data-step='5'>
+				<p>As much as 79.5% of India's farmland relies on flooding during monsoon season, so inadequate rainfall can cause droughts, making crop failure more common. </p>
+			</div>
+			<div class='step5' data-step='6'>
+				<p>In 2016, a whopping 300 districts (or nearly half of India’s 640 districts) were under the spell of an acute drinking water shortage across India.</p>
+			</div>
+		</div>
+	</section>
+
+
+	<div class="transition" id="transition8">Time to act is now !</div>
+-->
+
+	<!-- Footer -->
+    <footer class="footer" name="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <p>
+              All the code for this project can be found on <a href="https://github.com/deepak-karkala/articles/tree/master/water">Github</a>.
+            </p>
+            <p>
+              This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://d3js.org/">d3js</a>. The template for this html page was adapted from <a href="https://github.com/russellgoldenberg/scrollama">scrollama.js</a>, a very handy Javascript library for scrollytelling by <a href="https://twitter.com/codenberg?lang=en">Russell Goldenberg</a>. <!--The design of this project is inspired from <a href="http://letsfreecongress.org/">http://letsfreecongress.org/</a> by <a href="https://twitter.com/tonyhschu/">Tony Chu</a>.-->
+            </p>
+            <h5 class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a></h5>
+            <p class="text-center">Copyright &copy; Deepak Karkala 2019</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<!--
+	<section id='outro'></section>
+	<div class='debug'></div>
+-->
+
+	<!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery3.3.1/jquery.min.js"></script>
+    <script src="/vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing1.4.1/jquery.easing.min.js"></script>
+  	<script src="js/grayscale.js"></script>
+
+	<script src='/vendor/d3.v4.min.js'></script>
+	<script src='js/stickyfill.min.js'></script>
+	<script src='https://unpkg.com/intersection-observer@0.5.0/intersection-observer.js'></script>
+	<script src='js/scrollama.min.js'></script>
+	<script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <!-- Legend --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+	<!--<script src="d3.hexbin.min.js"></script>-->
+
+	<script src='js/plot_circle_pack.js'></script>
+	<script src='js/show_top_tweets.js'></script>
+	<script src='js/draw_word_cloud.js'></script>
+	<script src='js/draw_links.js'></script>
+	<script src='js/script1.js'></script>
+	<script src='js/script2.js'></script>
+	<script src='js/script3.js'></script>
+	<script src='js/script4.js'></script>
+
+<!--
+
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.js"></script>
+	<script src='js/plot_country_water_scarcity.js'></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+
+	<script src='js/script4.js'></script>
+
+	<script src="https://d3js.org/topojson.v1.min.js"></script>
+	<script src="js/hexbin.js"></script>
+   	<script src="js/liquidFillGauge.js"></script>
+	<script src='js/script5.js'></script>
+
+	<script src='js/script7.js'></script>
+-->
+
+	<!--
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+	-->
+
+</body>
