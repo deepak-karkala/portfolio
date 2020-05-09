@@ -58,7 +58,6 @@ body {
 }
 
 .masthead .intro-body .brand-heading {
-  padding-top: 20vh;
   font-size: 3rem;
   color: #FF5A60;
   font-weight: bold;
@@ -68,9 +67,17 @@ body {
 
 .masthead .intro-body .intro-text {
   color: black;
-  font-size: 1.5rem;
-  font-weight: 450;
+  font-size: 1.0rem;
+  font-weight: bold;
   /*text-shadow: 1px 1px #a8a8a8;*/
+}
+
+.article_author, .article_date {
+  color: #F27200;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
 @media (min-width: 768px) {
@@ -80,10 +87,10 @@ body {
     padding-top: 100px;
   }
   .masthead .intro-body .brand-heading {
-    font-size: 70px;
+    font-size: 3rem;
   }
   .masthead .intro-body .intro-text {
-    font-size: 22px;
+    font-size: 1.5rem;
   }
 }
 

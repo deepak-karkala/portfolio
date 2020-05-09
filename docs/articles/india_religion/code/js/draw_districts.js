@@ -69,7 +69,8 @@ function draw_individual(map_container) {
     center: [80.9629, 21.5937], // India
     //center: [82.9629, 10.5937], // India
     //center: [72.78165168781571, 19.13481211064585], //Greater Bombay
-    zoom: screen.height/300 //3.1 //2.9 //3.25
+    zoom: screen.height/300, //3.1 //2.9 //3.25
+    scrollZoom: false
   });
 
   map1.on('load', function() {

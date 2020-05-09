@@ -54,9 +54,10 @@ video {
   transition: all 0.3s ease-in-out;
 }
 
+
 .profile_image_round img {
-    height: auto;
     width: 100%;
+    height: auto;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;

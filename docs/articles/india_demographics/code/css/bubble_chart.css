@@ -4,7 +4,7 @@ body {
   background-color: black;
   color: white;
 }
-
+/*
 .btn-toolbar a, a:visited, a:active {
   color: black;
 }
@@ -12,7 +12,7 @@ body {
 a:hover {
   color: #3366BB;
 }
-
+*/
 .navbar a {
   color: white;
   opacity: 0.5;
@@ -29,24 +29,7 @@ a:hover {
   margin: auto;
 }
 
-.button {
-  /*min-width: 130px;*/
-  padding: 3px 2px;
-  margin: 2px;
-  cursor: pointer;
-  text-align: center;
-  font-size: 0.90rem;
-  font-weight: bold;
-  border: 1px solid #ffffff;
-  background: #f1e0d6;
-  color: black;
-}
 
-.button.active {
-  background: #000;
-  color: #fff;
-  border: 1px solid #ffffff;
-}
 
 #vis {
   height: 50vh;
@@ -77,7 +60,7 @@ a:hover {
 }
 
 .footer_text {
-  font-family: Times New Roman;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .footer_text a {
@@ -100,11 +83,14 @@ a:hover {
 
 .label {
     fill: white;
-    font-family: Times New Roman;
+    font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 1.0rem;
 }
 
 @media (max-width: 500px) {
+    .label {
+      font-size: 0.5rem;
+    }
 }
 
 @media (min-width: 350px) {
@@ -139,4 +125,23 @@ a:hover {
   background-color: black;
   color: white;
   font-size: 0.75rem;
+}
+
+.button {
+  /*min-width: 130px;*/
+  padding: 3px 2px;
+  margin: 2px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.90rem;
+  font-weight: bold;
+  border: 1px solid #ffffff;
+  background: #f1e0d6;
+  color: black;
+}
+
+.button.active {
+  background: #000;
+  color: #fff;
+  border: 1px solid #ffffff;
 }

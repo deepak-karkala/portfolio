@@ -9,13 +9,42 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="css/style.css" rel="stylesheet"></style>
     <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
-  <link rel='stylesheet' href='style/style.css'>
+ 	<link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+	<link rel='stylesheet' href='style/style.css'>
 </head>
+
+<nav class="navbar navbar-expand-lg navbar_style fixed-top" id="mainNav">
+      <a class="nav-link" href="../../../../index.html">Home</a>
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarNavDropdown" class="navbar-collapse collapse">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="../about/index.html">About this project</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../../index.html#projects_portfolio">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../../index.html#about_me">About me</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../../../../index.html#contact_me">Contact</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
 
 <!--<body style="background-color:#212121; color:#cc0000;">-->
 <body style="background-color:white; color:black;">
+	<!--
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -23,6 +52,30 @@
 			</div>
 		</div>
 	</div>
+	-->
+
+	<header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+          	<div class="col-lg-3 col-12 mx-auto">
+            	<img class="cover_image" src="data/water_cover.png">
+          	</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-10 col-sm-10 col-12 mx-auto">
+				<h1 class="brand-heading">What drives Tesla's stock up and down ? Lot more than just Elon Musk's tweets.</h1>
+				<p class="intro-text">A brief history of Tesla stock and exploring what drives Tesla's stock up and down.</p>
+				<p><span class="article_author">Deepak Karkala</span><br/><span class="article_date">November 2019</span></p>
+				<a href="#introduction" class="btn btn-circle js-scroll-trigger" style="color:white; border: 1px solid white; font-size: 26px;">
+				<i class="fa fa-angle-double-down animated"><span ></span></i>
+				</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
 
 	<section class="description" id="introduction">
 		<div class="container">
@@ -479,6 +532,7 @@
     <script src="/vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>
     <!-- Plugin JavaScript -->
     <script src="/vendor/jquery-easing1.4.1/jquery.easing.min.js"></script>
+    <script src="js/grayscale.js"></script>
 
 	<script src='/vendor/d3.v4.min.js'></script>
 	<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>

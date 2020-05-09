@@ -305,7 +305,8 @@ function plot_population(idname, width, height, data, name_type, name_idx, num_d
         //.style("font-size", name_font_size_factor(width))
         //.style("fill", "white")
         .on("mouseover", function(d, i) {
-          if (name_idx%2 === 0) {
+          //if (name_idx%2 === 0) {
+          if (name_type === 0) {
             //return tooltip.text(d.city).style("visibility", "visible");
             d3.select(this).style("opacity", 1.0).style("stroke-opacity", 1.0);
             return tooltip.html(
@@ -324,12 +325,14 @@ function plot_population(idname, width, height, data, name_type, name_idx, num_d
           }
         })
         .on("mousemove", function(d, i) {
-          if (name_idx%2 === 0) {
+          if (name_type === 0) {
+          //if (name_idx%2 === 0) {
             return tooltip.style("top", (event.pageY-height*1.5)+"px").style("left",(event.pageX+30)+"px");
           }
         })
         .on("mouseout", function(d, i) {
-          if (name_idx%2 === 0) {
+          if (name_type === 0) {
+          //if (name_idx%2 === 0) {
             d3.select(this).style("opacity", 1.0).style("stroke-opacity", 1.0);
             return tooltip.style("visibility", "hidden");
           }
@@ -380,7 +383,6 @@ var description_arr = ["Every March, more than 500,000 of these giant birds conv
 "kilometres each year. Beginning in January and February the herd moves from the Serengeti plains west towards Lake Victoria.",
 "",
 "Eight million straw-colored fruit bats descend on Zambia's Kasanka National Park, beginning in October.",
-"",
 "In the Indian Ocean some 1,600 miles "+
 "off the northwestern coast of Australia, this island is overrun each spring by more than 50 million scuttling red"+
 " land crabs during breeding season. The journey is about 5 kilometres long, lasting up to 12 hours over 5 days."+
@@ -395,7 +397,6 @@ var distance_description_arr = [
 "Salmon fishes traverse between freshwater "+
 "and saltwater. After hatching of eggs salmons remain in river waters for 2-3 years. During that time salmons "+
 "undergo many physiological changes. These changes help them to migrate to seas waters without facing much obstacles.",
-"",
 "Caribous or reindeers are found in northern parts of Europe, Asia and North America. During summer season they start "+
 "migration in search of food. They form large herd that have members up to 50,000 reindeers before starting "+
 "migration. Caribous will covers up to 70 kilometers in a single day during migration, have power to run up to "+

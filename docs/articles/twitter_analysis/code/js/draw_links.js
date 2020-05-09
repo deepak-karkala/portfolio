@@ -81,7 +81,7 @@ function draw_links(idname, width, height) {
          .attr("class", "circle")
          .attr("dy", "0.31em")
          .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + (d.y + 8) + ",0)" + (d.x < 180 ? "" : "rotate(180)"); })
-         .attr("r", 4)
+         .attr("r", "0.25rem")
          .style("fill", twitter_verified_blue)
          .on("mouseover", function(d) {
             circle_selected = d.data.key;

@@ -1183,7 +1183,8 @@ function bubbleChart() {
       .attr('x', function (d) { return sanitationTitleX[d]; })
       .attr('y', two_title_y)
       .attr('text-anchor', 'middle')
-      .text(function (d) { return sanitationGroupLabel[d]; });
+      .text(function (d) { return sanitationGroupLabel[d]; })
+      .call(wrap, 150);
   }
 
   function showTaxTitles() {
@@ -1197,8 +1198,8 @@ function bubbleChart() {
       .attr('x', function (d) { return taxTitleX[d]; })
       .attr('y', two_title_y)
       .attr('text-anchor', 'middle')
-      .text(function (d) { return taxGroupLabel[d]; });
-      //.call(wrap, 80);
+      .text(function (d) { return taxGroupLabel[d]; })
+      .call(wrap, 150);
   }
 
   function showRuralurbanTitles() {

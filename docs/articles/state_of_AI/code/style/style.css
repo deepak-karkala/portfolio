@@ -18,6 +18,7 @@ body {
   color: #3b3b3b;
 }
 
+/*
 p,
 h1,
 h2,
@@ -28,15 +29,25 @@ a {
   margin: 0;
   font-weight: 400;
 }
-
-p {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  text-align: left;
-}
+*/
 
 h3 {
   margin-top: 20px;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+h4, h5 {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+p {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 1.1rem;
 }
 
 a,
@@ -351,13 +362,14 @@ figure p {
   */
   text-align: center;
   color: white;
-  background: url("../images/intro-bg.jpg") no-repeat bottom center scroll;
+  background: url("../images/rise_of_AI.png") no-repeat center center scroll;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   background-blend-mode: screen;
+  margin-bottom: 100px;
 }
 
 .masthead .intro-body {
@@ -368,14 +380,20 @@ figure p {
 .masthead .intro-body .brand-heading {
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding-top: 20vh;
-  font-size: 50px;
-  color: #FF5A60;
+  font-size: 3rem;
+  color: white; /*#FF5A60;*/
+  font-weight: bolder;
+  text-shadow: 3px 5px #000000;
 }
 
 .masthead .intro-body .intro-text {
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 1.5rem;
+  color: #DC143C;
+  font-weight: bold;
+  text-shadow: 1px 1px #000;
 }
+
 
 @media (min-width: 768px) {
   .masthead {
@@ -384,10 +402,10 @@ figure p {
     padding-top: 100px;
   }
   .masthead .intro-body .brand-heading {
-    font-size: 70px;
+    font-size: 4rem;
   }
   .masthead .intro-body .intro-text {
-    font-size: 22px;
+    font-size: 1.5rem;
   }
 }
 
@@ -475,6 +493,7 @@ figure p {
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #f58231;
   text-align: center;
+  font-weight: bold;
 }
 
 /* Tooltip */
@@ -563,6 +582,7 @@ img {
 }
 
 .application_name {
+  font-weight: bold;
   margin-bottom: 0;
   margin-top: 10px;
 }
