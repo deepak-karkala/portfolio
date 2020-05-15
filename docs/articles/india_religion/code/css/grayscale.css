@@ -128,7 +128,7 @@ a:focus, a:hover {
   display: table;
   width: 100%;
   height: auto;
-  padding: 200px 0;
+  padding: 100px 0;
   text-align: center;
   color: white;
   /*background: url("../img/intro-bg.jpg") no-repeat bottom center scroll;*/
@@ -145,7 +145,7 @@ a:focus, a:hover {
 }
 
 .masthead .intro-body .brand-heading {
-  padding-top: 5vh; /*200px;*/
+  padding-top: 100px; /*200px;*/
   font-size: 50px;
   color: #7ec4fc;
 }

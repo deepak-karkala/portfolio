@@ -63,17 +63,18 @@ body {
   font-weight: bold;
   /*-webkit-text-stroke: 1px black;*/
   text-shadow: 3px 2px #000000;
+  padding-top: 18vh;
 }
 
 .masthead .intro-body .intro-text {
-  color: black;
-  font-size: 1.0rem;
+  color: #F27200;
+  font-size: 1.25rem;
   font-weight: bold;
   /*text-shadow: 1px 1px #a8a8a8;*/
 }
 
 .article_author, .article_date {
-  color: #F27200;
+  color: black;
   padding-bottom: 0;
   margin-bottom: 0;
   font-weight: bold;
@@ -168,7 +169,8 @@ body {
 }
 
 @media (max-width: 576px) {
-  /*
+
+/*
   #scrolly {
     position: relative;
     display: -webkit-box;
@@ -183,13 +185,13 @@ body {
     -ms-flex: 1;
     flex: 1;
   }
-
   article {
     position: relative;
     padding: 0 1rem;
     max-width: 100%; 
   }
 */
+
   figure {
     position: -webkit-sticky;
     position: sticky;
@@ -204,7 +206,8 @@ body {
     -moz-box-shadow:    3px 3px 5px 6px #bbb;
     box-shadow:         3px 3px 5px 6px #bbb;
     border-radius: 8px;
-    opacity: 0.9;
+    opacity: 1;
+    padding-bottom: 20px;
   }
 }
 
@@ -215,6 +218,7 @@ figure:hover {
   opacity: 1;
 }
 
+/*
 figure p {
   text-align: center;
   padding: 1rem;
@@ -226,15 +230,15 @@ figure p {
   transform: translate(-50%, -50%);
   font-size: 8rem;
   font-weight: 900;
-  color: black; /*#fff;*/
+  color: black;
 }
-
+*/
 
 .step {
   margin: 0 auto 20rem auto;
   background-color: #e4e4e4; /*white; /*#3b3b3b;*/
   color: black; /*#fff;*/
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .step:last-child {
@@ -268,7 +272,8 @@ p {
 .video-demo {
     display: block;
     max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: auto;    
     margin: auto;
     padding-top: 20px;
     padding-bottom: 20px;

@@ -3,7 +3,7 @@ var maxDeviceWidth = 1024;
 
 idname = "#numlistings_time_plot";
 width_scale_factor = 0.95;
-height_scale_factor = 0.60;
+height_scale_factor = 0.75;
 var bb = d3.select(idname).node().offsetWidth;
 var margin = {right:80, left:60, top:40, bottom:30};
 base_width = bb*width_scale_factor - margin.left - margin.right;
@@ -195,12 +195,18 @@ function plot_city_numlistings_time(idname, width, height, city) {
           .style("stroke", "white");
 */
 
+      var xAxis = d3.axisBottom()
+                    .scale(x)
+                    .tickFormat(d3.timeFormat("%Y"))
+                    .tickValues(x.domain().filter(function(d,i){ return !(i%1)}));
+
       // add the x Axis
       svg.append("g")
           .attr("transform", "translate(0," + height + ")")
           .attr("class", "label_histogram axis--y")
-          .call(d3.axisBottom(x)
-                .tickPadding(5))
+          //.call(d3.axisBottom(x)
+          //      .tickPadding(5))
+          .call(xAxis)
           .style("font-size", axisLabelFontSizeScale(width))
         .append("text")
           .attr("class", "label_histogram")

@@ -80,9 +80,8 @@ a:hover {
 	background-color: #ddd;
 	border: 1px solid #000;
     */
-    padding-top: 10px;
-    padding-bottom: 10px;
     /*padding-left: 10px;*/
+    z-index: 10;
 }
 
 .scroll__graphic1.is-fixed{ 
@@ -136,7 +135,15 @@ a:hover {
 	padding: 0 1rem;
 	max-width: 30rem;
 	width: 33%;
+	z-index: 10;
 }
+
+.lower_z_index {
+	z-index: 0;
+}
+
+
+
 
 @media (max-width: 767px) {
 	.scroll__graphic1, .scroll__graphic2, .scroll__graphic3, .scroll__graphic4, .scroll__graphic5, .scroll__graphic6, .scroll__graphic7 {
@@ -376,11 +383,11 @@ a:hover {
    	margin: 0;
    	top: 0;
    	left: 0;
-	height: 60vh;
+	height: 30vh;
 	background-color: #c0deed; /*#f0f0f0; /*black;*/
-	font-size: 3rem;
-	padding-top: 20vh;
-	padding-bottom: 20vh;
+	font-size: 2rem;
+	padding-top: 40px;
+	padding-bottom: 40px;
 	/*margin-bottom: 20vh;*/
 	/*font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
 	font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;

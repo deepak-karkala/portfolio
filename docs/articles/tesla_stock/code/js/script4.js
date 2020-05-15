@@ -380,7 +380,7 @@ var margin = {top: 20, right: 20, bottom: 50, left: 60};
 base_width = bb*width_scale_factor - margin.left - margin.right;
 var xname = "percentage_change";
 var yname = "short_description";
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.8, 0.8]);
+var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.95, 0.6]);
 var height_scale_factor = height_scale_factor_width(bb);
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 
@@ -466,7 +466,13 @@ function plot_horizontal_bar(idname, filename, width, height, margin, xname, yna
           //.text(function (d) { return d[xname].toFixed(1)+"%"; })
           .attr("fill", "white")
           .attr("stroke", "none")
-          .style("font-size", "0.6rem");
+          .style("font-size",function(d,i){
+                if (width>=576) {
+                    return "0.6rem";
+                } else {
+                    return "0.5rem";
+                }
+            });
           //.style("font-weight", "bold");
           //.text(function (d) { return Math.abs(x(d[xname]) - x(0)); });
 
@@ -499,7 +505,13 @@ function plot_horizontal_bar(idname, filename, width, height, margin, xname, yna
         .style('text-anchor', function(d,i){return d[xname]<0?'start':'end';})
         .attr("class", "xfactor_label")
         .style("fill", "#99ddff")
-        .style("font-size", "0.7rem");
+        .style("font-size",function(d,i){
+            if (width>=576) {
+                return "0.75rem";
+            } else {
+                return "0.5rem";
+            }
+        });
 
 
     svg.selectAll("path")

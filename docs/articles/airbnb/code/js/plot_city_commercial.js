@@ -191,7 +191,12 @@ function plot_city_commercial(id, file, width, height) {
           return tooltip.html("<div class='well'><span class='city_name'><b>"+d.city+"</b></span><br/>" + "<span class='tooltip_stats'> <b>"  + Math.round(d.frac_of_users_more_than_one) + "</b>% of all the hosts offer more than one listings. </b><br/>" + " <b>" + Math.round(d.frac_entireapt) + "</b>% of all the listings are entire homes</b><br />" +"</span></div>" ).style("visibility", "visible");
         })
         .on("mousemove", function(){
-          return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+          if (event.pageX >= width/2) {
+            return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX-100)+"px");
+          } else {
+            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+          }
+          //return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
         })
         .on("mouseout", function(){
           d3.select(this).style('stroke', theme_font_color).style("stroke-width", 1).style("stroke-opacity", 1.0);

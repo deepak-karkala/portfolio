@@ -80,7 +80,7 @@ body {
   font-weight: bold;
 }
 
-video {
+video, img {
   width: 100%    !important;
   height: auto   !important;
 }

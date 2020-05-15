@@ -486,7 +486,7 @@ figure p {
   left: 0;
   height: 180px;
   background-color: black;
-  font-size: 2.0rem;
+  font-size: 1.5rem;
   padding-top: 60px;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -499,7 +499,7 @@ figure p {
 /* Tooltip */
 
 .tooltip1 {
-  width: 60vh;
+  width: 30vh;
   display: flex;
   flex-direction: column;
   min-height: 1vh;

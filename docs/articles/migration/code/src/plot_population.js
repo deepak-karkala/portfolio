@@ -248,7 +248,7 @@ function plot_distance(idname, width, height, data, name_type, name_idx, num_dot
 
     svg.append("text")
         .attr("class", "animal_name_info")
-        .attr("x", function(d) { return 200; } )
+        .attr("x", function(d) { return 180; } )
         .attr("y", function(d) { return -10; })
         .text(function(d) { return distance_text_arr[name_idx];});
 }

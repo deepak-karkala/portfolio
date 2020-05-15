@@ -61,6 +61,7 @@ a:hover {
 
 .footer_text {
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
 }
 
 .footer_text a {

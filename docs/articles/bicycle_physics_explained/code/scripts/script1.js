@@ -27,11 +27,13 @@
 			step.style('height', stepH + 'px');
 
 			var figureHeight = window.innerHeight * 0.55// / 2
-			var figureMarginTop = Math.max((window.innerHeight - figureHeight) / 2, 60);  
+			//var figureMarginTop = Math.max((window.innerHeight - figureHeight) / 2, 60);  
+			var figureMarginTop = Math.max((window.innerHeight - figureHeight), 60);  
 		}
 
 		figure
 			.style('height', figureHeight + 'px')
+			//.style('top', '20px');
 			.style('top', figureMarginTop + 'px');
 
 		// 3. tell scrollama to update new element dimensions
@@ -51,7 +53,7 @@
 		// update graphic based on step
 		//figure.select('p').text(response.index);
 		val = response.index;
-	    handleStepTransition(val);
+	    handleStepTransition(val-1);
 
 	}
 

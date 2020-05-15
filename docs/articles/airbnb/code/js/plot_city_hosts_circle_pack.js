@@ -49,7 +49,7 @@ num_listings = {
 
 width_scale_factor = 0.40;
 height_scale_factor = 0.30;
-num_listings_scale_factor = 500;
+num_listings_scale_factor = 800;
 
 idname = "#circles_pack1";
 var bb = d3.select(idname).node().offsetWidth;

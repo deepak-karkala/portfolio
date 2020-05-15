@@ -3,7 +3,7 @@ var margin = {right:50, left:50, top:30, bottom:25};
 
 var bb = d3.select('#expert_views').node().offsetWidth;
 base_width = bb*width_scale_factor - margin.left - margin.right;
-var height_scale_factor = 0.5;
+var height_scale_factor = 0.75;
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 // Plot expert views
 plot_expert_views("#expert_views", "images/fig18/expert_views.csv", base_width, base_height);
@@ -84,7 +84,7 @@ function plot_expert_views(id, file, width, height) {
 	        .data(data)
 	      .enter().append("circle")
 	        .attr("class", "dot")
-	        .attr("r", function(d) { return "0.75rem"; })
+	        .attr("r", function(d) { return "0.25rem"; })
 	        .attr("cx", function(d) { return x(d.dangerous); })
 	        .attr("cy", function(d) { return y(d.promising); })
 	        .style("fill", function(d) { return "orange" })
@@ -103,7 +103,7 @@ function plot_expert_views(id, file, width, height) {
 	          d3.select(this).style('stroke', 'white').style("opacity", 1.0).style("stroke-width", 3).style("stroke-opacity", 1.0);
 	          return tooltip.html(
 	          	'<div class="row flex-container">' +
-	          		'<div class="col-lg-12 col-12">' +
+	          		'<div class="col-lg-8 col-12">' +
 			          	'<div class="row mx-auto text-center">' +
 			          		'<div class="col-lg-4 col-4 profile_image">' + 
 			          			'<img src="images/fig18/profile_pics/' + d.name + '.jpg">' +
@@ -139,7 +139,12 @@ function plot_expert_views(id, file, width, height) {
 	          .style("visibility", "visible");
 	        })
 	        .on("mousemove", function(){
-	          return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+		      if (event.pageX >= width/2) {
+	            return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX+100)+"px");
+	          } else {
+	            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+	          }
+	          //return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
 	        })
 	        .on("mouseout", function(){
 	          d3.select(this).style('stroke', 'white').style("opacity", 1.0).style("stroke-width", 1).style("stroke-opacity", 1.0);
@@ -160,7 +165,7 @@ function plot_expert_views(id, file, width, height) {
 	        .attr("y", function(d) { return y(d.promising+0.1); })
 	        .text(function(d) { return d.name;})
 	        .style("fill", "white")
-	        .style("font-size", "0.75rem");
+	        .style("font-size", "0.5rem");
 
 		svg.selectAll("path")
 	        .style("stroke", "white");

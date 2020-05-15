@@ -81,7 +81,7 @@ function draw_individual(map_container) {
         type: 'geojson',
         //data: 'data/india_district.geojson' // replace this with the url of your own geojson
         //data: 'data/religion_location.geojson' // replace this with the url of your own geojson
-        data: 'data/religion_location_scale1e4.geojson' // replace this with the url of your own geojson
+        data: 'data/religion_location_scale5e4.geojson' // replace this with the url of your own geojson
       },
       
       paint: {
@@ -142,7 +142,7 @@ function draw_diversity(map_container) {
           type: 'geojson',
           //data: 'data/india_district.geojson' // replace this with the url of your own geojson
           //data: 'data/religion_location.geojson' // replace this with the url of your own geojson
-          data: 'data/religion_location_scale1e4.geojson' // replace this with the url of your own geojson
+          data: 'data/religion_location_scale5e4.geojson' // replace this with the url of your own geojson
         },
         
         paint: {

@@ -193,7 +193,12 @@ function plot_airbnbHotelDiff(id, file, width, height) {
           return tooltip.html("<div class='well'><span class='city_name'><b>"+d.city+"</b></span><br/>" + "<span class='tooltip_stats'>Average price of Airbnb home: <b>USD "  + Math.round(d.median_entirehome) + "</b><br/>" + " Average price of a hotel room: <b>USD " + Math.round(d.avg_hotel_price) + "</b><br />" +"</span></div>" ).style("visibility", "visible");
         })
         .on("mousemove", function(){
-          return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+          if (event.pageX >= width/2) {
+            return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX-100)+"px");
+          } else {
+            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+          }
+          //return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
         })
         .on("mouseout", function(){
           d3.select(this).style('stroke', theme_font_color).style("stroke-width", 1).style("stroke-opacity", 1.0);

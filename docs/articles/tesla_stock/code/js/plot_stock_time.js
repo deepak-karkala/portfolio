@@ -1,8 +1,28 @@
+var minDeviceWidth = 375;
+var maxDeviceWidth = 1024;
+
+var idname = "#plot_wild_ride_cover";
+d3.select(idname).select("svg").remove();
+var bb = d3.select(idname).node().offsetWidth;
+var width_scale_factor = 1.0;
+//var height_scale_factor = 0.50;
+var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.45, 0.15]);
+var height_scale_factor = height_scale_factor_width(bb);
+var margin = {top: 20, right: 20, bottom: 30, left: 50};
+base_width = bb*width_scale_factor - margin.left - margin.right;
+base_height = bb*height_scale_factor - margin.top - margin.bottom;
+var file = "data/tesla_processed_31032020.csv";
+plot_stock_time(idname, file, base_width, base_height);
+
+
+
 var idname = "#plot_wild_ride";
 d3.select(idname).select("svg").remove();
 var bb = d3.select(idname).node().offsetWidth;
 var width_scale_factor = 1.0;
-var height_scale_factor = 0.40;
+//var height_scale_factor = 0.50;
+var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.45]);
+var height_scale_factor = height_scale_factor_width(bb);
 var margin = {top: 20, right: 20, bottom: 30, left: 50};
 base_width = bb*width_scale_factor - margin.left - margin.right;
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
@@ -88,7 +108,12 @@ function plot_stock_time(idname, file, width, height) {
 
       // Add the Y Axis
       svg.append("g")
-          .call(d3.axisLeft(y));
+          .call(d3.axisLeft(y)
+                  .tickFormat( (d,i) => {
+                    if ( (d%200==0) ) {
+                        return d;
+                    }
+                  }));
 
     });
 

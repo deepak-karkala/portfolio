@@ -138,36 +138,28 @@ a:hover {
 }
 
 @media (max-width: 767px) {
+	/*
 	.scroll__graphic1, .scroll__graphic2, .scroll__graphic3, .scroll__graphic4, .scroll__graphic5, .scroll__graphic6, .scroll__graphic7 {
 		position: absolute;
 		top: 0;
-		right: 10px; /*1rem;*/
+		right: 10px; 
 		bottom: auto;
 		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
-		/*
-		background-color: #ddd;
-		border: 1px solid #000;
-	    */
 	    padding-top: 10px;
-	    /*padding-left: 10px;*/
 	}
-
-	.scroll__graphic7, .scroll__graphic3 {
+	*/
+	/*.scroll__graphic7, .scroll__graphic3 {*/
+	.scroll__graphic1, .scroll__graphic2, .scroll__graphic3, .scroll__graphic4, .scroll__graphic5, .scroll__graphic6, .scroll__graphic7 {
 		position: absolute;
 		bottom: 0;
-		right: 10px; /*1rem;*/
+		right: 10px; 
 		bottom: auto;
 		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
-		/*
-		background-color: #ddd;
-		border: 1px solid #000;
-	    */
 	    padding-top: 100px;
-	    /*padding-left: 10px;*/
 	}
 
 	.scroll__graphic1 p, .scroll__graphic2 p, .scroll__graphic3 p, .scroll__graphic4 p, .scroll__graphic5 p, .scroll__graphic6 p, .scroll__graphic7 p {
@@ -176,7 +168,6 @@ a:hover {
 		position: absolute;
 		top: 50%;
 		right: 1rem;
-		/*left: 50%;*/
 		-moz-transform: translate(-50%, -50%);
 		-webkit-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
@@ -185,14 +176,17 @@ a:hover {
 		color: #666;
 	}
 
+	/*
 	.scroll__text1, .scroll__text2, .scroll__text3, .scroll__text4, .scroll__text5, .scroll__text6, .scroll__text7 {
 		position: relative;
 		padding: 0 1rem;
 		max-width: 40rem;
 		width: 45%;
-	} 
+	}
+	*/
 
-	.scroll__text7, .scroll__text3 {
+	/*.scroll__text7, .scroll__text3 {*/
+	.scroll__text1, .scroll__text2, .scroll__text3, .scroll__text4, .scroll__text5, .scroll__text6, .scroll__text7 {
 		position: relative;
 		padding: 0 1rem;
 		max-width: 80rem;
@@ -509,8 +503,8 @@ footer p {
 }
 
 .masthead .intro-body .brand-heading {
-  padding-top: 10vh;
-  font-size: 4rem;
+  padding-top: 20px;
+  font-size: 3rem;
   color: #74cbea; /*white; /*#FF5A60;*/
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -528,7 +522,7 @@ footer p {
     padding-top: 5vh;
   }
   .masthead .intro-body .brand-heading {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
   .masthead .intro-body .intro-text {
     font-size: 1.75rem;
@@ -572,6 +566,8 @@ footer p {
 }
 
 .cover_image {
+	margin-top: 30px;
+	margin-bottom: 10px;
 	padding-bottom: 0;
 	margin-bottom: 0;
 }

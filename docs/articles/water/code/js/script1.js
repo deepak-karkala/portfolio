@@ -15,7 +15,7 @@
 		var bodyWidth = d3.select('body').node().offsetWidth;
 		var graphicMargin = 16 * 4;
 		var textWidth = text.node().offsetWidth;
-		var graphicWidth = container.node().offsetWidth - textWidth - graphicMargin;
+		var graphicWidth = container.node().offsetWidth; // - textWidth - graphicMargin;
 		var graphicHeight = Math.floor(window.innerHeight * 0.95);
 		var graphicMarginTop = Math.floor(graphicHeight / 2);
 		graphic

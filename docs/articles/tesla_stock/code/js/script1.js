@@ -9,19 +9,19 @@
     // generic window resize listener event
     function handleResize() {
         // 1. update height of step elements
-        var stepHeight = Math.floor(window.innerHeight * 0.75);
+        var stepHeight = Math.floor(window.innerHeight * 0.25);
         step.style('height', stepHeight + 'px');
         // 2. update width/height of graphic element
         var bodyWidth = d3.select('body').node().offsetWidth;
         var graphicMargin = 16 * 4;
         var textWidth = text.node().offsetWidth;
         
-        var graphicWidth = container.node().offsetWidth - textWidth - graphicMargin;
+        var graphicWidth = container.node().offsetWidth; //- textWidth - graphicMargin;
         containerWidth = container.node().offsetWidth;
         if (0) { //(containerWidth > 770) {
             graphicWidth = containerWidth - textWidth - graphicMargin;
         } else {
-            graphicWidth = containerWidth - graphicMargin;
+            graphicWidth = containerWidth; // - graphicMargin;
         }
 
         var graphicHeight = Math.floor(window.innerHeight * 0.95);
@@ -82,10 +82,10 @@
 
         var idname = "#graphic1";
         var width_scale_factor = 0.90;
-        var margin = {right:40, left:40, top:10, bottom:20};
+        var margin = {right:20, left:20, top:10, bottom:50};
         var bb = d3.select(idname).node().offsetWidth;
         base_width = bb*width_scale_factor - margin.left - margin.right;
-        var height_scale_factor = 0.4;
+        var height_scale_factor = height_scale_factor_width(base_width);
         base_height = bb*height_scale_factor - margin.top - margin.bottom;
         var sector_array = ['Technology', 'Health Care', 'Consumer Services', 'Transportation',
                             'Miscellaneous', 'Consumer Non-Durables', 'Consumer Durables',
@@ -237,7 +237,7 @@
                 show_x_axis, show_y_axis, show_colors, is_same_radius, sectorColors, show_symbol,
                 show_only_auto, show_xaxis, show_yaxis);
 
-        } else if (data_step_id==7) {
+        } else if (data_step_id==8) {
             d3.select(idname).select("svg").remove();
             var graphic_legend = document.getElementById("graphic_legend");
             graphic_legend.innerHTML = "";
@@ -301,7 +301,7 @@
             y.domain([ymin, ymax]);
             var radiusScale = d3.scaleLinear()
                                 .domain([d3.min(data, function(d) { return d.market_cap; }), d3.max(data, function(d) { return d.market_cap; })])
-                                .range([0.25, 1.5]);
+                                .range([0.15, 0.75]);
             d3.select(id)
                 .selectAll(".dot")
                 .transition()
@@ -309,7 +309,7 @@
                     .duration(2000)
                     .attr("r", function(d) {
                         if (is_same_radius==1) {
-                            return "0.25rem";
+                            return "0.15rem";
                         } else {
                             return radiusScale(d.market_cap)+"rem";
                         }
@@ -519,8 +519,15 @@
                 .style("font-size", "0.65rem")
                 .call(xAxis
                         .tickFormat( (d,i) => {
-                            if ( ((d<=200)&&(d%20==0)) || (d%200==0) ) {
-                                return d;
+
+                            if (width>=768) {
+                                if ( ((d<=200)&&(d%20==0)) || (d%200==0) ) {
+                                    return d;
+                                }
+                            } else {
+                                if ( (d==10) || (d==100) || (d%1000==0) ) {
+                                    return d;
+                                }
                             }
                         })
                         .ticks(20, ",.1s")
@@ -592,7 +599,7 @@
                 .attr("class", "dot")
                 .attr("r", function(d) {
                     if (is_same_radius==1) {
-                        return "0.25rem";
+                        return "0.15rem";
                     } else {
                         return radiusScale(d.market_cap)+"rem";
                     }
@@ -671,16 +678,25 @@
                 .attr("height", 50)
                 .attr("width", 50);
     */
+
             svg.selectAll(".text")
                 .data(data.filter(function(d,i) { 
-                        if ( (d.market_cap>=1e11) || (d.Industry=="Auto Manufacturing") ){
-                            if (["AMGN"].includes(d.symbol)) {
-                                return 0;
+                        if (width >= 768) {
+                            if ( (d.market_cap>=1e11) || (d.Industry=="Auto Manufacturing") ){
+                                if (["AMGN"].includes(d.symbol)) {
+                                    return 0;
+                                } else {
+                                    return 1;
+                                }
                             } else {
-                                return 1;
+                                return 0;
                             }
                         } else {
-                            return 0;
+                            if (d.symbol == "TSLA") {
+                                return 1;
+                            } else {
+                                return 0;
+                            }
                         }
                     })
                 )
@@ -718,6 +734,7 @@
                         return 0;
                     }
                 });
+        
 
             svg.selectAll("path")
                 .style("stroke", "white");
