@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="expires" content="0">
+
+    <title>Coronavirus in India: Daily Tracker, Insights and More</title>
+
+    <!-- Range slider -->
+    <link rel="stylesheet" href="css/rangeslider.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery-ui.structure.css">
+    <link rel="stylesheet" href="css/jquery-ui.theme.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.0/mapbox.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <!--<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
+
+    <!--
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <link href="https://api.tiles.mapbox.com/mapbox.js/v1.0.3/mapbox.css" rel='stylesheet' />
+    -->
+
+    <!-- Select2 -->
+    <script src="vendor/jquery3.3.1/jquery.min.js"></script>
+    <link href="css/select2.css" rel="stylesheet"/>
+    <script src="js/select2.js"></script>
+        <script>
+        $(document).ready(function() {
+            //$('.js-example-basic-single').select2();
+            $('#select_state_case_count').select2();
+            $('#select_state_doubling_time').select2();
+            $('#select_district_growth_rate').select2();
+            $('#select_district_case_density').select2();
+            $('#select_country_case_count').select2();
+        });
+    </script>
+
+    <!-- Table with sorting, pagination -->
+    <!-- Font Awesome -->
+    <!-- Google Fonts -->
+    <!-- Material Design Bootstrap -->
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">-->
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">-->
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">-->
+    <script src="vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>-->
+    <script src="vendor/mdb/js/popper.min.js"></script>
+    <script src="vendor/mdb/js/mdb.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link href="vendor/mdb/css/addons/datatables2.min.css" rel="stylesheet">
+    <!-- DataTables JS -->
+    <script src="vendor/mdb/js/addons/datatables2.min.js" type="text/javascript"></script>
+    <!-- DataTables Select CSS -->
+    <link href="vendor/mdb/css/addons/datatables-select2.min.css" rel="stylesheet">
+    <!-- DataTables Select JS -->
+    <script src="vendor/mdb/js/addons/datatables-select2.min.js" type="text/javascript"></script>
+
+    <link href="css/grayscale.css" rel="stylesheet">
+    <link href="css/scroll_style.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="nav-link js-scroll-trigger" href="../../../../index.html">Home</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="../about/index.html">About this project</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../../../../index.html#projects_portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../../../../index.html#about_me">About me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../../../../index.html#contact_me">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Intro Header -->
+    <!--
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 mx-auto">
+              <h1 class="brand-heading">Coronavirus in India: Daily Tracker, Insights, Visualisations and More</h1>-->
+              <!--<p class="intro-text">Tracking, visualising and useful insights about the outbreak in India</p>-->
+              <!--
+              <p class="article_author">Deepak Karkala</p>
+              <p class="article_date">April 2020</p>
+              <p class="article_subtitle">Last updated at </p>-->
+              <!--
+              <a href="#intro_text" class="btn btn-circle js-scroll-trigger">
+                <i class="fa fa-angle-double-down animated"></i>
+              </a>
+              -->
+              <!--
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    -->
+    <div class="heading">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+            <h1 class="brand-heading">Coronavirus in India: Daily Tracker, Insights, Visualisations and More</h1>
+            <!--<p class="intro-text">Tracking, visualising and useful insights about the outbreak in India</p>-->
+            <p>By <span class="article_author">Deepak Karkala</span></p>
+            <!--<p class="article_date">April 2020</p>-->
+            <p class="article_subtitle">Last updated at </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!--
+    <main>
+      <section id='scrolly'>
+
+        <figure>
+          <div id="migration-map"></div>
+        </figure>
+
+        <article>
+          <div class='step' data-step='1'>
+            <p>STEP 1</p>
+          </div>
+          <div class='step' data-step='2'>
+            <p>STEP 2</p>
+          </div>
+          <div class='step' data-step='3'>
+            <p>STEP 3</p>
+          </div>
+          <div class='step' data-step='4'>
+            <p>STEP 4</p>
+          </div>
+          <div class='step' data-step='5'>
+            <p>STEP 5</p>
+          </div>
+        </article>
+        
+      </section>
+
+      <section id='outro'></section>
+    </main>
+  -->
+
+  <!--
+  <div class="row">
+    <div class="col-lg-12 col-12">
+      <div id="scroll1_test"></div>
+    </div>
+  </div>
+  -->
+<!--
+<div class="btn-group btn-group-sm prediction_scenario_buttons" role="group" id="prediction_scenario_buttons">
+  <button type="button" class="btn map_option_button active" id="scenario1">Scenario 1</button>
+  <button type="button" class="btn map_option_button" id="scenario2">Scenario 2</button>
+  <button type="button" class="btn map_option_button" id="scenario3">Scenario 3</button>
+</div>
+-->
+
+
+    <div class="container title_buttons">
+      <div class="row mx-auto text-center justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="header_text text-center">Click on the below buttons to explore more</div>
+          <div id="toolbar" class="btn-toolbar">
+            <a href="#" id="all" class="button active">Maps</a>
+            <a href="#daily_cases_deaths" id="gender" class="button">Daily Cases and Deaths</a>
+            <a href="#" id="agegroup" class="button">Where are the cases rising fast?</a>
+            <a href="#" id="ruralurban" class="button">Case growth rate</a>
+            <a href="#" id="religion" class="button">Are we flattening the curve ?</a>
+            <a href="#" id="state" class="button">Clusters</a>
+            <a href="#" id="language" class="button">Hotspots</a>
+            <a href="#" id="literacy" class="button">Fatality rate</a>
+            <a href="#" id="employment" class="button">Age distribution</a>
+            <a href="#" id="sanitation" class="button">Travel history</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="basic_maps" class="content-section basic_maps">
+      <h3 class="section_title">District and State wise Cases, Deaths</h3>
+      <div class="container">
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-12 col-md-12 col-12 mx-auto ">
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12">
+                <div class="btn-group btn-group-sm map_option_buttons" role="group" id="map_option_buttons">
+                  <button type="button" class="btn btn-sm map_option_button active" id="district_cases">District</button>
+                  <button type="button" class="btn btn-sm map_option_button" id="district_deaths">District deaths</button>
+                  <button type="button" class="btn btn-sm map_option_button" id="state_cases">State</button>
+                  <button type="button" class="btn btn-sm map_option_button" id="state_deaths">State deaths</button>
+                </div>
+              </div>
+            </div>
+            <!--
+            <div class="row">
+              <div class="col-lg-12">
+                  <h5 class="section_subtitle">State wise confirmed cases</h5>
+              </div>
+            </div>
+            -->
+            <div class="row div_fig_background">
+              <div class="col-lg-12" id="basic_map_container">
+                  <div id="india_cases_map" style="height: 100vh;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="daily_cases_deaths" class="content-section daily_cases_deaths">
+      <div class="container">
+        <h3 class="section_title">Daily and Total Cases and Deaths</h3>
+        
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-5 col-md-6 col-10 mx-auto div_fig_background">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="section_subtitle">Total confirmed cases</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12" id="total_confirmed_cases">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6 col-10 mx-auto div_fig_background">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="section_subtitle">New cases by day</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12" id="new_cases_day">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-5 col-md-6 col-10 mx-auto div_fig_background">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="section_subtitle">Total deaths</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12" id="total_confirmed_deaths">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6 col-10 mx-auto div_fig_background">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="section_subtitle">New deaths by day</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12" id="new_deaths_day">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+
+
+
+    <section id="hotspots" class="content-section hotspots">
+      <!--<h3 class="section_title">Hotspots: Where are the cases rising fast ?</h3>-->
+      <div class="container">
+        <!--<div class="row text-center justify-content-center">
+          <div class="col-lg-12 col-md-12 col-12 mx-auto ">-->
+            <!--
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12">
+                <div class="btn-group btn-group-sm hotspots_buttons" role="group" id="hotspots_buttons">
+                  <button type="button" class="btn map_option_button active" id="button_hotspot_map">Hotspot Map</button>
+                  <button type="button" class="btn map_option_button" id="button_flattening_curve">Flattening the curve</button>
+                  <button type="button" class="btn map_option_button" id="button_top_hotspots">Top Hotspots</button>
+                  <button type="button" class="btn map_option_button" id="button_growth_rates">Growth Rates</button>
+                </div>
+              </div>
+            </div>
+            -->
+
+
+            <div class="container div_fig_background">
+                <h3 class="section_title">Which States are Flattening the Curve ?</h3>
+                <div class="row text-center justify-content-center">
+                    <div class="col-lg-4 col-12">
+                      <div class="row">
+                        <div class="col-lg-10 col-8">
+                            <div class="control-group">
+                              <select id="select_state_case_count" class="select2_select">
+                                <option value="">Search for a state</option>
+                                <option value="all">Show all states</option>
+                                <!--<option></option>-->
+                              </select> 
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-4">
+                            <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_states_case_count">Show All</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row text-center justify-content-center">
+                  <div class="col-lg-8 what_to_look_for_container">
+                    <div id="what_to_look_for_container">
+                      <span class="what_to_look_for_title">Watch out for</span>: The graph shows the case count of all the states over time. Flatter the curves, slower is the growth rate of cases. 
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row text-center justify-content-center">
+                  <div class="col-lg-4">
+                      <div class="row">
+                        <div class="col-lg-8 legend_text">
+                            Current doubling time (in days)
+                        </div>
+                        <div class="col-lg-4 text-center justify-content-center">
+                            <div id="state_case_count_legend"></div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="row text-center justify-content-center">
+                  <div class="col-lg-10" id="state_case_count">
+                  </div>
+                </div>
+
+                <div class="row justify-content-center">
+                  <div class="col-lg-8 takeaway_container">
+                    <div id="takeaway_container">
+                      <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
+                      <ul>
+                        <li>Lot of states including Maharashtra, Gujarat, Delhi, Madhya Pradesh have their curves pointing upward indicating a worrying trend of higher growth rate.</li>
+                        <li>States like Kerala and Goa have flattened the curves significantly over the past weeks.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <div class="container div_fig_background">
+              <h3 class="section_title">How fast are cases doubling in states ?</h3>
+                <div class="row text-center justify-content-center">
+                    <div class="col-lg-4 col-12">
+                      <div class="row">
+                        <div class="col-lg-10 col-8">
+                            <div class="control-group">
+                              <select id="select_state_doubling_time" class="select2_select">
+                                <option value="">Search for a state</option>
+                                <option value="all">Show all states</option>
+                                <!--<option></option>-->
+                              </select> 
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-4">
+                            <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_states_doubling_time">Show All</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row text-center justify-content-center">
+                  <div class="col-lg-8 what_to_look_for_container">
+                    <div id="what_to_look_for_container">
+                      <span class="what_to_look_for_title">Watch out for</span>: Shows the number of days it takes to double case count in major states. Root for these to go higher. States with curves pointing downwards are where cases are rising fast.
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row text-center justify-content-center">
+                  <div class="col-lg-10" id="states_doubling_time">
+                  </div>
+                </div>
+
+
+                <div class="row justify-content-center">
+                  <div class="col-lg-8 takeaway_container">
+                    <div id="takeaway_container">
+                      <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
+                      <ul>
+                        <li>Lot of states seemed to have increased doubling time significantly in mid-April but this positive trend is no longer continued towards end of April. This is especially true for Tamil Nadu and Karnataka.</li>
+                        <li>States like West Bengal, Gujarat, Bihar are particularly showing very low doubling time. </li>
+                        <li>Maharashtra and Delhi in particular are the most concerning states with the doubling time not increasing even with very high number of cases already registered. This may suggest that these states are still quite far from reaching their peak.</li>
+                        <li>On the positive note, Punjab and Andhra Pradesh seem to be increasing their doubling time in recent days.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+
+
+
+
+
+            <h3 class="section_title">Top hotspots so far</h3>
+            
+            <div class="row div_table_background text-center justify-content-center">
+              <div class="col-lg-10" id="top_hotspots">
+
+                <div class="row text-center justify-content-center">
+                  <div class="col-lg-12 what_to_look_for_container">
+                    <div>
+                      <span>Hover over table headers to sort the table by cases, deaths.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <table id="top_hotspots_table" class="table table-striped table-sm top_hotspots_table" cellspacing="0" width="100%">
+                  <thead>
+                    <tr class="table-primary">
+                      <th class="th-sm table-header">District</th>
+                      <th class="th-sm table-header">Cases</th>
+                      <th class="th-sm table-header">Cases Per 100,000</th>
+                      <th class="th-sm table-header">Deaths</th>
+                      <th class="th-sm table-header">Case Growth Rate (%)</th>
+                      <th class="th-sm table-header">Growth Rate Visualised</th>
+                    </tr>
+                  </thead>
+                  <tbody id="top_hotspots_table_body">
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+            
+
+          <!--</div>
+        </div>-->
+      </div>
+    </section>
+
+
+    <section id="emerging_hotspots" class="content-section emerging_hotspots">
+      <div class="container">
+        <h1 class="section_title">Emerging Hotspots</h1>
+        <h3 class="section_title">Daily Growth Rate of Cases</h3>
+            
+
+        <div class="container div_fig_background">
+          <div class="row text-center justify-content-center">
+              <div class="col-lg-4 col-12">
+                <div class="row">
+                  <div class="col-lg-10">
+                      <div class="control-group">
+                        <select id="select_district_growth_rate" class="select2_select">
+                          <option value="">Search for a district</option>
+                          <!--<option></option>-->
+                        </select> 
+                      </div>
+                  </div>
+                  <div class="col-lg-2">
+                      <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_districts_growth_rate">Show All</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-8 what_to_look_for_container">
+              <div id="what_to_look_for_container">
+                <span class="what_to_look_for_title">Watch out for</span>: Ideally growth rates should go to zero. Seemingly low daily growth rate such as 20 percent is still significant with case count doubling in less than four days.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12" id="district_growth_rates">
+            </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-8 takeaway_container">
+              <div id="takeaway_container">
+                <span class="takeaway_title">Key takeaways</span>: Districts in Rajasthan, Tamil Nadu, Madhya Pradesh, Gujarat, Andhra Pradesh are showing worrying trends of very high case growth rates. On the other hand, districts in Kerala, Telangana seem to be doing well over past couple of weeks.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+        <h3 class="section_title">New Cases per 100,000 people</h3>
+        
+        <div class="container div_fig_background">
+          <div class="row text-center justify-content-center">
+              <div class="col-lg-4 col-12">
+                <div class="row">
+                  <div class="col-lg-10">
+                      <div class="control-group">
+                        <select id="select_district_case_density" class="select2_select">
+                          <option value="">Search for a district</option>
+                          <!--<option></option>-->
+                        </select> 
+                      </div>
+                  </div>
+                  <div class="col-lg-2">
+                      <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_districts_case_density">Show All</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-8 what_to_look_for_container">
+              <div id="what_to_look_for_container">
+                <span class="what_to_look_for_title">How to read this graph</span>: Shows district case count per 100,000 people over last two weeks. Districts with curves pointing upward are the emerging hotspots.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12" id="district_case_density"></div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-8 takeaway_container">
+              <div id="takeaway_container">
+                <span class="takeaway_title">Key takeaways</span>: The high case density of Mumbai combined with its enormous population is alarming making it India's Coronavirus epicenter. Districts in Madhya Pradesh are also showing worrying upward trends.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        
+        <h3 class="section_title">Map: Emerging Hotspots</h3>
+        <div class="container div_fig_background">
+          
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-12 what_to_look_for_container">
+              <div id="what_to_look_for_container">
+                <span class="what_to_look_for_title">How to use the map</span>: Drag the sliders to identify hotspot districts based on case count, case density, case growth rate criteria.
+                </br> 
+                <span id="emerging_hotspots_map_showing_text"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row slider_top text-center justify-content-center">
+            <div class="col-lg-8 col-12">
+              <div class="row">
+                <div class="col-lg-4 col-4">Case count
+                  <div id="slider_cases">
+                    <div id="slider_cases_handle" class="ui-slider-handle"></div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-4">Case per 100,000
+                  <div id="slider_density">
+                    <div id="slider_density_handle" class="ui-slider-handle"></div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-4">Case growth rate
+                  <div id="slider_growth">
+                    <div id="slider_growth_handle" class="ui-slider-handle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12" id="emerging_hotspot_map_container">
+              <div id="emerging_hotspot_map" style="height: 80vh;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="fatality_rate_top" class="content-section fatality_rate_top">
+      <div class="container div_fig_background">
+        <h1 class="section_title">State Testing Rate</h1>
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-8" id="fatality_rate_animation">
+          </div>
+        </div>
+      </div>
+
+      <div class="container div_fig_background">
+        <h1 class="section_title">State wise Case Count</h1>
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-12">
+            <div class="row" id="district_daily_case_count">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container div_fig_background">
+        <h1 class="section_title">Which states are the most affected ?</h1>
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-8 what_to_look_for_container">
+            <div id="what_to_look_for_container">
+              <span class="what_to_look_for_title">How to read the graph ?</span>: States are represented as streams of different colors, the width of the stream depends on the number of cases in that state.
+            </div>
+          </div>
+        </div>
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-8" id="state_streamgraph">
+          </div>
+        </div>
+
+      </div>  
+    </section>
+
+
+
+
+
+    <section id="outbreak_free_districts_top" class="content-section outbreak_free_districts_top">
+      <h1 class="section_title">Outbreak free Districts</h1>
+
+      <div class="container div_fig_background">
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-10">
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12 what_to_look_for_container">
+                <div id="what_to_look_for_container">
+                  <span class="what_to_look_for_title">Watch out for</span>: Each circle is a district. The size of the circle is proportional to the number of confirmed cases in that district. The districts are color-coded as &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#32cd32" /></svg>
+                  0 cases
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#ffbf00" /></svg>
+                  < 10 cases
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#FA8072" /></svg>
+                  > 10 cases
+                </div>
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-8" id="outbreak_free_districts">
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-10 takeaway_container">
+                <div id="takeaway_container_outbreak_free_districts">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+
+    <section id="recovery_rate_top" class="content-section recovery_rate_top">
+      <h1 class="section_title">Cases, Deaths and Recoveries</h1>
+
+      <h3 class="section_title">State Recovery Rates</h3>
+      <div class="container div_fig_background">
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-10">
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12 what_to_look_for_container">
+                <div id="what_to_look_for_container">
+                  <span class="what_to_look_for_title">Watch out for</span>: Each column is a state color coded by recovery rate defined as ratio of total number of recovered people to total confirmed cases. Red is where there are lot more new cases than recoveries and green the other way around. So root for all the states to turn green soon.
+                </div>
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12" id="recovery_rate">
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center legend_text">
+              <div class="col-lg-10" id="recovery_rate_legend">
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-10 takeaway_container">
+                <div id="takeaway_container_recovery_rate">
+                  Notice how Kerala (KL) and Goa (GA) have been turning green indicating more recoveries. States like Madhya Pradesh (MP), Gujarat (GJ), Andhra Pradesh (AP), Maharashtra (MH) are showing worrying trend by staying consistently red.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+
+
+    <section id="cluster_top" class="content-section cluster_top">
+      <h1 class="section_title">Clusters</h1>
+
+      <div class="container " style="background-color: white;">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <h3 class="section_title">List of Prominent Clusters</h3>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-10 what_to_look_for_container">
+                <div id="what_to_look_for_container">
+                  <span class="what_to_look_for_title">Watch out for</span>: This is the list of  around 2000 cases which have been mapped to known sources by the team at <a href="https://github.com/covid19india/api">https://github.com/covid19india/api</a>. <b>Note that the numbers here are clearly underestimated and not exhaustive at all</b> since only 10% of the total confirmed cases have been mapped. But the list does provide an insight into the prominent clusters in India.
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="col-lg-6">
+                <table class="table table-striped table-sm table-hover">
+                  <thead>
+                    <tr>
+                      <td class="cluster_table_heading">Cases Connected to</td>
+                      <td class="cluster_table_heading" align="right">Number of Cases</td>
+                    </tr>
+                  </thead>
+                  <tbody id="cluster_table_body">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section_title">Cluster network map</h3>
+      <div class="container div_fig_background" style="background-color: white;">
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-12">
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12 what_to_look_for_container">
+                <div id="what_to_look_for_container">
+                  <span class="what_to_look_for_title">Watch out for</span>: We track how the pandemic spread across India for around 2000 cases which have been mapped (<a href="https://github.com/covid19india/api">https://github.com/covid19india/api</a>) to known sources. We drawn a link between the source where the patient contracted the virus to the destination where the patient was diagnosed. Pan and zoom the map to explore in more detail.
+                </div>
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center legend_text">
+              <div class="col-lg-10" id="cluster_map_legend">
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#f58231" /></svg>
+                  Travel History
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#3cb44b" /></svg>
+                  Italian tourists in Rajasthan
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#911eb4" /></svg>
+                  Iran evacuees
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#ff0000" /></svg>
+                  Family member
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#4363d8" /></svg>
+                  Delhi Religious conference
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#f032e6" /></svg>
+                  Mysuru Pharma company
+                  &nbsp &nbsp
+              </div>
+            </div>
+
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12" id="cluster_map">
+              </div>
+            </div>
+            
+
+            <div class="row justify-content-center">
+              <div class="col-lg-10 takeaway_container">
+                <div id="takeaway_container_cluster_map">
+                  We observe how the pandemic spread in India.
+                  <ul>
+                    <li>The initial cases were almost exclusively tied to international travel history, the striking connection between Middle East and Kerala is also why the state was India's epicenter in the beginning.</li>
+                    <li>Cases related to Delhi's religious conference can be seen around early April, Tamil Nadu in particular being affected the most.</li>
+                    <li>In the recent weeks, we see more and more cases being contracted from family members or other close contacts.</li>
+                    <li>This graphic just shows around 2000 cases which have been mapped to known sources, but what it does illustrate is the effect of strict lockdown enforced in the country, without which with people moving freely across the country, we could have expected the entire country filled with criss crossed lines.</li>
+                    <li>The Italian tourist group, evacuees from Iran, Mysuru Pharma company, are the other noticeable cluster groups.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+
+    <section id="outbreak_spread_top" class="content-section outbreak_spread_top">
+      <div class="container div_fig_background" style="background-color: white;">
+        <h3 class="section_title">Spread of outbreak</h3>
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-12">
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-10 what_to_look_for_container">
+                <div id="what_to_look_for_container">
+                  <span class="what_to_look_for_title">Watch out for</span>: This animation shows the  spread of outbreak across India over time.
+                </div>
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12" id="outbreak_spread_map">
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-10 takeaway_container">
+                <div id="takeaway_container_outbreak_spread">
+                  Clearly the cases are mostly concentrated in India's metropolitan cities. With the lockdown being relaxed, it is vital to monitor that more clusters do not break out in India's vast rural areas.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+    <section id="country_case_top" class="content-section country_case_top">
+      <div class="container div_fig_background">
+        <h3 class="section_title">How is India faring against other countries ?</h3>
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-12">
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-10 what_to_look_for_container">
+                <div id="what_to_look_for_container">
+                  <span class="what_to_look_for_title">Watch out for</span>: The graph shows the number of cases in different countries over time. Watch out for the steepness of the curves, more flat the curve, slower is the growth rate of cases.<br/>
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#4363d8" /></svg>
+                  Asia
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#f58231" /></svg>
+                  Europe
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#e6194b" /></svg>
+                  Americas
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-4 col-12">
+                <div class="row">
+                  <div class="col-lg-10">
+                      <div class="control-group">
+                        <select id="select_country_case_count" class="select2_select">
+                          <option value="">Search for a country</option>
+                          <!--<option></option>-->
+                        </select> 
+                      </div>
+                  </div>
+                  <div class="col-lg-2">
+                      <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_countries_case_count">Show All</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12" id="country_case_count">
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="col-lg-10 takeaway_container">
+                <div id="takeaway_container_country_case_count">
+                  <span class="takeaway_title" style="text-align: left;">Key takeaways</span>
+                  <ul style="text-align: left;">
+                    <li>
+                      India's curve is nestled between those of Asian and European nations. Watch out for the steepness of the curve in the coming weeks as the lockdown is relaxed
+                    </li>
+                    <li>Countries like Austria, South Korea have flattened their curves significantly</li>
+                    <li>The cases of Japan and Singapore shows that this is going to be a long battle with the curves getting steeper after having flattened earlier.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <section id="country_testing_rate_top" class="content-section country_testing_rate_top">
+      <div class="container div_fig_background">
+        <h3 class="section_title">Is India testing enough ?</h3>
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-12">
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-10 what_to_look_for_container">
+                <div id="what_to_look_for_container">
+                  <span class="what_to_look_for_title">Watch out for</span>: The graph shows the testing rate compared with the cases per million people in different countries. Ideally countries should lie lower more towards right side of this graph.<br/>
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#4363d8" /></svg>
+                  Asia
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#f58231" /></svg>
+                  Europe
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#e6194b" /></svg>
+                  Americas
+                </div>
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12" id="country_testing_rate">
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="col-lg-10 takeaway_container">
+                <div id="takeaway_container_country_testing_rate">
+                  <span class="takeaway_title" style="text-align: left;">Key takeaways</span>
+                  <ul style="text-align: left;">
+                    <li>India'a cases per million is very low but at the same time, its testing rate is abysmally low comparable to other high populous countries such as Indonesia, Pakistan, Mexico. Testing more may increase India'a case count significantly.</li>
+                    <li>Israel, Austria, Germany, Singapore, South Korea have contained the virus to large extent by deploying large number of tests.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <p>
+              All the code for this project can be found on <a href="https://github.com/deepak-karkala/portfolio/tree/master/docs/articles/airbnb/code">Github</a>.
+            </p>
+            
+            <p>
+              This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://d3js.org/">d3js</a>. The template for this html page was adapted from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>.
+            </p>
+            <p><a href="../about/index.html">Click here</a> to view more about the design, methodology of this project.</p>
+            <p class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a> or send me an email at <a href="mailto:dkarkala01@gmail.com" target="_top"><span class="contact_link">dkarkala01@gmail.com</span></a></p>
+            <!--<p class="text-center">Copyright &copy; Deepak Karkala 2020</p>-->
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!--<script src="vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>-->
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing1.4.1/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>-->
+
+    <!-- D3js -->
+    <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+    <script src="/vendor/d3.v4.min.js"></script>
+    <!--<script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>-->
+
+    <!-- Custom scripts for this template -->
+    <!--
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox.js/v1.0.3/mapbox.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+    -->
+    <script src="//d3js.org/d3-geo-projection.v1.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src='https://unpkg.com/intersection-observer@0.5.0/intersection-observer.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.0/mapbox.js'></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/chroma-js/0.5.9/chroma.min.js"></script>-->
+
+
+    <!--<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+
+    <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+
+    <script src="js/jquery-ui.min.js"></script>
+    <script src='js/rangeslider.js'></script>
+
+    <script src="js/grayscale.js"></script>
+    <script src="js/script.js"></script>
+    
+    <script src='js/stickyfill.min.js'></script>
+    <script src='js/scrollama.min.js'></script>
+
+
+
+    <!--
+    <script src="js/draw_maps.js"></script>
+    <script src="js/draw_daily_cases_deaths.js"></script>
+    <script src="js/draw_total_cases_deaths.js"></script>
+
+    <script src="js/draw_state_case_count.js"></script>
+    -->
+    <script src="js/draw_state_doubling_time.js"></script>
+
+    <!--<script src="js/top_hotspots_table.js"></script>
+    <script src="js/draw_district_growth_rate.js"></script>
+    <script src="js/draw_case_density_curve.js"></script>-->
+    <!--<script src="js/draw_emerging_hotspots_map.js"></script>-->
+    <!--<script src="js/draw_state_streamgraph.js"></script>-->
+    <!--<script src="js/draw_outbreak_free_districts.js"></script>
+    <script src="js/draw_state_recovery_rate.js"></script>-->
+    <!--<script src="js/cluster_table.js"></script>-->
+    <!--<script src="js/draw_cluster_map.js"></script>-->
+    <!--<script src="js/draw_district_daily_case_count.js"></script>-->
+    <!--<script src="js/animate_state_fatality_rate.js"></script>
+    <script src="js/scroll/draw_scroll_outbreak_spread_map.js"></script>
+    <script src="js/draw_outbreak_spread_map.js"></script>-->
+
+    <!--<script src="js/draw_country_case_count.js"></script>-->
+    <!--<script src="js/draw_country_testing_rate.js"></script>-->
+
+
+  </body>
+
+</html>
