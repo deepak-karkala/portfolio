@@ -1,7 +1,7 @@
 idname = "#district_daily_case_count";
 d3.select(idname).select("svg").remove();
 filename = "data/districtwise_daily_case_count.csv";
-width_scale_factor = 1.0;
+width_scale_factor = 0.90;
 height_scale_factor = 0.80;
 var bb = d3.select(idname).node().offsetWidth;
 var margin = {right:20, left:20, top:10, bottom:30};
@@ -175,7 +175,7 @@ function draw_district_daily_case_count(idname, filename, width, height) {
 			      		})
 		                .on("mouseover", function(d,i) {
 	                    	dname_with_state_code = this.getAttribute("class").split("_case_count_curve")[0];
-	                    	console.log(dname_with_state_code);
+	                    	//console.log(dname_with_state_code);
 							//show_selected_district_case_count(dname_with_state_code);
 
 	                    	return tooltip.html(`<div class='well district_daily_state_name_tooltip'>`+
@@ -184,7 +184,12 @@ function draw_district_daily_case_count(idname, filename, width, height) {
 	                                          .style("visibility", "visible");
 		                })
 		                .on("mousemove", function(){
-	                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+		                	if (event.pageX >= window_inner_width/2) {
+				              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-80)+"px");
+				            } else {
+				              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+				            }
+	                        //return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
 	                    })
 		                .on("mouseout", function(d,i) {
 							//show_all_districts_case_count_button_click_handler();
@@ -196,7 +201,8 @@ function draw_district_daily_case_count(idname, filename, width, height) {
 		    var xAxis = d3.axisBottom()
                     .scale(x)
                     .tickFormat(d3.timeFormat("%b %e"))
-                    .tickValues(x.domain().filter(function(d,i){ return !(i%14)}))
+                    .tickValues(x.domain().filter(function(d,i){ return !(i%30)}))
+                    //.ticks(3)
 		            .tickSize(0)
               		.tickPadding(5);
 

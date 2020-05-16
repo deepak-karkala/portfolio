@@ -1,10 +1,10 @@
 table_idname = "top_hotspots_table_body";
 //filename = "data/districtwise_top_hotspots.csv";
-filename = "data/districtwise_case_death_growth_density_withDelhiCombined.csv";
+filename = "data/districtwise_case_death_growth_density.csv";
 insert_district_rows(table_idname, filename);
 
 var min_case_count_to_show_in_table = 50;
-var num_past_days_growth_rate = 15;
+var num_past_days_growth_rate = 14;
 
 function insert_district_rows(table_idname, file) {
 	var table = document.getElementById(table_idname);
@@ -35,13 +35,13 @@ function insert_district_rows(table_idname, file) {
 				table.innerHTML += `<tr class="table-primary">` +
 										`<td align="left">`+d.district+`, `+d.state_code+`</td>`+
 										`<td align="right">`+d.cases+`</td>`+
-										`<td align="right">`+d.cases_per_lakh+`</td>`+
+										`<td align="right">`+(+d.cases_per_million).toFixed(0)+`</td>`+
 										`<td align="right">`+d.deaths+`</td>`+
-										`<td align="right">`+d.current_avg_growth_rate+`</td>`+
+										`<td align="right">`+(+d.current_avg_growth_rate).toFixed(2)+`</td>`+
 										`<td><div id="`+idname+`"></div></td>`+
 									`</tr>`
 
-
+			
 	      		var data = [];
 	      		for (var j=0; j<num_past_days_growth_rate; j++) {
 	      			data[j] = [];
@@ -56,8 +56,6 @@ function insert_district_rows(table_idname, file) {
 		      		}
 	      		}
 
-	      		//console.log(idname);
-	      		//console.log(data);
 
 	      		var svg = d3.select("#"+idname).append("svg")
 			          .attr("width", width + margin.left + margin.right)
@@ -78,6 +76,7 @@ function insert_district_rows(table_idname, file) {
 			    	.attr("width", rect_width)
 			    	.attr("height", rect_height)
 			    	.style("fill", function(d,i) { return d.color; });
+			
       		}
 
 
@@ -94,7 +93,7 @@ function insert_district_rows(table_idname, file) {
 			      targets: 3
 			    }],
 			    */
-			    "order": [[ 2, "desc" ]]
+			    "order": [[ 4, "desc" ]]
 			});
 			$('.dataTables_length').addClass('bs-select');
 		});

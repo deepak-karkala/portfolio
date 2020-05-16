@@ -3,11 +3,14 @@ idname = "#state_streamgraph"
 d3.select(idname).select("svg").remove();
 filename = "data/state_streamgraph_data.csv";
 //type = "cases";
-width_scale_factor = 0.95;
-height_scale_factor = 0.60;
+width_scale_factor = 0.9;
+//height_scale_factor = 0.50;
 var bb = d3.select(idname).node().offsetWidth;
 var margin = {right:80, left:30, top:20, bottom:60};
 base_width = bb*width_scale_factor - margin.left - margin.right;
+//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.5]);
+height_scale_factor = height_scale_factor_width(bb);
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 plot_state_streamgraph(idname, filename, base_width, base_height);
 
@@ -53,7 +56,7 @@ function plot_state_streamgraph(idname, filename, width, height) {
     var parseTime = d3.timeParse("%Y-%m-%d");
 
 	var y = d3.scaleLinear()
-	    .domain([-1000, 1000])
+	    .domain([-2500, 2500])
 	    .range([ height, 0 ]);
 
     d3.csv(filename, function(error, data) {
@@ -120,7 +123,7 @@ function plot_state_streamgraph(idname, filename, width, height) {
 	            }
 	        }
 
-			console.log(date);
+			//console.log(date);
 
 	        /*
 	        d3.select(this)
@@ -152,8 +155,9 @@ function plot_state_streamgraph(idname, filename, width, height) {
 
 	    var xAxis = d3.axisBottom()
                     .scale(x)
-                    .tickFormat(d3.timeFormat("%B %e"));
-                    //.tickValues(x.domain().filter(function(d,i){ return !(i%1)}));
+                    .tickFormat(d3.timeFormat("%b %e"))
+                    .ticks(4);
+                    //.tickValues(x.domain().filter(function(d,i){ return !(i%7)}));
 
 		// Add X axis
     	svg.append("g")

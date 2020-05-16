@@ -1,14 +1,23 @@
 idname = "#country_testing_rate";
 d3.select(idname).select("svg").remove();
 filename = "data/country_testing_rate.csv";
-width_scale_factor = 0.80;
-height_scale_factor = 0.40;
+width_scale_factor = 0.90;
+//height_scale_factor = 0.40;
 var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:40, left:40, top:10, bottom:60};
+var margin = {right:10, left:30, top:10, bottom:60};
 base_width = bb*width_scale_factor - margin.left - margin.right;
+//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.4]);
+height_scale_factor = height_scale_factor_width(bb);
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 draw_country_testing_rate(idname, filename, base_width, base_height);
 
+var min_country_case_count_to_show_testing;
+if (window.innerWidth >= 768) {
+	min_country_case_count_to_show_testing = 10000;
+} else {
+	min_country_case_count_to_show_testing = 50000;
+}
 
 function draw_country_testing_rate(idname, file, width, height) {
 
@@ -38,57 +47,57 @@ function draw_country_testing_rate(idname, file, width, height) {
 
 		var columns = d3.keys(data[0]);
 
+		data = data.filter(function(d,i){
+			return +d.total_cases >= min_country_case_count_to_show_testing;
+		})
+
 		// Read last data to set domains
 		data.forEach(function(d, i) {
-			d.country = d.country;
-			d.total_cases = +d.total_cases;
-			d.total_cases_per_million = +d.total_cases_per_million;
-			d.total_tests_per_thousand = +d.total_tests_per_thousand;
+				d.country = d.country;
+				d.total_cases = +d.total_cases;
+				d.total_cases_per_million = +d.total_cases_per_million;
+				d.total_tests_per_thousand = +d.total_tests_per_thousand;	
 		});
 		//console.log(data);
 
 		//Set domains
       	x.domain([-5, d3.max(data, function(d) { return +d.total_tests_per_thousand; })+5]);
-      	y.domain([0, d3.max(data, function(d) { return +d.total_cases_per_million; })+200]);
+      	//y.domain([0, d3.max(data, function(d) { return +d.total_cases_per_million; })+200]);
+      	y.domain([0, 5500]);
 
 
-      	//Append type rectangles
-		svg.append("rect")
-			.attr("class", "country_type_rect")
-	        .attr("x", function(d) { return x(-2); })
-	        .attr("y", function(d) { return y(1500); })
-	        .attr("width", function(d) { return x(7) - x(-2); })
-	        .attr("height", function(d) { return y(0) - y(1500); })
-	        .style("fill", function(d) { return "#FADBD8"; })
-	        .style("opacity", 1)
-	        .style("stroke", "black");
-	    svg.append("text")
+      	svg.append("text")
 			.attr("class", "country_type_rect_text")
-			.attr("x", function(d) { return x(-5); })
-			.attr("y", function(d) { return y(1550); })
-			.text("India is in this low testing rate group")
-			.style("font-size", "0.85rem")
+			.attr("x", width-100 )
+			.attr("y", height+60 )
+			.text("Min "+min_country_case_count_to_show_testing+" cases")
+			.style("font-size", "0.75rem")
 			.style("font-weight", "bold")
-			.style("fill", "#E74C3C")
+			.style("fill", "#808080")
 	        .style("opacity", 1);
 
+      	if (window.innerWidth >= 768) {
+	      	country_type_rect_font_size = "0.85rem";
+	    } else {
+	      	country_type_rect_font_size = "0.65rem";
+	    }
 
 	    //Append type rectangles
 		svg.append("rect")
 			.attr("class", "country_type_rect")
-	        .attr("x", function(d) { return x(15); })
-	        .attr("y", function(d) { return y(2500); })
-	        .attr("width", function(d) { return x(45) - x(15); })
-	        .attr("height", function(d) { return y(500) - y(2500); })
+	        .attr("x", function(d) { return x(12); })
+	        .attr("y", function(d) { return y(2750); })
+	        .attr("width", function(d) { return x(60) - x(12); })
+	        .attr("height", function(d) { return y(100) - y(2750); })
 	        .style("fill", function(d) { return "#ABEBC6"; })
 	        .style("opacity", 1)
 	        .style("stroke", "black");
 	    svg.append("text")
 			.attr("class", "country_type_rect_text")
-			.attr("x", function(d) { return x(20); })
-			.attr("y", function(d) { return y(2550); })
+			.attr("x", function(d) { return x(8); })
+			.attr("y", function(d) { return y(2800); })
 			.text("Successful containment with good testing rate")
-			.style("font-size", "0.85rem")
+			.style("font-size", country_type_rect_font_size)
 			.style("font-weight", "bold")
 			.style("fill", "#1D8348")
 	        .style("opacity", 1);
@@ -98,28 +107,55 @@ function draw_country_testing_rate(idname, file, width, height) {
 		svg.append("rect")
 			.attr("class", "country_type_rect")
 	        .attr("x", function(d) { return x(18); })
-	        .attr("y", function(d) { return y(4600); })
-	        .attr("width", function(d) { return x(38) - x(18); })
-	        .attr("height", function(d) { return y(3000) - y(4600); })
+	        .attr("y", function(d) { return y(5000); })
+	        .attr("width", function(d) { return x(55) - x(18); })
+	        .attr("height", function(d) { return y(3000) - y(5000); })
 	        .style("fill", function(d) { return "#D6EAF8"; })
 	        .style("opacity", 1)
 	        .style("stroke", "black");
 	    svg.append("text")
 			.attr("class", "country_type_rect_text")
-			.attr("x", function(d) { return x(18); })
-			.attr("y", function(d) { return y(4650); })
+			.attr("x", function(d) { return x(8); })
+			.attr("y", function(d) { return y(5050); })
 			.text("Good testing rate but high cases per million")
-			.style("font-size", "0.85rem")
+			.style("font-size", country_type_rect_font_size)
 			.style("font-weight", "bold")
 			.style("fill", "#2E86C1")
 	        .style("opacity", 1);
 
 
+	    //Append type rectangles
+		svg.append("rect")
+			.attr("class", "country_type_rect")
+	        .attr("x", function(d) { return x(-2); })
+	        .attr("y", function(d) { return y(2250); })
+	        .attr("width", function(d) { return x(7) - x(-2); })
+	        .attr("height", function(d) { return y(0) - y(2250); })
+	        .style("fill", function(d) { return "#FADBD8"; })
+	        .style("opacity", 1)
+	        .style("stroke", "black");
+	    svg.append("text")
+			.attr("class", "country_type_rect_text")
+			.attr("x", function(d) { return x(-5); })
+			.attr("y", function(d) { return y(2300); })
+			.text("India is here, very low testing rate")
+			.style("font-size", country_type_rect_font_size)
+			.style("font-weight", "bold")
+			.style("fill", "#E74C3C")
+	        .style("opacity", 1);
+
+	    
 
 	    svg.selectAll(".dot")
 			.data(data)
         .enter().append("circle")
-			.attr("class", "country_testing_circles circles")
+			.attr("class", function(d,i) {
+				if (d.country=="India") {
+					return "country_testing_circles circles india_circle"
+				} else {
+					return "country_testing_circles circles";
+				}
+			})
 			.attr("r", function(d,i) {
 				//console.log(d.growth/10);
 				return Math.log10(d.total_cases)/10+"rem";
@@ -167,7 +203,13 @@ function draw_country_testing_rate(idname, file, width, height) {
 			svg.selectAll(".text")
 	      		.data(data)
 	      	.enter().append("text")
-				.attr("class", "country_testing_text")
+				.attr("class", function(d) {
+					if (d.country=="India") {
+						return "country_testing_text india_text";
+					} else {
+						return "country_testing_text";
+					}
+				})
 	      		.attr("x", function(d,i) {
 					return x(d.total_tests_per_thousand);
 				})
@@ -183,7 +225,14 @@ function draw_country_testing_rate(idname, file, width, height) {
 					}
 				})
 				.style("z-index", 10)
-				.style("font-size", "0.75rem");
+				.style("font-size", function(d) {
+					if (d.country=="India") {
+						return 2;
+					} else {
+						return "0.75rem";
+					}
+				});
+
 
 			var xAxis = d3.axisBottom(x)
 						.tickFormat( (d,i) => {
@@ -195,7 +244,7 @@ function draw_country_testing_rate(idname, file, width, height) {
 
 		    var yAxis = d3.axisLeft(y)
 				      	.tickFormat( (d,i) => {
-				          if (d%10 === 0) return d;
+				          if (d%1000 === 0) return d/1000+"k";
 				      	}).tickPadding(2);
 
 			// Add the X Axis
@@ -237,6 +286,29 @@ function draw_country_testing_rate(idname, file, width, height) {
 				.style("stroke", "none")
 				.style("font-weight", "bold")
 				.style("font-size", "0.75rem");
+
+
+			repeat_india_pulsate();
+		    function repeat_india_pulsate() {
+			    svg.select(".india_circle")
+			    	.transition()
+			    		.duration(1000)
+			    		.attr("r", "2rem")
+			    	.transition()
+			    		.duration(1000)
+			    		.attr("r", "0.5rem")
+			    	.on("end", repeat_india_pulsate);
+
+			    /*
+			    svg.select(".india_text")
+			    	.transition()
+			    		.duration(2000)
+			    		.style("font-size", "0.5rem")
+			    	.transition()
+			    		.duration(2000)
+			    		.style("font-size", "0.1rem");
+			    */
+		    }
 
 
 	});

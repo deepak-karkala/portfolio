@@ -2,13 +2,19 @@ idname = "#fatality_rate_animation";
 d3.select(idname).select("svg").remove();
 filename = "data/state_case_death_testpm_ntod.csv";
 width_scale_factor = 1.0;
-height_scale_factor = 0.60;
+//height_scale_factor = 0.60;
 var bb = d3.select(idname).node().offsetWidth;
 var margin = {right:20, left:30, top:10, bottom:60};
 base_width = bb*width_scale_factor - margin.left - margin.right;
+//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.5]);
+height_scale_factor = height_scale_factor_width(bb);
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 animate_state_fatality_rate(idname, filename, base_width, base_height);
 
+
+var font_size_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.6, 0.9]);
+font_size = font_size_factor(bb) + "rem";
 
 function animate_state_fatality_rate(idname, file, width, height) {
 
@@ -20,9 +26,8 @@ function animate_state_fatality_rate(idname, file, width, height) {
 	//var state_fatality_rate_color_scale = d3.scaleSequential(d3.interpolateYlOrRd);
 
 	//var state_fatality_label_list = ["DL", "MH", "GJ", "MP", "AP", "KL", "RJ", "TN", "UP"];
-	var min_case_count_to_show_testing_rate = 50;
+	var min_case_count_to_show_testing_rate = 100;
 
-	var month_list = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 	// parse the date / time
     var parseTime = d3.timeParse("%Y-%m-%d");
@@ -111,7 +116,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 			.attr("x", function(d) { return x(10); })
 			.attr("y", function(d) { return y(25+1); })
 			.text("Low testing rate, true case count could be much higher")
-			.style("font-size", "0.85rem")
+			.style("font-size", font_size)
 			.style("font-weight", "bold")
 			.style("fill", "#E74C3C")
 	        .style("opacity", 0);
@@ -119,18 +124,18 @@ function animate_state_fatality_rate(idname, file, width, height) {
 	    svg.append("rect")
 			.attr("class", "state_type_rect")
 	        .attr("x", function(d) { return x(1400); })
-	        .attr("y", function(d) { return y(25); })
-	        .attr("width", function(d) { return x(3000) - x(1400); })
-	        .attr("height", function(d) { return y(5) - y(25); })
+	        .attr("y", function(d) { return y(30); })
+	        .attr("width", function(d) { return x(5000) - x(1400); })
+	        .attr("height", function(d) { return y(5) - y(30); })
 	        .style("fill", function(d) { return "#D6EAF8"; })
 	        .style("opacity", 0)
 	        .style("stroke", "black");
 	    svg.append("text")
 			.attr("class", "state_type_rect_text")
 			.attr("x", function(d) { return x(1600); })
-			.attr("y", function(d) { return y(25+1); })
+			.attr("y", function(d) { return y(30+1); })
 			.text("Reasonable testing rate but cases doubling quickly")
-			.style("font-size", "0.85rem")
+			.style("font-size", font_size)
 			.style("font-weight", "bold")
 			.style("fill", "#2E86C1")
 	        .style("opacity", 0);
@@ -138,18 +143,18 @@ function animate_state_fatality_rate(idname, file, width, height) {
 	    svg.append("rect")
 			.attr("class", "state_type_rect")
 	        .attr("x", function(d) { return x(600); })
-	        .attr("y", function(d) { return y(50); })
-	        .attr("width", function(d) { return x(1200) - x(600); })
-	        .attr("height", function(d) { return y(35) - y(50); })
+	        .attr("y", function(d) { return y(55); })
+	        .attr("width", function(d) { return x(2000) - x(600); })
+	        .attr("height", function(d) { return y(35) - y(55); })
 	        .style("fill", function(d) { return "#ABEBC6"; })
 	        .style("opacity", 0)
 	        .style("stroke", "black");
 	    svg.append("text")
 			.attr("class", "state_type_rect_text")
 			.attr("x", function(d) { return x(400); })
-			.attr("y", function(d) { return y(50+1); })
+			.attr("y", function(d) { return y(55+1); })
 			.text("Reasonable testing rate, cases doubling slowly")
-			.style("font-size", "0.85rem")
+			.style("font-size", font_size)
 			.style("font-weight", "bold")
 			.attr("fill", "#1D8348")
 			//.style("stroke", "#28B463")
@@ -225,7 +230,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 					//}
 				})
 				.style("z-index", 10)
-				.style("font-size", "0.75rem");
+				.style("font-size", font_size);
 
 			var xAxis = d3.axisBottom(x)
 						.tickFormat( (d,i) => {
@@ -245,7 +250,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 				.attr("transform", "translate(0," + (height+20)+ ")")
 				.call(xAxis)
 				.attr("class", "state_fatality_xaxis")
-				.style("font-size", "0.75rem")
+				.style("font-size", font_size)
 			.append("text")
 				.attr("class", "state_fatality_label")
 				.attr("x", width)
@@ -257,7 +262,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 				.style("fill", "black")
 				.style("stroke", "none")
 				.style("font-weight", "bold")
-				.style("font-size", "0.75rem");
+				.style("font-size", font_size);
 
 			// Add the Y Axis
 			svg.append("g")
@@ -265,7 +270,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 				//.call(d3.axisLeft(y))
 				.call(yAxis)
 				.attr("class", "state_fatality_yaxis")
-				.style("font-size", "0.75rem")
+				.style("font-size", font_size)
 			.append("text")
 				.attr("class", "state_fatality_label")
 				.attr("transform", "rotate(-90)")
@@ -278,7 +283,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 				.style("fill", "black")
 				.style("stroke", "none")
 				.style("font-weight", "bold")
-				.style("font-size", "0.75rem");
+				.style("font-size", font_size);
 
 			/*
 			svg.selectAll("text")
@@ -293,7 +298,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 				.attr("class", "state_fatality_rate_date_label")
 				.attr("x", width-120)
 				.attr("y", 40)
-				.text(current_date.getDate() + " " + month_list[current_date.getMonth()])
+				.text(current_date.getDate() + " " + month_abbrv_list[current_date.getMonth()])
 				.style("font-size", "1.5rem")
 				.style("font-weight", "bold")
 				.style("stroke", "none")
@@ -307,7 +312,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 			for (var gi=1; gi<6; gi++) {
 				gridline1_data = [];
 				gridline1_data[0] = []; gridline1_data[0].x = 0; gridline1_data[0].y=gi*10;
-				gridline1_data[1] = []; gridline1_data[1].x=2800; gridline1_data[1].y=gi*10
+				gridline1_data[1] = []; gridline1_data[1].x=7000; gridline1_data[1].y=gi*10
 				svg.append("path")
 			            .data([gridline1_data])
 			            .attr("d", gridline)
@@ -385,7 +390,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 						.transition()
 						.delay(function(d,i) { return (c-1)*step_delay; })
 						.duration(step_duration)
-						.text(current_date.getDate() + " " + month_list[current_date.getMonth()]);
+						.text(current_date.getDate() + " " + month_abbrv_list[current_date.getMonth()]);
 
 				if (c==num_days+init_offset_days) {
 					//setTimeout(function(){}, 10*1000);

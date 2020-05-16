@@ -665,9 +665,14 @@ bottom: .5em;
 }
 
 .top_hotspots_table {
-  font-size: 0.75rem;
+  font-size: 1.0rem;
 }
 
+@media (max-width: 768px) {
+  .top_hotspots_table {
+    font-size: 0.75rem;
+  }  
+}
 
 /* Case density */
 .case_density_curve {
@@ -802,6 +807,12 @@ bottom: .5em;
   fill: #eee;
   stroke: #fff; /* #aaa;*/
   stroke-linejoin: round;
+}
+
+.cluster_animation_button {
+  margin: 10px 0; 
+  color: white;
+  background-color: #E74C3C;
 }
 
 .country_focus {

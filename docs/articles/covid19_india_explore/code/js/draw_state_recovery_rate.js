@@ -7,7 +7,6 @@ var margin = {right:10, left:40, top:30, bottom:20};
 base_width = bb*width_scale_factor - margin.left - margin.right;
 plot_state_recovery_rate(idname, filename, base_width);
 var data = [];
-var month_list = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 var recovery_rate_color_scale = d3.scaleSequential(d3.interpolateRdYlGn);
 
 
@@ -27,8 +26,16 @@ function plot_state_recovery_rate(idname, file, width) {
 	var row_gap_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([15, 22]);
     var col_gap_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([15, 15]);
     var box_width_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([10.0, 12.0]);
-    var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.5, 0.45]);
-    var height_scale_factor = height_scale_factor_width(bb);
+    var font_size_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.5, 0.6]);
+    var font_size = font_size_factor(bb)+"rem";
+
+    //var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([1.5, 0.8]);
+    //var height_scale_factor = height_scale_factor_width(bb);
+    if (window_inner_width <= small_screen_thresh) {
+        height_scale_factor = 1.75;
+    } else {
+        height_scale_factor = 0.8;
+    }
     height = bb*height_scale_factor - margin.top - margin.bottom;
 
     // parse the date / time
@@ -124,10 +131,9 @@ function plot_state_recovery_rate(idname, file, width) {
             })
         	.attr("y", -15)
         	.text(function(d,i) {
-        		console.log(d);
         		return d;
         	})
-        	.style("font-size", "0.6rem")
+        	.style("font-size", font_size)
         	.style("font-weight", "bold")
         	.style("fill", "black");
 
@@ -143,8 +149,7 @@ function plot_state_recovery_rate(idname, file, width) {
                 return Math.floor(i/1)*col_gap_factor(width)+8;
             })
         	.text(function(d,i) {
-        		console.log(d);
-        		return d.getDate() + " " + month_list[d.getMonth()];
+        		return d.getDate() + " " + month_abbrv_list[d.getMonth()];
         	})
         	.style("font-size", "0.6rem")
         	.style("fill", "black");

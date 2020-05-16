@@ -1,13 +1,16 @@
 // District wise growth rate
 idname = "#district_case_density"
 d3.select(idname).select("svg").remove();
-filename = "data/districtwise_latest_cases_per_population.csv";
+filename = "data/districtwise_latest_cases_per_population_derivedFromRawData.csv";
 //type = "cases";
 width_scale_factor = 0.95;
-height_scale_factor = 0.35;
 var bb = d3.select(idname).node().offsetWidth;
 var margin = {right:80, left:30, top:20, bottom:60};
 base_width = bb*width_scale_factor - margin.left - margin.right;
+//height_scale_factor = 0.35;
+//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
+height_scale_factor = height_scale_factor_width(bb);
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 plot_district_case_density_curve(idname, filename, base_width, base_height);
 
@@ -17,12 +20,12 @@ var district_case_density_state_color_mapping = d3.scaleOrdinal()
 			.range(state_colors_list);
 
 
-var district_case_density_highlight_list = ["Mumbai_MH", "Bhopal_MP",
-			"Indore_MP", "Delhi_DL", "Kasaragod_KL"]; //"SPS-Nellore_AP"
+var district_case_density_highlight_list = ["Chennai_TN", "Bhopal_MP",
+			"Indore_MP", "Delhi_DL", "Kasaragod_KL", "Kolkata_WB", "Amritsar_PB"]; //"SPS-Nellore_AP"
 
 var default_background_color_district_case_density = "#c0c0c0";
 
-var min_case_count_to_plot_case_density = 25;
+var min_case_count_to_plot_case_density = 40;
 
 function plot_district_case_density_curve(idname, filename, width, height) {
 
@@ -90,7 +93,7 @@ function plot_district_case_density_curve(idname, filename, width, height) {
 			//console.log(d.date);
 			return d.date;
 		}));
-	    y.domain([0, 5]);
+	    y.domain([0, 4]);
 
 	    var district_latest_case_density = [];
 		for (var j=0; j<data_csv.length; j++) {
@@ -111,19 +114,16 @@ function plot_district_case_density_curve(idname, filename, width, height) {
 
 
 			if (district_total_case_count >= min_case_count_to_plot_case_density) {
-				case_density_district_list.push(district_name);
 
 				var didx = 0;
 				var first_nonzero = 0;
 				var data = []
 				for (var i=2; i<dates.length-1; i++) {
-					
 					//console.log((district_case_density[dates[i]])==="");
 
 					if (parseFloat(district_case_density[dates[i]])>0) {
 						first_nonzero = 1
 					}
-
 					//console.log(district_case_density[dates[i]]);
 
 					if ((first_nonzero==1) && (district_case_density[dates[i]]!=="")) {
@@ -131,96 +131,106 @@ function plot_district_case_density_curve(idname, filename, width, height) {
 						data[didx].date = parseTime(dates[i]);
 						data[didx].rate = parseFloat(district_case_density[dates[i]]);
 						didx += 1;
+				    	district_latest_case_density[district_name] = data[didx-1].rate.toFixed(2);
+
+				    	if (!case_density_district_list.includes(district_name)) {
+							case_density_district_list.push(district_name);
+						}
+
 					}
 		    	}
-		    	district_latest_case_density[district_name] = data[didx-1].rate.toFixed(2);
 
-		        // define the line
-				var valueline = d3.line()
-					.x(function(d) {
-						//console.log(d.date);
-						return x(d.date);
-					})
-					.y(function(d) {
-						//console.log(d.rate);
-						return y(d.rate);
-					});
 
-				// Add the valueline path.
-				path = svg.append("path")
-		                .data([data])
-		                .attr("class", district_name+"_case_density_curve case_density_curve")
-		                .attr("d", valueline)
-		                .attr("fill", "none")
-		                .attr("stroke-width", "1.5px")
-		                .style("z-index", 0)
-		                .attr("stroke", function() {
-				      		if (district_case_density_highlight_list.includes(district_name)) {
-				      			return state_color;
-		                	} else {
-		                		return default_background_color_district_case_density; 
-		                	}
-		                })
-		                .attr("opacity", function() {
-				      		if (district_case_density_highlight_list.includes(district_name)) {
-				      			return 1;
-				      		} else {
-				      			return 0.5;
-				      		}
+				if (case_density_district_list.includes(district_name)) {
+
+			        // define the line
+					var valueline = d3.line()
+						.x(function(d) {
+							//console.log(d.date);
+							return x(d.date);
+						})
+						.y(function(d) {
+							//console.log(d.rate);
+							return y(d.rate);
+						});
+
+					// Add the valueline path.
+					path = svg.append("path")
+			                .data([data])
+			                .attr("class", district_name+"_case_density_curve case_density_curve")
+			                .attr("d", valueline)
+			                .attr("fill", "none")
+			                .attr("stroke-width", "1.5px")
+			                .style("z-index", 0)
+			                .attr("stroke", function() {
+					      		if (district_case_density_highlight_list.includes(district_name)) {
+					      			return state_color;
+			                	} else {
+			                		return default_background_color_district_case_density; 
+			                	}
+			                })
+			                .attr("opacity", function() {
+					      		if (district_case_density_highlight_list.includes(district_name)) {
+					      			return 1;
+					      		} else {
+					      			return 0.5;
+					      		}
+				      		})
+			                .on("mouseover", function(d,i) {
+		                    	dname_with_state_code = this.getAttribute("class").split("_case_density_curve")[0];
+								show_selected_district_case_density(dname_with_state_code);
+
+		                    	return tooltip.html(`<div class='well'>`+
+		                                                  `<span class="state_name text-center">`+dname_with_state_code.replace("_",", ")+`</span></br>` +
+		                                                ` Currently <span class="case_count_info">`+ district_latest_case_density[dname_with_state_code] +`</span> daily cases per 100,000 people.</div>` )
+		                                          .style("visibility", "visible");
+			                })
+			                .on("mousemove", function(){
+		                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+		                    })
+			                .on("mouseout", function(d,i) {
+								show_all_districts_case_density_button_click_handler();
+		                        return tooltip.style("visibility", "hidden");
+			                })
+
+
+
+			        svg.append("text")
+			        	.attr("class", district_name+"_label label")
+			        	.attr("x", x(data[didx-1].date)+10)
+			        	.attr("y", y(data[didx-1].rate))
+			        	.text(district_name.replace("_"," "))
+			        	.style("font-size", "0.75rem")
+			        	.style("font-weight", "bold")
+			        	.style("fill", state_color)
+			        	.attr("opacity", function() {
+			      			if (district_case_density_highlight_list.includes(district_name)) {
+			      				return 1;
+			      			} else {
+			      				return 0;
+			      			}
+			      		});
+
+
+			      	svg.selectAll(".dot")
+			      		.data(data)
+		              .enter().append("circle")
+			      		.attr("class", function(d) {
+			      			//console.log(district_name+"_circles");
+			      			return district_name+"_case_density_circles case_density_circles"
 			      		})
-		                .on("mouseover", function(d,i) {
-	                    	dname_with_state_code = this.getAttribute("class").split("_case_density_curve")[0];
-							show_selected_district_case_density(dname_with_state_code);
-
-	                    	return tooltip.html(`<div class='well'>`+
-	                                                  `<span class="state_name text-center">`+dname_with_state_code.replace("_",", ")+`</span></br>` +
-	                                                ` Currently <span class="case_count_info">`+ district_latest_case_density[dname_with_state_code] +`</span> daily cases per 100,000 people.</div>` )
-	                                          .style("visibility", "visible");
-		                })
-		                .on("mousemove", function(){
-	                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
-	                    })
-		                .on("mouseout", function(d,i) {
-							show_all_districts_case_density_button_click_handler();
-	                        return tooltip.style("visibility", "hidden");
-		                })
-
-
-		        svg.append("text")
-		        	.attr("class", district_name+"_label label")
-		        	.attr("x", width-margin.right+50)
-		        	.attr("y", y(data[didx-1].rate))
-		        	.text(district_name.replace("_"," "))
-		        	.style("font-size", "0.75rem")
-		        	.style("font-weight", "bold")
-		        	.style("fill", state_color)
-		        	.attr("opacity", function() {
-		      			if (district_case_density_highlight_list.includes(district_name)) {
-		      				return 1;
-		      			} else {
-		      				return 0;
-		      			}
-		      		});
-
-
-		      	svg.selectAll(".dot")
-		      		.data(data)
-	              .enter().append("circle")
-		      		.attr("class", function(d) {
-		      			//console.log(district_name+"_circles");
-		      			return district_name+"_case_density_circles case_density_circles"
-		      		})
-		      		.attr("cx", function(d,i) { return x(d.date); })
-		      		.attr("cy", function(d,i) { return y(d.rate); })
-		      		.attr("r", "0.15rem")
-		      		.style("fill", state_color)
-		      		.attr("opacity", function(d) {
-		      			if (district_case_density_highlight_list.includes(district_name)) {
-		      				return 1;
-		      			} else {
-		      				return 0;
-		      			}
-		      		});
+			      		.attr("cx", function(d,i) { return x(d.date); })
+			      		.attr("cy", function(d,i) { return y(d.rate); })
+			      		.attr("r", "0.15rem")
+			      		.style("fill", state_color)
+			      		.attr("opacity", function(d) {
+			      			if (district_case_density_highlight_list.includes(district_name)) {
+			      				return 1;
+			      			} else {
+			      				return 0;
+			      			}
+			      		});
+			    }
 		    }
 
         }
@@ -228,7 +238,7 @@ function plot_district_case_density_curve(idname, filename, width, height) {
 
 		var xAxis = d3.axisBottom()
                     .scale(x)
-                    .tickFormat(d3.timeFormat("%B %e"))
+                    .tickFormat(d3.timeFormat("%b %e"))
                     .tickValues(x.domain().filter(function(d,i){ return !(i%4)}));
 
 		// add the x Axis
@@ -274,7 +284,7 @@ function plot_district_case_density_curve(idname, filename, width, height) {
 		  })
 		  .style("fill", "black")
 		  .style("font-weight", "bold")
-		  .style("font-size", "1.0rem");
+		  .style("font-size", "0.75rem");
 
 
 		svg.append("text")
@@ -284,7 +294,7 @@ function plot_district_case_density_curve(idname, filename, width, height) {
 			.text("Districts with min "+min_case_count_to_plot_case_density+" cases, Case density averaged over previous week")
 			.style("text-anchor", "end")
 			.style("fill", "#808080")
-			.style("font-size", "0.75rem");
+			.style("font-size", "0.5rem");
 	    	
     });
 

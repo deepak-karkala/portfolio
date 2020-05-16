@@ -1,30 +1,37 @@
 // District wise growth rate
 idname = "#district_growth_rates"
 d3.select(idname).select("svg").remove();
-filename = "data/districtwise_growth_rate.csv";
+filename = "data/districtwise_growth_rate_derivedFromRawData.csv";
 //type = "cases";
 width_scale_factor = 0.95;
-height_scale_factor = 0.35;
+//height_scale_factor = 0.35;
 var bb = d3.select(idname).node().offsetWidth;
 var margin = {right:80, left:30, top:20, bottom:60};
 base_width = bb*width_scale_factor - margin.left - margin.right;
+//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
+height_scale_factor = height_scale_factor_width(bb);
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 plot_district_growth_rate(idname, filename, base_width, base_height);
 
-min_case_count_to_plot_growth_rate = 50;
+min_case_count_to_plot_growth_rate = 60;
 var district_growth_rate_state_color_mapping = d3.scaleOrdinal()
 			.domain([0, 36])
 			.range(state_colors_list);
 
 
-var district_growth_rate_highlight_list = ["Bhopal_MP", "Banswara_RJ", "Tiruppur_TN", "Ahmadabad_GJ", "Kasaragod_KL",
-										 "Delhi_DL", "Vadodara_GJ", "Jaipur_RJ"]; //"SPS-Nellore_AP"
+//var district_growth_rate_highlight_list = ["Bhopal_MP", "Banswara_RJ", "Tiruppur_TN", "Ahmadabad_GJ", "Kasaragod_KL",
+//										 "Delhi_DL", "Vadodara_GJ", "Jaipur_RJ"]; //"SPS-Nellore_AP"
+
+var district_growth_rate_highlight_list = ["Amritsar_PB", "Kolkata_WB", "Solapur_MH", "Chandigarh_CH",
+								"Ludhiana_PB"];
 
 var default_background_color_district_growth_rate = "#c0c0c0";
 
 function plot_district_growth_rate(idname, filename, width, height) {
 
 	var growth_rate_district_list = [];
+	var init_date_offset = 2;
 
 	var tooltip = d3.select("body")
         .append("div")
@@ -66,7 +73,7 @@ function plot_district_growth_rate(idname, filename, width, height) {
 
 		dates = d3.keys(data_csv[0]); //.slice(1, data_csv.length-1));
 		idx = 0;
-		for (var i=2; i<dates.length-1; i++) {
+		for (var i=init_date_offset; i<dates.length-1; i++) {
 			date_data[idx] = [];
 			date_data[idx].date = parseTime(dates[i]);
 
@@ -88,7 +95,7 @@ function plot_district_growth_rate(idname, filename, width, height) {
 			//console.log(d.date);
 			return d.date;
 		}));
-	    y.domain([0, 150]);
+	    y.domain([0, 100]);
 
 	    var district_latest_growth_rate = [];
 		for (var j=0; j<data_csv.length; j++) {
@@ -111,7 +118,7 @@ function plot_district_growth_rate(idname, filename, width, height) {
 				var didx = 0;
 				var first_nonzero = 0;
 				var data = []
-				for (var i=2; i<dates.length-1; i++) {
+				for (var i=init_date_offset; i<dates.length-1; i++) {
 					
 					if (parseFloat(district_growth_rate[dates[i]])>0) {
 						first_nonzero = 1
@@ -122,9 +129,9 @@ function plot_district_growth_rate(idname, filename, width, height) {
 						data[didx].date = parseTime(dates[i]);
 						data[didx].rate = parseFloat(district_growth_rate[dates[i]]);
 						didx += 1;
+		    			district_latest_growth_rate[district_name] = data[didx-1].rate;
 					}
 		    	}
-		    	district_latest_growth_rate[district_name] = data[didx-1].rate;
 
 		    	//console.log(data);
 
@@ -220,8 +227,8 @@ function plot_district_growth_rate(idname, filename, width, height) {
 
 		var xAxis = d3.axisBottom()
                     .scale(x)
-                    .tickFormat(d3.timeFormat("%B %e"))
-                    .tickValues(x.domain().filter(function(d,i){ return !(i%7)}));
+                    .tickFormat(d3.timeFormat("%b %e"))
+                    .tickValues(x.domain().filter(function(d,i){ return !(i%14)}));
 
 		// add the x Axis
 		svg.append("g")
@@ -276,7 +283,7 @@ function plot_district_growth_rate(idname, filename, width, height) {
 			.text("Districts with min 50 cases, Growth rate averaged over previous week")
 			.style("text-anchor", "end")
 			.style("fill", "#808080")
-			.style("font-size", "0.75rem");
+			.style("font-size", "0.5rem");
 	    	
     });
 

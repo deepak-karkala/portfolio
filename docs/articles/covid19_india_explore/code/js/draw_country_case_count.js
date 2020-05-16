@@ -1,11 +1,14 @@
 idname = "#country_case_count";
 d3.select(idname).select("svg").remove();
 filename = "data/country_case_count.csv";
-width_scale_factor = 0.80;
-height_scale_factor = 0.40;
+width_scale_factor = 0.90;
+//height_scale_factor = 0.40;
 var bb = d3.select(idname).node().offsetWidth;
 var margin = {right:20, left:30, top:10, bottom:30};
 base_width = bb*width_scale_factor - margin.left - margin.right;
+//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.4]);
+height_scale_factor = height_scale_factor_width(bb);
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 draw_country_daily_case_count(idname, filename, base_width, base_height);
 
@@ -92,8 +95,6 @@ function draw_country_daily_case_count(idname, filename, width, height) {
 		case_count_double3[1].date = date_data[40].date;
 		case_count_double3[1].rate = 200*Math.pow(2, 40/3);
 
-		console.log(case_count_double6);
-
 		// Country loop
 		for (var dt=0; dt<data_csv.length; dt++){
 		//for (var dt=0; dt<1; dt++){
@@ -121,7 +122,7 @@ function draw_country_daily_case_count(idname, filename, width, height) {
 	    	//var y = d3.scaleLog().domain([1, 1400]).range([height, 0]); //.base(10);
 			//x.domain([0, dates.length]);
 			x.domain([0, 80]);
-		    y.domain([200, 1200000]);
+		    y.domain([200, 2000000]);
 
 		    //console.log(data);
 
@@ -166,7 +167,12 @@ function draw_country_daily_case_count(idname, filename, width, height) {
                                           .style("visibility", "visible");
 	                })
 	                .on("mousemove", function(){
-                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+	                	if (event.pageX >= window.innerWidth/2) {
+			              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-80)+"px");
+			            } else {
+			              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+			            }
+                        //return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
                     })
 	                .on("mouseout", function(d,i) {
 						show_all_countries_case_count_button_click_handler();
@@ -185,7 +191,13 @@ function draw_country_daily_case_count(idname, filename, width, height) {
 	      		.attr("cy", function(d,i) {
 	      			return y(d.rate);
 	      		})
-	      		.attr("r", "0.15rem")
+	      		.attr("r", function(d) {
+	      			if (window.innerWidth >= 768) {
+		      			return "0.15rem";
+	      			} else {
+		      			return "0.08rem";
+		      		}
+	      		})
 	      		.style("fill", country_color)
 	      		.attr("opacity", function(d) {
 	      			if (country_case_count_highlight_list.includes(country_name)) {
@@ -204,7 +216,12 @@ function draw_country_daily_case_count(idname, filename, width, height) {
                                       .style("visibility", "visible");
                 })
                 .on("mousemove", function(){
-                    return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+                	if (event.pageX >= window.innerWidth/2) {
+		              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-80)+"px");
+		            } else {
+		              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+		            }
+                    //return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
                 })
                 .on("mouseout", function(d,i) {
 					show_all_countries_case_count_button_click_handler();
@@ -213,10 +230,16 @@ function draw_country_daily_case_count(idname, filename, width, height) {
 
                 svg.append("text")
 		        	.attr("class", country_name+"_label label")
-		        	.attr("x", x(data[didx-1].date+1))
-		        	.attr("y", y(data[didx-1].rate))
+		        	.attr("x", x(data[didx-2].date))
+		        	.attr("y", y(data[didx-2].rate+1000))
 		        	.text(country_name)
-		        	.style("font-size", "0.75rem")
+		        	.style("font-size", function(d) {
+		        		if (window.innerWidth >= 768) {
+		        			return "0.75rem";
+		        		} else {
+			        		return "0.5rem";
+		        		}
+		        	})
 		        	.style("font-weight", "bold")
 		        	.style("fill", country_color)
 		        	.attr("opacity", function() {
