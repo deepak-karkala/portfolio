@@ -1,3 +1,5 @@
+
+(function(){
 table_idname = "top_hotspots_table_body";
 //filename = "data/districtwise_top_hotspots.csv";
 filename = "data/districtwise_case_death_growth_density.csv";
@@ -101,3 +103,5 @@ function insert_district_rows(table_idname, file) {
 	});
 
 }
+
+})();

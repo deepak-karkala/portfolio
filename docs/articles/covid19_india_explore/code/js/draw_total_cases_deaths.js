@@ -1,3 +1,5 @@
+(function(){
+
 // total cases
 idname = "#total_confirmed_cases"
 d3.select(idname).select("svg").remove();
@@ -147,8 +149,8 @@ function plot_total_cases_deaths(idname, file, width, height, type, fill_color) 
               }
           )
           .on("mousemove", function(){
-            if (event.pageX >= width/2) {
-              return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX+100)+"px");
+            if (event.pageX >= window.innerWidth/2) {
+              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-100)+"px");
             } else {
               return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
             }
@@ -255,3 +257,4 @@ function repeat(path, totalLength) {
           .attr("stroke-dashoffset", 0);
           //.on("end", repeat);
 }
+})();

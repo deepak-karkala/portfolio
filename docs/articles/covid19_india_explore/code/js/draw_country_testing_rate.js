@@ -1,3 +1,4 @@
+(function(){
 idname = "#country_testing_rate";
 d3.select(idname).select("svg").remove();
 filename = "data/country_testing_rate.csv";
@@ -314,3 +315,4 @@ function draw_country_testing_rate(idname, file, width, height) {
 	});
 
 }
+})();

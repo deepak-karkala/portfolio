@@ -1,3 +1,5 @@
+(function(){
+
 idname = "#outbreak_free_districts";
 d3.select(idname).select("svg").remove();
 filename = "data/outbreak_free_districts.csv";
@@ -141,3 +143,4 @@ function draw_outbreak_free_districts(idname, file, width, height) {
 	
 
 }
+})();

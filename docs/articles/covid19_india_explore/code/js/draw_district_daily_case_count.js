@@ -1,8 +1,9 @@
+(function(){
 idname = "#district_daily_case_count";
 d3.select(idname).select("svg").remove();
 filename = "data/districtwise_daily_case_count.csv";
 width_scale_factor = 0.90;
-height_scale_factor = 0.80;
+height_scale_factor = 1.25;
 var bb = d3.select(idname).node().offsetWidth;
 var margin = {right:20, left:20, top:10, bottom:30};
 base_width = bb*width_scale_factor - margin.left - margin.right;
@@ -256,3 +257,5 @@ function draw_district_daily_case_count(idname, filename, width, height) {
 
 	});
 }
+
+})();

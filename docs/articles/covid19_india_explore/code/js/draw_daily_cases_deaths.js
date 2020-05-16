@@ -1,3 +1,4 @@
+(function(){
 // Daily cases
 idname = "#new_cases_day"
 d3.select(idname).select("svg").remove();
@@ -129,8 +130,8 @@ function plot_daily_cases_deaths(idname, filename, width, height, type, fill_col
             }
           })
           .on("mousemove", function(){
-            if (event.pageX >= width/2) {
-              return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX+100)+"px");
+            if (event.pageX >= window.innerWidth/2) {
+              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-100)+"px");
             } else {
               return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
             }
@@ -229,3 +230,4 @@ function plot_daily_cases_deaths(idname, filename, width, height, type, fill_col
     });
 
 }
+})();

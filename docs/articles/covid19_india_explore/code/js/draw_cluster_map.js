@@ -1,3 +1,4 @@
+(function() {
 idname = "#cluster_map";
 var cluster_map_idname = "#cluster_map";
 
@@ -93,6 +94,9 @@ function draw_cluster_map(idname, filename, width, height) {
 
 function ready(error, world, india, data) {
     if (error) throw error;
+
+    path = d3.geoPath()
+        .projection(projection);
 
     cluster_world = world;
     cluster_india = india;
@@ -369,7 +373,7 @@ function cluster_animation_button_click() {
 	}
 	ready_repeat();
 }
-
+})();
 
 
 

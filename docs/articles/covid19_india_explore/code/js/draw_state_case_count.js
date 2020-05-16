@@ -1,4 +1,5 @@
 
+(function(){
 // Daily cases
 idname = "#state_case_count"
 d3.select(idname).select("svg").remove();
@@ -441,3 +442,5 @@ function plot_flattening_curve_legend(idname) {
     svg.select(".legendLinear")
       .call(legendLinear);
 }
+
+})();

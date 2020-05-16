@@ -1,3 +1,4 @@
+(function(){
 idname = "#fatality_rate_animation";
 d3.select(idname).select("svg").remove();
 filename = "data/state_case_death_testpm_ntod.csv";
@@ -443,6 +444,7 @@ function wrap(text, width) {
   });
 }
 
+})();
 /*Update axis
 x.domain([0, d3.max(data, function(d) { return d[cdt+"_cases"]; })]);
 	y.domain([0, d3.max(data, function(d) { return d[cdt+"_deaths"]; })]);

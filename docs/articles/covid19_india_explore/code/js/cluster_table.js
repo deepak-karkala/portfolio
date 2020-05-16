@@ -1,3 +1,4 @@
+(function(){
 idname = "cluster_table_body";
 filename = "data/cluster_table.csv"
 insert_cluster_table(idname, filename);
@@ -23,3 +24,4 @@ function insert_cluster_table(idname, filename) {
     });
 
 }
+})();

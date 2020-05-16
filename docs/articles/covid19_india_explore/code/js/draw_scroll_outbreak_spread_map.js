@@ -1,4 +1,5 @@
 
+(function(){
 function randomNumber(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -61,6 +62,9 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
     var y = d3.scaleLinear().range([height, 0]);
 
 	var scale0 = (width - 1) / 2 / Math.PI;
+	var path = d3.geoPath()
+	    .projection(projection)
+    	.pointRadius(5);
 
 	var tooltip = d3.select("body")
         .append("div")
@@ -339,5 +343,5 @@ function outbreak_spread_zoomed() {
 function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
+})();
 

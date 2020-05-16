@@ -1,3 +1,5 @@
+(function(){
+
 // District wise growth rate
 idname = "#state_streamgraph"
 d3.select(idname).select("svg").remove();
@@ -173,3 +175,4 @@ function plot_state_streamgraph(idname, filename, width, height) {
 
 
 }
+})();

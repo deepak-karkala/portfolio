@@ -1,3 +1,4 @@
+(function(){
 var is_init = 1;
 draw_maps(is_init, "")
 
@@ -456,3 +457,4 @@ function setup_map_option_buttons() {
 
 // setup the buttons.
 setup_map_option_buttons();
+})();

@@ -1,3 +1,5 @@
+(function(){
+
 // State doubling time
 idname = "#states_doubling_time"
 d3.select(idname).select("svg").remove();
@@ -407,4 +409,5 @@ function show_all_states_doubling_time_button_click_handler() {
 	show_highlight_states_doubling_time();
 }
 
+})();
 

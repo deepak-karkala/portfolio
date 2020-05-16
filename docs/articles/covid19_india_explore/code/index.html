@@ -138,9 +138,9 @@
     -->
     <div class="heading">
       <div class="container">
-        <div class="row">
+        <div class="row text-center justify-content-center">
           <div class="col-lg-12 mx-auto">
-            <h1 class="brand-heading">Coronavirus in India: Daily Tracker, Insights, Visualisations and More</h1>
+            <h1 class="brand-heading">Tracking the Covid19 outbreak in India</h1>
             <!--<p class="intro-text">Tracking, visualising and useful insights about the outbreak in India</p>-->
             <p>By <span class="article_author">Deepak Karkala</span></p>
             <!--<p class="article_date">April 2020</p>-->
@@ -151,69 +151,18 @@
     </div>
 
 
-  <!--
-    <main>
-      <section id='scrolly'>
-
-        <figure>
-          <div id="migration-map"></div>
-        </figure>
-
-        <article>
-          <div class='step' data-step='1'>
-            <p>STEP 1</p>
-          </div>
-          <div class='step' data-step='2'>
-            <p>STEP 2</p>
-          </div>
-          <div class='step' data-step='3'>
-            <p>STEP 3</p>
-          </div>
-          <div class='step' data-step='4'>
-            <p>STEP 4</p>
-          </div>
-          <div class='step' data-step='5'>
-            <p>STEP 5</p>
-          </div>
-        </article>
-        
-      </section>
-
-      <section id='outro'></section>
-    </main>
-  -->
-
-  <!--
-  <div class="row">
-    <div class="col-lg-12 col-12">
-      <div id="scroll1_test"></div>
-    </div>
-  </div>
-  -->
-<!--
-<div class="btn-group btn-group-sm prediction_scenario_buttons" role="group" id="prediction_scenario_buttons">
-  <button type="button" class="btn map_option_button active" id="scenario1">Scenario 1</button>
-  <button type="button" class="btn map_option_button" id="scenario2">Scenario 2</button>
-  <button type="button" class="btn map_option_button" id="scenario3">Scenario 3</button>
-</div>
--->
-
 
     <div class="container title_buttons">
       <div class="row mx-auto text-center justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-          <div class="header_text text-center">Click on the below buttons to explore more</div>
+        <div class="col-lg-10 col-md-12 col-sm-12 col-12">
+          <div class="header_text text-center">Click to explore specific sections</div>
           <div id="toolbar" class="btn-toolbar">
-            <a href="#" id="all" class="button active">Maps</a>
-            <a href="#daily_cases_deaths" id="gender" class="button">Daily Cases and Deaths</a>
-            <a href="#" id="agegroup" class="button">Where are the cases rising fast?</a>
-            <a href="#" id="ruralurban" class="button">Case growth rate</a>
-            <a href="#" id="religion" class="button">Are we flattening the curve ?</a>
-            <a href="#" id="state" class="button">Clusters</a>
-            <a href="#" id="language" class="button">Hotspots</a>
-            <a href="#" id="literacy" class="button">Fatality rate</a>
-            <a href="#" id="employment" class="button">Age distribution</a>
-            <a href="#" id="sanitation" class="button">Travel history</a>
+            <a href="#basic_maps" id="all" class="button active">Maps</a>
+            <a href="#daily_cases_deaths" id="gender" class="button">Daily Tracker</a>
+            <a href="#cluster_top" id="agegroup" class="button">Tracking the outbreak</a>
+            <a href="#state_analysis_top" id="ruralurban" class="button">State wise analysis</a>
+            <a href="#district_analysis_top" id="religion" class="button">District wise analysis</a>
+            <a href="#country_case_top" id="state" class="button">India vs World</a>
           </div>
         </div>
       </div>
@@ -314,537 +263,15 @@
 
 
 
-    <section id="hotspots" class="content-section hotspots">
-      <!--<h3 class="section_title">Hotspots: Where are the cases rising fast ?</h3>-->
-      <div class="container">
-        <!--<div class="row text-center justify-content-center">
-          <div class="col-lg-12 col-md-12 col-12 mx-auto ">-->
-            <!--
-            <div class="row text-center justify-content-center">
-              <div class="col-lg-12">
-                <div class="btn-group btn-group-sm hotspots_buttons" role="group" id="hotspots_buttons">
-                  <button type="button" class="btn map_option_button active" id="button_hotspot_map">Hotspot Map</button>
-                  <button type="button" class="btn map_option_button" id="button_flattening_curve">Flattening the curve</button>
-                  <button type="button" class="btn map_option_button" id="button_top_hotspots">Top Hotspots</button>
-                  <button type="button" class="btn map_option_button" id="button_growth_rates">Growth Rates</button>
-                </div>
-              </div>
-            </div>
-            -->
-
-
-            <div class="container div_fig_background">
-                <h3 class="section_title">Which States are Flattening the Curve ?</h3>
-                <div class="row text-center justify-content-center">
-                    <div class="col-lg-4 col-12">
-                      <div class="row">
-                        <div class="col-lg-10 col-8">
-                            <div class="control-group">
-                              <select id="select_state_case_count" class="select2_select">
-                                <option value="">Search for a state</option>
-                                <option value="all">Show all states</option>
-                                <!--<option></option>-->
-                              </select> 
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-4">
-                            <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_states_case_count">Show All</button>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="row text-center justify-content-center">
-                  <div class="col-lg-8 what_to_look_for_container">
-                    <div id="what_to_look_for_container">
-                      <span class="what_to_look_for_title">Watch out for</span>: The graph shows the case count of all the states over time. Flatter the curves, slower is the growth rate of cases. 
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row text-center justify-content-center">
-                  <div class="col-lg-4">
-                      <div class="row">
-                        <div class="col-lg-8 legend_text">
-                            Current doubling time (in days)
-                        </div>
-                        <div class="col-lg-4 text-center justify-content-center">
-                            <div id="state_case_count_legend"></div>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-
-                <div class="row text-center justify-content-center">
-                  <div class="col-lg-10" id="state_case_count">
-                  </div>
-                </div>
-
-                <div class="row justify-content-center">
-                  <div class="col-lg-8 takeaway_container">
-                    <div id="takeaway_container">
-                      <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
-                      <ul>
-                        <li>Lot of states including Maharashtra, Gujarat, Delhi, Madhya Pradesh have their curves pointing upward indicating a worrying trend of higher growth rate.</li>
-                        <li>States like Kerala and Goa have flattened the curves significantly over the past weeks.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-            </div>
-
-
-
-
-
-
-            <div class="container div_fig_background">
-              <h3 class="section_title">How fast are cases doubling in states ?</h3>
-                <div class="row text-center justify-content-center">
-                    <div class="col-lg-4 col-12">
-                      <div class="row">
-                        <div class="col-lg-10 col-8">
-                            <div class="control-group">
-                              <select id="select_state_doubling_time" class="select2_select">
-                                <option value="">Search for a state</option>
-                                <option value="all">Show all states</option>
-                                <!--<option></option>-->
-                              </select> 
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-4">
-                            <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_states_doubling_time">Show All</button>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="row text-center justify-content-center">
-                  <div class="col-lg-8 what_to_look_for_container">
-                    <div id="what_to_look_for_container">
-                      <span class="what_to_look_for_title">Watch out for</span>: Shows the number of days it takes to double case count in major states. Root for these to go higher. States with curves pointing downwards are where cases are rising fast.
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="row text-center justify-content-center">
-                  <div class="col-lg-10" id="states_doubling_time">
-                  </div>
-                </div>
-
-
-                <div class="row justify-content-center">
-                  <div class="col-lg-8 takeaway_container">
-                    <div id="takeaway_container">
-                      <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
-                      <ul>
-                        <li>Lot of states seemed to have increased doubling time significantly in mid-April but this positive trend is no longer continued towards end of April. This is especially true for Tamil Nadu and Karnataka.</li>
-                        <li>States like West Bengal, Gujarat, Bihar are particularly showing very low doubling time. </li>
-                        <li>Maharashtra and Delhi in particular are the most concerning states with the doubling time not increasing even with very high number of cases already registered. This may suggest that these states are still quite far from reaching their peak.</li>
-                        <li>On the positive note, Punjab and Andhra Pradesh seem to be increasing their doubling time in recent days.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-            </div>
-
-
-
-
-
-            
-            <div class="row div_table_background text-center justify-content-center">
-              <div class="col-lg-10" id="top_hotspots">
-                <h3 class="section_title">Top hotspots table</h3>
-
-                <div class="row text-center justify-content-center">
-                  <div class="col-lg-12 what_to_look_for_container">
-                    <div>
-                      <span>Click on table headers to sort the table by cases, deaths, growth rate.</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="table-responsive">
-                  <table id="top_hotspots_table" class="table table-striped table-sm top_hotspots_table" cellspacing="0" width="100%">
-                    <thead>
-                      <tr class="table-primary">
-                        <th class="th-sm table-header">District</th>
-                        <th class="th-sm table-header">Cases</th>
-                        <th class="th-sm table-header">Cases Per Million</th>
-                        <th class="th-sm table-header">Deaths</th>
-                        <th class="th-sm table-header">Case Growth Rate (%)</th>
-                        <th class="th-sm table-header">Growth Rate Visualised</th>
-                      </tr>
-                    </thead>
-                    <tbody id="top_hotspots_table_body">
-                    </tbody>
-                  </table>
-                </div>
-
-              </div>
-            </div>
-            
-
-          <!--</div>
-        </div>-->
-      </div>
-    </section>
-
-
-    <section id="emerging_hotspots" class="content-section emerging_hotspots">
-      <div class="container">
-        <!--<h1 class="section_title">Emerging Hotspots</h1>-->
-
-        <div class="container div_fig_background">
-          <h3 class="section_title">Daily Growth Rate of Cases</h3>
-          <div class="row text-center justify-content-center">
-              <div class="col-lg-4 col-12">
-                <div class="row">
-                  <div class="col-lg-10 col-8">
-                      <div class="control-group">
-                        <select id="select_district_growth_rate" class="select2_select">
-                          <option value="">Search for a district</option>
-                          <!--<option></option>-->
-                        </select> 
-                      </div>
-                  </div>
-                  <div class="col-lg-2 col-4">
-                      <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_districts_growth_rate">Show All</button>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="row text-center justify-content-center">
-            <div class="col-lg-8 what_to_look_for_container">
-              <div id="what_to_look_for_container">
-                <span class="what_to_look_for_title">Watch out for</span>: Ideally growth rates should go to zero. Seemingly low daily growth rate such as 20 percent is still significant with case count doubling in less than four days.
-              </div>
-            </div>
-          </div>
-
-          <div class="row text-center justify-content-center">
-            <div class="col-lg-10 col-12" id="district_growth_rates">
-            </div>
-          </div>
-
-          <div class="row justify-content-center">
-            <div class="col-lg-8 takeaway_container">
-              <div id="takeaway_container">
-                <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
-                <ul>
-                  <li>Districts in Tamil Nadu, Gujarat, Maharashtra are showing worrying trends of very high case growth rates.</li>
-                  <li>On the other hand, districts in Kerala, Telangana seem to be doing well over past couple of weeks.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-
-
-        
-        <div class="container div_fig_background">
-          <h3 class="section_title">New Cases per 100,000 people</h3>
-          <div class="row text-center justify-content-center">
-              <div class="col-lg-4 col-12">
-                <div class="row">
-                  <div class="col-lg-10 col-8">
-                      <div class="control-group">
-                        <select id="select_district_case_density" class="select2_select">
-                          <option value="">Search for a district</option>
-                          <!--<option></option>-->
-                        </select> 
-                      </div>
-                  </div>
-                  <div class="col-lg-2 col-4">
-                      <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_districts_case_density">Show All</button>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="row text-center justify-content-center">
-            <div class="col-lg-8 what_to_look_for_container">
-              <div id="what_to_look_for_container">
-                <span class="what_to_look_for_title">How to read this graph</span>: Shows district case count per 100,000 people over last two weeks. Districts with curves pointing upward are the emerging hotspots.
-              </div>
-            </div>
-          </div>
-
-          <div class="row text-center justify-content-center">
-            <div class="col-lg-10 col-12" id="district_case_density"></div>
-          </div>
-
-          <div class="row justify-content-center">
-            <div class="col-lg-8 takeaway_container">
-              <div id="takeaway_container">
-                <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
-                <ul>
-                  <li>Districts in West Bengal, Tamil Nadu, Gujarat are showing worrying upward trends.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        
-        <div class="container div_fig_background">
-          <h3 class="section_title">Map: Emerging Hotspots</h3>
-          
-          <div class="row text-center justify-content-center">
-            <div class="col-lg-12 what_to_look_for_container">
-              <div id="what_to_look_for_container">
-                <span class="what_to_look_for_title">How to use the map</span>: Drag the sliders to identify hotspot districts based on case count, case density, case growth rate criteria.
-                </br> 
-                <span id="emerging_hotspots_map_showing_text"></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="row slider_top text-center justify-content-center">
-            <div class="col-lg-8 col-12">
-              <div class="row">
-                <div class="col-lg-4 col-4">Case count
-                  <div id="slider_cases">
-                    <div id="slider_cases_handle" class="ui-slider-handle"></div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-4">Case per 100,000
-                  <div id="slider_density">
-                    <div id="slider_density_handle" class="ui-slider-handle"></div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-4">Case growth rate
-                  <div id="slider_growth">
-                    <div id="slider_growth_handle" class="ui-slider-handle"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-12" id="emerging_hotspot_map_container">
-              <div id="emerging_hotspot_map" style="height: 80vh;"></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <section id="fatality_rate_top" class="content-section fatality_rate_top">
-      <div class="container div_fig_background">
-        <h3 class="section_title">State Testing Rate</h3>
-
-        <div class="row text-center justify-content-center">
-          <div class="col-lg-10 what_to_look_for_container">
-            <div id="what_to_look_for_container">
-              <span class="what_to_look_for_title">How to read the graph</span>: The number of tests per million people are plotted against the number of days to double case count for individual states. Ideally the state circles should lie on the upper right side of this chart with high testing rate and low case growth rate. On the other hand, states with poor testing rate and high case growth rate will lie on lower left corner.
-            </div>
-          </div>
-        </div>
-
-        <div class="row text-center justify-content-center">
-          <div class="col-lg-8" id="fatality_rate_animation">
-          </div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-lg-8 takeaway_container">
-            <div id="takeaway_container">
-              <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
-              <ul>
-                <li>
-                  Cases are doubling quickly in West Bengal, Bihar, Uttar Pradesh despite having poor testing rates. This potentially implies that the true case count could be much higher and can only be revealed with increased testing. </li>
-                <li>
-                  Cases are doubling quickly in Tamil Nadu, Gujarat, Maharashtra and Delhi even with reasonable testing rates. This strongly suggests that the number of cases will continue to rise for at least few more weeks and we may still be quite far from reaching the peak.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="container div_fig_background">
-        <h3 class="section_title">State wise Case Count</h1>
-        <div class="row text-center justify-content-center">
-          <div class="col-lg-12">
-            <div class="row" id="district_daily_case_count">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container div_fig_background">
-        <h3 class="section_title">Which states are the most affected ?</h1>
-
-        <div class="row text-center justify-content-center">
-          <div class="col-lg-8 what_to_look_for_container">
-            <div id="what_to_look_for_container">
-              <span class="what_to_look_for_title">How to read the graph ?</span>: States are represented as streams of different colors, the width of the stream depends on the number of cases in that state. This chart helps in interpreting the proportion of cases contributed by various states to India's total count.
-            </div>
-          </div>
-        </div>
-
-        <div class="row text-center justify-content-center">
-          <div class="col-lg-8 col-12" id="state_streamgraph">
-          </div>
-        </div>
-
-      </div>  
-    </section>
-
-
-
-
-
-    <section id="outbreak_free_districts_top" class="content-section outbreak_free_districts_top">
-
-      <div class="container div_fig_background">
-        <h3 class="section_title">Outbreak free Districts</h3>
-        <div class="row text-center justify-content-center">
-          <div class="col-lg-10">
-
-            <div class="row text-center justify-content-center">
-              <div class="col-lg-12 what_to_look_for_container">
-                <div id="what_to_look_for_container">
-                  <span class="what_to_look_for_title">Watch out for</span>: Each circle is a district. The size of the circle is proportional to the number of confirmed cases in that district. The districts are color-coded as <br/>
-                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#32cd32" /></svg>
-                  0 cases
-                  &nbsp &nbsp
-                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#ffbf00" /></svg>
-                  < 10 cases
-                  &nbsp &nbsp
-                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#FA8072" /></svg>
-                  > 10 cases
-                </div>
-              </div>
-            </div>
-
-            <div class="row text-center justify-content-center">
-              <div class="col-lg-8" id="outbreak_free_districts">
-              </div>
-            </div>
-
-            <div class="row text-center justify-content-center">
-              <div class="col-lg-10 takeaway_container">
-                <div id="takeaway_container_outbreak_free_districts">
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-
-    <section id="recovery_rate_top" class="content-section recovery_rate_top">
-      <!--<h1 class="section_title">Cases, Deaths and Recoveries</h1>-->
-
-      <div class="container div_fig_background">
-        <h3 class="section_title">State Recovery Rates</h3>
-
-        <div class="row text-center justify-content-center">
-          <div class="col-lg-10">
-
-            <div class="row text-center justify-content-center">
-              <div class="col-lg-12 what_to_look_for_container">
-                <div id="what_to_look_for_container">
-                  <span class="what_to_look_for_title">Watch out for</span>: Each column is a state color coded by recovery rate defined as ratio of total number of recovered people to total confirmed cases. Red is where there are lot more new cases than recoveries and green the other way around. So root for all the states to turn green soon.
-                </div>
-              </div>
-            </div>
-
-            <div class="row text-center justify-content-center">
-              <div class="col-lg-12" id="recovery_rate">
-              </div>
-            </div>
-
-            <div class="row text-center justify-content-center legend_text">
-              <div class="col-lg-10" id="recovery_rate_legend">
-              </div>
-            </div>
-
-            <div class="row text-center justify-content-center">
-              <div class="col-lg-10 takeaway_container">
-                <div id="takeaway_container_recovery_rate">
-                  <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
-                  <ul>
-                    <li>Notice how Kerala (KL) and Goa (GA) have been turning green indicating more recoveries. States like Madhya Pradesh (MP), Gujarat (GJ), Maharashtra (MH) are showing worrying trend by consistently staying red.</li>
-                    <li>Even more worrying is the case of Tamil Nadu which is starting to turn red after having earlier shown signs of turning green.</li>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-
-
     <section id="cluster_top" class="content-section cluster_top">
       <!--<h1 class="section_title">Clusters</h1>-->
 
-      <div class="container " style="background-color: white;">
+      <!--
 
-        <div class="row justify-content-center">
-          <div class="col-lg-12">
-            <h3 class="section_title">List of Prominent Clusters</h3>
-
-            <div class="row text-center justify-content-center">
-              <div class="col-lg-10 what_to_look_for_container">
-                <div id="what_to_look_for_container">
-                  <span class="what_to_look_for_title">Watch out for</span>: This is the list of  around 2000 cases which have been mapped to known sources by the team at <a href="https://github.com/covid19india/api">https://github.com/covid19india/api</a>. <b>Note that the numbers here are clearly underestimated and not exhaustive at all</b> since only a small portion of the total confirmed cases have been mapped. But the list does provide an insight into the prominent clusters in India.
-                </div>
-              </div>
-            </div>
-
-            <div class="row justify-content-center">
-              <div class="col-lg-6">
-                <table class="table table-striped table-sm table-hover">
-                  <thead>
-                    <tr>
-                      <td class="cluster_table_heading">Cases Connected to</td>
-                      <td class="cluster_table_heading" align="right">Number of Cases</td>
-                    </tr>
-                  </thead>
-                  <tbody id="cluster_table_body">
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="section_title">Cluster network map</h3>
+      <h3 class="section_title">How did the outbreak start in India ?</h3>
       <div class="container div_fig_background" style="background-color: white;">
-
         <div class="row text-center justify-content-center">
           <div class="col-lg-12">
-
             <div class="row text-center justify-content-center">
               <div class="col-lg-12 what_to_look_for_container">
                 <div id="what_to_look_for_container">
@@ -902,20 +329,50 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
+      </div>
+      -->
 
+      <div class="container " style="background-color: white;">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <h3 class="section_title">List of Prominent Clusters</h3>
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-10 what_to_look_for_container">
+                <div id="what_to_look_for_container">
+                  <span class="what_to_look_for_title">Watch out for</span>: This is the list of  around 2000 cases which have been mapped to known sources by the team at <a href="https://github.com/covid19india/api">https://github.com/covid19india/api</a>. <b>Note that the numbers here are clearly underestimated and not exhaustive at all</b> since only a small portion of the total confirmed cases have been mapped. But the list does provide an insight into the prominent clusters in India.
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="col-lg-6">
+                <table class="table table-striped table-sm table-hover">
+                  <thead>
+                    <tr>
+                      <td class="cluster_table_heading">Cases Connected to</td>
+                      <td class="cluster_table_heading" align="right">Number of Cases</td>
+                    </tr>
+                  </thead>
+                  <tbody id="cluster_table_body">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </section>
 
 
 
+<!--
 
     <section id="outbreak_spread_top" class="content-section outbreak_spread_top">
       <div class="container div_fig_background">
-        <h3 class="section_title">Spread of outbreak</h3>
+        <h3 class="section_title">Tracking the spread of virus</h3>
         <div class="row text-center justify-content-center">
           <div class="col-lg-12">
 
@@ -960,6 +417,473 @@
 
       </div>
     </section>
+
+-->
+
+
+
+
+
+    <section id="state_analysis_top" class="content-section state_analysis_top">
+
+      <div class="container div_fig_background">
+        <h3 class="section_title">Which states are the most affected ?</h1>
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-8 what_to_look_for_container">
+            <div id="what_to_look_for_container">
+              <span class="what_to_look_for_title">How to read the graph ?</span>: States are represented as streams of different colors, the width of the stream depends on the number of cases in that state. This chart helps in interpreting the proportion of cases contributed by various states to India's total count.
+            </div>
+          </div>
+        </div>
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-8 col-12" id="state_streamgraph">
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container div_fig_background">
+          <h3 class="section_title">Which States are Flattening the Curve ?</h3>
+          <div class="row text-center justify-content-center">
+              <div class="col-lg-4 col-12">
+                <div class="row">
+                  <div class="col-lg-10 col-8">
+                      <div class="control-group">
+                        <select id="select_state_case_count" class="select2_select">
+                          <option value="">Search for a state</option>
+                          <option value="all">Show all states</option>
+                          <!--<option></option>-->
+                        </select> 
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-4">
+                      <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_states_case_count">Show All</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-8 what_to_look_for_container">
+              <div id="what_to_look_for_container">
+                <span class="what_to_look_for_title">Watch out for</span>: The graph shows the case count of all the states over time. Flatter the curves, slower is the growth rate of cases. 
+              </div>
+            </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-4">
+                <div class="row">
+                  <div class="col-lg-8 legend_text">
+                      Current doubling time (in days)
+                  </div>
+                  <div class="col-lg-4 text-center justify-content-center">
+                      <div id="state_case_count_legend"></div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-10" id="state_case_count">
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-8 takeaway_container">
+              <div id="takeaway_container">
+                <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
+                <ul>
+                  <li>Lot of states including Maharashtra, Gujarat, Delhi, Madhya Pradesh have their curves pointing upward indicating a worrying trend of higher growth rate.</li>
+                  <li>States like Kerala and Goa have flattened the curves significantly over the past weeks.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+
+
+
+
+
+            
+
+
+
+      <div class="container div_fig_background">
+        <h3 class="section_title">State wise Case Count</h1>
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-12">
+            <div class="row" id="district_daily_case_count">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container div_fig_background">
+        <h3 class="section_title">State Testing Rate</h3>
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-10 what_to_look_for_container">
+            <div id="what_to_look_for_container">
+              <span class="what_to_look_for_title">How to read the graph</span>: The number of tests per million people are plotted against the number of days to double case count for individual states. Ideally the state circles should lie on the upper right side of this chart with high testing rate and low case growth rate. On the other hand, states with poor testing rate and high case growth rate will lie on lower left corner.
+            </div>
+          </div>
+        </div>
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-8" id="fatality_rate_animation">
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8 takeaway_container">
+            <div id="takeaway_container">
+              <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
+              <ul>
+                <li>
+                  Cases are doubling quickly in West Bengal, Bihar, Uttar Pradesh despite having poor testing rates. This potentially implies that the true case count could be much higher and can only be revealed with increased testing. </li>
+                <li>
+                  Cases are doubling quickly in Tamil Nadu, Gujarat, Maharashtra and Delhi even with reasonable testing rates. This strongly suggests that the number of cases will continue to rise for at least few more weeks and we may still be quite far from reaching the peak.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <section id="recovery_rate_top" class="content-section recovery_rate_top">
+      <!--<h1 class="section_title">Cases, Deaths and Recoveries</h1>-->
+
+      <div class="container div_fig_background">
+        <h3 class="section_title">State Recovery Rates</h3>
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-10">
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12 what_to_look_for_container">
+                <div id="what_to_look_for_container">
+                  <span class="what_to_look_for_title">Watch out for</span>: Each column is a state color coded by recovery rate defined as ratio of total number of recovered people to total confirmed cases. Red is where there are lot more new cases than recoveries and green the other way around. So root for all the states to turn green soon.
+                </div>
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12" id="recovery_rate">
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center legend_text">
+              <div class="col-lg-10" id="recovery_rate_legend">
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="col-lg-10 takeaway_container">
+                <div id="takeaway_container_recovery_rate">
+                  <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
+                  <ul>
+                    <li>Notice how Kerala (KL) and Goa (GA) have been turning green indicating more recoveries. States like Madhya Pradesh (MP), Gujarat (GJ), Maharashtra (MH) are showing worrying trend by consistently staying red.</li>
+                    <li>Even more worrying is the case of Tamil Nadu which is starting to turn red after having earlier shown signs of turning green.</li>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container div_fig_background">
+        <h3 class="section_title">How fast are cases doubling in states ?</h3>
+          <div class="row text-center justify-content-center">
+              <div class="col-lg-4 col-12">
+                <div class="row">
+                  <div class="col-lg-10 col-8">
+                      <div class="control-group">
+                        <select id="select_state_doubling_time" class="select2_select">
+                          <option value="">Search for a state</option>
+                          <option value="all">Show all states</option>
+                          <!--<option></option>-->
+                        </select> 
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-4">
+                      <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_states_doubling_time">Show All</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-8 what_to_look_for_container">
+              <div id="what_to_look_for_container">
+                <span class="what_to_look_for_title">Watch out for</span>: Shows the number of days it takes to double case count in major states. Root for these to go higher. States with curves pointing downwards are where cases are rising fast.
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-10" id="states_doubling_time">
+            </div>
+          </div>
+
+
+          <div class="row justify-content-center">
+            <div class="col-lg-8 takeaway_container">
+              <div id="takeaway_container">
+                <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
+                <ul>
+                  <li>Lot of states seemed to have increased doubling time significantly in mid-April but this positive trend is no longer continued towards end of April. This is especially true for Tamil Nadu and Karnataka.</li>
+                  <li>States like West Bengal, Gujarat, Bihar are particularly showing very low doubling time. </li>
+                  <li>Maharashtra and Delhi in particular are the most concerning states with the doubling time not increasing even with very high number of cases already registered. This may suggest that these states are still quite far from reaching their peak.</li>
+                  <li>On the positive note, Punjab and Andhra Pradesh seem to be increasing their doubling time in recent days.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+    </section>
+
+
+
+
+    <section id="district_analysis_top" class="content-section district_analysis_top">
+      <div class="container">
+        <!--<h1 class="section_title">Emerging Hotspots</h1>-->
+
+
+        <div class="row div_table_background text-center justify-content-center">
+          <div class="col-lg-10" id="top_hotspots">
+            <h3 class="section_title">Top Hotspot Districts</h3>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12 what_to_look_for_container">
+                <div>
+                  <span>Click on table headers to sort the table by cases, deaths, growth rate.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table id="top_hotspots_table" class="table table-striped table-sm top_hotspots_table" cellspacing="0" width="100%">
+                <thead>
+                  <tr class="table-primary">
+                    <th class="th-sm table-header">District</th>
+                    <th class="th-sm table-header">Cases</th>
+                    <th class="th-sm table-header">Cases Per Million</th>
+                    <th class="th-sm table-header">Deaths</th>
+                    <th class="th-sm table-header">Case Growth Rate (%)</th>
+                    <th class="th-sm table-header">Growth Rate Visualised</th>
+                  </tr>
+                </thead>
+                <tbody id="top_hotspots_table_body">
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="container div_fig_background">
+          <h3 class="section_title">Daily Growth Rate of Cases</h3>
+          <div class="row text-center justify-content-center">
+              <div class="col-lg-4 col-12">
+                <div class="row">
+                  <div class="col-lg-10 col-8">
+                      <div class="control-group">
+                        <select id="select_district_growth_rate" class="select2_select">
+                          <option value="">Search for a district</option>
+                          <!--<option></option>-->
+                        </select> 
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-4">
+                      <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_districts_growth_rate">Show All</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-8 what_to_look_for_container">
+              <div id="what_to_look_for_container">
+                <span class="what_to_look_for_title">Watch out for</span>: Ideally growth rates should go to zero. Seemingly low daily growth rate such as 20 percent is still significant with case count doubling in less than four days.
+              </div>
+            </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-10 col-12" id="district_growth_rates">
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-8 takeaway_container">
+              <div id="takeaway_container">
+                <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
+                <ul>
+                  <li>Districts in Tamil Nadu, Gujarat, Maharashtra are showing worrying trends of very high case growth rates.</li>
+                  <li>On the other hand, districts in Kerala, Telangana seem to be doing well over past couple of weeks.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        
+        <div class="container div_fig_background">
+          <h3 class="section_title">New Cases per 100,000 people</h3>
+          <div class="row text-center justify-content-center">
+              <div class="col-lg-4 col-12">
+                <div class="row">
+                  <div class="col-lg-10 col-8">
+                      <div class="control-group">
+                        <select id="select_district_case_density" class="select2_select">
+                          <option value="">Search for a district</option>
+                          <!--<option></option>-->
+                        </select> 
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-4">
+                      <button type="button" class="btn btn-secondary btn-sm show_all_button" id="show_all_districts_case_density">Show All</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-8 what_to_look_for_container">
+              <div id="what_to_look_for_container">
+                <span class="what_to_look_for_title">How to read this graph</span>: Shows district case count per 100,000 people over last two weeks. Districts with curves pointing upward are the emerging hotspots.
+              </div>
+            </div>
+          </div>
+
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-10 col-12" id="district_case_density"></div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-8 takeaway_container">
+              <div id="takeaway_container">
+                <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
+                <ul>
+                  <li>Districts in West Bengal, Tamil Nadu, Gujarat are showing worrying upward trends.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!--
+        <div class="container div_fig_background">
+          <h3 class="section_title">Map: Emerging Hotspots</h3>
+          
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-12 what_to_look_for_container">
+              <div id="what_to_look_for_container">
+                <span class="what_to_look_for_title">How to use the map</span>: Drag the sliders to identify hotspot districts based on case count, case density, case growth rate criteria.
+                </br> 
+                <span id="emerging_hotspots_map_showing_text"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row slider_top text-center justify-content-center">
+            <div class="col-lg-8 col-12">
+              <div class="row">
+                <div class="col-lg-4 col-4">Case count
+                  <div id="slider_cases">
+                    <div id="slider_cases_handle" class="ui-slider-handle"></div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-4">Case per 100,000
+                  <div id="slider_density">
+                    <div id="slider_density_handle" class="ui-slider-handle"></div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-4">Case growth rate
+                  <div id="slider_growth">
+                    <div id="slider_growth_handle" class="ui-slider-handle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12" id="emerging_hotspot_map_container">
+              <div id="emerging_hotspot_map" style="height: 80vh;"></div>
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+    </section>
+
+
+
+    <section id="outbreak_free_districts_top" class="content-section outbreak_free_districts_top">
+
+      <div class="container div_fig_background">
+        <h3 class="section_title">Outbreak free Districts</h3>
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-10">
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-12 what_to_look_for_container">
+                <div id="what_to_look_for_container">
+                  <span class="what_to_look_for_title">Watch out for</span>: Each circle is a district. The size of the circle is proportional to the number of confirmed cases in that district. The districts are color-coded as <br/>
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#32cd32" /></svg>
+                  0 cases
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#ffbf00" /></svg>
+                  < 10 cases
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#FA8072" /></svg>
+                  > 10 cases
+                </div>
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-8" id="outbreak_free_districts">
+              </div>
+            </div>
+
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-10 takeaway_container">
+                <div id="takeaway_container_outbreak_free_districts">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+
 
 
 
@@ -1171,7 +1095,7 @@
     <script src='js/scrollama.min.js'></script>
 
 
-    <!--
+
     <script src="js/draw_maps.js"></script>
     <script src="js/draw_daily_cases_deaths.js"></script>
     <script src="js/draw_total_cases_deaths.js"></script>
@@ -1183,7 +1107,7 @@
 
     <script src="js/draw_district_growth_rate.js"></script>
     <script src="js/draw_case_density_curve.js"></script>
-    <script src="js/draw_emerging_hotspots_map.js"></script>
+    <!--<script src="js/draw_emerging_hotspots_map.js"></script>-->
     
     <script src="js/animate_state_fatality_rate.js"></script>
     <script src="js/draw_district_daily_case_count.js"></script>
@@ -1192,10 +1116,10 @@
     <script src="js/draw_outbreak_free_districts.js"></script>
     <script src="js/draw_state_recovery_rate.js"></script>
     <script src="js/cluster_table.js"></script>
-    <script src="js/draw_cluster_map.js"></script>
-    <script src="js/draw_scroll_outbreak_spread_map.js"></script>
+    <!--<script src="js/draw_cluster_map.js"></script>
+    <script src="js/draw_scroll_outbreak_spread_map.js"></script>-->
     <script src="js/draw_country_case_count.js"></script>
-    -->
+    
     <script src="js/draw_country_testing_rate.js"></script>
 
 

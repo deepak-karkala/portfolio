@@ -1,3 +1,4 @@
+(function(){
 idname = "#country_case_count";
 d3.select(idname).select("svg").remove();
 filename = "data/country_case_count.csv";
@@ -419,7 +420,7 @@ function show_all_countries_case_count_button_click_handler() {
 	show_highlight_countries_case_count();
 }
 
-
+})();
 
 
 

@@ -1,3 +1,4 @@
+(function(){
 // District wise growth rate
 idname = "#district_case_density"
 d3.select(idname).select("svg").remove();
@@ -364,5 +365,5 @@ function show_all_districts_case_density_button_click_handler() {
 
 	show_highlight_districts_case_density();
 }
-
+})();
 

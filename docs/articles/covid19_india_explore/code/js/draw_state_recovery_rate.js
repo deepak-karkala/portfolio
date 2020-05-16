@@ -1,3 +1,4 @@
+(function() {
 idname = "#recovery_rate";
 filename = "data/state_recovery_rate.csv";
 d3.select(idname).select("svg").remove();
@@ -182,5 +183,5 @@ function plot_recovery_rate_legend() {
 	legend.innerHTML += `   More recoveries`;
 
 }
-
+})();
 
