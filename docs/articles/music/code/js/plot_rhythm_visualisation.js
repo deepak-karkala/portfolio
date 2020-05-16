@@ -8,9 +8,9 @@ function plot_rhythm_visualisation_initial() {
 
     var minDeviceWidth = 375;
     var maxDeviceWidth = 1024;
-    var width_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.60, 0.30]);
+    var width_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.60, 0.20]);
     width_scale_factor = width_scale_factor_width(bb);
-    var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.60, 0.30]);
+    var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.60, 0.20]);
     height_scale_factor = height_scale_factor_width(bb);
 
 
@@ -87,8 +87,8 @@ function plot_rhythm_visualisation(idname, csv_processed_file, width, height) {
             .attr('cx',function (d) { return xScale(d.cx); })
             .attr('cy',function (d) { return yScale(d.cy); })
             .attr('r', function (d) {
-                if (window.innerwidth >= 768) {
-                    return "0.25rem";
+                if (window.innerWidth >= 768) {
+                    return "0.15rem";
                 } else {
                     return "0.10rem";
                 }

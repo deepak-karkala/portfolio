@@ -22,6 +22,32 @@ body {
   /*text-align: justify;*/
 }
 
+p {
+  font-size: 1.1rem;
+  font-weight: 50;
+  padding-top: 20px;
+}
+
+h4 {
+  padding-top: 40px;
+}
+
+.intro_text {
+  font-size: 1.15rem;
+}
+
+.intro_data_text {
+  font-size: 0.85rem;
+  color: #c0c0c0;
+  padding-top: 0px;
+}
+
+.intro_data_text_title {
+  color: #c0c0c0;
+  font-size: 1rem;
+}
+
+
 /*
 p,
 h1,
@@ -674,6 +700,14 @@ figure p {
   }
 }
 
+.rhythm_pattern_features {
+  font-size: 0.85rem;
+}
 
+.step_small_text {
+  font-size: 0.8rem;
+}
 
-
+.rhythm_viz_explaination {
+  color: #F9E79F;
+}

@@ -533,11 +533,12 @@ function get_rhythm_viz_frame_explainer(artist_name, song_name, frame_id, song_p
                         <button type="button" id=` + button_id + ` class="btn btn-default btn-sm play_pause_button"></button>
                     </div>
                 </div>
-                <div class="row rhythm_viz_frame_subtitle">
+                <div class="row rhythm_viz_frame_subtitle rhythm_pattern_features">
                     <div class="col-lg-12">
-                        The radius determines the pitch. Colors denote different notes present in the rhythm. 
-                        The on and off duration of the note are represented by the presence and absence of
-                        different colors.
+                        Each note in the song is shown as a circle. The pitch of the note determines the
+                        distance of the circle from center. The colors denote the various notes present
+                        in the song. The space between the circles are based on the on and off duration
+                        of the notes. Together these features constitute a rhythm pattern.
                     </div>
                 </div>
                 <div class="row">
