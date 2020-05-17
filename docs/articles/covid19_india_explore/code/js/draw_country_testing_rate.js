@@ -192,7 +192,12 @@ function draw_country_testing_rate(idname, file, width, height) {
 			  }
 			)
 			.on("mousemove", function(){
-				return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+				if (event.pageX >= window.innerWidth/2) {
+					return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-120)+"px");
+				} else {
+					return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+				}
+				//return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
 			})
 			.on("mouseout", function(d, i){
 				//d3.select(this).style('stroke-width', "1px").style("opacity", 1.0);
