@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="expires" content="0">
+
+    <title>Coronavirus in India: Daily Tracker, Insights and More</title>
+
+    <!-- Range slider -->
+    <link rel="stylesheet" href="css/rangeslider.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery-ui.structure.css">
+    <link rel="stylesheet" href="css/jquery-ui.theme.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.0/mapbox.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <!--<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
+
+    <!--
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <link href="https://api.tiles.mapbox.com/mapbox.js/v1.0.3/mapbox.css" rel='stylesheet' />
+    -->
+
+    <!-- Select2 -->
+    <script src="/vendor/jquery3.3.1/jquery.min.js"></script>
+
+    <!--
+    <link href="css/select2.css" rel="stylesheet"/>
+    <script src="js/select2.js"></script>
+        <script>
+        $(document).ready(function() {
+            //$('.js-example-basic-single').select2();
+            $('#select_state_case_count').select2();
+            $('#select_state_doubling_time').select2();
+            $('#select_district_growth_rate').select2();
+            $('#select_district_case_density').select2();
+            $('#select_country_case_count').select2();
+        });
+    </script>
+    -->
+
+    <!-- Table with sorting, pagination -->
+    <!-- Font Awesome -->
+    <!-- Google Fonts -->
+    <!-- Material Design Bootstrap -->
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">-->
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">-->
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">-->
+    <script src="/vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>-->
+    <!--
+    <script src="vendor/mdb/js/popper.min.js"></script>
+    <script src="vendor/mdb/js/mdb.min.js"></script>
+    <link href="vendor/mdb/css/addons/datatables2.min.css" rel="stylesheet">
+    <script src="vendor/mdb/js/addons/datatables2.min.js" type="text/javascript"></script>
+    <link href="vendor/mdb/css/addons/datatables-select2.min.css" rel="stylesheet">
+    <script src="vendor/mdb/js/addons/datatables-select2.min.js" type="text/javascript"></script>
+    -->
+    <link href="css/grayscale.css" rel="stylesheet">
+    <link href="css/scroll_style.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="nav-link js-scroll-trigger" href="../../../../index.html">Home</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="../about/index.html">About this project</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../../../../index.html#projects_portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../../../../index.html#about_me">About me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../../../../index.html#contact_me">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="heading">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+            <h1 class="brand-heading">Coronavirus in India: Daily Tracker, Insights, Visualisations and More</h1>
+            <!--<p class="intro-text">Tracking, visualising and useful insights about the outbreak in India</p>-->
+            <p>By <span class="article_author">Deepak Karkala</span></p>
+            <!--<p class="article_date">April 2020</p>-->
+            <p class="article_subtitle">Last updated at </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <section id='scroll1'>
+    <div class='scroll__text1'>
+      <div class='step1 step_bkg' data-step='0'>
+        <p></p>
+      </div>
+      <div class='step1 center_step' data-step='1'>
+        <p>The coronavirus outbreak was first reported in Wuhan, China in late 2019. Since then, it has turned into a pandemic affecting nearly every country across the world.</p>
+      </div>
+      <div class='step1 center_step' data-step='2'>
+        <p>The outbreak spread comparatively late in India but the cases are now rising fast in May 2020.</p>
+      </div>
+      <div class='step1 center_step' data-step='3'>
+        <p>This report explores how the outbreak started in India, analyses the current scenario, state wise analysis and predicts a few scenarios how the outbreak may turn out in the coming months.</p>
+      </div>
+      <div class='step1 center_step' data-step='4'>
+        <p>Continue scrolling to explore more.</p>
+      </div>
+      <div class='step1 high-z-index' data-step='5'>
+        <p>As of May 8 2020, India has close to 60,000 confirmed cases of Covid19 each shown as a red dot here. Hover over the dots to get patient data.</p>
+      </div>
+      <div class='step1 center_step' data-step='6'>
+        <p>How did we get here ? How did it all start in India ? We analyse about 2000 early cases which were mapped to known sources.</p>
+      </div>
+      <div class='step1' data-step='7'>
+        <p>We track how the pandemic spread by drawing a link between the source where the patient contracted the virus to the destination where the patient was diagnosed.</p>
+      </div>
+      <div class='step1' data-step='8'>
+        <p>Notice how the initial cases were almost exclusively tied to international travel history. Cases linked to Delhi religious conference can be see in early April. In recent weeks, most cases are linked to family members and other close contacts.</p>
+      </div>
+      <div class='step1' data-step='9'>
+        <p>What started out as few isolated cases is now a full blown crisis with close to 60,000 cases as of May 8 2020.</p>
+      </div>
+      <div class='step1' data-step='10'>
+        <p>Sadly close to 2,000 people (shown as black dots) have lost their lives, but the good news is that close to 18,000 (shown as green dots) have recovered.</p>
+      </div>
+      <div class='step1' data-step='11'>
+        <p>We now visualize how the number of cases have risen over the first 100 days since the first reported case in India. Encouragingly, notice how most early patients have now recovered.</p>
+      </div>
+      <div class='step1' data-step='12'>
+        <p>Mapping the cases to districts,</p>
+      </div>
+      <div class='step1' data-step='13'>
+        <p>Combining cases by state,</p>
+      </div>
+      <div class='step1' data-step='14'>
+        <p>Size of the circle is based on the number of cases in that state,</p>
+      </div>
+      <div class='step1' data-step='15'>
+        <p>Let us know inspect how well are the states testing, by arranging circles based on number of tests per thousand people.</p>
+      </div>
+      <div class='step1' data-step='16'>
+        <p>Let us move the states on vertical axis based on number of cases per million people.</p>
+      </div>
+      <div class='step1' data-step='17'>
+        <p>State testing observation,</p>
+      </div>
+      <div class='step1' data-step='18'>
+        <p>Number of days to double, </p>
+      </div>
+      <div class='step1' data-step='19'>
+        <p>Let us now see how well is India testing compared to other countries,</p>
+      </div>
+      <div class='step1' data-step='20'>
+        <p>India is alongside other populous countries such as Mexico, Indonesia in terms of number of tests conducted.</p>
+      </div>
+      <div class='step1' data-step='21'>
+        <p>Now let us include all the countries most hit by the virus.</p>
+      </div>
+      <div class='step1' data-step='22'>
+        <p>India's testing rate is abysmally low compared to most other Asian and European countries and the true case count could be much higher than the current reported numbers.</p>
+      </div>
+      <div class='step1' data-step='23'>
+        <p>Now we get to the question on everyone's mind, when will this be over and when will life get back to normal ?</p>
+      </div>
+      <div class='step1' data-step='24'>
+        <p>We build a few prediction models to answer when will India reach its infection peak ? How many cases and deaths per day can we expect at the peak ? When will the outbreak stop ?</p>
+      </div>
+      <div class='step1' data-step='25'>
+        <p>We consider three scenarios: Scenario 1: Lockdown extended, Scenario 2: Lockdown lifted but with social distancing, Scenario 3: Lockdown lifted with no social distancing.</p>
+      </div>
+      <div class='step1' data-step='25'>
+        <p>Let us now see what the models predict under these three sceanrios ?</p>
+      </div>
+      <div class='step1' data-step='26'>
+        <p>Scenario 1: Lockdown extended</p>
+      </div>
+      <div class='step1' data-step='27'>
+        <p>Scenario 2: Lockdown lifted but with social distancing</p>
+      </div>
+      <div class='step1' data-step='28'>
+        <p>Scenario 3: Lockdown lifted with no social distancing</p>
+      </div>
+      <div class='step1' data-step='29'>
+        <p>Although the actual absolute numbers may differ widely in reality, what the models do indicate is the dramatic effect of following better social distancing.</p>
+      </div>
+      <div class='step1' data-step='29'>
+        <p>The world was woefully underprepared in countering this pandemic. Unfortunately most people still seem unaware of the threats posed by this highly contagious virus.</p>
+      </div>
+      <div class='step1' data-step='30'>
+        <p>To illustrate how effective the virus has been in spreading itself, let us visualize how the virus conquered India's districts one by one.</p>
+      </div>
+      <div class='step1' data-step='31'>
+        <p>The outbreak started in India's metropolitan cities but notice how rapidly it is now expanding to India's hinterland. This is a very worrying trend. The healthcare system will be quickly overwhelmed and this crisis will soon turn into an outright catastrophe.</p>
+      </div>
+      <div class='step1' data-step='32'>
+        <p>India's case count as of May 8 is close to 60,000 and quickly rising. </p>
+      </div>
+       <div class='step1' data-step='33'>
+        <p>Sadly the number of cases and deaths will continue to rise rapidly over next few weeks. It is important not to treat these dots as just statistics instead realise that these each of these dots has a mother, a father, children, a friend and more. Soon this could be you or someone you know.</p>
+      </div>
+      <div class='step1' data-step='34'>
+        <p>We end this report with the grim reminder that lockdown being relaxed is not a license to venture out unnecessarily. Following strict social distancing goes a long way in slowing the spread of virus.</p>
+      </div>
+      <div class='step1' data-step='35'>
+        <p>Let us consider this as a rare opportunity for humanity to fight for a common cause in the best interest for all of us, the onus of which is upon each and everyone of us.</p>
+      </div>
+      <div class='step1 step_bkg' data-step='36'>
+        <p></p>
+      </div>
+      <div class='step1 step_bkg' data-step='37'>
+        <p></p>
+      </div>
+      <div class='step1 step_bkg' data-step='38'>
+        <p>The report that follows lets you inspect and analyse various coronavirus related data and statistics specific to India. Continue reading to explore more.</p>
+      </div>
+      <div class='step1 step_bkg' data-step='39'>
+        <p>You can inspect how well are the states flattening their curves, the top district wise hotspots, daily district wise growth rate of cases, testing and recovery rates of states, districts free of virus. You can also compare India's case trajectory and testing rates with those of other countries.</p>
+      </div>
+    </div>
+
+    <div class='scroll__graphic1'>
+        <div class="row">
+          <div class="col-lg-10 col-12">
+            <div id="scroll1_chart_title">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-12">
+            <div id="scroll1_chart"></div>
+          </div>
+        </div>
+    </div>
+
+  </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <p>
+              All the code for this project can be found on <a href="https://github.com/deepak-karkala/portfolio/tree/master/docs/articles/airbnb/code">Github</a>.
+            </p>
+            
+            <p>
+              This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://d3js.org/">d3js</a>. The template for this html page was adapted from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>.
+            </p>
+            <p><a href="../about/index.html">Click here</a> to view more about the design, methodology of this project.</p>
+            <p class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a> or send me an email at <a href="mailto:dkarkala01@gmail.com" target="_top"><span class="contact_link">dkarkala01@gmail.com</span></a></p>
+            <!--<p class="text-center">Copyright &copy; Deepak Karkala 2020</p>-->
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!--<script src="vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>-->
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing1.4.1/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>-->
+
+    <!-- D3js -->
+    <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+    <script src="/vendor/d3.v4.min.js"></script>
+    <!--<script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>-->
+
+    <!-- Custom scripts for this template -->
+    <!--
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox.js/v1.0.3/mapbox.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+    -->
+    <script src="//d3js.org/d3-geo-projection.v1.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src='https://unpkg.com/intersection-observer@0.5.0/intersection-observer.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.0/mapbox.js'></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/chroma-js/0.5.9/chroma.min.js"></script>-->
+
+
+    <!--<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+
+    <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+
+    <script src="js/jquery-ui.min.js"></script>
+    <script src='js/rangeslider.js'></script>
+
+    <script src="js/grayscale.js"></script>
+    <script src="js/script.js"></script>
+    
+    <script src='js/stickyfill.min.js'></script>
+    <script src='js/scrollama.min.js'></script>
+
+    <script src="js/scroll/load_data.js"></script>
+    <!--<script src="js/scroll/draw_scroll_predictions.js"></script>-->
+    <script src="js/scroll/draw_scroll_outbreak_spread_map.js"></script>
+    <script src="js/scroll/plot_state_circles.js"></script>
+    <script src="js/scroll/plot_over_time.js"></script>
+    <script src="js/scroll/draw_scroll_state_ntod_animate.js"></script>
+    <script src="js/scroll/draw_scroll_outbreak_free_districts.js"></script>
+    <script src="js/scroll/scroll_script.js"></script>
+
+  </body>
+
+</html>
