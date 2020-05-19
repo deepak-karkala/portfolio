@@ -1,6 +1,11 @@
-(function(){
-var is_init = 1;
-draw_maps(is_init, "")
+//(function(){
+
+script_load_timeout_list.push(setTimeout(load_draw_maps_script, 1*script_load_timestep));
+
+function load_draw_maps_script() {
+	var is_init = 1;
+	draw_maps(is_init, "")
+}
 
 function draw_maps(is_init, selected_button_id) {
 	map_container = "india_cases_map";
@@ -11,7 +16,7 @@ function draw_maps(is_init, selected_button_id) {
 		//$('#india_cases_map').html('')
 	}
 
-	console.log(selected_button_id);
+	//console.log(selected_button_id);
 
 	if ((is_init==1) || (selected_button_id=="district_cases")) {
 		draw_leaflet_topojson_district_confirmed_map(map_container);
@@ -232,7 +237,7 @@ function draw_leaflet_topojson_district_confirmed_map(map_container) {
 	            geojson = topojson.feature( jsonData, 
 	                    jsonData.objects[key]);
 	            L.GeoJSON.prototype.addData.call(this, geojson);
-	            console.log(geojson);
+	            //console.log(geojson);
 	          }
 	        }    
 	        else 
@@ -457,4 +462,4 @@ function setup_map_option_buttons() {
 
 // setup the buttons.
 setup_map_option_buttons();
-})();
+//})();

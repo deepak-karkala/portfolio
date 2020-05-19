@@ -1,36 +1,34 @@
 
-(function(){
-// Daily cases
-idname = "#state_case_count"
-d3.select(idname).select("svg").remove();
-filename = "data/state_case_count.csv";
-width_scale_factor = 0.85;
-var bb = d3.select(idname).node().offsetWidth;
+//(function(){
+script_load_timeout_list.push(setTimeout(load_stateCaseCount_script, 7*script_load_timestep));
 
-if (window_inner_width <= small_screen_thresh) {
-	var margin = {right:10, left:30, top:20, bottom:50};
-} else {
-	var margin = {right:50, left:50, top:20, bottom:50};
+
+function load_stateCaseCount_script() {
+	// Daily cases
+	idname = "#state_case_count"
+	d3.select(idname).select("svg").remove();
+	filename = "data/state_case_count.csv";
+	width_scale_factor = 0.85;
+	var bb = d3.select(idname).node().offsetWidth;
+
+	if (window_inner_width <= small_screen_thresh) {
+		var margin = {right:20, left:30, top:20, bottom:50};
+	} else {
+		var margin = {right:50, left:50, top:20, bottom:50};
+	}
+
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	//height_scale_factor = 0.40;
+	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
+	height_scale_factor = height_scale_factor_width(bb);
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+
+	draw_state_case_count(idname, filename, base_width, base_height, margin);
+
 }
 
-base_width = bb*width_scale_factor - margin.left - margin.right;
-//base_height = bb*height_scale_factor - margin.top - margin.bottom;
-//height_scale_factor = 0.40;
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
-height_scale_factor = height_scale_factor_width(bb);
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-
-draw_state_case_count(idname, filename, base_width, base_height);
-
-var state_latest_case_count = [];
-var case_count_state_list = [];
-var state_case_count_highlight_list = [];
-var default_background_color_state_case_count = "#808080";
-var state_growth_rate = [];
-var state_case_count_highlight_list = ["Delhi", "Maharashtra", "Kerala", "Rajasthan",
-                            			"Andhra-Pradesh", "Jharkhand", "Bihar"];
-
-function draw_state_case_count(idname, filename, width, height) {
+function draw_state_case_count(idname, filename, width, height, margin) {
 
 	var tooltip = d3.select("body")
         .append("div")
@@ -443,4 +441,4 @@ function plot_flattening_curve_legend(idname) {
       .call(legendLinear);
 }
 
-})();
+//})();

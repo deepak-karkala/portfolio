@@ -1,30 +1,63 @@
-(function(){
-idname = "#country_case_count";
-d3.select(idname).select("svg").remove();
-filename = "data/country_case_count.csv";
-width_scale_factor = 0.90;
-//height_scale_factor = 0.40;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:20, left:30, top:10, bottom:30};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-//base_height = bb*height_scale_factor - margin.top - margin.bottom;
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.4]);
-height_scale_factor = height_scale_factor_width(bb);
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-draw_country_daily_case_count(idname, filename, base_width, base_height);
+//(function(){
 
-var default_background_color_country_case_count = "#808080";
-//var country_case_count_highlight_list = ["Switzerland","Germany","Spain","France","United-Kingdom",
-//    							"Italy", "Netherlands", "Sweden", "China", "India", "Iran", "Japan",
-//    							"South-Korea", "Singapore","United-States"];
+script_load_timeout_list.push(setTimeout(load_countryCaseCount_script, 17*script_load_timestep));
 
-var country_case_count_highlight_list = ["Germany","Spain","France",
-    							"Italy", "China", "India", "Japan",
-    							"South-Korea", "Singapore","United-States", "Austria"];
-var country_case_count_list = [];
+function load_countryCaseCount_script() {
+	idname = "#country_case_count";
+	d3.select(idname).select("svg").remove();
+	filename = "data/country_case_count.csv";
+	width_scale_factor = 0.90;
+	//height_scale_factor = 0.40;
+	var bb = d3.select(idname).node().offsetWidth;
+	var margin = {right:20, left:30, top:10, bottom:30};
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.4]);
+	height_scale_factor = height_scale_factor_width(bb);
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	draw_country_daily_case_count(idname, filename, base_width, base_height, margin);
+}
 
 
-function draw_country_daily_case_count(idname, filename, width, height) {
+function draw_country_daily_case_count(idname, filename, width, height, margin) {
+
+	var country_continent_mapping = {'United Arab Emirates': 'Asia',
+                                 'Austria': 'Europe',
+                                 'Belgium': 'Europe',
+                                 'Belarus': 'Europe',
+                                 'Brazil': 'Americas',
+                                 'Canada': 'Americas',
+                                 'Switzerland': 'Europe',
+                                 'Chile': 'Americas',
+                                 'China': 'Asia',
+                                 'Germany': 'Europe',
+                                 'Ecuador': 'Africa',
+                                 'Spain': 'Europe',
+                                 'France': 'Europe',
+                                 'United Kingdom': 'Europe',
+                                 'Indonesia': 'Asia',
+                                 'India': 'Others',
+                                 'Ireland': 'Europe',
+                                 'Iran': 'Asia',
+                                 'Israel': 'Asia',
+                                 'Italy': 'Europe',
+                                 'Japan': 'Asia',
+                                 'South Korea': 'Asia',
+                                 'Mexico': 'Americas',
+                                 'Netherlands': 'Europe',
+                                 'Pakistan': 'Asia',
+                                 'Peru': 'Americas',
+                                 'Poland': 'Europe',
+                                 'Portugal': 'Europe',
+                                 'Qatar': 'Asia',
+                                 'Romania': 'Europe',
+                                 'Russia': 'Europe',
+                                 'Saudi Arabia': 'Asia',
+                                 'Singapore': 'Asia',
+                                 'Sweden': 'Europe',
+                                 'Turkey': 'Europe',
+                                 'Ukraine': 'Europe',
+                                 'United States': 'Americas'}
 
 	// parse the date / time
     var country_current_case_count = [];
@@ -374,6 +407,43 @@ $("#select_country_case_count").change(function() {
 
 
 function show_selected_country_case_count(country_name) {
+	var country_continent_mapping = {'United Arab Emirates': 'Asia',
+                                 'Austria': 'Europe',
+                                 'Belgium': 'Europe',
+                                 'Belarus': 'Europe',
+                                 'Brazil': 'Americas',
+                                 'Canada': 'Americas',
+                                 'Switzerland': 'Europe',
+                                 'Chile': 'Americas',
+                                 'China': 'Asia',
+                                 'Germany': 'Europe',
+                                 'Ecuador': 'Africa',
+                                 'Spain': 'Europe',
+                                 'France': 'Europe',
+                                 'United Kingdom': 'Europe',
+                                 'Indonesia': 'Asia',
+                                 'India': 'Others',
+                                 'Ireland': 'Europe',
+                                 'Iran': 'Asia',
+                                 'Israel': 'Asia',
+                                 'Italy': 'Europe',
+                                 'Japan': 'Asia',
+                                 'South Korea': 'Asia',
+                                 'Mexico': 'Americas',
+                                 'Netherlands': 'Europe',
+                                 'Pakistan': 'Asia',
+                                 'Peru': 'Americas',
+                                 'Poland': 'Europe',
+                                 'Portugal': 'Europe',
+                                 'Qatar': 'Asia',
+                                 'Romania': 'Europe',
+                                 'Russia': 'Europe',
+                                 'Saudi Arabia': 'Asia',
+                                 'Singapore': 'Asia',
+                                 'Sweden': 'Europe',
+                                 'Turkey': 'Europe',
+                                 'Ukraine': 'Europe',
+                                 'United States': 'Americas'};
 	//country_color = country_color_mapping[country_name];
 	country_color = continent_color_mapping(country_continent_mapping[country_name.split("-").join(" ")]);
 
@@ -393,6 +463,44 @@ $("#show_all_countries_case_count").click(function() {
 });
 
 function show_highlight_countries_case_count() {
+	var country_continent_mapping = {'United Arab Emirates': 'Asia',
+                                 'Austria': 'Europe',
+                                 'Belgium': 'Europe',
+                                 'Belarus': 'Europe',
+                                 'Brazil': 'Americas',
+                                 'Canada': 'Americas',
+                                 'Switzerland': 'Europe',
+                                 'Chile': 'Americas',
+                                 'China': 'Asia',
+                                 'Germany': 'Europe',
+                                 'Ecuador': 'Africa',
+                                 'Spain': 'Europe',
+                                 'France': 'Europe',
+                                 'United Kingdom': 'Europe',
+                                 'Indonesia': 'Asia',
+                                 'India': 'Others',
+                                 'Ireland': 'Europe',
+                                 'Iran': 'Asia',
+                                 'Israel': 'Asia',
+                                 'Italy': 'Europe',
+                                 'Japan': 'Asia',
+                                 'South Korea': 'Asia',
+                                 'Mexico': 'Americas',
+                                 'Netherlands': 'Europe',
+                                 'Pakistan': 'Asia',
+                                 'Peru': 'Americas',
+                                 'Poland': 'Europe',
+                                 'Portugal': 'Europe',
+                                 'Qatar': 'Asia',
+                                 'Romania': 'Europe',
+                                 'Russia': 'Europe',
+                                 'Saudi Arabia': 'Asia',
+                                 'Singapore': 'Asia',
+                                 'Sweden': 'Europe',
+                                 'Turkey': 'Europe',
+                                 'Ukraine': 'Europe',
+                                 'United States': 'Americas'};
+
 	for (var h=0; h<country_case_count_highlight_list.length; h++) {
 		country_name = country_case_count_highlight_list[h];
 		country_color = continent_color_mapping(country_continent_mapping[country_name.split("-").join(" ")]);
@@ -420,7 +528,7 @@ function show_all_countries_case_count_button_click_handler() {
 	show_highlight_countries_case_count();
 }
 
-})();
+//})();
 
 
 

@@ -1,24 +1,27 @@
-(function(){
+//(function(){
 
-// District wise growth rate
-idname = "#state_streamgraph"
-d3.select(idname).select("svg").remove();
-filename = "data/state_streamgraph_data.csv";
-//type = "cases";
-width_scale_factor = 0.9;
-//height_scale_factor = 0.50;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:80, left:30, top:20, bottom:60};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-//base_height = bb*height_scale_factor - margin.top - margin.bottom;
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.5]);
-height_scale_factor = height_scale_factor_width(bb);
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-plot_state_streamgraph(idname, filename, base_width, base_height);
+script_load_timeout_list.push(setTimeout(load_stateStreamGraph_script, 6*script_load_timestep));
+
+function load_stateStreamGraph_script() {
+	// District wise growth rate
+	idname = "#state_streamgraph"
+	d3.select(idname).select("svg").remove();
+	filename = "data/state_streamgraph_data.csv";
+	//type = "cases";
+	width_scale_factor = 0.9;
+	//height_scale_factor = 0.50;
+	var bb = d3.select(idname).node().offsetWidth;
+	var margin = {right:80, left:30, top:20, bottom:60};
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.5]);
+	height_scale_factor = height_scale_factor_width(bb);
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	plot_state_streamgraph(idname, filename, base_width, base_height, margin);
+}
 
 
-
-function plot_state_streamgraph(idname, filename, width, height) {
+function plot_state_streamgraph(idname, filename, width, height, margin) {
 	//https://www.d3-graph-gallery.com/graph/streamgraph_basic.html
 	//http://bl.ocks.org/WillTurman/4631136
 	//https://bl.ocks.org/HarryStevens/c893c7b441298b36f4568bc09df71a1e
@@ -175,4 +178,4 @@ function plot_state_streamgraph(idname, filename, width, height) {
 
 
 }
-})();
+//})();

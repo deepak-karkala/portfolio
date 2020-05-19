@@ -1,21 +1,25 @@
-(function() {
-idname = "#recovery_rate";
-filename = "data/state_recovery_rate.csv";
-d3.select(idname).select("svg").remove();
-width_scale_factor = 0.95;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:10, left:40, top:30, bottom:20};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-plot_state_recovery_rate(idname, filename, base_width);
-var data = [];
-var recovery_rate_color_scale = d3.scaleSequential(d3.interpolateRdYlGn);
+//(function() {
+
+script_load_timeout_list.push(setTimeout(load_stateRecovery_script, 10*script_load_timestep));
+
+function load_stateRecovery_script() {
+    idname = "#recovery_rate";
+    filename = "data/state_recovery_rate.csv";
+    d3.select(idname).select("svg").remove();
+    width_scale_factor = 0.95;
+    var bb = d3.select(idname).node().offsetWidth;
+    var margin = {right:10, left:40, top:30, bottom:20};
+    base_width = bb*width_scale_factor - margin.left - margin.right;
+    plot_state_recovery_rate(idname, filename, base_width, margin);
+}
 
 
-
-function plot_state_recovery_rate(idname, file, width) {
+function plot_state_recovery_rate(idname, file, width, margin) {
     var minDeviceWidth = 375;
 	var maxDeviceWidth = 1024;
+    var data = [];
 
+    var recovery_rate_color_scale = d3.scaleSequential(d3.interpolateRdYlGn);
     var recovery_rate_normalised = d3.scaleLinear().domain([0, 1]).range([0, 1]);
 	// For large screen widths, show all states
 	if (width>=550) {
@@ -28,16 +32,16 @@ function plot_state_recovery_rate(idname, file, width) {
     var col_gap_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([15, 15]);
     var box_width_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([10.0, 12.0]);
     var font_size_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.5, 0.6]);
-    var font_size = font_size_factor(bb)+"rem";
+    var font_size = font_size_factor(width)+"rem";
 
     //var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([1.5, 0.8]);
     //var height_scale_factor = height_scale_factor_width(bb);
     if (window_inner_width <= small_screen_thresh) {
-        height_scale_factor = 1.75;
+        height_scale_factor = 1.5;
     } else {
-        height_scale_factor = 0.8;
+        height_scale_factor = 0.6;
     }
-    height = bb*height_scale_factor - margin.top - margin.bottom;
+    height = width*height_scale_factor - margin.top - margin.bottom;
 
     // parse the date / time
     var parseTime = d3.timeParse("%d-%b-%y");
@@ -50,6 +54,8 @@ function plot_state_recovery_rate(idname, file, width) {
 		var show_state_list = [];
       	var idx = 0;
       	var date_list = [];
+        var last_date = parseTime(file_data[file_data.length-1].date);
+        last_date.setDate(last_date.getDate()-30);
 
       	file_data.forEach(function(d,i) {
 
@@ -63,7 +69,9 @@ function plot_state_recovery_rate(idname, file, width) {
       			
       		} else {
       			date = new Date(parseTime(d.date));
-      			if (date.getMonth()>=3) { // Start from April
+
+                if (date >= last_date) {
+      			//if (date.getMonth()>=3) { // Start from April
 	      			for (var c=1; c<state_code_list.length; c++) {
 		      			state_code = state_code_list[c];
 		      			if (show_state_list.includes(state_code)) {
@@ -78,7 +86,8 @@ function plot_state_recovery_rate(idname, file, width) {
 			}
 
 		});
-
+        //data = data.slice(data.length-30, data.length-1);
+        //console.log(data);
 
       	var num_dots_per_row = show_state_list.length;
       	var num_rows = data.length;
@@ -173,6 +182,7 @@ function plot_state_recovery_rate(idname, file, width) {
 
 plot_recovery_rate_legend();
 function plot_recovery_rate_legend() {
+    var recovery_rate_color_scale = d3.scaleSequential(d3.interpolateRdYlGn);
 	var legend = document.getElementById("recovery_rate_legend");
 	legend.innerHTML = `More confirmed cases   `;
 	var color_thresh = [0, 0.25, 0.5, 0.75, 1.0];
@@ -183,5 +193,5 @@ function plot_recovery_rate_legend() {
 	legend.innerHTML += `   More recoveries`;
 
 }
-})();
+//})();
 

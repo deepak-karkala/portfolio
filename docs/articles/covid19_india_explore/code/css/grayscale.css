@@ -719,27 +719,59 @@ bottom: .5em;
 .slider_top {
   padding-top: 20px;
   margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.map_slider {
+  margin-top: 20px;
+}
+
+
+.labelstyle {
+  position: absolute;
+  width:60px;
+  height: 20px;
+  font-size:0.75rem;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+}
+
+.leaflet-popup-tip-container {
+    display: none;
+}
+.leaflet-container {
+    background-color:rgba(255,0,0,0.0);
+}
+
+@media (max-width: 768px) {
+  .slider_top {
+    font-size: 0.6rem;
+  }
 }
 
 .css-icon {
 
-  }
+}
 
-  .gps_ring { 
-    border: 3px solid #999;
-     -webkit-border-radius: 30px;
-     height: 18px;
-     width: 18px;   
-      -webkit-animation: pulsate 1s ease-out;
-      -webkit-animation-iteration-count: infinite; 
-      /*opacity: 0.0*/
-  }
+.gps_ring { 
+    border: 3px solid #ff0000;
+    -webkit-border-radius: 30px;
+    height: 18px;
+    width: 18px;   
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite; 
+    /*opacity: 0.0*/
+    z-index: -10;
+}
   
-  @-webkit-keyframes pulsate {
-        0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
-        50% {opacity: 1.0;}
-        100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
-  }
+@-webkit-keyframes pulsate {
+      0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+      50% {opacity: 1.0;}
+      100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}
 
 /* State fatality */
 .tick line{
@@ -809,7 +841,7 @@ bottom: .5em;
   stroke-linejoin: round;
 }
 
-.cluster_animation_button {
+#outbreak_spread_animation_button {
   margin: 10px 0; 
   color: white;
   background-color: #E74C3C;
@@ -1018,4 +1050,10 @@ bottom: .5em;
   font-weight: bold;
   padding: 5px;
 }
+
+.cluster_video video {
+  width: 100%;
+  height: auto;
+}
+
 

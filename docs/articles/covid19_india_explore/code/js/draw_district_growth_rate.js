@@ -1,35 +1,29 @@
-(function(){
-// District wise growth rate
-idname = "#district_growth_rates"
-d3.select(idname).select("svg").remove();
-filename = "data/districtwise_growth_rate_derivedFromRawData.csv";
-//type = "cases";
-width_scale_factor = 0.95;
-//height_scale_factor = 0.35;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:80, left:30, top:20, bottom:60};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-//base_height = bb*height_scale_factor - margin.top - margin.bottom;
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
-height_scale_factor = height_scale_factor_width(bb);
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-plot_district_growth_rate(idname, filename, base_width, base_height);
+//(function(){
 
-min_case_count_to_plot_growth_rate = 60;
-var district_growth_rate_state_color_mapping = d3.scaleOrdinal()
-			.domain([0, 36])
-			.range(state_colors_list);
+script_load_timeout_list.push(setTimeout(load_districtGrowthRate_script, 13*script_load_timestep));
+
+function load_districtGrowthRate_script() {
+	// District wise growth rate
+	idname = "#district_growth_rates"
+	d3.select(idname).select("svg").remove();
+	filename = "data/districtwise_growth_rate_derivedFromRawData.csv";
+	//type = "cases";
+	width_scale_factor = 0.95;
+	//height_scale_factor = 0.35;
+	var bb = d3.select(idname).node().offsetWidth;
+	var margin = {right:80, left:30, top:20, bottom:60};
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
+	height_scale_factor = height_scale_factor_width(bb);
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	plot_district_growth_rate(idname, filename, base_width, base_height, margin);
+}
 
 
-//var district_growth_rate_highlight_list = ["Bhopal_MP", "Banswara_RJ", "Tiruppur_TN", "Ahmadabad_GJ", "Kasaragod_KL",
-//										 "Delhi_DL", "Vadodara_GJ", "Jaipur_RJ"]; //"SPS-Nellore_AP"
+function plot_district_growth_rate(idname, filename, width, height, margin) {
 
-var district_growth_rate_highlight_list = ["Amritsar_PB", "Kolkata_WB", "Solapur_MH", "Chandigarh_CH",
-								"Ludhiana_PB"];
-
-var default_background_color_district_growth_rate = "#c0c0c0";
-
-function plot_district_growth_rate(idname, filename, width, height) {
+	var min_case_count_to_plot_growth_rate = 60;
 
 	var growth_rate_district_list = [];
 	var init_date_offset = 2;
@@ -354,4 +348,4 @@ function show_all_districts_growth_rate_button_click_handler() {
 
 	show_highlight_districts_growth_rate();
 }
-})();
+//})();

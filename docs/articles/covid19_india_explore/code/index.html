@@ -157,12 +157,12 @@
         <div class="col-lg-10 col-md-12 col-sm-12 col-12">
           <div class="header_text text-center">Click to explore specific sections</div>
           <div id="toolbar" class="btn-toolbar">
-            <a href="#basic_maps" id="all" class="button active">Maps</a>
-            <a href="#daily_cases_deaths" id="gender" class="button">Daily Tracker</a>
-            <a href="#cluster_top" id="agegroup" class="button">Tracking the outbreak</a>
-            <a href="#state_analysis_top" id="ruralurban" class="button">State wise analysis</a>
-            <a href="#district_analysis_top" id="religion" class="button">District wise analysis</a>
-            <a href="#country_case_top" id="state" class="button">India vs World</a>
+            <a href="#basic_maps" id="maps" class="button active">Maps</a>
+            <a href="#daily_cases_deaths" id="daily_tracker" class="button">Daily Tracker</a>
+            <a href="#cluster_top" id="tracing_outbreak" class="button">Tracing the outbreak</a>
+            <a href="#state_analysis_top" id="state_analysis" class="button">State wise analysis</a>
+            <a href="#district_analysis_top" id="district_analysis" class="button">District wise analysis</a>
+            <a href="#country_case_top" id="country_analysis" class="button">India vs World</a>
           </div>
         </div>
       </div>
@@ -266,16 +266,14 @@
     <section id="cluster_top" class="content-section cluster_top">
       <!--<h1 class="section_title">Clusters</h1>-->
 
-      <!--
-
       <h3 class="section_title">How did the outbreak start in India ?</h3>
-      <div class="container div_fig_background" style="background-color: white;">
+      <div class="container div_fig_background" style="background-color: #dadada";>
         <div class="row text-center justify-content-center">
           <div class="col-lg-12">
             <div class="row text-center justify-content-center">
               <div class="col-lg-12 what_to_look_for_container">
                 <div id="what_to_look_for_container">
-                  <span class="what_to_look_for_title">Watch out for</span>: We track how the pandemic spread across India for around 2000 cases which have been mapped (<a href="https://github.com/covid19india/api">https://github.com/covid19india/api</a>) to known sources. We drawn a link between the source where the patient contracted the virus to the destination where the patient was diagnosed. Pan and zoom the map to explore in more detail.
+                  <span class="what_to_look_for_title">Watch out for</span>: We track how the pandemic spread across India for around 2000 cases which have been mapped (<a href="https://github.com/covid19india/api">https://github.com/covid19india/api</a>) to known sources. We drawn a link between the source where the patient contracted the virus to the destination where the patient was diagnosed.
                 </div>
               </div>
             </div>
@@ -303,12 +301,13 @@
               </div>
             </div>
 
+            <!--
             <div class="row text-center justify-content-center">
               <div class="col-lg-4 col-8">
                 <button onclick="cluster_animation_button_click()" class="btn btn-sm cluster_animation_button"><i class="fas fa-play-circle"></i> Play Animation</button>
               </div>
             </div>
-
+            -->
             <div class="row text-center justify-content-center">
               <div class="col-lg-12 col-12" id="cluster_map">
               </div>
@@ -332,7 +331,7 @@
           </div>
         </div>
       </div>
-      -->
+
 
       <div class="container " style="background-color: white;">
         <div class="row justify-content-center">
@@ -368,11 +367,9 @@
 
 
 
-<!--
-
     <section id="outbreak_spread_top" class="content-section outbreak_spread_top">
       <div class="container div_fig_background">
-        <h3 class="section_title">Tracking the spread of virus</h3>
+        <h3 class="section_title">Tracing the spread of virus</h3>
         <div class="row text-center justify-content-center">
           <div class="col-lg-12">
 
@@ -383,10 +380,10 @@
                   <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#ff0000" /></svg>
                   Confirmed case
                   &nbsp &nbsp
-                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#0000ff" /></svg>
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#229954" /></svg>
                   Recovered
                   &nbsp &nbsp
-                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#000000" /></svg>
+                  <svg height="20" width="20"><circle cx="10" cy="13" r="5" stroke="black" fill="#0000ff" /></svg>
                   Deceased
                 </div>
               </div>
@@ -394,7 +391,7 @@
 
             <div class="row text-center justify-content-center">
               <div class="col-lg-4 col-8">
-                <button onclick="outbreak_spread_animation_button_click()" class="btn btn-sm cluster_animation_button"><i class="fas fa-play-circle"></i> Play Animation</button>
+                <button class="btn btn-sm" id="outbreak_spread_animation_button"><i class="fas fa-redo"></i> Play Again</button>
               </div>
             </div>
 
@@ -418,7 +415,6 @@
       </div>
     </section>
 
--->
 
 
 
@@ -577,7 +573,7 @@
             </div>
 
             <div class="row text-center justify-content-center">
-              <div class="col-lg-12" id="recovery_rate">
+              <div class="col-lg-12 col-12" id="recovery_rate">
               </div>
             </div>
 
@@ -590,9 +586,10 @@
               <div class="col-lg-10 takeaway_container">
                 <div id="takeaway_container_recovery_rate">
                   <span class="takeaway_title" style="text-align: left;">Key takeaways</span>: 
-                  <ul>
+                  <ul style="text-align: left;">
                     <li>Notice how Kerala (KL) and Goa (GA) have been turning green indicating more recoveries. States like Madhya Pradesh (MP), Gujarat (GJ), Maharashtra (MH) are showing worrying trend by consistently staying red.</li>
                     <li>Even more worrying is the case of Tamil Nadu which is starting to turn red after having earlier shown signs of turning green.</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -791,9 +788,8 @@
 
         </div>
 
-        <!--
         <div class="container div_fig_background">
-          <h3 class="section_title">Map: Emerging Hotspots</h3>
+          <h3 class="section_title">Hotspots Map</h3>
           
           <div class="row text-center justify-content-center">
             <div class="col-lg-12 what_to_look_for_container">
@@ -809,31 +805,31 @@
             <div class="col-lg-8 col-12">
               <div class="row">
                 <div class="col-lg-4 col-4">Case count
-                  <div id="slider_cases">
+                  <div id="slider_cases" class="map_slider">
                     <div id="slider_cases_handle" class="ui-slider-handle"></div>
                   </div>
                 </div>
-                <div class="col-lg-4 col-4">Case per 100,000
-                  <div id="slider_density">
+                <div class="col-lg-4 col-4">Case per million
+                  <div id="slider_density" class="map_slider">
                     <div id="slider_density_handle" class="ui-slider-handle"></div>
                   </div>
                 </div>
                 <div class="col-lg-4 col-4">Case growth rate
-                  <div id="slider_growth">
-                    <div id="slider_growth_handle" class="ui-slider-handle"></div>
+                  <div id="slider_growth" class="map_slider">
+                    <div id="slider_growth_handle" class="ui-slider-handle "></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-lg-12" id="emerging_hotspot_map_container">
-              <div id="emerging_hotspot_map" style="height: 80vh;"></div>
+          <div class="row text-center justify-content-center">
+            <div class="col-lg-8 col-12" id="emerging_hotspot_map_container">
+              <div id="emerging_hotspot_map" style="height: 85vh;"></div>
             </div>
           </div>
         </div>
-        -->
+      
       </div>
     </section>
 
@@ -863,7 +859,7 @@
             </div>
 
             <div class="row text-center justify-content-center">
-              <div class="col-lg-8" id="outbreak_free_districts">
+              <div class="col-lg-8 col-12" id="outbreak_free_districts">
               </div>
             </div>
 
@@ -1094,34 +1090,32 @@
     <script src='js/stickyfill.min.js'></script>
     <script src='js/scrollama.min.js'></script>
 
-
-
+<!--
     <script src="js/draw_maps.js"></script>
     <script src="js/draw_daily_cases_deaths.js"></script>
     <script src="js/draw_total_cases_deaths.js"></script>
 
+    <script src="js/draw_cluster_map.js"></script>
+    <script src="js/cluster_table.js"></script>
+    <script src="js/draw_scroll_outbreak_spread_map.js"></script>
+
+    <script src="js/draw_state_streamgraph.js"></script>
     <script src="js/draw_state_case_count.js"></script>
+    <script src="js/draw_district_daily_case_count.js"></script>
+    <script src="js/animate_state_fatality_rate.js"></script>
+    
+    <script src="js/draw_state_recovery_rate.js"></script>
     <script src="js/draw_state_doubling_time.js"></script>
 
     <script src="js/top_hotspots_table.js"></script>
-
     <script src="js/draw_district_growth_rate.js"></script>
     <script src="js/draw_case_density_curve.js"></script>
-    <!--<script src="js/draw_emerging_hotspots_map.js"></script>-->
-    
-    <script src="js/animate_state_fatality_rate.js"></script>
-    <script src="js/draw_district_daily_case_count.js"></script>
-    <script src="js/draw_state_streamgraph.js"></script>
-
     <script src="js/draw_outbreak_free_districts.js"></script>
-    <script src="js/draw_state_recovery_rate.js"></script>
-    <script src="js/cluster_table.js"></script>
-    <!--<script src="js/draw_cluster_map.js"></script>
-    <script src="js/draw_scroll_outbreak_spread_map.js"></script>-->
-    <script src="js/draw_country_case_count.js"></script>
-    
-    <script src="js/draw_country_testing_rate.js"></script>
 
+    <script src="js/draw_country_case_count.js"></script>
+    <script src="js/draw_country_testing_rate.js"></script>
+-->
+    <script src="js/draw_emerging_hotspots_map.js"></script>
 
   </body>
 

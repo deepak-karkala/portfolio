@@ -1,7 +1,12 @@
-(function(){
-idname = "cluster_table_body";
-filename = "data/cluster_table.csv"
-insert_cluster_table(idname, filename);
+//(function(){
+
+script_load_timeout_list.push(setTimeout(load_clusterTable_script, 4*script_load_timestep));
+
+function load_clusterTable_script() {      
+      idname = "cluster_table_body";
+      filename = "data/cluster_table.csv"
+      insert_cluster_table(idname, filename);
+}
 
 function insert_cluster_table(idname, filename) {
 
@@ -24,4 +29,4 @@ function insert_cluster_table(idname, filename) {
     });
 
 }
-})();
+//})();

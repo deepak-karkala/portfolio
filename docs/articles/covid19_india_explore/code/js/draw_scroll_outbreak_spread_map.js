@@ -1,58 +1,31 @@
 
-(function(){
-function randomNumber(min, max) {
-  return Math.random() * (max - min) + min;
+//(function(){
+
+script_load_timeout_list.push(setTimeout(load_outbreakSpreadMap_script, 5*script_load_timestep));
+
+function load_outbreakSpreadMap_script() {
+	idname = "#outbreak_spread_map";
+	outbreak_spread_idname = "#outbreak_spread_map";
+
+	d3.select(idname).select("svg").remove();
+	filename = "data/scroll_data.csv";
+	daily_stats_file = "data/overall_and_daily_cases_deaths.csv";
+	width_scale_factor = 0.9;
+	//height_scale_factor = 0.50;
+	var bb = d3.select(idname).node().offsetWidth;
+	var margin = {right:10, left:10, top:20, bottom:10};
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	//base_height = Math.floor(window.innerHeight * 1);
+	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.7, 0.7]);
+	height_scale_factor = height_scale_factor_width(bb);
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+
+	var outbreak_spread_base_width = base_width;
+	var outbreak_spread_base_height = base_height;
+
+	draw_scroll_outbreak_spread_map(idname, filename, base_width, base_height, margin, daily_stats_file);
 }
-
-
-idname = "#outbreak_spread_map";
-outbreak_spread_idname = "#outbreak_spread_map";
-
-d3.select(idname).select("svg").remove();
-filename = "data/scroll_data.csv";
-daily_stats_file = "data/overall_and_daily_cases_deaths.csv";
-width_scale_factor = 0.9;
-//height_scale_factor = 0.50;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:10, left:10, top:20, bottom:10};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-//base_height = bb*height_scale_factor - margin.top - margin.bottom;
-//base_height = Math.floor(window.innerHeight * 1);
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.7, 0.6]);
-height_scale_factor = height_scale_factor_width(bb);
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-draw_scroll_outbreak_spread_map(idname, filename, base_width, base_height, margin, daily_stats_file);
-
-
-var outbreak_spread_base_width = base_width;
-var outbreak_spread_base_height = base_height;
-
-var outbreak_spread_timeouts = [];
-var daily_cum_cases_count = [];
-var daily_cum_deaths_count = [];
-var daily_cum_recovered_count = [];
-
-var svg_outbreak_spread_map;
-var month_list = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-// parse the date / time
-var parseTime = d3.timeParse("%Y-%m-%d");
-/* Projection */
-var projection = d3.geoMercator();
-
-var path = d3.geoPath()
-    .projection(projection)
-    .pointRadius(5);
-
-/* Zoom */
-var zoom = d3.zoom()
-    .scaleExtent([1, 8])    //.scaleExtent([scale0, 8 * scale0])
-    .on("zoom", outbreak_spread_zoomed);
-
-var outbreak_spread_circles_g;
-var outbreak_spread_start_date;
-var outbreak_spread_sim_duration;
-var outbreak_spread_num_sim_days;
-var outbreak_spread_num_milliseconds_per_date;
 
 
 function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin, daily_stats_file) {
@@ -62,9 +35,16 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
     var y = d3.scaleLinear().range([height, 0]);
 
 	var scale0 = (width - 1) / 2 / Math.PI;
+	var parseTime = d3.timeParse("%Y-%m-%d");
+	var projection = d3.geoMercator();
 	var path = d3.geoPath()
 	    .projection(projection)
     	.pointRadius(5);
+
+    /* Zoom */
+	var zoom = d3.zoom()
+	    .scaleExtent([1, 8])    //.scaleExtent([scale0, 8 * scale0])
+	    .on("zoom", outbreak_spread_zoomed);
 
 	var tooltip = d3.select("body")
         .append("div")
@@ -90,10 +70,10 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
     d3.queue()
         .defer(d3.json, "data/india_topojson.json")
         .defer(d3.csv, filename) //, data_ready)
-        .defer(d3.csv, daily_stats_file) //, data_ready)
+        //.defer(d3.csv, daily_stats_file) //, data_ready)
         .await(ready);
 
-    function ready(error, india, data, daily_stats_data) {
+    function ready(error, india, data) {
         if (error) throw error;
 
         outbreak_spread_india = india;
@@ -142,7 +122,7 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 			d.num_cases_in_district = +d.num_cases_in_district;
 			d.num_cases_in_state = +d.num_cases_in_state;
 
-			random_district_radius = randomNumber(0, d.num_cases_in_district/7e2);
+			random_district_radius = randomNumber(0, d.num_cases_in_district/6e2);
 			random_district_theta = randomNumber(0, 360)*Math.PI/180;
 
 			random_state_radius = randomNumber(0, d.num_cases_in_state/5e2);
@@ -154,7 +134,7 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 			d.state_lat = +d.state_lat + random_state_radius * Math.cos(random_state_theta);
 		});
 
-
+		/*
 		// format the data
 		daily_stats_data.forEach(function(d) {
 			d.date = parseTime(d.date);
@@ -162,6 +142,7 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 			daily_cum_deaths_count[d.date] = d.total_deaths;
 			daily_cum_recovered_count[d.date] = d.total_recovered;
 		});
+		*/
 
         
         outbreak_spread_circles_g.selectAll("dot")
@@ -177,7 +158,7 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 				})
 				.attr("r", function(d,i) {
 					if (window.innerWidth >= 768) {
-						return "0.15rem"
+						return "0.12rem"
 					} else {
 						return "0.10rem"
 					}
@@ -219,17 +200,63 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 					return tooltip.style("visibility", "hidden");
 				})
 
+		/*
 		current_date = new Date(2020, 2, 1); //Start from March
 		for (let i=1; i<=outbreak_spread_num_sim_days; i++) {
 			outbreak_spread_timeouts.push(setTimeout( update_date, i*outbreak_spread_num_milliseconds_per_date ));
 		}
+		*/
+		repeat_outbreak_spread_animation();
 
 	}	
 
 }
 
+document.getElementById("outbreak_spread_animation_button").onclick = function() {
+	outbreak_spread_circles_g.selectAll(".outbreak_spread_circles")
+		.transition()
+			.duration(1000)
+			.style("opacity", 0)
+			.style("fill", "#ff0000");
+	repeat_outbreak_spread_animation();
+};
+
+function repeat_outbreak_spread_animation() {
+	anm = outbreak_spread_circles_g.selectAll(".outbreak_spread_circles")
+					.transition()
+						.delay(function(d,i) {
+							diff_time = Math.abs(d.date - outbreak_spread_start_date);
+							num_days = Math.ceil(diff_time / (1000 * 60 * 60 * 24))
+							return num_days*outbreak_spread_step_delay;
+						})
+						.duration(outbreak_spread_step_duration)
+						.style("opacity", function(d, i) {
+							return 1;
+						});
+
+	outbreak_spread_circles_g.selectAll(".outbreak_spread_circles")
+		.transition()
+			.delay(function(d,i) {
+				diff_time = Math.abs(d.status_change_date - outbreak_spread_start_date);
+				num_days = Math.ceil(diff_time / (1000 * 60 * 60 * 24))
+				return num_days*outbreak_spread_step_delay;
+			})
+			.duration(outbreak_spread_step_duration)
+			.style("fill", function(d, i) {
+				if (d.status == "Recovered") {
+					return "#229954";
+				} else if (d.status == "Deceased") {
+					return "#0000ff"; //"#000000";
+				} else if (d.status == "Hospitalized") {
+					return "#ff0000"; //"#FA8072";
+				}
+			});
+
+}
 
 
+
+/*
 function ready_outbreak_spread_repeat() {
 
 	//india = cluster_india;
@@ -242,15 +269,12 @@ function ready_outbreak_spread_repeat() {
 
 }
 
-
 function outbreak_spread_animation_button_click() {
 	for (var i=0; i<outbreak_spread_timeouts.length; i++) {
  		clearTimeout(outbreak_spread_timeouts[i]);
 	}
 	ready_outbreak_spread_repeat();
 }
-
-
 
 function update_date() {
 	// Add a day
@@ -263,7 +287,7 @@ function update_date() {
 			.attr("class", "outbreak_spread_map_date_label")
 			.attr("x", outbreak_spread_base_width-120)
 			.attr("y", 20)
-			.text(current_date.getDate() + " " + month_list[current_date.getMonth()])
+			.text(current_date.getDate() + " " + months_list[current_date.getMonth()])
 			.style("font-size", "1.5rem")
 			.style("font-weight", "bold")
 			.style("stroke", "none")
@@ -330,7 +354,7 @@ function update_date() {
 				
 	}
 }
-
+*/
 
 // Zoom functionality
 function outbreak_spread_zoomed() {
@@ -343,5 +367,5 @@ function outbreak_spread_zoomed() {
 function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-})();
+//})();
 

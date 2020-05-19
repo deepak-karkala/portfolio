@@ -1,26 +1,25 @@
-(function(){
-idname = "#country_testing_rate";
-d3.select(idname).select("svg").remove();
-filename = "data/country_testing_rate.csv";
-width_scale_factor = 0.90;
-//height_scale_factor = 0.40;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:10, left:30, top:10, bottom:60};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-//base_height = bb*height_scale_factor - margin.top - margin.bottom;
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.4]);
-height_scale_factor = height_scale_factor_width(bb);
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-draw_country_testing_rate(idname, filename, base_width, base_height);
+//(function(){
 
-var min_country_case_count_to_show_testing;
-if (window.innerWidth >= 768) {
-	min_country_case_count_to_show_testing = 10000;
-} else {
-	min_country_case_count_to_show_testing = 50000;
+script_load_timeout_list.push(setTimeout(load_countryTestingRate_script, 18*script_load_timestep));
+
+function load_countryTestingRate_script() {
+	idname = "#country_testing_rate";
+	d3.select(idname).select("svg").remove();
+	filename = "data/country_testing_rate.csv";
+	width_scale_factor = 0.90;
+	//height_scale_factor = 0.40;
+	var bb = d3.select(idname).node().offsetWidth;
+	var margin = {right:10, left:30, top:10, bottom:60};
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.4]);
+	height_scale_factor = height_scale_factor_width(bb);
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	draw_country_testing_rate(idname, filename, base_width, base_height, margin);
 }
 
-function draw_country_testing_rate(idname, file, width, height) {
+
+function draw_country_testing_rate(idname, file, width, height, margin) {
 
 	// set the ranges
     var x = d3.scaleLinear().range([0, width]);
@@ -320,4 +319,4 @@ function draw_country_testing_rate(idname, file, width, height) {
 	});
 
 }
-})();
+//})();

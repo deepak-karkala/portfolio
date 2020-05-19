@@ -1,37 +1,34 @@
-(function(){
+//(function(){
 
-// State doubling time
-idname = "#states_doubling_time"
-d3.select(idname).select("svg").remove();
-filename = "data/state_doubling_time.csv";
-//type = "cases";
-width_scale_factor = 0.95;
-var bb = d3.select(idname).node().offsetWidth;
-if (window_inner_width <= small_screen_thresh) {
-	var margin = {right:10, left:30, top:20, bottom:50};
-} else {
-	var margin = {right:50, left:50, top:20, bottom:50};
+script_load_timeout_list.push(setTimeout(load_stateDoublingTime_script, 11*script_load_timestep));
+
+function load_stateDoublingTime_script() {
+	// State doubling time
+	idname = "#states_doubling_time"
+	d3.select(idname).select("svg").remove();
+	filename = "data/state_doubling_time.csv";
+	//type = "cases";
+	width_scale_factor = 0.90;
+	var bb = d3.select(idname).node().offsetWidth;
+	if (window_inner_width <= small_screen_thresh) {
+		var margin = {right:10, left:30, top:20, bottom:50};
+	} else {
+		var margin = {right:50, left:50, top:20, bottom:50};
+	}
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	//height_scale_factor = 0.35;
+	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
+	height_scale_factor = height_scale_factor_width(bb);
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	plot_state_doubling_time(idname, filename, base_width, base_height, margin);
 }
-base_width = bb*width_scale_factor - margin.left - margin.right;
-//height_scale_factor = 0.35;
-//base_height = bb*height_scale_factor - margin.top - margin.bottom;
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
-height_scale_factor = height_scale_factor_width(bb);
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-plot_state_doubling_time(idname, filename, base_width, base_height);
 
 
-var state_doubling_time_state_color_mapping = d3.scaleOrdinal()
-			.domain([0, 36])
-			.range(state_colors_list);
 
+function plot_state_doubling_time(idname, filename, width, height, margin) {
 
-var state_doubling_time_highlight_list = ["MH", "TN", "DL", "KA", "HR", "WB", "PB", "BR"]; 
-
-var default_background_color_state_doubling_time = "#c0c0c0";
-
-
-function plot_state_doubling_time(idname, filename, width, height) {
+	
 
 	window_inner_width = window.innerWidth;
 
@@ -132,14 +129,8 @@ function plot_state_doubling_time(idname, filename, width, height) {
 			state_doubling_time = data_csv[j]; //.slice(1, data_csv.length-1));
 			state_name = state_doubling_time[dates[0]].replace(/\./g,"").replace(", ","_").split(" ").join("-");
 			state_code = state_name.split("_")[1];
-			//state_color = state_doubling_time_color_scale(state_color_mapping(state_code_mapping[state_code]));
-			state_color = state_doubling_time_state_color_mapping(state_code_mapping[state_code]);
-
-
-			//console.log(dates[1]);
-			//console.log(state_doubling_time[dates[1]]);			
-			//console.log(state_name);
-			//console.log(district_total_case_count);
+			//state_color = state_doubling_time_color_scale(state_color_mapping(state_code_name_mapping[state_code]));
+			state_color = state_doubling_time_state_color_mapping(state_code_name_mapping[state_code]);
 
 
 			if (1) { //(district_total_case_count >= min_case_count_to_plot_case_density) {
@@ -345,9 +336,7 @@ function plot_state_doubling_time(idname, filename, width, height) {
 
 
 $("#select_state_doubling_time").change(function() {
-
     state_code = this.value;
-
 	if (state_code=="") {
 		show_all_states_doubling_time_button_click_handler();
 	} else {
@@ -361,7 +350,7 @@ $("#select_state_doubling_time").change(function() {
 
 function show_selected_state_doubling_time(state_code) {
 	//state_code = state_name.split("_")[1];
-	state_color = state_doubling_time_state_color_mapping(state_code_mapping[state_code]);
+	state_color = state_doubling_time_state_color_mapping(state_code_name_mapping[state_code]);
 
 	d3.selectAll(".state_doubling_time_curve").attr("stroke", default_background_color_state_doubling_time).attr("opacity", 0.25).attr("stroke-width", "2px");
 	d3.selectAll(".label").attr("opacity", 0);
@@ -383,7 +372,7 @@ function show_highlight_states_doubling_time() {
 	for (var h=0; h<state_doubling_time_highlight_list.length; h++) {
 		state_code = state_doubling_time_highlight_list[h];
 		//state_code = highlight_state_name.split("_")[1];
-		state_color = state_doubling_time_state_color_mapping(state_code_mapping[state_code]);
+		state_color = state_doubling_time_state_color_mapping(state_code_name_mapping[state_code]);
 
 		d3.select("."+state_code+"_state_doubling_time_curve").attr('stroke-width', "2px").attr("stroke", state_color).attr("opacity", 1.0);
 		d3.select("."+state_code+"_label").attr("opacity", 1);
@@ -409,5 +398,7 @@ function show_all_states_doubling_time_button_click_handler() {
 	show_highlight_states_doubling_time();
 }
 
-})();
+
+
+//})();
 

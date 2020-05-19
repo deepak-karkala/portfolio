@@ -1,34 +1,29 @@
-(function(){
-// District wise growth rate
-idname = "#district_case_density"
-d3.select(idname).select("svg").remove();
-filename = "data/districtwise_latest_cases_per_population_derivedFromRawData.csv";
-//type = "cases";
-width_scale_factor = 0.95;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:80, left:30, top:20, bottom:60};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-//height_scale_factor = 0.35;
-//base_height = bb*height_scale_factor - margin.top - margin.bottom;
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
-height_scale_factor = height_scale_factor_width(bb);
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-plot_district_case_density_curve(idname, filename, base_width, base_height);
+//(function(){
+
+script_load_timeout_list.push(setTimeout(load_districtCaseDensity_script, 14*script_load_timestep));
 
 
-var district_case_density_state_color_mapping = d3.scaleOrdinal()
-			.domain([0, 36])
-			.range(state_colors_list);
+function load_districtCaseDensity_script() {
+	// District wise growth rate
+	idname = "#district_case_density"
+	d3.select(idname).select("svg").remove();
+	filename = "data/districtwise_latest_cases_per_population_derivedFromRawData.csv";
+	//type = "cases";
+	width_scale_factor = 0.95;
+	var bb = d3.select(idname).node().offsetWidth;
+	var margin = {right:80, left:30, top:20, bottom:60};
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	//height_scale_factor = 0.35;
+	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
+	height_scale_factor = height_scale_factor_width(bb);
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	plot_district_case_density_curve(idname, filename, base_width, base_height, margin);
+}
 
 
-var district_case_density_highlight_list = ["Chennai_TN", "Bhopal_MP",
-			"Indore_MP", "Delhi_DL", "Kasaragod_KL", "Kolkata_WB", "Amritsar_PB"]; //"SPS-Nellore_AP"
 
-var default_background_color_district_case_density = "#c0c0c0";
-
-var min_case_count_to_plot_case_density = 40;
-
-function plot_district_case_density_curve(idname, filename, width, height) {
+function plot_district_case_density_curve(idname, filename, width, height, margin) {
 
 	var case_density_district_list = [];
 
@@ -365,5 +360,5 @@ function show_all_districts_case_density_button_click_handler() {
 
 	show_highlight_districts_case_density();
 }
-})();
+//})();
 

@@ -1,13 +1,32 @@
-map_container = "emerging_hotspot_map";
-draw_emerging_hotspots_map(map_container);
 
-var map_emerging_hotspots;
-var markers_hotspots = [];
-var slider_cases_value = 100;
-var slider_density_value = 7;
-var slider_growth_value = 60;
-var topoLayer_hotspots;
+//script_load_timeout_list.push(setTimeout(load_emergingHotspotsMap_script, 16*script_load_timestep));
 
+load_emergingHotspotsMap_script();
+
+function load_emergingHotspotsMap_script() {
+
+	//var output = document.getElementById("slider_tag");
+	//output.innerHTML = `Slope: <span class="slider_value">`+initial_value+` degrees</span>`;
+	var slider_id = "#slider_cases";
+	var slider_handle_id = "#slider_cases_handle";
+	var min=50, max=1500, step=50, value=slider_cases_value;
+	set_range_slider_cases(slider_id, slider_handle_id, min, max, step, value);
+
+	slider_id = "#slider_density";
+	slider_handle_id = "#slider_density_handle";
+	var min=50, max=500, step=50, value=slider_density_value;
+	set_range_slider_cases(slider_id, slider_handle_id, min, max, step, value);
+
+	slider_id = "#slider_growth";
+	slider_handle_id = "#slider_growth_handle";
+	var min=3, max=10, step=1, value=slider_growth_value;
+	set_range_slider_cases(slider_id, slider_handle_id, min, max, step, value);
+
+	update_hotspot_map_text();
+
+	map_container = "emerging_hotspot_map";
+	draw_emerging_hotspots_map(map_container);
+}
 
 /*
 Enable/Disable slider based on checkbox input
@@ -48,10 +67,10 @@ function draw_emerging_hotspots_map(map_container) {
 
 
 	map_emerging_hotspots = L.map(map_container,
-				              { maxZoom:12,minZoom:3},
+				              { maxZoom:12,minZoom:3, zoomSnap: 0.25},
 				              	topoLayer_hotspots = new L.TopoJSON(),
 				              )
-				         	.setView([23.5937, 80.9629], 4.0);
+				         	.setView([23.5937, 80.9629], 4.5);
 	map_emerging_hotspots.scrollWheelZoom.disable();
 
 	
@@ -69,9 +88,7 @@ function draw_emerging_hotspots_map(map_container) {
 	// Load state topodata and add as layers
 	for (var i=0; i<state_name_list.length; i++) {
 		state_name = state_name_list[i];
-		console.log("======")
-		console.log(state_name);
-		$.getJSON('data/india_districtwise_map_case_death_growth_density/'+state_name+'.json').done(addTopoData);
+		$.getJSON('data/district_data_map/'+state_name+'.json').done(addTopoData);
 	}
 
 	function addTopoData(topoData) {
@@ -91,11 +108,11 @@ function draw_emerging_hotspots_map(map_container) {
 
 	    layer.setStyle
 	    ({
-	      fillColor : getColor_district_confirmed(parseInt(case_count)),
-	      fillOpacity: 1.0,
-	      color:'#ffffff',
-	      weight:0.75,
-	      opacity:0.75
+	      fillColor : "#ffffff", //getColor_district_confirmed(parseInt(case_count)),
+	      fillOpacity: 1,
+	      color:'#dadada',
+	      weight:1.0,
+	      opacity:0,
 	    });
 
 	    layer.on
@@ -103,12 +120,7 @@ function draw_emerging_hotspots_map(map_container) {
 	        mouseover: enterLayer_district_confirmed,
 	        mouseout: leaveLayer_district_confirmed
 	    });
-	    if (case_count==-1){
-		  	layer.bindTooltip(`<div class="well">Data unavailable for `+layer.feature.properties.district+`</div>`);
-	    } else {
-		  	layer.bindTooltip(`<div class="well">`+case_count+` cases in `+layer.feature.properties.district+`</div>`);
-		}
-
+	    
 		// Pulsating icon to identify hotspots
 		/*
 		var district_center = turf.center(layer.feature).geometry.coordinates;
@@ -119,12 +131,14 @@ function draw_emerging_hotspots_map(map_container) {
 		}
 		*/
 		//console.log("======")
-		console.log(layer.feature.properties.district);
+		//console.log(layer.feature.properties.district);
 		//console.log(layer.feature.properties.cases);
 		//console.log(layer.feature.properties.case_density);
 		//console.log(layer.feature.properties.current_case_growth_rate);
 
-		add_markers_at_hotspots(layer);
+		if (!(hotspot_districts_list.includes(layer.feature.properties.district))) {
+			add_markers_at_hotspots(layer);
+		}
 	}
 
 	function getColor_district_confirmed(d) {
@@ -154,16 +168,20 @@ function draw_emerging_hotspots_map(map_container) {
 		this.bringToBack();
 		this.setStyle
 		({
-			fillOpacity: 1.0,
-			color:'#ffffff',
-			weight:0.75,
-			opacity:0.75
+			fillOpacity: 1,
+			color:'#dadada',
+			weight:0.5,
+			opacity:1
 		});
 	}
 }
 
 
 function update_markers_at_hotspots() {
+	map_emerging_hotspots.eachLayer(function(layer) {
+    	if(layer.options.pane === "tooltipPane") layer.removeFrom(map_emerging_hotspots);
+	});
+
 	// Clear all existing markers
 	for (var i=0; i<markers_hotspots.length; i++) {
 		map_emerging_hotspots.removeLayer(markers_hotspots[i]);
@@ -205,36 +223,39 @@ function add_markers_at_hotspots(layer) {
 	  // ,iconAnchor: [11,11]
 	});
 
+	//console.log(case_count);
+	//console.log(case_density);
+	//console.log(case_growth);
+
 	// Pulsating icon to identify hotspots
 	var district_center = turf.center(layer.feature).geometry.coordinates;
 	if ( (case_count>=slider_cases_value) && (case_density>=slider_density_value) && (case_growth>=slider_growth_value) ){
 
+
 		markers_hotspot = L.marker([district_center[1], district_center[0]], {icon: cssIcon});
 		markers_hotspot.addTo(map_emerging_hotspots);
 		markers_hotspots.push(markers_hotspot);
+		hotspot_districts_list.push(layer.feature.properties.district);
+
+		//layer.bindTooltip(layer.feature.properties.district, {permanent: true, className: "map-label", offset: [district_center[1], district_center[0]] });
+		layer.bindTooltip(layer.feature.properties.district, {permanent: true, className: 'labelstyle', offset: [0, 0] });
+
+		//var group = new L.featureGroup(markers_hotspots);
+		//map_emerging_hotspots.fitBounds(group.getBounds());
+	} else {
+		/*
+		if (case_count==-1){
+		  	layer.bindTooltip(`<div class="well">Data unavailable for `+layer.feature.properties.district+`</div>`);
+	    } else {
+		  	layer.bindTooltip(`<div class="well">`+case_count+` cases in `+layer.feature.properties.district+`</div>`);
+		}
+		*/
 	}
 }
 
 
 
-//var output = document.getElementById("slider_tag");
-//output.innerHTML = `Slope: <span class="slider_value">`+initial_value+` degrees</span>`;
-var slider_id = "#slider_cases";
-var slider_handle_id = "#slider_cases_handle";
-var min=50, max=1500, step=50, value=slider_cases_value;
-set_range_slider_cases(slider_id, slider_handle_id, min, max, step, value);
 
-slider_id = "#slider_density";
-slider_handle_id = "#slider_density_handle";
-var min=5, max=10, step=1, value=slider_density_value;
-set_range_slider_cases(slider_id, slider_handle_id, min, max, step, value);
-
-slider_id = "#slider_growth";
-slider_handle_id = "#slider_growth_handle";
-var min=40, max=150, step=10, value=slider_growth_value;
-set_range_slider_cases(slider_id, slider_handle_id, min, max, step, value);
-
-update_hotspot_map_text();
 function update_hotspot_map_text() {
 	var show_map_text_id = document.getElementById("emerging_hotspots_map_showing_text");
 	show_map_text_id.innerHTML = `Currently showing districts with more than `+slider_cases_value+` cases, `+

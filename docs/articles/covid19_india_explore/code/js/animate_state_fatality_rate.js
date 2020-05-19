@@ -1,23 +1,29 @@
-(function(){
-idname = "#fatality_rate_animation";
-d3.select(idname).select("svg").remove();
-filename = "data/state_case_death_testpm_ntod.csv";
-width_scale_factor = 1.0;
-//height_scale_factor = 0.60;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:20, left:30, top:10, bottom:60};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-//base_height = bb*height_scale_factor - margin.top - margin.bottom;
-var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.5]);
-height_scale_factor = height_scale_factor_width(bb);
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-animate_state_fatality_rate(idname, filename, base_width, base_height);
+//(function(){
+
+script_load_timeout_list.push(setTimeout(load_stateNtod_script, 9*script_load_timestep));
+
+function load_stateNtod_script() {
+	idname = "#fatality_rate_animation";
+	d3.select(idname).select("svg").remove();
+	filename = "data/state_case_death_testpm_ntod.csv";
+	width_scale_factor = 0.90;
+	//height_scale_factor = 0.60;
+	var bb = d3.select(idname).node().offsetWidth;
+	var margin = {right:20, left:30, top:10, bottom:60};
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.5]);
+	height_scale_factor = height_scale_factor_width(bb);
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	animate_state_fatality_rate(idname, filename, base_width, base_height, margin);
+}
 
 
-var font_size_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.6, 0.9]);
-font_size = font_size_factor(bb) + "rem";
 
-function animate_state_fatality_rate(idname, file, width, height) {
+function animate_state_fatality_rate(idname, file, width, height, margin) {
+
+	var state_ntod_font_size_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.6, 0.9]);
+	var state_ntod_font_size = state_ntod_font_size_factor(width) + "rem";
 
 	var state_fatality_rate_color_scale = d3.scaleLinear()
 		.domain([0, 10, 50, 100, 250, 500])
@@ -117,7 +123,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 			.attr("x", function(d) { return x(10); })
 			.attr("y", function(d) { return y(25+1); })
 			.text("Low testing rate, true case count could be much higher")
-			.style("font-size", font_size)
+			.style("font-size", state_ntod_font_size)
 			.style("font-weight", "bold")
 			.style("fill", "#E74C3C")
 	        .style("opacity", 0);
@@ -136,7 +142,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 			.attr("x", function(d) { return x(1600); })
 			.attr("y", function(d) { return y(30+1); })
 			.text("Reasonable testing rate but cases doubling quickly")
-			.style("font-size", font_size)
+			.style("font-size", state_ntod_font_size)
 			.style("font-weight", "bold")
 			.style("fill", "#2E86C1")
 	        .style("opacity", 0);
@@ -155,7 +161,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 			.attr("x", function(d) { return x(400); })
 			.attr("y", function(d) { return y(55+1); })
 			.text("Reasonable testing rate, cases doubling slowly")
-			.style("font-size", font_size)
+			.style("font-size", state_ntod_font_size)
 			.style("font-weight", "bold")
 			.attr("fill", "#1D8348")
 			//.style("stroke", "#28B463")
@@ -231,7 +237,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 					//}
 				})
 				.style("z-index", 10)
-				.style("font-size", font_size);
+				.style("font-size", state_ntod_font_size);
 
 			var xAxis = d3.axisBottom(x)
 						.tickFormat( (d,i) => {
@@ -251,7 +257,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 				.attr("transform", "translate(0," + (height+20)+ ")")
 				.call(xAxis)
 				.attr("class", "state_fatality_xaxis")
-				.style("font-size", font_size)
+				.style("font-size", state_ntod_font_size)
 			.append("text")
 				.attr("class", "state_fatality_label")
 				.attr("x", width)
@@ -263,7 +269,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 				.style("fill", "black")
 				.style("stroke", "none")
 				.style("font-weight", "bold")
-				.style("font-size", font_size);
+				.style("font-size", state_ntod_font_size);
 
 			// Add the Y Axis
 			svg.append("g")
@@ -271,7 +277,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 				//.call(d3.axisLeft(y))
 				.call(yAxis)
 				.attr("class", "state_fatality_yaxis")
-				.style("font-size", font_size)
+				.style("font-size", state_ntod_font_size)
 			.append("text")
 				.attr("class", "state_fatality_label")
 				.attr("transform", "rotate(-90)")
@@ -284,7 +290,7 @@ function animate_state_fatality_rate(idname, file, width, height) {
 				.style("fill", "black")
 				.style("stroke", "none")
 				.style("font-weight", "bold")
-				.style("font-size", font_size);
+				.style("font-size", state_ntod_font_size);
 
 			/*
 			svg.selectAll("text")
@@ -444,7 +450,7 @@ function wrap(text, width) {
   });
 }
 
-})();
+//})();
 /*Update axis
 x.domain([0, d3.max(data, function(d) { return d[cdt+"_cases"]; })]);
 	y.domain([0, d3.max(data, function(d) { return d[cdt+"_deaths"]; })]);

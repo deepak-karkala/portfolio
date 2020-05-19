@@ -1,16 +1,19 @@
-(function(){
+//(function(){
 
-idname = "#outbreak_free_districts";
-d3.select(idname).select("svg").remove();
-filename = "data/outbreak_free_districts.csv";
-width_scale_factor = 0.60;
-height_scale_factor = 0.60;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:20, left:40, top:10, bottom:60};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-draw_outbreak_free_districts(idname, filename, base_width, base_height);
+script_load_timeout_list.push(setTimeout(load_outbreakFreeDistricts, 15*script_load_timestep));
 
+function load_outbreakFreeDistricts() {
+	idname = "#outbreak_free_districts";
+	d3.select(idname).select("svg").remove();
+	filename = "data/outbreak_free_districts.csv";
+	width_scale_factor = 0.60;
+	height_scale_factor = 0.60;
+	var bb = d3.select(idname).node().offsetWidth;
+	var margin = {right:20, left:40, top:10, bottom:60};
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	draw_outbreak_free_districts(idname, filename, base_width, base_height);
+}
 
 function draw_outbreak_free_districts(idname, file, width, height) {
 
@@ -19,7 +22,6 @@ function draw_outbreak_free_districts(idname, file, width, height) {
 
 	var color_scale = function(d) {
 		if (d==1) {
-			console.log("Zero");
 			return "#32cd32";
 		} else {
 			if (d<=10) {
@@ -143,4 +145,4 @@ function draw_outbreak_free_districts(idname, file, width, height) {
 	
 
 }
-})();
+//})();

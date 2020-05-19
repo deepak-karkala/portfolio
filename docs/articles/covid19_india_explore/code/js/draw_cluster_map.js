@@ -1,8 +1,29 @@
-(function() {
-idname = "#cluster_map";
-var cluster_map_idname = "#cluster_map";
+//(function() {
 
-d3.select(idname).select("cluster_animation_svg").remove();
+script_load_timeout_list.push(setTimeout(load_clusterMap_script, 3*script_load_timestep));
+
+function load_clusterMap_script() {
+	idname = "#cluster_map";
+	var cluster_map_idname = "#cluster_map";
+	d3.select(idname).select("cluster_animation_svg").remove();
+
+	var chart_id = document.getElementById("cluster_map");
+	if (window.innerWidth >= 768) {
+		chart_id.innerHTML = `<div class="row text-center justify-content-center"><div class="col-lg-8 col-12 cluster_video">`+
+								`<video id="cluster_animation_video" controls preload="auto" loop="loop"`+
+								`muted="muted" autoplay="true">
+						          <source src="docs/cluster_animation_without_legend.mp4" type="video/mp4">
+						          Your browser does not support the video tag.
+						        </video></div></div>`;
+	} else {
+		chart_id.innerHTML = `<div class="row"><div class="col-lg-12 col-12 cluster_video"><video id="cluster_animation_video" controls preload="auto" loop="loop" muted="muted" autoplay="true">
+						          <source src="docs/cluster_animation_without_legend_asr1_lowres.mp4" type="video/mp4">
+						          Your browser does not support the video tag.
+						        </video></div></div>`;
+	}
+}
+/*
+
 filename = "data/cluster_network_map.csv";
 width_scale_factor = 0.9;
 //height_scale_factor = 0.40;
@@ -59,19 +80,19 @@ function draw_cluster_map(idname, filename, width, height) {
 	// parse the date / time
     parseTime = d3.timeParse("%Y-%m-%d");
 
-    /* Projection */
+    // Projection 
     projection = d3.geoNaturalEarth2() //d3.geoNaturalEarth2() //d3.geoTimes() d3.geoWagner4() geoEquirectangular()
         .scale(width / 1.5 / Math.PI)
         .translate([width / 2.5, height / 1.5])
     path = d3.geoPath()
         .projection(projection);
 
-    /* Zoom */
+    // Zoom 
 	zoom = d3.zoom()
 	    .scaleExtent([1, 8])    //.scaleExtent([scale0, 8 * scale0])
 	    .on("zoom", zoomed);
 
-	/* cluster_animation_svg */
+	// cluster_animation_svg 
 	cluster_animation_svg = d3.select(idname).append("svg")
               .attr("width", width)
               .attr("height", height)
@@ -344,18 +365,6 @@ function update_date() {
 	cluster_map_g.selectAll(".network_arc")
 		.transition()
 			.duration(1000)
-			//.style("stroke-width", 0.05)
-			/*
-			.style("stroke-width", function(d) {
-				if (d.cluster_type==0) {
-					return 0.05;
-				} else if (d.cluster_type==4){
-					return 0.1;
-				} else {
-					return 0.1;
-				}
-			})
-			*/
 			.style("opacity", function(d) {
 				if (current_date >= d.date) {
 					return 1;
@@ -373,7 +382,9 @@ function cluster_animation_button_click() {
 	}
 	ready_repeat();
 }
-})();
+
+*/
+//})();
 
 
 

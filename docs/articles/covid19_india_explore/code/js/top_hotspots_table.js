@@ -1,14 +1,20 @@
 
-(function(){
-table_idname = "top_hotspots_table_body";
-//filename = "data/districtwise_top_hotspots.csv";
-filename = "data/districtwise_case_death_growth_density.csv";
-insert_district_rows(table_idname, filename);
+//(function(){
 
-var min_case_count_to_show_in_table = 50;
-var num_past_days_growth_rate = 14;
+script_load_timeout_list.push(setTimeout(load_topHotspotsTable_script, 12*script_load_timestep));
+
+function load_topHotspotsTable_script() {
+	table_idname = "top_hotspots_table_body";
+	//filename = "data/districtwise_top_hotspots.csv";
+	filename = "data/districtwise_case_death_growth_density.csv";
+	insert_district_rows(table_idname, filename);
+}
+
 
 function insert_district_rows(table_idname, file) {
+	var min_case_count_to_show_in_table = 50;
+	var num_past_days_growth_rate = 14;
+
 	var table = document.getElementById(table_idname);
 	table.innerHTML = ``;
 
@@ -104,4 +110,4 @@ function insert_district_rows(table_idname, file) {
 
 }
 
-})();
+//})();

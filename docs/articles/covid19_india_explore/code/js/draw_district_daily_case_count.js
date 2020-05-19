@@ -1,16 +1,21 @@
-(function(){
-idname = "#district_daily_case_count";
-d3.select(idname).select("svg").remove();
-filename = "data/districtwise_daily_case_count.csv";
-width_scale_factor = 0.90;
-height_scale_factor = 1.25;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:20, left:20, top:10, bottom:30};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-draw_district_daily_case_count(idname, filename, base_width, base_height);
+//(function(){
 
-var state_list = ['Andaman and Nicobar Islands', 'Andhra Pradesh',
+script_load_timeout_list.push(setTimeout(load_districtDailyCaseCount, 8*script_load_timestep));
+
+function load_districtDailyCaseCount() {
+
+	idname = "#district_daily_case_count";
+	d3.select(idname).select("svg").remove();
+	filename = "data/districtwise_daily_case_count.csv";
+	width_scale_factor = 0.90;
+	height_scale_factor = 1.25;
+	var bb = d3.select(idname).node().offsetWidth;
+	var margin = {right:20, left:20, top:10, bottom:30};
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	draw_district_daily_case_count(idname, filename, base_width, base_height, margin);
+
+	var state_list = ['Andaman and Nicobar Islands', 'Andhra Pradesh',
        'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh',
        'Chhattisgarh', 'Daman And Diu', 'Delhi', //'Dadra and Nagar Haveli', 
        'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh',
@@ -20,24 +25,34 @@ var state_list = ['Andaman and Nicobar Islands', 'Andhra Pradesh',
        'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana',
        'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
 
-
-
-
-var asid = document.getElementById("district_daily_case_count");
-asid.innerHTML = '';
-for (var i=0; i<state_list.length; i++) {
-	state_name = state_list[i];
-	if (state_name=="Andaman and Nicobar Islands") {
-		state_name = "Andaman and Nicobar";
+	var asid = document.getElementById("district_daily_case_count");
+	asid.innerHTML = '';
+	for (var i=0; i<state_list.length; i++) {
+		state_name = state_list[i];
+		if (state_name=="Andaman and Nicobar Islands") {
+			state_name = "Andaman and Nicobar";
+		}
+		asid.innerHTML += `<div class="col-lg-2 col-4" id="state_`+i+`">`+
+		`<span class="district_daily_case_count_state_name">`+state_name+`</span></div>`;
 	}
-	asid.innerHTML += `<div class="col-lg-2 col-4" id="state_`+i+`">`+
-	`<span class="district_daily_case_count_state_name">`+state_name+`</span></div>`;
+
 }
 
 
+function draw_district_daily_case_count(idname, filename, width, height, margin) {
 
+	var state_list = ['Andaman and Nicobar Islands', 'Andhra Pradesh',
+       'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh',
+       'Chhattisgarh', 'Daman And Diu', 'Delhi', //'Dadra and Nagar Haveli', 
+       'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh',
+       'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Ladakh',
+       'Lakshadweep', 'Madhya Pradesh', 'Maharashtra', 'Manipur',
+       'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Puducherry',
+       'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana',
+       'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
 
-function draw_district_daily_case_count(idname, filename, width, height) {
+    width_scale_factor = 0.90;
+	height_scale_factor = 1.25;
 
 	// parse the date / time
     var parseTime = d3.timeParse("%Y-%m-%d");
@@ -258,4 +273,4 @@ function draw_district_daily_case_count(idname, filename, width, height) {
 	});
 }
 
-})();
+//})();

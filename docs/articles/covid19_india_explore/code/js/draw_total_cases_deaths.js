@@ -1,36 +1,40 @@
-(function(){
+//(function(){
 
-// total cases
-idname = "#total_confirmed_cases"
-d3.select(idname).select("svg").remove();
-filename = "data/overall_and_daily_cases_deaths.csv";
-type = "cases";
-width_scale_factor = 1.0;
-height_scale_factor = 0.40;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:70, left:20, top:30, bottom:30};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-fill_color = "#ffb2b2";
-plot_total_cases_deaths(idname, filename, base_width, base_height, type, fill_color);
+script_load_timeout_list.push(setTimeout(load_totalCasesDeaths_script, 2*script_load_timestep));
 
+function load_totalCasesDeaths_script() {
 
-// total deaths
-idname = "#total_confirmed_deaths"
-d3.select(idname).select("svg").remove();
-filename = "data/overall_and_daily_cases_deaths.csv";
-type = "deaths";
-width_scale_factor = 1.0;
-height_scale_factor = 0.40;
-var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:70, left:20, top:30, bottom:30};
-base_width = bb*width_scale_factor - margin.left - margin.right;
-base_height = bb*height_scale_factor - margin.top - margin.bottom;
-fill_color = "#ffb2b2";
-plot_total_cases_deaths(idname, filename, base_width, base_height, type, fill_color);
+    // total cases
+    idname = "#total_confirmed_cases"
+    d3.select(idname).select("svg").remove();
+    filename = "data/overall_and_daily_cases_deaths.csv";
+    type = "cases";
+    width_scale_factor = 1.0;
+    height_scale_factor = 0.40;
+    var bb = d3.select(idname).node().offsetWidth;
+    var margin = {right:70, left:20, top:30, bottom:30};
+    base_width = bb*width_scale_factor - margin.left - margin.right;
+    base_height = bb*height_scale_factor - margin.top - margin.bottom;
+    fill_color = "#ffb2b2";
+    plot_total_cases_deaths(idname, filename, base_width, base_height, type, fill_color, margin);
 
 
-function plot_total_cases_deaths(idname, file, width, height, type, fill_color) {
+    // total deaths
+    idname = "#total_confirmed_deaths"
+    d3.select(idname).select("svg").remove();
+    filename = "data/overall_and_daily_cases_deaths.csv";
+    type = "deaths";
+    width_scale_factor = 1.0;
+    height_scale_factor = 0.40;
+    var bb = d3.select(idname).node().offsetWidth;
+    var margin = {right:70, left:20, top:30, bottom:30};
+    base_width = bb*width_scale_factor - margin.left - margin.right;
+    base_height = bb*height_scale_factor - margin.top - margin.bottom;
+    fill_color = "#ffb2b2";
+    plot_total_cases_deaths(idname, filename, base_width, base_height, type, fill_color, margin);
+}
+
+function plot_total_cases_deaths(idname, file, width, height, type, fill_color, margin) {
     // set the dimensions and margins of the graph
         //width = 960 - margin.left - margin.right,
         //height = 500 - margin.top - margin.bottom;
@@ -257,4 +261,4 @@ function repeat(path, totalLength) {
           .attr("stroke-dashoffset", 0);
           //.on("end", repeat);
 }
-})();
+//})();
