@@ -2,13 +2,6 @@
 //(function(){
 
 var outbreak_free_timeouts = [];
-start_date = new Date(2020, 2, 1); //Start from March
-end_date = new Date(2020, 4, 7); //Start from March
-//end_date = new Date(data[data.length-1].date);
-num_sim_days = Math.ceil(Math.abs(end_date - start_date) / (1000 * 60 * 60 * 24)) - 1;
-num_milliseconds_per_date = 500;
-total_sim_duration = num_sim_days * num_milliseconds_per_date;
-
 var outbreak_free_g;
 
 function draw_scroll_outbreak_free_districts(idname, filename, width, height, margin) {
@@ -99,15 +92,15 @@ function draw_scroll_outbreak_free_districts(idname, filename, width, height, ma
 	        .projection(projection)
 	        .pointRadius(2);
 
-        start_date = new Date(2020, 2, 1); //Start from March
-        end_date = new Date(2020, 4, 7); //Start from March
+        start_date = new Date(2020, 2, 15); //Start from March
+        var step_delay = 5000;
+        //end_date = new Date(2020, 4, 7); //Start from March
 		//end_date = new Date(data[data.length-1].date);
-		num_sim_days = Math.ceil(Math.abs(end_date - start_date) / (1000 * 60 * 60 * 24)) - 1;
-		num_milliseconds_per_date = 500;
-		total_sim_duration = num_sim_days * num_milliseconds_per_date;
+		//num_sim_days = Math.ceil(Math.abs(end_date - start_date) / (1000 * 60 * 60 * 24)) - 1;
+		//num_milliseconds_per_date = 500;
+		//total_sim_duration = num_sim_days * num_milliseconds_per_date;
 
 
-		
         outbreak_free_g.attr("class", "india")
 			.selectAll("india_path")
 	      .data(topojson.feature(india, india.objects.india).features)
@@ -133,30 +126,50 @@ function draw_scroll_outbreak_free_districts(idname, filename, width, height, ma
             
             $.getJSON('data/district_data_map/'+state_name+'.json', function(data){
                 st_nm_key = Object.keys(data.objects)[0];
+                outbreak_free_state_counter += 1;
 
-                outbreak_free_g.selectAll("state_focus")
+                outbreak_free_g.selectAll("state_zero_case")
                   .data(topojson.feature(data, data.objects[st_nm_key]).features)
                   .enter().append("path")
-                    .attr("class", "state_focus")
+                    .attr("class", function(d){
+                        num_cases = +d.properties.cases;
+                        if (num_cases==0) {
+                            return "state_nonzero_case";
+                        } else {
+                            return "state_zero_case";
+                        }
+                    })
                     .attr("d", path)
                     .style("fill", "#fff")
-                    .style("stroke", "#c0c0c0")
+                    .style("stroke", "#dadada")
+                    .style("stroke-width", "0.5px")
                     .style("opacity", 1);
+
+                if (outbreak_free_state_counter == state_name_list.length) {
+                    update_outbreak_free_date();
+                }
             })
             
         }
 
-        update_outbreak_free_date();
         function update_outbreak_free_date() {
-            d3.select(idname).selectAll(".state_focus")
+            outbreak_free_state_counter = 0;
+            d3.select(idname).selectAll(".state_zero_case")
                 .transition()
-                .duration(2000)
-                    .style("fill", "#ff0000");
+                    .delay(function(d,i){
+                        cdt = parseTime(d.properties.first_case_date);
+                        diff_time = Math.abs(cdt - start_date);
+                        num_days = Math.log10(Math.ceil(diff_time / (1000 * 60 * 60 * 24)));
+                        return num_days*step_delay;
+                        //return 100;
+                    })
+                    .duration(1000)
+                        .style("fill",  "#ff4c4c");
         }
 
-        for (let i=1; i<=num_sim_days; i++) {
+        //for (let i=1; i<=num_sim_days; i++) {
             //outbreak_free_timeouts.push(setTimeout( update_outbreak_free_date, i*num_milliseconds_per_date ));
-        }
+        //}
 
     }
 

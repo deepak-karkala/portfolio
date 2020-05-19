@@ -11,14 +11,12 @@ function show_countries_test_type_rect(idname) {
 	d3.select(idname)
 		.selectAll(".country_type_rect")
 		.transition()
-		.delay(6000)
 		.duration(1000)
 			.style("opacity", 1)
 
 	d3.select(idname)
 		.selectAll(".country_type_rect_text")
 		.transition()
-		.delay(6000)
 		.duration(1000)
 			.style("opacity", 1)
 }
@@ -28,14 +26,15 @@ function show_countries_testing_all(idname, width, height) {
     var x = d3.scaleLinear().range([0, width]);
     var y = d3.scaleLinear().range([height, 0]);
 
-    x.domain([0, d3.max(scroll_country_data, function(d) { return d.testspm; })]);
-	y.domain([0, d3.max(scroll_country_data, function(d) { return d.casespm; })]);
-
+    //x.domain([0, d3.max(scroll_country_data, function(d) { return d.testspm; })]);
+    x.domain([0, 60]);
+	//y.domain([0, d3.max(scroll_country_data, function(d) { return d.casespm; })]);
+	y.domain([0, 6000]);
 
 	d3.select(idname)
 		.selectAll(".scroll_country_circles")
 		.transition()
-		.duration(5000)
+		.duration(3000)
 			.attr("cx", function(d,i){
 				return x(d.testspm);
 			})
@@ -51,7 +50,7 @@ function show_countries_testing_all(idname, width, height) {
 	d3.select(idname)
 		.selectAll(".scroll_country_text")
 		.transition()
-		.duration(5000)
+		.duration(3000)
 			.attr("x", function(d,i){
 				return x(d.testspm);
 			})
@@ -60,22 +59,48 @@ function show_countries_testing_all(idname, width, height) {
 			});
 	
 	// Add the X Axis
-	/*
-	var xAxis = d3.axisBottom(x);
+	var xAxis = d3.axisBottom(x)
 				.tickFormat( (d,i) => {
-		          if (d%10000 === 0) return d;
+		          if (d%10 === 0) return d;
 		      	}).tickPadding(2);
 
-	g5.transition()
-		.duration(5000)
-		//.attr("transform", "translate(0," + (height+50)+ ")")
-		.call(xAxis);
+	g5.selectAll(".state_scroll_xaxis")
+		.transition()
+			.duration(3000)
+			.call(xAxis);
+	
+	/*
+	// Add the X Axis
+	d3.select(idname).selectAll(".state_scroll_xaxis").remove();
+    d3.select(idname).selectAll(".state_scroll_xaxis_label").remove();
+
+	var xAxis = d3.axisBottom(x);
+				.tickFormat( (d,i) => {
+		          if (d%10 === 0) return d;
+		      	}).tickPadding(2);
+	g5.append("g")
+		.attr("transform", "translate(0," + (height+30)+ ")")
+		.call(xAxis)
+		.attr("class", "state_scroll_xaxis")
+		.style("font-size", "0.75rem")
+	.append("text")
+		.attr("class", "state_scroll_xaxis_label")
+		.attr("x", width)
+		.attr("y", -10)
+		.style("text-anchor", "end")
+		.text(function(){
+			return "Tests per thousand people";
+		})
+		.style("fill", "black")
+		.style("stroke", "none")
+		.style("font-weight", "bold")
+		.style("font-size", "0.75rem");
 	*/
 	
 }
 
 var scroll_show_country_list = ["India", "United States", "China", "Spain", "Italy",
-	"South Korea", "Germany", "Turkey", "Iran", "Israel", "United Kingdom"];
+	"South Korea", "Germany", "Turkey", "Iran", "Israel", "United Kingdom", "Ireland", "Russia"];
 
 function show_countries_testing_low(idname, filename, width, height, margin) {
 
@@ -118,33 +143,35 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 		});
 		scroll_country_data = data;
 
-		//x.domain([0, d3.max(scroll_country_data, function(d) { return d.testspm; })+1000]);
-		x.domain([0, 10]);
+		//x.domain([0, d3.max(scroll_country_data, function(d) { return d.testspm; })]);
+		x.domain([0, 60]);
 	    //y.domain([0, d3.max(scroll_country_data, function(d) { return d.casespm; })]);
-	    y.domain([0, 4000]);
+	    y.domain([0, 6000]);
 
 
 	    if (window.innerWidth >= 768) {
 	      	country_type_rect_font_size = "0.85rem";
+	      	axis_font_size = "0.85rem";
 	    } else {
-	      	country_type_rect_font_size = "0.65rem";
+	      	country_type_rect_font_size = "0.5rem";
+	      	axis_font_size = "0.75rem";
 	    }
 
 	    //Append type rectangles
 		g5.append("rect")
 			.attr("class", "country_type_rect")
-	        .attr("x", function(d) { return x(12); })
-	        .attr("y", function(d) { return y(2750); })
-	        .attr("width", function(d) { return x(60) - x(12); })
-	        .attr("height", function(d) { return y(100) - y(2750); })
+	        .attr("x", function(d) { return x(25); })
+	        .attr("y", function(d) { return y(2600); })
+	        .attr("width", function(d) { return x(55) - x(25); })
+	        .attr("height", function(d) { return y(100) - y(2600); })
 	        .style("fill", function(d) { return "#ABEBC6"; })
 	        .style("opacity", 0)
 	        .style("stroke", "black")
 	        .style("z-index", 0);
 	    g5.append("text")
 			.attr("class", "country_type_rect_text")
-			.attr("x", function(d) { return x(8); })
-			.attr("y", function(d) { return y(2800); })
+			.attr("x", function(d) { return x(20); })
+			.attr("y", function(d) { return y(2650); })
 			.text("Successful containment with good testing rate")
 			.style("font-size", country_type_rect_font_size)
 			.style("font-weight", "bold")
@@ -157,14 +184,14 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 			.attr("class", "country_type_rect")
 	        .attr("x", function(d) { return x(18); })
 	        .attr("y", function(d) { return y(5000); })
-	        .attr("width", function(d) { return x(55) - x(18); })
+	        .attr("width", function(d) { return x(50) - x(18); })
 	        .attr("height", function(d) { return y(3000) - y(5000); })
 	        .style("fill", function(d) { return "#D6EAF8"; })
 	        .style("opacity", 0)
 	        .style("stroke", "black");
 	    g5.append("text")
 			.attr("class", "country_type_rect_text")
-			.attr("x", function(d) { return x(8); })
+			.attr("x", function(d) { return x(15); })
 			.attr("y", function(d) { return y(5050); })
 			.text("Good testing rate but high cases per million")
 			.style("font-size", country_type_rect_font_size)
@@ -176,9 +203,9 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 	    //Append type rectangles
 		g5.append("rect")
 			.attr("class", "country_type_rect")
-	        .attr("x", function(d) { return x(-2); })
+	        .attr("x", function(d) { return x(0); })
 	        .attr("y", function(d) { return y(2250); })
-	        .attr("width", function(d) { return x(7) - x(-2); })
+	        .attr("width", function(d) { return x(7) - x(0); })
 	        .attr("height", function(d) { return y(0) - y(2250); })
 	        .style("fill", function(d) { return "#FADBD8"; })
 	        .style("opacity", 0)
@@ -194,8 +221,8 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 	        .style("opacity", 0);
 
 
-
-
+	    // Reset domain for low testing rate countries
+	    x.domain([0, 10]);
 
 	    g5.selectAll("dot")
 	    	.data(data)
@@ -231,7 +258,7 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 					if (event.pageX >= window.innerwidth/2) {
 						return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-100)+"px");
 					} else {
-					  return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+					  	return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
 					}
                 })
                 .on("mouseout", function() {
@@ -266,7 +293,7 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 		// Add the Y Axis
 		var yAxis = d3.axisLeft(y)
 		      	.tickFormat( (d,i) => {
-		          if (d%50 === 0) return d;
+		          if (d%1000 === 0) return d/1000+"k";
 		      	}).tickPadding(2);
 
 		g5.append("g")
@@ -274,7 +301,7 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 			.call(d3.axisLeft(y))
 			.call(yAxis)
 			.attr("class", "country_scroll_yaxis")
-			.style("font-size", "0.75rem")
+			.style("font-size", axis_font_size)
 		.append("text")
 			.attr("class", "country_scroll_yaxis_label")
 			.attr("transform", "rotate(-90)")
@@ -287,7 +314,7 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 			.style("fill", "black")
 			.style("stroke", "none")
 			.style("font-weight", "bold")
-			.style("font-size", "0.75rem");
+			.style("font-size", axis_font_size);
 
 
 		// Add the X Axis
@@ -299,7 +326,7 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 			.attr("transform", "translate(0," + (height+30)+ ")")
 			.call(xAxis)
 			.attr("class", "state_scroll_xaxis")
-			.style("font-size", "0.75rem")
+			.style("font-size", axis_font_size)
 		.append("text")
 			.attr("class", "state_scroll_xaxis_label")
 			.attr("x", width)
@@ -311,11 +338,13 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 			.style("fill", "black")
 			.style("stroke", "none")
 			.style("font-weight", "bold")
-			.style("font-size", "0.75rem");
+			.style("font-size", axis_font_size);
 
 	}
 
 }
+
+
 
 function draw_state_testing_group_rect() {
 	d3.select(idname).selectAll(".state_test_type_rect")
@@ -323,6 +352,8 @@ function draw_state_testing_group_rect() {
     		.duration(2000)
     		.style("opacity", 1);
 }
+
+
 
 function plot_state_testspm_vs_casespm(idname, width, height) {
 
@@ -623,10 +654,16 @@ function sort_state_circles_by_test_count(idname, width, height, margin) {
 
 
 function hide_scroll_map(idname) {
-	d3.select(idname).select(".india")
-		.transition()
-		.duration(1000)
-		.style("opacity", 0);
+	d3.select(idname).select(".country_focus").remove();
+	d3.select(idname).select(".india").remove();
+	d3.select(idname).select(".outbreak_spread_date_label").remove();
+	d3.select(idname).select(".outbreak_spread_map_casecount_label").remove();
+	d3.select(idname).select(".outbreak_spread_map_recovercount_label").remove();
+	d3.select(idname).select(".outbreak_spread_map_deathcount_label").remove();
+
+		//.transition()
+		//.duration(1000)
+		//.style("opacity", 0);
 
 	d3.select(idname).selectAll(".outbreak_spread_circles").remove();
 	//	.transition()
@@ -840,6 +877,7 @@ function state_circles_to_state_center(idname, filename, width, height) {
 				});
 	*/
 
+	/*
 		var xAxis = d3.axisBottom(x)
 					.tickFormat( (d,i) => {
 			          if (d%500 === 0) return d;
@@ -863,7 +901,7 @@ function state_circles_to_state_center(idname, filename, width, height) {
 			.style("stroke", "none")
 			.style("font-weight", "bold")
 			.style("font-size", "0.75rem");
-
+	*/
 	}
 
 }

@@ -103,6 +103,14 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 			}
 		});
 
+      	if (window.innerWidth >= 768) {
+	      	state_type_rect_font_size = "0.85rem";
+	      	axis_font_size = "0.85rem";
+	    } else {
+	      	state_type_rect_font_size = "0.5rem";
+	      	axis_font_size = "0.75rem";
+	    }
+
       	//Append type rectangles
 		svg.append("rect")
 			.attr("class", "state_type_rect")

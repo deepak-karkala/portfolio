@@ -57,7 +57,7 @@
 	bottom: 0;
 	top: auto;
 }
-.scroll__graphic1 p, .scroll__graphic2 p, .scroll__graphic3 p, .scroll__graphic4 p, .scroll__graphic5 p, .scroll__graphic6 p, .scroll__graphic7 p {
+.scroll__graphic1 p {
 	text-align: center;
 	padding: 1rem;
 	position: absolute;
@@ -71,7 +71,7 @@
 	color: #666;
 }
 
-.scroll__text1, .scroll__text2, .scroll__text3, .scroll__text4, .scroll__text5, .scroll__text6, .scroll__text7 {
+.scroll__text1 {
 	position: relative;
 	padding: 0 1rem;
 	max-width: 30rem;
@@ -89,45 +89,30 @@
 	margin-left: 50rem;
 }
 */
+.step1 {
+	margin: 0 auto 25rem auto;
+	/*border: 1px solid #333;*/
+	/* border-bottom: none; */
+	background-color: white;
+}
 
 .step1.high-z-index p {
 	z-index: 30;
 }
 
 @media (max-width: 767px) {
-	.scroll__graphic1, .scroll__graphic2, .scroll__graphic3, .scroll__graphic4, .scroll__graphic5, .scroll__graphic6, .scroll__graphic7 {
+	.scroll__graphic1{
 		position: absolute;
-		top: 0;
-		right: 10px; /*1rem;*/
+		top: 20%;
+		right: 10px; 
 		bottom: auto;
 		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
-		/*
-		background-color: #ddd;
-		border: 1px solid #000;
-	    */
 	    padding-top: 10px;
-	    /*padding-left: 10px;*/
 	}
 
-	.scroll__graphic7, .scroll__graphic3 {
-		position: absolute;
-		bottom: 0;
-		right: 10px; /*1rem;*/
-		bottom: auto;
-		-webkit-transform: translate3d(0, 0, 0);
-		-moz-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-		/*
-		background-color: #ddd;
-		border: 1px solid #000;
-	    */
-	    padding-top: 100px;
-	    /*padding-left: 10px;*/
-	}
-
-	.scroll__graphic1 p, .scroll__graphic2 p, .scroll__graphic3 p, .scroll__graphic4 p, .scroll__graphic5 p, .scroll__graphic6 p, .scroll__graphic7 p {
+	.scroll__graphic1 p {
 		text-align: center;
 		padding: 1rem;
 		position: absolute;
@@ -142,27 +127,20 @@
 		color: #666;
 	}
 
-	.scroll__text1, .scroll__text2, .scroll__text3, .scroll__text4, .scroll__text5, .scroll__text6, .scroll__text7 {
+	.scroll__text1 {
 		position: relative;
 		padding: 0 1rem;
 		max-width: 40rem;
-		width: 45%;
+		width: 100%;
 	} 
 
-	.scroll__text7, .scroll__text3 {
-		position: relative;
-		padding: 0 1rem;
-		max-width: 80rem;
-		width: 100%;
+	.step1 {
+		margin: 0 auto 50rem auto;
 	}
+
 }
 
-.step1, .step2, .step3, .step4, .step5, .step6, .step7 {
-	margin: 0 auto 25rem auto;
-	/*border: 1px solid #333;*/
-	/* border-bottom: none; */
-	background-color: white;
-}
+
 
 .step_bkg {
 	background-color: #dadada;

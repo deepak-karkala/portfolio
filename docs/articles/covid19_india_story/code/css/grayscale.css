@@ -1056,3 +1056,21 @@ bottom: .5em;
 .scroll_country_circles {
   z-index: 10;
 }
+
+.state_scroll_xaxis, .state_scroll_yaxis, .state_scroll_xaxis_label, .state_scroll_yaxis_label,
+.country_scroll_yaxis_label, .country_scroll_xaxis_label, .country_scroll_yaxis, .country_scroll_xaxis {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.conclusion {
+  margin-top: 20px;
+}
+
+.cluster_map_legend {
+  font-size: 0.75rem;
+}
+
+.cluster_video video {
+  width: 100%;
+  height: auto;
+}

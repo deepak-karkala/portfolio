@@ -17,6 +17,10 @@ var maxDeviceWidth = 1024;
 var g4;
 var g5;
 var scroll_show_state_list = ["DL", "MH", "GJ", "WB", "KL", "KA", "MP", "AP", "TN", "RJ", "PB", "BR", "JK", "HR"];
+var outbreak_spread_map_data;
+var india_topojson_data;
+var daily_stats_data;
+var outbreak_free_state_counter = 0;
 
 function load_data(idname, filename, width, height, margin) {
 

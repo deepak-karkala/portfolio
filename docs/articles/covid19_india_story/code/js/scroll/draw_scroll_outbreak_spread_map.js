@@ -42,7 +42,7 @@ function state_to_district_transition(idname) {
 			});	
 }
 
-function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin) {
+function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin, daily_stats_file) {
 
 	// set the ranges
     var x = d3.scaleLinear().range([0, width]);
@@ -60,6 +60,10 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 
 	// parse the date / time
     var parseTime = d3.timeParse("%Y-%m-%d");
+
+    var daily_cum_cases_count = [];
+	var daily_cum_deaths_count = [];
+	var daily_cum_recovered_count = [];
 
     /* Projection */
     /*
@@ -180,7 +184,7 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 			d.num_cases_in_district = +d.num_cases_in_district;
 			d.num_cases_in_state = +d.num_cases_in_state;
 
-			random_district_radius = randomNumber(0, d.num_cases_in_district/5e3);
+			random_district_radius = randomNumber(0, d.num_cases_in_district/7e2);
 			random_district_theta = randomNumber(0, 360)*Math.PI/180;
 
 			random_state_radius = randomNumber(0, d.num_cases_in_state/5e2);
@@ -192,7 +196,12 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 			d.state_lat = +d.state_lat + random_state_radius * Math.cos(random_state_theta);
 		});
 
-
+		daily_stats_data.forEach(function(d) {
+			d.date = parseTime(d.date);
+			daily_cum_cases_count[d.date] = d.total_confirmed;
+			daily_cum_deaths_count[d.date] = d.total_deaths;
+			daily_cum_recovered_count[d.date] = d.total_recovered;
+		});
 		//console.log(data);
 
 		/*
@@ -263,8 +272,14 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 					//return randomNumber(0, height);
 					return projection([d.district_long, d.district_lat])[1];
 				})
-				.attr("r", "0.20rem")
-				.style("fill", "#0000FF")
+				.attr("r", function(d) {
+					if (window.innerWidth >= 768) {
+						return "0.15rem"
+					} else {
+						return "0.10rem"
+					}
+				})
+				.style("fill", "#ff0000")
 				.style("opacity", 0)
 				.on("mouseover", function(d, i) {
 				    //d3.selectAll(".scroll_randompos_circles").style("opacity", 0.5);
@@ -307,6 +322,49 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 				*/
 
 
+
+		g2.append("text")
+			.attr("class", "outbreak_spread_date_label")
+			.attr("x", width-120)
+			.attr("y", 40)
+			.text("")
+			.style("font-size", "1.5rem")
+			.style("font-weight", "bold")
+			.style("stroke", "none")
+			.style("fill", "black");
+
+
+		g2.append("text")
+			.attr("class", "outbreak_spread_map_casecount_label")
+			.attr("x", width-120)
+			.attr("y", 60)
+			.text("")
+			.style("font-size", "1rem")
+			.style("font-weight", "bold")
+			.style("stroke", "none")
+			.style("fill", "#ff0000");
+
+		g2.append("text")
+			.attr("class", "outbreak_spread_map_recovercount_label")
+			.attr("x", width-120)
+			.attr("y", 80)
+			.text("")
+			.style("font-size", "1rem")
+			.style("font-weight", "bold")
+			.style("stroke", "none")
+			.style("fill", "#229954");
+
+		g2.append("text")
+			.attr("class", "outbreak_spread_map_deathcount_label")
+			.attr("x", width-120)
+			.attr("y", 100)
+			.text("")
+			.style("font-size", "1rem")
+			.style("font-weight", "bold")
+			.style("stroke", "none")
+			.style("fill", "#0000ff");
+
+
 		
 
 		current_date = start_date;
@@ -315,7 +373,9 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 			current_date.setDate(current_date.getDate() + 1);
 			if (current_date <= end_date) {
 				g.selectAll(".outbreak_spread_map_date_label").remove();
-				//g.selectAll(".cluster_map_casecount_label").remove();
+				g.selectAll(".outbreak_spread_map_casecount_label").remove();
+				g.selectAll(".outbreak_spread_map_recovercount_label").remove();
+				g.selectAll(".outbreak_spread_map_deathcount_label").remove();
 
 				g.append("text")
 					.attr("class", "outbreak_spread_map_date_label")
@@ -327,18 +387,38 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 					.style("stroke", "none")
 					.style("fill", "black");
 
-				/*
+
 				g.append("text")
-					.attr("class", "cluster_map_casecount_label")
+					.attr("class", "outbreak_spread_map_casecount_label")
 					.attr("x", width-120)
 					.attr("y", 60)
-					.text(numberWithCommas(daily_cum_cases_count[current_date]) + " cases")
-					.style("font-size", "1rem")
-					//.style("font-weight", "bold")
+					.text(numberWithCommas(daily_cum_cases_count[cdt]) + " cases")
+					.style("font-size", "2rem")
+					.style("font-weight", "bold")
 					.style("stroke", "none")
-					.style("fill", "#404040");
+					.style("fill", "black");
 
-				*/
+				g.append("text")
+					.attr("class", "outbreak_spread_map_recovercount_label")
+					.attr("x", width-120)
+					.attr("y", 80)
+					.text(numberWithCommas(daily_cum_recovered_count[cdt]) + " recoveries")
+					.style("font-size", "2rem")
+					.style("font-weight", "bold")
+					.style("stroke", "none")
+					.style("fill", "black");
+
+				g.append("text")
+					.attr("class", "outbreak_spread_map_deathcount_label")
+					.attr("x", width-120)
+					.attr("y", 100)
+					.text(numberWithCommas(daily_cum_deaths_count[cdt]) + " deaths")
+					.style("font-size", "2rem")
+					.style("font-weight", "bold")
+					.style("stroke", "none")
+					.style("fill", "black");
+
+				
 				
 				g2.selectAll(".outbreak_spread_circles")
 					.transition()
@@ -358,9 +438,9 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 								if (d.status == "Recovered") {
 									return "#229954";
 								} else if (d.status == "Deceased") {
-									return "#000000";
+									return "#0000ff"; //"#000000";
 								} else if (d.status == "Hospitalized") {
-									return "#FA8072";
+									return "#ff0000"; //"#FA8072";
 								}
 							} else {
 								return "#FA8072";
