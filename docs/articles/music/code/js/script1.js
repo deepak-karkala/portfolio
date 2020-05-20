@@ -510,8 +510,8 @@ function get_rhythm_viz_frame_examples() {
 function get_rhythm_viz_frame_mashup_examples() {
 
     html_string = `<div class="row">
-        <div class="col-lg-6">` + get_rhythm_viz_frame("Rhythm: Shape of You", "Tune: Cheap Thrills", "graphic1_viz_frame_mashup_example1", "data/rhythm_viz/mp3/rhythm_ShapeOfYou_tune_CheapThrills.mp3", "song_player_10", "button_icon_10") + `</div>
-        <div class="col-lg-6">` + get_rhythm_viz_frame("Rhythm: Shape of You", "Tune: Halo", "graphic1_viz_frame_mashup_example2", "data/rhythm_viz/mp3/rhythm_ShapeOfYou_tune_Halo.mp3", "song_player_11", "button_icon_11") + `</div>
+        <div class="col-lg-6 col-6">` + get_rhythm_viz_frame("Rhythm: Shape of You", "Tune: Cheap Thrills", "graphic1_viz_frame_mashup_example1", "data/rhythm_viz/mp3/rhythm_ShapeOfYou_tune_CheapThrills.mp3", "song_player_10", "button_icon_10") + `</div>
+        <div class="col-lg-6 col-6">` + get_rhythm_viz_frame("Rhythm: Shape of You", "Tune: Halo", "graphic1_viz_frame_mashup_example2", "data/rhythm_viz/mp3/rhythm_ShapeOfYou_tune_Halo.mp3", "song_player_11", "button_icon_11") + `</div>
     </div>`;
 
     return html_string;

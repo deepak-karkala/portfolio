@@ -14,7 +14,7 @@ function plot_rhythm_visualisation_initial() {
     height_scale_factor = height_scale_factor_width(bb);
 
 
-    var margin = {right:10, left:10, top:30, bottom:10};
+    var margin = {right:10, left:10, top:10, bottom:10};
     base_width = bb*width_scale_factor - margin.left - margin.right;
     base_height = bb*height_scale_factor - margin.top - margin.bottom;
     //csv_processed_file = "data/rhythm_viz/viz_csv/Shape_of_you.csv";
@@ -43,7 +43,7 @@ function plot_rhythm_visualisation(idname, csv_processed_file, width, height) {
         var pitchScale = d3.scaleLinear().domain([30, 80]).range([0, 1]);
         var radiusScale = d3.scaleLinear().domain([0, 1]).range([0, width]);
         var margin = {right:10, left:10, top:10, bottom:10};
-        var c_tones = [36, 48, 60, 72,];
+        var c_tones = [36, 48]; //, 60]; //, 72,];
         
         data.forEach(function(d) {
             d.pitch = +d.pitch;
@@ -215,7 +215,7 @@ $("#viz_combobox").change(function() {
         var bb = d3.select(idname).node().offsetWidth;
         width_scale_factor = 0.4;
         height_scale_factor = 0.4;
-        var margin = {right:10, left:10, top:30, bottom:10};
+        var margin = {right:10, left:10, top:10, bottom:10};
         base_width = bb*width_scale_factor - margin.left - margin.right;
         base_height = bb*height_scale_factor - margin.top - margin.bottom;
         csv_processed_file = "data/rhythm_viz/viz_csv/"+artist_song_folder+".csv";

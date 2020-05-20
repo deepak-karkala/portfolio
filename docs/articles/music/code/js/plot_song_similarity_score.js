@@ -168,8 +168,8 @@ function plot_all_songs_similarity_score_initial() {
                                         .style("visibility", "visible");
                                 })
                                 .on("mousemove", function(){
-                                  if (event.pageX >= window.innerwidth*0.75/2) {
-                                    return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX-100)+"px");
+                                  if (event.pageX >= window.innerWidth/2) {
+                                    return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-200)+"px");
                                   } else {
                                       return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
                                   }
@@ -183,7 +183,13 @@ function plot_all_songs_similarity_score_initial() {
                                     .duration(2000)
                                     .attr("cx", function(d) { return d.x; })
                                     .attr("cy", function(d) { return d.y; })
-                                    .attr("r", function(d) { return "0.25rem"; }) //10
+                                    .attr("r", function(d) {
+                                        if (window.innerWidth >= 768) {
+                                            return "0.20rem";
+                                        } else {
+                                            return "0.15rem";
+                                        }
+                                    }) //10
                                     .style("fill", function(d) { return colorScale(d.similarity_score); });
 
             var text = svg.selectAll(".text")

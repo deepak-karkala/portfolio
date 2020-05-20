@@ -207,7 +207,7 @@ function plot_artist_score_legend(idname, width, height, shapeWidth, colorScale)
 function plot_artist_song_similarity_score(idname, artist, file, width, height, margin, colorScale, force_collide_factor) {
     var tooltip = d3.select("body")
                       .append("div")
-                      .attr("class", "tooltip_artist_song_similarity_score")
+                      .attr("class", "tooltip_artist_discography")
                       .style("position", "absolute")
                       .style("z-index", "10")
                       .style("visibility", "hidden");
@@ -289,11 +289,11 @@ function plot_artist_song_similarity_score(idname, artist, file, width, height, 
                                     .style("visibility", "visible");
                             })
                             .on("mousemove", function(){
-                              //if (event.pageX >= window.innerwidth*0.75/2) {
-                              //  return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX-100)+"px");
-                              //} else {
+                              if (event.pageX >= window.innerWidth/2) {
+                                return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-200)+"px");
+                              } else {
                                 return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
-                              //}
+                              }
                             })
                             .on("mouseout", function(){
                               d3.select(this).style('stroke', 'white').style("stroke-opacity", 0);
@@ -304,7 +304,7 @@ function plot_artist_song_similarity_score(idname, artist, file, width, height, 
                                 .duration(2000)
                                 .attr("cx", function(d) { return d.x; })
                                 .attr("cy", function(d) { return d.y; })
-                                .attr("r", function(d) { return "0.50rem"; }) //10
+                                .attr("r", function(d) { return "0.25rem"; }) //10
                                 .style("fill", function(d) { return colorScale(d.similarity_score); });
 
         var text = svg.selectAll(".text")

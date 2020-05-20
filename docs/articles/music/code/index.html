@@ -152,7 +152,7 @@
 			</div>
 		
 			<div class='step' data-step='6'>
-				<p>Notice how similar Ed Sheeran's <em class="explainer_song_name">Shape of You</em> and Sia's <em class="explainer_song_name">Cheap Thrills</em> are visually.</p>
+				<p>We observe how similar Ed Sheeran's <em class="explainer_song_name">Shape of You</em> and Sia's <em class="explainer_song_name">Cheap Thrills</em> are visually.</p>
 			</div>
 			<div class='step' data-step='7'>
 				<p class="step_small_text" style="font-size: 1.0rem;">We use the features of a rhythm pattern (pitch and on-off duration of the notes present in the song) to quantify the difference in rhythms and assign similarity scores to each pair of songs.</p>
@@ -167,7 +167,7 @@
 				<p>To substantiate this method of measuring rhythm similarity, let us hear the vocals of one song with rhythm of another song.</p>
 			</div>
 			<div class='step' data-step='11'>
-				<p>Notice how well the rhythm of <em class="explainer_song_name">Shape of You</em> fits to <em class="explainer_song_name">Cheap Thrills</em> whereas fails miserably with Beyonce's <em class="explainer_song_name">Halo</em></p>
+				<p>We can hear how well the rhythm of <em class="explainer_song_name">Shape of You</em> fits to <em class="explainer_song_name">Cheap Thrills</em> whereas fails miserably with Beyonce's <em class="explainer_song_name">Halo</em></p>
 			</div>
 			<div class='step' data-step='12'>
 				<p>Thus we have now established a reliable way of measuring similarity of rhythms in two tracks.</p>
@@ -265,12 +265,21 @@
 				<div class="col-lg-8 mx-auto">
 					<p>
 						<ul>
-							<li>Repetitive Rhythm </li>
-							<p>These are songs which have a consistent rhythm throughout the song. Such songs are characterized by the presence of the same repetitive beats over and over. This is a popular category of rhythm patterns. Songs like Ed Sheeran's Shape of You and Coldplay's Viva La Vida are classic examples of this category. The near perfect symmetry in the rhythm patterns of such songs are strikingly evident.</p>
-							<li>Alternating Rhythm </li>
-							<li>Staggered Rhythm </li>
-							<li>Multiple Notes Rhythm </li>
+							<li class="rhythm_type_title">Repetitive Rhythm </li>
+							<p>These are songs which have a consistent rhythm throughout the song. Such songs are characterized by the presence of the same repetitive beats over and over. This is a popular category of rhythm patterns. Songs like <span class="song_name_text"> Ed Sheeran's Shape of You</span> and <span class="song_name_text">Coldplay's Viva La Vida</span> are classic examples of this category. The near perfect symmetry in the rhythm patterns of such songs are strikingly evident.</p>
+							
+							<li class="rhythm_type_title">Alternating Rhythm </li>
+							<p>Alternating rhythms are where songs possess multiple beat patterns switching amongst these patterns during the course of a song. These are often used to make the song diverse and keep the listener engaged by using beat patterns of varying tempo or style. One of the classic songs of this variety is <span class="song_name_text">Eminem's Love the way you lie ft. Rihanna</span> where the two rhythm patterns, one during Rihanna's vocals and the other during Eminem's rap are very distinctly visible.</p>
+
+							<li class="rhythm_type_title">Staggered Rhythm </li>
+							<p>Another popular variety of rhythms is where the pitch of a note is progressively increased over a short duration before returning to the original pitch and then repeating this cycle over and over again. <span class="song_name_text">Katy Perry's I kissed a girl</span> and <span class="song_name_text">Calvin Harris's Outside</span> are examples of this type of rhythm pattern.</p>
+
+							<li class="rhythm_type_title">Multiple Notes Rhythm </li>
+							<p>Rhythm patterns we explored till now had notes of few distinct pitch values and in most songs only such distinct pitch values are used throughout the whole song. However a small number of songs use unusually large number of notes with widely different pitch values. Such songs are filled with notes continuously with very little off duration of the notes making them feel more lively, colorful and dynamic. <span class="song_name_text">Focus by Ariana Grande</span> and <span class="song_name_text">Work by Rihanna</span> are examples of such rhythm pattern.</p>
 						</ul>
+					</p>
+					<p>
+						This concludes the section on visualizing and categorizing rhythm patterns of songs. We now move on to exploring uniqueness of songs, artists, rhythmically most similar song pairs and more.
 					</p>
 				</div>
 			</div>
@@ -287,10 +296,10 @@
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
 					<p>
-						Since we now have a method to measure similarity of two songs, we can use this to determine the uniqueness of a song. In order to do this, we measure the similarity of a song to every other song in our dataset. The average similarity score of a song to all other songs will determine the uniqueness of a song. Songs which sound similar to most others will have a very low similarity score whereas songs with distinct rhythm patterns will have much higher similarity scores.
+						Since we now have a method to measure similarity of rhythm in two songs, we can use this to determine the uniqueness of a song. In order to do this, we measure the similarity of a song to every other song in our dataset. The average similarity score of a song to all other songs will determine the uniqueness of a song. Songs which sound similar to most others will have a very high similarity score whereas songs with distinct rhythm patterns will have much lower similarity scores.
 					</p>
 					<p>
-						The dataset includes songs from top 100 Billboard top artists of all time and also all the artists in Billboard top 10 over the last five years. This gives us a wide variety of songs which span multiple decades in time.
+						The graphic below shows the similarity scores of all the songs used in this project's dataset. The position of the songs on the horizontal axis determines how unique a song is, songs lying more towards right are more similar to other songs in the dataset whereas songs towards left side of the chart possess more unique rhythm patterns. 
 					</p>
 				</div>
 			</div>
@@ -341,10 +350,7 @@
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
 					<p>
-						Nam consectetur turpis et nulla hendrerit, eu sodales sapien pretium. Nulla dui diam, pulvinar in venenatis et, congue sed dui. Proin vestibulum viverra dolor, sit amet vestibulum quam. Pellentesque diam diam, hendrerit a tortor ut, vehicula tincidunt lorem. Maecenas efficitur nec eros nec imperdiet. Donec aliquam orci egestas turpis luctus scelerisque. 
-					</p>
-					<p>
-						Nam consectetur turpis et nulla hendrerit, eu sodales sapien pretium. Nulla dui diam, pulvinar in venenatis et, congue sed dui. Proin vestibulum viverra dolor, sit amet vestibulum quam. Pellentesque diam diam, hendrerit a tortor ut, vehicula tincidunt lorem. Maecenas efficitur nec eros nec imperdiet. Donec aliquam orci egestas turpis luctus scelerisque. 
+						Going by this, we observe that our rhythm similarity algorithm declares <span class="song_name_text">Lady Gaga's Stupid Love</span>, <span class="song_name_text">Pink Floyd's High Hopes</span>, <span class="song_name_text">Shawn Mendes's If I can't have you</span>, <span class="song_name_text">One Direction's Walking in the wind</span>, <span class="song_name_text">David Guetta's This ones for you</span> as the some of the most rhythmically unique songs amongst the songs considered in this project. The top 25 most unique songs are listed in this table below.
 					</p>
 				</div>
 			</div>
@@ -372,10 +378,10 @@
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
 					<p>
-						Nam consectetur turpis et nulla hendrerit, eu sodales sapien pretium. Nulla dui diam, pulvinar in venenatis et, congue sed dui. Proin vestibulum viverra dolor, sit amet vestibulum quam. Pellentesque diam diam, hendrerit a tortor ut, vehicula tincidunt lorem. Maecenas efficitur nec eros nec imperdiet. Donec aliquam orci egestas turpis luctus scelerisque. 
+						Having seen the most unique songs, we now return to the question we posed at the beginning of this article, that feeling of having heard a similar rhythm elsewhere while listening to a song and if we can determine which are those other songs which possess similar rhythm. The interactive graphic below lets you select a song and see which other songs are rhythmically most similar to it. The similarity scores of the songs pairs are also listed for reference. Scores closer to <em>"1"</em> suggests that the songs have very similar rhythm patterns. 
 					</p>
 					<p>
-						Nam consectetur turpis et nulla hendrerit, eu sodales sapien pretium. Nulla dui diam, pulvinar in venenatis et, congue sed dui. Proin vestibulum viverra dolor, sit amet vestibulum quam. Pellentesque diam diam, hendrerit a tortor ut, vehicula tincidunt lorem. Maecenas efficitur nec eros nec imperdiet. Donec aliquam orci egestas turpis luctus scelerisque. 
+						Explore which songs are most similar to some of your favourite songs.
 					</p>
 				</div>
 			</div>
@@ -416,21 +422,6 @@
 			</div>
 		</div>
 
-
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 mx-auto">
-					<p>
-						Nam consectetur turpis et nulla hendrerit, eu sodales sapien pretium. Nulla dui diam, pulvinar in venenatis et, congue sed dui. Proin vestibulum viverra dolor, sit amet vestibulum quam. Pellentesque diam diam, hendrerit a tortor ut, vehicula tincidunt lorem. Maecenas efficitur nec eros nec imperdiet. Donec aliquam orci egestas turpis luctus scelerisque. 
-					</p>
-
-					<p>
-						Nam consectetur turpis et nulla hendrerit, eu sodales sapien pretium. Nulla dui diam, pulvinar in venenatis et, congue sed dui. Proin vestibulum viverra dolor, sit amet vestibulum quam. Pellentesque diam diam, hendrerit a tortor ut, vehicula tincidunt lorem. Maecenas efficitur nec eros nec imperdiet. Donec aliquam orci egestas turpis luctus scelerisque. 
-					</p>
-				</div>
-			</div>
-		</div>
-
 		<!--
 		<div class="container decade_similarity">
 			<div class="row">
@@ -445,20 +436,6 @@
 			</div>
 		</div>
 		-->
-
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 mx-auto">
-					<p>
-						Nam consectetur turpis et nulla hendrerit, eu sodales sapien pretium. Nulla dui diam, pulvinar in venenatis et, congue sed dui. Proin vestibulum viverra dolor, sit amet vestibulum quam. Pellentesque diam diam, hendrerit a tortor ut, vehicula tincidunt lorem. Maecenas efficitur nec eros nec imperdiet. Donec aliquam orci egestas turpis luctus scelerisque. 
-					</p>
-					<p>
-						Nam consectetur turpis et nulla hendrerit, eu sodales sapien pretium. Nulla dui diam, pulvinar in venenatis et, congue sed dui. Proin vestibulum viverra dolor, sit amet vestibulum quam. Pellentesque diam diam, hendrerit a tortor ut, vehicula tincidunt lorem. Maecenas efficitur nec eros nec imperdiet. Donec aliquam orci egestas turpis luctus scelerisque. 
-					</p>
-				</div>
-			</div>
-		</div>
-
 	</section>
 
 
@@ -470,10 +447,7 @@
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
 					<p>
-						Nam consectetur turpis et nulla hendrerit, eu sodales sapien pretium. Nulla dui diam, pulvinar in venenatis et, congue sed dui. Proin vestibulum viverra dolor, sit amet vestibulum quam. Pellentesque diam diam, hendrerit a tortor ut, vehicula tincidunt lorem. Maecenas efficitur nec eros nec imperdiet. Donec aliquam orci egestas turpis luctus scelerisque. 
-					</p>
-					<p>
-						Nam consectetur turpis et nulla hendrerit, eu sodales sapien pretium. Nulla dui diam, pulvinar in venenatis et, congue sed dui. Proin vestibulum viverra dolor, sit amet vestibulum quam. Pellentesque diam diam, hendrerit a tortor ut, vehicula tincidunt lorem. Maecenas efficitur nec eros nec imperdiet. Donec aliquam orci egestas turpis luctus scelerisque. 
+						Our analysis so far naturally leads to the question of <em>Which are the most rhythmically similar song pairs ?</em> The table below lists the most similar song pairs amongst the songs considered in this project's dataset. The rhythm similarity computation algorithm considers these songs to have extremely similar rhythm patterns. You can inspect the list and ask yourself if you too ever felt like some of these song pairs are similar to each other.
 					</p>
 				</div>
 			</div>
