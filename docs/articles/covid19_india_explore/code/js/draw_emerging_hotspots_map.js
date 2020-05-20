@@ -1,7 +1,7 @@
 
-//script_load_timeout_list.push(setTimeout(load_emergingHotspotsMap_script, 16*script_load_timestep));
+script_load_timeout_list.push(setTimeout(load_emergingHotspotsMap_script, 16*script_load_timestep));
 
-load_emergingHotspotsMap_script();
+//load_emergingHotspotsMap_script();
 
 function load_emergingHotspotsMap_script() {
 
