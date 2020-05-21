@@ -848,11 +848,14 @@ function state_circles_to_state_center(idname, filename, width, height) {
                     	if (isNaN(d.ntod)) {
                     		return "#c0c0c0";
                     	} else {
+		                    return colorScale(d.ntod/30);
+                    		/*
 	                        if (d.state_code=="KL") {
 	                			return colorScale(1);
 	                		} else {
 		                    	return colorScale(d.ntod/30);
 	                		}
+	                		*/
                     	}
                     });
 

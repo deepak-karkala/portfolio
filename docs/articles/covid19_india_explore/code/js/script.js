@@ -2,9 +2,84 @@ var minDeviceWidth = 375;
 var maxDeviceWidth = 1024;
 var small_screen_thresh = 768;
 var window_inner_width = window.innerWidth;
-var script_load_timestep = 5*500;
+var script_load_timestep = 5*1000;
 var script_load_timeout_list = [];
 
+var latest_case_count;
+var latest_death_count;
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function load_coverImage_script() {
+  // Daily cases
+  idname = "#new_cases_day_cover"
+  d3.select(idname).select("svg").remove();
+  filename = "data/overall_and_daily_cases_deaths.csv";
+  type = "cases";
+  width_scale_factor = 0.90;
+  height_scale_factor = 0.40;
+  var bb = d3.select(idname).node().offsetWidth;
+  var margin = {right:40, left:15, top:10, bottom:30};
+  base_width = bb*width_scale_factor - margin.left - margin.right;
+  base_height = bb*height_scale_factor - margin.top - margin.bottom;
+  fill_color = "#ffb2b2";
+  plot_daily_cases_deaths_cover(idname, filename, base_width, base_height, type, fill_color, margin);
+
+  idname = "#stats_day_cover"
+  d3.select(idname).select("svg").remove();
+  filename = "data/overall_and_daily_cases_deaths.csv";
+  type = "cases";
+  width_scale_factor = 0.90;
+  height_scale_factor = 0.40;
+  var bb = d3.select(idname).node().offsetWidth;
+  var margin = {right:40, left:15, top:10, bottom:0};
+  base_width = bb*width_scale_factor - margin.left - margin.right;
+  base_height = bb*height_scale_factor - margin.top - margin.bottom;
+  setTimeout(function() {
+    load_dailyStats_cover(idname, base_width, base_height)
+  }, 1000);
+
+}
+
+function load_dailyStats_cover(idname, width, height) {
+  var svg = d3.select(idname).append("svg")
+        .attr("width", width)
+            .attr("height", 120);;
+
+  svg.append("text")
+      .attr("class", "cover_stat_title")
+            .attr("x", width-30)
+            .attr("y", 20)
+            .style("text-anchor", "end")
+            .text("Total Cases");
+
+  svg.append("text")
+      .attr("class", "cover_stat")
+            .attr("x", width-30)
+            .attr("y", 40)
+            .style("text-anchor", "end")
+            .text(numberWithCommas(latest_case_count));
+
+  svg.append("text")
+      .attr("class", "cover_stat_title")
+            .attr("x", width-30)
+            .attr("y", 70)
+            .style("text-anchor", "end")
+            .text("Deaths");
+
+  console.log(latest_death_count);
+
+  svg.append("text")
+      .attr("class", "cover_stat")
+            .attr("x", width-30)
+            .attr("y", 90)
+            .style("text-anchor", "end")
+            .text(numberWithCommas(latest_death_count));
+}
+load_coverImage_script();
+script_load_timeout_list.push(setTimeout(load_dailyCasesDeaths_script, 2*script_load_timestep));
 
 
 months_list = ["January", "February", "March", "April", "May", "June",
@@ -56,10 +131,15 @@ var svg_outbreak_spread_map;
 var outbreak_spread_circles_g;
 var outbreak_spread_start_date;
 var outbreak_spread_sim_duration;
-var outbreak_spread_num_sim_days;
-var outbreak_spread_num_milliseconds_per_date;
 var outbreak_spread_step_duration = 50;
 var outbreak_spread_step_delay = 100;
+var outbreak_spread_timeouts = [];
+var outbreak_spread_base_width;
+var start_date_outbreakSpreadMap = new Date(2020, 2, 1); //Start from March
+var end_date_outbreakSpreadMap = new Date(2020, 4, 17); //Start from March
+var current_date_outbreakSpreadMap = start_date_outbreakSpreadMap;
+var outbreak_spread_num_sim_days = Math.ceil(Math.abs(end_date_outbreakSpreadMap - start_date_outbreakSpreadMap) / (1000 * 60 * 60 * 24)) - 1;
+var outbreak_spread_num_milliseconds_per_date = 500;
 
 
 //State flattening curve
@@ -79,23 +159,24 @@ var state_doubling_time_state_color_mapping = d3.scaleOrdinal()
       .range(state_colors_list);
 var state_doubling_time_highlight_list = ["MH", "TN", "DL", "KA", "HR", "WB", "PB", "BR"]; 
 var default_background_color_state_doubling_time = "#c0c0c0";
+var start_date_stateDoublingTime = new Date(2020, 4, 1);
 
 
 // District growth rate
 var district_growth_rate_state_color_mapping = d3.scaleOrdinal()
       .domain([0, 36])
       .range(state_colors_list);
-var district_growth_rate_highlight_list = ["Amritsar_PB", "Kolkata_WB", "Solapur_MH", "Chandigarh_CH",
+var district_growth_rate_highlight_list = ["Ariyalur_TN", "Kolkata_WB", "Udaipur_RJ", "Thiruvallur_TN",
                 "Ludhiana_PB"];
 var default_background_color_district_growth_rate = "#c0c0c0";
-
+var start_date_districtGrowthRate = new Date(2020, 4, 1);
 
 // District case density
 var district_case_density_state_color_mapping = d3.scaleOrdinal()
       .domain([0, 36])
       .range(state_colors_list);
 var district_case_density_highlight_list = ["Chennai_TN", "Bhopal_MP",
-      "Indore_MP", "Delhi_DL", "Kasaragod_KL", "Kolkata_WB", "Amritsar_PB"]; //"SPS-Nellore_AP"
+      "Indore_MP", "Delhi_DL", "Kasaragod_KL", "Kolkata_WB", "Amritsar_PB", "Perambalur_TN", "Dhalai_TR"]; //"SPS-Nellore_AP"
 var default_background_color_district_case_density = "#c0c0c0";
 var min_case_count_to_plot_case_density = 40;
 
@@ -151,8 +232,8 @@ function setupButtons() {
           load_totalCasesDeaths_script();
       } else if (buttonId=="tracing_outbreak") {
           setTimeout(load_clusterMap_script, 100);
-          setTimeout(load_clusterTable_script, 3000);
-          setTimeout(load_outbreakSpreadMap_script, 6000);
+          setTimeout(load_clusterTable_script, 1000);
+          setTimeout(load_outbreakSpreadMap_script, 2000);
       } else if (buttonId=="state_analysis") {
           load_stateStreamGraph_script();
           load_stateCaseCount_script();
@@ -208,9 +289,7 @@ function setupPredictionScenarioButtons() {
 setupPredictionScenarioButtons();
 */
 
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+
 
 
 

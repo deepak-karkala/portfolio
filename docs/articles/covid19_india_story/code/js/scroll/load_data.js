@@ -21,6 +21,7 @@ var outbreak_spread_map_data;
 var india_topojson_data;
 var daily_stats_data;
 var outbreak_free_state_counter = 0;
+var svg_indv_time;
 
 function load_data(idname, filename, width, height, margin) {
 
@@ -95,8 +96,8 @@ function load_data(idname, filename, width, height, margin) {
 			  }
 			)
 			.on("mousemove", function(){
-				if (event.pageX >= width/2) {
-		            return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX)+"px");
+				if (event.pageX >= window.innerWidth/2) {
+		            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-150)+"px");
 		        } else {
 		        	return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
 		        }
@@ -135,12 +136,14 @@ function show_individual_cases(idname, width, height, margin, opacity) {
         .style("visibility", "hidden");
 
 
-    var svg = d3.select(idname).append("svg")
+    svg_indv_time = d3.select(idname).append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
       .append("g");
 
-	svg.selectAll(".dot")
+    console.log(scroll_data);
+
+	svg_indv_time.selectAll(".dot")
 			.data(scroll_data)
         .enter().append("circle")
 			.attr("class", "scroll_randompos_circles circles")
@@ -170,8 +173,8 @@ function show_individual_cases(idname, width, height, margin, opacity) {
 			  }
 			)
 			.on("mousemove", function(){
-				  if (event.pageX >= width/2) {
-		            return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX)+"px");
+				  if (event.pageX >= window.innerWidth/2) {
+		            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-150)+"px");
 		          } else {
 		            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
 		          }
@@ -228,7 +231,12 @@ function color_case_by_status(idname) {
 		  }
 		)
 		.on("mousemove", function(){
-			return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+			if (event.pageX >= window.innerWidth/2) {
+				return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-150)+"px");
+			} else {
+				return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+			}
+			//return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
 		})
 		.on("mouseout", function(d, i){
 		    //d3.selectAll(".scroll_randompos_circles").style("opacity", 1.0);
@@ -239,6 +247,20 @@ function color_case_by_status(idname) {
 		.duration(2000)
 			.attr("fill", function(d,i) {
 				return status_color_mapping[d.status];
+			})
+			.attr("r", function(d,i) {
+				if (d.status!="Hospitalized") {
+					return "0.20rem";
+				} else {
+					return "0.15rem";
+				}
+			})
+			.attr("opacity", function(d){
+				if (d.status=="Hospitalized") {
+					return 0.5;
+				} else {
+					return 1;
+				}
 			});
 
 }

@@ -13,7 +13,7 @@ function load_stateDoublingTime_script() {
 	if (window_inner_width <= small_screen_thresh) {
 		var margin = {right:10, left:30, top:20, bottom:50};
 	} else {
-		var margin = {right:50, left:50, top:20, bottom:50};
+		var margin = {right:80, left:30, top:20, bottom:50};
 	}
 	base_width = bb*width_scale_factor - margin.left - margin.right;
 	//height_scale_factor = 0.35;
@@ -68,7 +68,6 @@ function plot_state_doubling_time(idname, filename, width, height, margin) {
     var case_density_50 = [];
     var case_density_100 = [];
     var case_density_150 = [];
-    var start_date = new Date(2020, 4, 1);
 
     d3.csv(filename, function(error, data_csv) {
 		if (error) throw error;
@@ -80,7 +79,7 @@ function plot_state_doubling_time(idname, filename, width, height, margin) {
 			dt = parseTime(dates[i])
 			if (window_inner_width <= small_screen_thresh) {
 				//if ((dt.getMonth()>=4) && (dt.getDate()>=0)) {
-				if (dt >= start_date) {
+				if (dt >= start_date_stateDoublingTime) {
 					date_data[idx] = [];
 					date_data[idx].date = parseTime(dates[i]);
 
@@ -116,11 +115,11 @@ function plot_state_doubling_time(idname, filename, width, height, margin) {
 			}
 		}
 
-		x.domain(date_data.map(function(d) {
+		x.domain(date_data.filter(function(d) { return d.date>=start_date_stateDoublingTime } ).map(function(d) {
 			//console.log(d.date);
 			return d.date;
 		}));
-	    y.domain([0, 30]);
+	    y.domain([0, 50]);
 
 	    var state_latest_doubling_time = [];
 		for (var j=0; j<data_csv.length; j++) {
@@ -149,12 +148,12 @@ function plot_state_doubling_time(idname, filename, width, height, margin) {
 
 					//console.log(state_doubling_time[dates[i]]);
 
-					if ((first_nonzero==1) && (state_doubling_time[dates[i]]!=="")) {
+					if ((first_nonzero==1) && (state_doubling_time[dates[i]]!=="") && (parseFloat(state_doubling_time[dates[i]])>0) ) {
 
 						dt = parseTime(dates[i])
 						state_db_time = parseFloat(state_doubling_time[dates[i]]);
-						if (window_inner_width <= small_screen_thresh) {
-							if (dt >= start_date) {
+						if (1) { //(window_inner_width <= small_screen_thresh) {
+							if (dt >= start_date_stateDoublingTime) {
 								data[didx] = [];
 								data[didx].date = dt;
 								data[didx].rate = state_db_time;

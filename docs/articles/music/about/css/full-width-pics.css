@@ -95,3 +95,9 @@ video, img {
 	color: white;
 	font-size: 0.75rem;
 }
+
+.rhythm_viz_example img {
+  width: 100%;
+  height: auto;
+}
+

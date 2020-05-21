@@ -754,3 +754,22 @@ figure p {
   color: #5DADE2;
 }
 
+.small_text_transition {
+  font-size: 0.75rem;
+}
+
+.footer {
+  background-color: #000;
+  font-size: 0.75rem;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+
+.footer p {
+  font-size: 0.75rem;
+}
+
+.footer .large_footer_text {
+  font-size: 1.0rem;
+}
+

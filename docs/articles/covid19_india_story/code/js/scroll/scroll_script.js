@@ -12,7 +12,7 @@
 	// generic window resize listener event
 	function handleResize() {
 		// 1. update height of step elements
-		var stepHeight = Math.floor(window.innerHeight * 0.25);
+		var stepHeight = Math.floor(window.innerHeight * 0.35);
 		step.style('height', stepHeight + 'px');
 		// 2. update width/height of graphic element
 		var bodyWidth = d3.select('body').node().offsetWidth;
@@ -116,7 +116,7 @@
 		}
 		
 
-		if ((data_step_id == 30) || (data_step_id == 31) || (data_step_id == 32) || (data_step_id >= 35)) {
+		if ((data_step_id == 30) || (data_step_id == 31) || (data_step_id >= 35)) {
 			idname = "#scroll1_chart";
 			d3.select(idname).select("svg").remove();
 
@@ -137,6 +137,26 @@
 					.style('height', graphicHeight + 'px')
 					.style('top', 0)
 					.style('left', '40%');
+
+				if (data_step_id>=33) {
+					text.style('width', '100%')
+						.style('max-width', '100rem');
+					container.style('background-color', '#000')
+							.style('color', '#fff');
+					step.style('background-color', '#000')
+						//.style('height', '50px')
+						.style('text-align', 'center');
+				} else {
+					var stepHeight = Math.floor(window.innerHeight * 0.35);
+					text.style('width', '33%')
+						.style('max-width', '30rem');
+					container.style('background-color', '#dadada')
+							.style('color', '#000');
+					step.style('background-color', '#fff')
+						.style('height', stepHeight + 'px')
+						.style('text-align', 'left');
+				}
+
 			} else {
 				if (data_step_id == 8) {
 					var graphicWidth = container.node().offsetWidth;
@@ -147,6 +167,28 @@
 						.style('height', graphicHeight + 'px')
 						.style('left', '15%')
 						.style('top', '10%');
+				} else if (data_step_id == 9) {
+					
+					var graphicWidth = container.node().offsetWidth;
+					var graphicHeight = Math.floor(window.innerHeight * 0.5);
+					var graphicMarginTop = Math.floor(graphicHeight / 2);
+					graphic
+						.style('width', graphicWidth + 'px')
+						.style('height', graphicHeight + 'px')
+						.style('top', 0)
+						.style('left', 0);
+					
+				} else if (data_step_id == 11) {
+					
+					var graphicWidth = container.node().offsetWidth;
+					var graphicHeight = Math.floor(window.innerHeight * 0.5);
+					var graphicMarginTop = Math.floor(graphicHeight / 2);
+					graphic
+						.style('width', graphicWidth + 'px')
+						.style('height', graphicHeight + 'px')
+						.style('top', '15%')
+						.style('left', '10%');
+					
 				} else {
 					var graphicWidth = container.node().offsetWidth;
 					var graphicHeight = Math.floor(window.innerHeight * 0.5);
@@ -208,6 +250,18 @@
 					.style('left', 0);
 			}
 
+			if ((data_step_id == 31) || (data_step_id == 32)) {
+				var graphicMargin = 16 * 4;
+				var graphicWidth = container.node().offsetWidth - textWidth - graphicMargin;
+				var graphicHeight = Math.floor(window.innerHeight * 0.5);
+				var graphicMarginTop = Math.floor(graphicHeight / 2);
+				graphic
+					.style('width', graphicWidth + 'px')
+					.style('height', graphicHeight + 'px')
+					.style('top', '10%')
+					.style('left', '40%');
+			}
+
 		} else {
 			if (data_step_id <= 10) {
 				var stepHeight = Math.floor(window.innerHeight * 0.20);
@@ -254,6 +308,19 @@
 					.style('top', '25%');
 			}
 
+			if (data_step_id == 9) {
+				var textWidth = text.node().offsetWidth;
+				var graphicMargin = 16 * 4;
+				var graphicWidth = container.node().offsetWidth; //- textWidth - graphicMargin;
+				var graphicHeight = Math.floor(window.innerHeight * 0.5);
+				var graphicMarginTop = Math.floor(graphicHeight / 2);
+				graphic
+					.style('width', graphicWidth + 'px')
+					.style('height', graphicHeight + 'px')
+					.style('top', '0')
+					.style('left', '0');
+			}
+
 			if ((data_step_id == 12) || (data_step_id == 13) || (data_step_id == 14)) {
 				var stepHeight = Math.floor(window.innerHeight * 0.20);
 				step.style('height', stepHeight + 'px');
@@ -295,6 +362,16 @@
 					.style('height', graphicHeight + 'px')
 					.style('top', '30%')
 					.style('left', 0);
+			}
+
+			if (data_step_id>=33) {
+				container.style('background-color', '#000')
+						.style('color', '#fff');
+				step.style('background-color', '#000');
+			} else {
+				container.style('background-color', '#dadada')
+						.style('color', '#000');
+				step.style('background-color', '#fff');
 			}
 
 
@@ -442,11 +519,10 @@
 
 		} else if (data_step_id==11) {
 			idname = "#scroll1_chart";
-			width_scale_factor = 1;
+			width_scale_factor = 0.8;
 			var bb = d3.select(idname).node().offsetWidth;
-			var margin = {right:0, left:0, top:0, bottom:30};
+			var margin = {right:0, left:20, top:30, bottom:20};
 			base_width = bb*width_scale_factor - margin.left - margin.right;
-			var margin = {right:0, left:0, top:0, bottom:30};
 			//base_height = Math.floor(window.innerHeight * 0.70); 
 			if (window.innerWidth >= small_screen_thresh) {
 				base_height = Math.floor(window.innerHeight * 0.7); 
@@ -591,7 +667,7 @@
 			d3.select(idname).select("svg").remove();
 			//height_scale_factor = 0.60;
 			var bb = d3.select(idname).node().offsetWidth;
-			var margin = {right:5, left:40, top:20, bottom:50};
+			var margin = {right:5, left:50, top:20, bottom:50};
 			//base_height = bb*height_scale_factor - margin.top - margin.bottom;
 			//base_height = Math.floor(window.innerHeight * 0.6);
 			if (window.innerWidth >= small_screen_thresh) {
@@ -666,7 +742,7 @@
 		
 			title_idname = "scroll1_chart_title";
 			title_id = document.getElementById(title_idname);
-			title_id.innerHTML = `<div class="row text-center justify-content-center"><div class="col-lg-10 scenario_title"> Strict Lockdown continued</div></div>`+
+			title_id.innerHTML = `<div class="row text-center justify-content-center"><div class="col-lg-10 scenario_title"> Lockdown lifted but with Social Distancing</div></div>`+
 					`<div class="row text-center justify-content-center">`+
 						`<div class="col-lg-10">Estimated ~<span class="prediction_cases">5,30,000 total cases</span> and ~<span class="prediction_deaths">30,000 total deaths</span></div></div>`;
 
@@ -683,7 +759,7 @@
 		
 			title_idname = "scroll1_chart_title";
 			title_id = document.getElementById(title_idname);
-			title_id.innerHTML = `<div class="row text-center justify-content-center"><div class="col-lg-12 scenario_title">Lockdown lifted but with Social Distancing</div></div>`+
+			title_id.innerHTML = `<div class="row text-center justify-content-center"><div class="col-lg-12 scenario_title">Lockdown lifted, no Social Distancing</div></div>`+
 					`<div class="row text-center justify-content-center">`+
 						`<div class="col-lg-10">Estimated ~<span class="prediction_cases">9,20,000 total cases</span> and ~<span class="prediction_deaths">43,000 total deaths</span></div></div>`;
 
@@ -711,8 +787,19 @@
 									`</div>`+
 								`</div>`;
 
-		} else if (data_step_id==32) {
+		} else if ((data_step_id==31) || (data_step_id==32)) {
 
+			title_idname = "scroll1_chart_title";
+			per_virus_free_districts = 100;
+			num_virus_free_districts = 725;
+			num_virus_free_people = 1.3e9;
+			title_id = document.getElementById(title_idname);
+			title_id.innerHTML = `
+				<div class="progress" style="height: 20px;">`+
+	  				`<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuemin="0" aria-valuemax="100">`+
+	  				//`<span class="num_virus_free_districts">`+ num_virus_free_districts +`</span>/725 districts, <span class="num_virus_free_people">` +num_virus_free_people+`</span> people free of virus risk</div>`+
+	  				num_virus_free_districts +` / 725 districts free of virus risk</div>`+
+				`</div>`;
 
 			idname = "#scroll1_chart";
 			d3.select(idname).select("svg").remove();
@@ -720,16 +807,22 @@
 			width_scale_factor = 0.90;
 			//height_scale_factor = 0.50;
 			var bb = d3.select(idname).node().offsetWidth;
-			var margin = {right:20, left:20, top:0, bottom:20};
+			var margin = {right:20, left:20, top:20, bottom:20};
 			base_width = bb*width_scale_factor - margin.left - margin.right;
 			//base_height = bb*height_scale_factor - margin.top - margin.bottom;
 			//base_height = Math.floor(window.innerHeight * 1); 
 			if (window.innerWidth >= small_screen_thresh) {
-				base_height = Math.floor(window.innerHeight * 1); 
+				base_height = Math.floor(window.innerHeight * 0.85); 
 			} else {
 				base_height = Math.floor(window.innerHeight * 0.60); 
 			}
-			draw_scroll_outbreak_free_districts(idname, filename, base_width, base_height, margin);
+			var show_virus_states;
+			if (data_step_id==31) {
+				show_virus_states = 0;
+			} else {
+				show_virus_states = 1;
+			}
+			draw_scroll_outbreak_free_districts(idname, filename, base_width, base_height, margin, show_virus_states);
 
 
 		} else if (data_step_id==33) {

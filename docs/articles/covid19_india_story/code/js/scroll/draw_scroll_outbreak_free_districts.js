@@ -1,10 +1,13 @@
 
 //(function(){
 
-var outbreak_free_timeouts = [];
-var outbreak_free_g;
 
-function draw_scroll_outbreak_free_districts(idname, filename, width, height, margin) {
+
+function draw_scroll_outbreak_free_districts(idname, filename, width, height, margin, show_virus_states) {
+
+    var outbreak_free_timeouts = [];
+    var outbreak_free_g;
+    var outbreak_free_max_transition_time = [];
 
 	// set the ranges
     var x = d3.scaleLinear().range([0, width]);
@@ -58,17 +61,17 @@ function draw_scroll_outbreak_free_districts(idname, filename, width, height, ma
               //.call(zoom);
     outbreak_free_g = svg_map.append("g");
     var g2 = svg_map.append("g");
-
+    outbreak_free_state_counter = 0;
 
     // Load external data and boot
     //if scroll_data
     d3.queue()
         .defer(d3.json, "data/india_topojson.json")
-        .defer(d3.json, "data/district_data_map/karnataka.json")
+        .defer(d3.csv, "data/scroll/outbreak_free_numdistricts.csv")
         //.defer(d3.csv, filename) //, data_ready)
         .await(ready);
 
-    function ready(error, india, state) {
+    function ready(error, india, data) {
         if (error) throw error;
 
         /*
@@ -108,7 +111,7 @@ function draw_scroll_outbreak_free_districts(idname, filename, width, height, ma
           	.attr("class", "country_focus")
 			.attr("d", path)
 			.style("fill", "#fff")
-			.style("stroke", "#c0c0c0")
+			.style("stroke", "#fff")
 			.style("opacity", 1);
 
 
@@ -128,24 +131,27 @@ function draw_scroll_outbreak_free_districts(idname, filename, width, height, ma
                 st_nm_key = Object.keys(data.objects)[0];
                 outbreak_free_state_counter += 1;
 
-                outbreak_free_g.selectAll("state_zero_case")
+                svg_map.selectAll("state_zero_case")
                   .data(topojson.feature(data, data.objects[st_nm_key]).features)
                   .enter().append("path")
-                    .attr("class", function(d){
+                    .attr("class", function(d) {
                         num_cases = +d.properties.cases;
+                        //return "state_zero_case";
+                        
                         if (num_cases==0) {
                             return "state_nonzero_case";
                         } else {
                             return "state_zero_case";
                         }
+                        
                     })
                     .attr("d", path)
                     .style("fill", "#fff")
-                    .style("stroke", "#dadada")
+                    .style("stroke", "#fff")
                     .style("stroke-width", "0.5px")
                     .style("opacity", 1);
 
-                if (outbreak_free_state_counter == state_name_list.length) {
+                if ((show_virus_states==1) && (outbreak_free_state_counter == state_name_list.length)) {
                     update_outbreak_free_date();
                 }
             })
@@ -167,9 +173,51 @@ function draw_scroll_outbreak_free_districts(idname, filename, width, height, ma
                         .style("fill",  "#ff4c4c");
         }
 
-        //for (let i=1; i<=num_sim_days; i++) {
-            //outbreak_free_timeouts.push(setTimeout( update_outbreak_free_date, i*num_milliseconds_per_date ));
-        //}
+        if ((show_virus_states==1)) {
+            dates = d3.keys(data[0]);
+            var num_dates = dates.length;
+            var num_outbreak_free_districts = [];
+
+            for (let i=0; i<=num_dates; i++) {
+                diff_time = Math.abs(parseTime(dates[i]) - start_date);
+                num_days = Math.log10(Math.ceil(diff_time / (1000 * 60 * 60 * 24)));
+                num_outbreak_free_districts[i] = 725 - (+data[0][dates[i]]);
+
+                if (!isNaN(num_outbreak_free_districts[i])) {
+                    outbreak_free_timeouts.push(setTimeout( function(){
+                        update_outbreak_free_district_count(num_outbreak_free_districts[i], parseTime(dates[i]));
+                    }, num_days*step_delay ));
+                }
+            }
+
+        }
+        
+        function update_outbreak_free_district_count(num_outbreak_free_districts, current_date) {
+
+            svg_map.selectAll(".outbreak_free_date_label").remove();
+
+            svg_map.append("text")
+                .attr("class", "outbreak_free_date_label")
+                .attr("x", width-200)
+                .attr("y", 40)
+                .text(current_date.getDate() + " " + month_list[current_date.getMonth()])
+                .style("font-size", "1.5rem")
+                .style("font-weight", "bold")
+                .style("stroke", "none")
+                .style("fill", "black");
+
+            title_idname = "scroll1_chart_title";
+            title_id = document.getElementById(title_idname);
+            per_virus_free_districts = num_outbreak_free_districts/725*100;
+            num_virus_free_districts = 725;
+            title_id.innerHTML = `
+                <div class="progress" style="height: 20px;">`+
+                    `<div class="progress-bar" role="progressbar" style="width: `+per_virus_free_districts+`%;" aria-valuemin="0" aria-valuemax="100">`+
+                    //`<span class="num_virus_free_districts">`+ num_virus_free_districts +`</span>/725 districts, <span class="num_virus_free_people">` +num_virus_free_people+`</span> people free of virus risk</div>`+
+                    num_outbreak_free_districts +` / 725 districts free of virus risk</div>`+
+                `</div>`;
+        }
+
 
     }
 
@@ -180,8 +228,30 @@ function draw_scroll_outbreak_free_districts(idname, filename, width, height, ma
             .attr('transform', d3.event.transform);
         outbreak_free_g.selectAll(".country_focus").style("stroke-width", d3.event.transform.k/10 + "px").style("stroke", "#000");
     }
+    
 
 }
 
 //})();
+
+/*
+function update_outbreak_free_date() {
+    console.log("Here");
+    start_date = new Date(2020, 2, 15); //Start from March
+    var step_delay = 5000;
+    outbreak_free_state_counter = 0;
+    d3.select(idname).selectAll(".state_zero_case")
+        .transition()
+            .delay(function(d,i) {
+                console.log(d);
+                cdt = parseTime(d.properties.first_case_date);
+                diff_time = Math.abs(cdt - start_date);
+                num_days = Math.log10(Math.ceil(diff_time / (1000 * 60 * 60 * 24)));
+                return num_days*step_delay;
+                //return 100;
+            })
+            .duration(1000)
+                .style("fill",  "#ff4c4c");
+}
+*/
 

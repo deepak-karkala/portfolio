@@ -2,7 +2,6 @@
 
 script_load_timeout_list.push(setTimeout(load_districtCaseDensity_script, 14*script_load_timestep));
 
-
 function load_districtCaseDensity_script() {
 	// District wise growth rate
 	idname = "#district_case_density"

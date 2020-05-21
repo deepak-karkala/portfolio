@@ -17,6 +17,8 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 		.domain([0, 10, 50, 100, 250, 500])
 		.range([d3.interpolateYlOrRd(0), d3.interpolateYlOrRd(0.2), d3.interpolateYlOrRd(0.4),
 			d3.interpolateYlOrRd(0.6), d3.interpolateYlOrRd(0.8), d3.interpolateYlOrRd(1)]);
+	var colorScale = d3.scaleSequential(d3.interpolateRdYlGn);
+
 	//var growth_rate_normalised = d3.scaleLinear().domain([0, 100]).range([0, 1]);
 	//var state_fatality_rate_color_scale = d3.scaleSequential(d3.interpolateYlOrRd);
 
@@ -87,11 +89,11 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
       	x.domain([0, d3.max(data, function(d) { return +d.testspm; })+200]);
       	//y.domain([0, d3.max(data, function(d) { return d.deaths; })]);
       	//y.domain([0, d3.max(data, function(d) { return +d.ntod; })]);
-      	y.domain([0, 60]);
+      	y.domain([0, 40]);
 		
 
       	data.forEach(function(d, i) {
-      		if (1) { //(+d[end_date_str+"_cases"] >= min_case_count_to_show_testing_rate) {
+      		if (+d[end_date_str+"_cases"] >= min_case_count_to_show_testing_rate) {
 	      		cdt = start_date_str;
 				//console.log(d["state"]);
 				//console.log(d[start_date_str+"_cases"]);
@@ -111,6 +113,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 	      	axis_font_size = "0.75rem";
 	    }
 
+	    /*
       	//Append type rectangles
 		svg.append("rect")
 			.attr("class", "state_type_rect")
@@ -169,7 +172,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 			.attr("fill", "#1D8348")
 			//.style("stroke", "#28B463")
 	        .style("opacity", 0);
-
+		*/
 
       	svg.selectAll(".dot")
 			.data(data)
@@ -192,7 +195,8 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 			.attr("fill", function(d,i) {
 				//console.log(state_fatality_rate_color_scale(growth_rate_normalised(d.growth)));
 				//return "black";
-				return state_fatality_rate_color_scale(d.deaths);
+				//return state_fatality_rate_color_scale(d.deaths);
+				return colorScale(d.ntod/30);
 			})
 			.attr("stroke", "#000")
 			.attr("stroke-width", "0.25px")
@@ -326,7 +330,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 			for (var gi=1; gi<6; gi++) {
 				gridline1_data = [];
 				gridline1_data[0] = []; gridline1_data[0].x = 0; gridline1_data[0].y=gi*10;
-				gridline1_data[1] = []; gridline1_data[1].x=7000; gridline1_data[1].y=gi*10
+				gridline1_data[1] = []; gridline1_data[1].x=8000; gridline1_data[1].y=gi*10
 				svg.append("path")
 			            .data([gridline1_data])
 			            .attr("d", gridline)
@@ -353,6 +357,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 
 		repeat_circles_transition();
 		function repeat_circles_transition() {
+			/*
 			svg.selectAll(".state_type_rect")
 				.transition()
 				.duration(100)
@@ -362,7 +367,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 				.transition()
 				.duration(100)
 				.style("opacity", 0);
-
+			*/
 			for (var c=init_offset_days; c<=num_days+init_offset_days; c++) {
 				cdt = columns[c].split("_")[0];
 				current_date = new Date(cdt);
@@ -381,7 +386,8 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 								return y(d[cdt+"_ntod"]);
 							})
 							.attr("fill", function(d,i) {
-								return state_fatality_rate_color_scale(d[cdt+"_deaths"]);
+								//return state_fatality_rate_color_scale(d[cdt+"_deaths"]);
+								return colorScale(d.ntod/30);
 							})
 							.attr("r", function(d,i) {
 								//console.log(d.testspm/500);
@@ -414,7 +420,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 				}
 
 				function on_transition_end() {
-					
+					/*
 					svg.selectAll(".state_type_rect")
 						.transition()
 						.duration(100)
@@ -423,6 +429,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 						.transition()
 						.duration(100)
 						.style("opacity", 1);
+					*/
 					setTimeout(repeat_circles_transition, 10*1000);
 				}
 				

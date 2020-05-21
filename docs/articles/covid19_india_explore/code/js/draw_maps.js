@@ -9,6 +9,8 @@ function load_draw_maps_script() {
 
 function draw_maps(is_init, selected_button_id) {
 	map_container = "india_cases_map";
+	legend_container = "#map_legend";
+	title_container = "map_title";
 
 	if (is_init!=1) {
 		//map3.remove();
@@ -16,21 +18,86 @@ function draw_maps(is_init, selected_button_id) {
 		//$('#india_cases_map').html('')
 	}
 
+	idname = "#india_cases_map";
+	d3.select(idname).select("svg").remove();
+	var width_scale_factor = 1;
+	var bb = d3.select(idname).node().offsetWidth;
+	var margin = {right:0, left:0, top:0, bottom:30};
+	base_width = bb*width_scale_factor - margin.left - margin.right;
+
 	//console.log(selected_button_id);
 
 	if ((is_init==1) || (selected_button_id=="district_cases")) {
+		var color_scale = d3.scaleSequential(d3.interpolateYlOrRd);
+		var linear = d3.scaleOrdinal()
+					.domain([0, 5, 10, 50, 100, 200])
+					.range(["#fff", color_scale(0), color_scale(0.2), color_scale(0.6), color_scale(0.8), color_scale(1.0)])
+		var text = "District Map by Case Count";
+		var cells = [0, 5, 10, 50, 100, 200];
+		draw_map_legend(idname, linear, base_width, text, cells);
 		draw_leaflet_topojson_district_confirmed_map(map_container);
+
 	} else if (selected_button_id=="district_deaths") {
+	    var color_scale = d3.scaleSequential(d3.interpolateYlOrRd);
+		var linear = d3.scaleOrdinal()
+					.domain([0, 5, 10, 20, 50, 100])
+					.range(["#fff", color_scale(0), color_scale(0.2), color_scale(0.6), color_scale(0.8), color_scale(1.0)])
+		var text = "District Map by Death Count";
+		var cells = [0, 5, 10, 50, 100, 200];
+		draw_map_legend(idname, linear, base_width, text, cells);
 		draw_leaflet_topojson_district_deaths_map(map_container);
+
 	} else if (selected_button_id=="state_cases") {
+
+		var color_scale = d3.scaleSequential(d3.interpolateYlOrRd);
+		var linear = d3.scaleOrdinal()
+					.domain([0, 10, 100, 500, 2000, 100000])
+					.range(["#fff", color_scale(0), color_scale(0.2), color_scale(0.6), color_scale(0.8), color_scale(1.0)])
+		var text = "State Map by Case Count";
+		var cells = [0, 10, 100, 500, 2000, 100000];
+		draw_map_legend(idname, linear, base_width, text, cells);
 		draw_leaflet_topojson_state_confirmed_map(map_container);
+
 	} else if (selected_button_id=="state_deaths") {
+		var color_scale = d3.scaleSequential(d3.interpolateYlOrRd);
+		var linear = d3.scaleOrdinal()
+					.domain([0, 10, 50, 100, 200, 500])
+					.range(["#fff", color_scale(0), color_scale(0.2), color_scale(0.6), color_scale(0.8), color_scale(1.0)])
+		var text = "State Map by Death Count";
+		var cells = [0, 10, 50, 100, 200, 500];
+		draw_map_legend(idname, linear, base_width, text, cells);
 		draw_leaflet_topojson_state_deaths_map(map_container);
-	} else if (selected_button_id=="animate_time") {
-	} else {
-		draw_leaflet_topojson_district_confirmed_map(map_container);
 	}
 
+}
+
+
+function draw_map_legend(idname, linear, width, text, cells) {
+
+	var svg = d3.select(idname).append("svg")
+				.attr("width", width)
+        		.attr("height", 80);;
+
+	svg.append("g")
+	  .attr("class", "legendLinear")
+	  .attr("transform", "translate("+(width-200)+",40)");
+
+	var legendLinear = d3.legendColor()
+	  .shapeWidth(25)
+	  .shapeHeight(8)
+	  .cells(cells)
+	  .orient('horizontal')
+	  .scale(linear);
+
+	svg.select(".legendLinear")
+	  .call(legendLinear);
+
+	svg.append("text")
+			.attr("class", "map_title")
+            .attr("x", width-40)
+            .attr("y", 20)
+            .style("text-anchor", "end")
+            .text(text);
 }
 
 
@@ -61,7 +128,7 @@ function draw_leaflet_topojson_state_confirmed_map(map_container) {
 	              topoLayer1 = new L.TopoJSON(),
 	              )
 	         //.setView([23.5937, 80.9629], 4.25);
-	         .setView([23.5937, 80.9629], 4.50);
+	         .setView([23.5937, 80.9629], 4.5);
 	map1.scrollWheelZoom.disable();
 
 	// Add layer
@@ -97,11 +164,12 @@ function draw_leaflet_topojson_state_confirmed_map(map_container) {
 
 	function getColor_state_confirmed(d) {
 	    var color_scale = d3.scaleSequential(d3.interpolateYlOrRd);
-	    return d < 10 ? color_scale(0) :
-	           d < 50  ? color_scale(0.2) :
-	           d < 200  ? color_scale(0.4) :
-	           d < 500  ? color_scale(0.6) :
-	           d < 1000  ? color_scale(0.8) :
+	    return d==0 ? "#fff" :
+	    	   d < 10 ? color_scale(0) :
+	           d < 100  ? color_scale(0.2) :
+	           d < 500  ? color_scale(0.4) :
+	           d < 2000  ? color_scale(0.6) :
+	           d < 10000  ? color_scale(0.8) :
 	                      color_scale(1.0);
 	}
 
@@ -194,10 +262,11 @@ function draw_leaflet_topojson_state_deaths_map(map_container) {
 
 	function getColor_state_deaths(d) {
 	    var color_scale = d3.scaleSequential(d3.interpolateYlOrRd);
-	    return d == 0 ? color_scale(0) :
-	           d < 10  ? color_scale(0.2) :
-	           d < 50  ? color_scale(0.4) :
-	           d < 100  ? color_scale(0.6) :
+	    return d == 0 ? "#fff" :
+	    	   d < 10 ? color_scale(0) :
+	           d < 50  ? color_scale(0.2) :
+	           d < 100  ? color_scale(0.4) :
+	           d < 200  ? color_scale(0.6) :
 	           d < 500  ? color_scale(0.8) :
 	                      color_scale(1.0);
 	}

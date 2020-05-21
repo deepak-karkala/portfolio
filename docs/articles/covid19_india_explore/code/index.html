@@ -138,13 +138,25 @@
     -->
     <div class="heading">
       <div class="container">
+
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-6 col-10">
+            <div class="row text-center justify-content-center">
+              <div class="col-lg-8 col-8" id="new_cases_day_cover">
+              </div>
+              <div class="col-lg-4 col-4" id="stats_day_cover">
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="row text-center justify-content-center">
           <div class="col-lg-12 mx-auto">
-            <h1 class="brand-heading">Tracking the Covid19 outbreak in India</h1>
+            <h1 class="brand-heading">Coronavirus in India: Maps, Daily Tracker, Tracing the outbreak, State and District wise analysis, India vs Other countries and more</h1>
             <!--<p class="intro-text">Tracking, visualising and useful insights about the outbreak in India</p>-->
             <p>By <span class="article_author">Deepak Karkala</span></p>
             <!--<p class="article_date">April 2020</p>-->
-            <p class="article_subtitle">Last updated at </p>
+            <p class="article_subtitle">Last updated 20 May 2020</p>
           </div>
         </div>
       </div>
@@ -154,7 +166,7 @@
 
     <div class="container title_buttons">
       <div class="row mx-auto text-center justify-content-center">
-        <div class="col-lg-10 col-md-12 col-sm-12 col-12">
+        <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-12">
           <div class="header_text text-center">Click to explore specific sections</div>
           <div id="toolbar" class="btn-toolbar">
             <a href="#basic_maps" id="maps" class="button active">Maps</a>
@@ -170,9 +182,11 @@
 
     <section id="basic_maps" class="content-section basic_maps">
       <h3 class="section_title">District and State wise Cases, Deaths</h3>
+      
       <div class="container">
         <div class="row text-center justify-content-center">
           <div class="col-lg-12 col-md-12 col-12 mx-auto ">
+            
             <div class="row text-center justify-content-center">
               <div class="col-lg-12">
                 <div class="btn-group btn-group-sm map_option_buttons" role="group" id="map_option_buttons">
@@ -190,11 +204,27 @@
               </div>
             </div>
             -->
-            <div class="row div_fig_background">
-              <div class="col-lg-12" id="basic_map_container">
-                  <div id="india_cases_map" style="height: 100vh;"></div>
+            <!--
+            <div class="row">
+              <div class="col-lg-8 col-12">
+                <div class="row">
+                  <div class="col-lg-8 col-md-8 col-8 mx-auto">
+                    <div id="map_title"></div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-4 mx-auto">
+                    <div id="map_legend"></div>
+                  </div>
+                </div>
               </div>
             </div>
+            -->
+
+            <div class="row text-center justify-content-center div_fig_background">
+              <div class="col-lg-8" id="basic_map_container">
+                  <div id="india_cases_map" style="height: 120vh;"></div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -630,7 +660,7 @@
 
 
           <div class="row text-center justify-content-center">
-            <div class="col-lg-10" id="states_doubling_time">
+            <div class="col-lg-8 col-12" id="states_doubling_time">
             </div>
           </div>
 
@@ -723,7 +753,7 @@
           </div>
 
           <div class="row text-center justify-content-center">
-            <div class="col-lg-10 col-12" id="district_growth_rates">
+            <div class="col-lg-8 col-12" id="district_growth_rates">
             </div>
           </div>
 
@@ -772,7 +802,7 @@
           </div>
 
           <div class="row text-center justify-content-center">
-            <div class="col-lg-10 col-12" id="district_case_density"></div>
+            <div class="col-lg-8 col-12" id="district_case_density"></div>
           </div>
 
           <div class="row justify-content-center">
@@ -1018,15 +1048,21 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 col-12 mx-auto">
             <p>
-              All the code for this project can be found on <a href="https://github.com/deepak-karkala/portfolio/tree/master/docs/articles/airbnb/code">Github</a>.
+              All the code for this project can be found on <a href="https://github.com/deepak-karkala/portfolio/tree/master/docs/articles/covid19_india_story/code">Github</a>. This work is inspired by the New York Times report, <a href="https://www.nytimes.com/interactive/2020/04/03/upshot/coronavirus-metro-area-tracker.html#new-cases">How Severe Are Coronavirus Outbreaks Across the U.S.?</a>.
             </p>
-            
+            <p>
+              If you liked this, you may also like this report on the <a href="http://localhost:8000/docs/articles/covid19_india_story/code/index.html">Covid19 situation in India</a>. 
+            </p>
+            <p>
+              About the dataset used in this report, all the India specific data comes from the wonderful team at <a href="https://github.com/covid19india/api">COVID19-India API</a>, a volunteer-driven, crowdsourced database for COVID-19 stats & patient tracing in India. The testing and case-count data for various countries is from <a href="https://github.com/owid/covid-19-data/tree/master/public/data">Data on COVID-19 (coronavirus) by Our World in Data</a>.
+            </p>
             <p>
               This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://d3js.org/">d3js</a>. The template for this html page was adapted from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>.
             </p>
-            <p><a href="../about/index.html">Click here</a> to view more about the design, methodology of this project.</p>
-            <p class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a> or send me an email at <a href="mailto:dkarkala01@gmail.com" target="_top"><span class="contact_link">dkarkala01@gmail.com</span></a></p>
-            <!--<p class="text-center">Copyright &copy; Deepak Karkala 2020</p>-->
+            <p class="text-center" style="padding-top:8vh;">
+              For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a> or send me an email at <a href="mailto:dkarkala01@gmail.com" target="_top"><span class="contact_link">dkarkala01@gmail.com</span></a>
+            </p>
+            <p class="text-center">Copyright &copy; Deepak Karkala 2020</p>
           </div>
         </div>
       </div>
@@ -1078,21 +1114,17 @@
     <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
-
     <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
-
     <script src="js/jquery-ui.min.js"></script>
     <script src='js/rangeslider.js'></script>
-
     <script src="js/grayscale.js"></script>
-    <script src="js/script.js"></script>
-    
     <script src='js/stickyfill.min.js'></script>
     <script src='js/scrollama.min.js'></script>
 
+    <script src="js/draw_daily_cases_deaths.js"></script>
+    <script src="js/script.js"></script>
 
     <script src="js/draw_maps.js"></script>
-    <script src="js/draw_daily_cases_deaths.js"></script>
     <script src="js/draw_total_cases_deaths.js"></script>
 
     <script src="js/draw_cluster_map.js"></script>

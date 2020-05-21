@@ -86,7 +86,7 @@ function plot_district_growth_rate(idname, filename, width, height, margin) {
 			idx += 1
 		}
 
-		x.domain(date_data.map(function(d) {
+		x.domain(date_data.filter(function(d) { return d.date>=start_date_districtGrowthRate } ).map(function(d) {
 			//console.log(d.date);
 			return d.date;
 		}));
@@ -120,11 +120,14 @@ function plot_district_growth_rate(idname, filename, width, height, margin) {
 					}
 
 					if ((first_nonzero==1) && (district_growth_rate[dates[i]]!=="")) {
-						data[didx] = [];
-						data[didx].date = parseTime(dates[i]);
-						data[didx].rate = parseFloat(district_growth_rate[dates[i]]);
-						didx += 1;
-		    			district_latest_growth_rate[district_name] = data[didx-1].rate;
+						dt = parseTime(dates[i]);
+						if (dt >= start_date_districtGrowthRate) {
+							data[didx] = [];
+							data[didx].date = dt;
+							data[didx].rate = parseFloat(district_growth_rate[dates[i]]);
+							didx += 1;
+			    			district_latest_growth_rate[district_name] = data[didx-1].rate;
+			    		}
 					}
 		    	}
 
@@ -223,7 +226,7 @@ function plot_district_growth_rate(idname, filename, width, height, margin) {
 		var xAxis = d3.axisBottom()
                     .scale(x)
                     .tickFormat(d3.timeFormat("%b %e"))
-                    .tickValues(x.domain().filter(function(d,i){ return !(i%14)}));
+                    .tickValues(x.domain().filter(function(d,i){ return !(i%7)}));
 
 		// add the x Axis
 		svg.append("g")

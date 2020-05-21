@@ -142,7 +142,7 @@ a:focus, a:hover {
 
 .masthead .intro-body .brand-heading {
   padding-top: 0vh;
-  font-size: 3rem;
+  font-size: 2.0rem;
   color: black; /*#FF5A60;*/
 }
 
@@ -151,7 +151,7 @@ a:focus, a:hover {
 }
 
 .heading {
-  padding-top: 20vh;
+  padding-top: 15vh;
   padding-bottom: 20px;
   margin-bottom: 20px;
   text-align: center;
@@ -160,7 +160,7 @@ a:focus, a:hover {
 
 .brand-heading {
   padding-top: 0vh;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: black; /*#FF5A60;*/
 }
 
@@ -168,6 +168,10 @@ a:focus, a:hover {
   font-size: 1.5rem;
 }
 
+.header_text {
+  font-size: 1.0rem;
+  font-weight: bold;
+}
 /*
 @media (min-width: 768px) {
   .masthead {
@@ -277,6 +281,7 @@ footer {
   margin-top: 30px;
   padding: 50px 0 20px 0;
   color: black;
+  font-size: 0.85rem;
 }
 
 ::-moz-selection {
@@ -381,6 +386,7 @@ select.classic {
 
 .title_buttons{
   display: block;
+  margin-top: 40px;
 }
 .button {
   /*min-width: 130px;*/
@@ -1054,6 +1060,24 @@ bottom: .5em;
 .cluster_video video {
   width: 100%;
   height: auto;
+}
+
+.map_legend {
+}
+.map_title {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  font-weight: bold;
+}
+
+.cover_stat_title {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  font-size: 0.85rem;
+  color: #606060;
+}
+.cover_stat {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 

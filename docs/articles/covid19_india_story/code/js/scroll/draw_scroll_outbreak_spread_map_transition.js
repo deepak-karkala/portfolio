@@ -252,10 +252,10 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 			d.num_cases_in_district = +d.num_cases_in_district;
 			d.num_cases_in_state = +d.num_cases_in_state;
 
-			random_district_radius = randomNumber(0, d.num_cases_in_district/7e2);
+			random_district_radius = randomNumber(0, d.num_cases_in_district/1e4);
 			random_district_theta = randomNumber(0, 360)*Math.PI/180;
 
-			random_state_radius = randomNumber(0, d.num_cases_in_state/5e2);
+			random_state_radius = randomNumber(0, d.num_cases_in_state/1e4);
 			random_state_theta = randomNumber(0, 360)*Math.PI/180;
 
 			d.district_lat = +d.district_lat  +  random_district_radius * Math.cos(random_district_theta);  
@@ -393,7 +393,7 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 
 
 		var anm;
-		repeat_outbreak_spread_animation();
+		setTimeout(repeat_outbreak_spread_animation, 1000);
 		function repeat_outbreak_spread_animation() {
 
 			anm = g2.selectAll(".outbreak_spread_circles")
