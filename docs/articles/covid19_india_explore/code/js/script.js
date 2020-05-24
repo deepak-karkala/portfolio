@@ -24,7 +24,7 @@ function load_coverImage_script() {
     var margin = {right:40, left:15, top:10, bottom:30};
   } else {
     height_scale_factor = 0.60;
-    var margin = {right:20, left:5, top:10, bottom:30};
+    var margin = {right:40, left:5, top:10, bottom:30};
   }
   var bb = d3.select(idname).node().offsetWidth;
   base_width = bb*width_scale_factor - margin.left - margin.right;
