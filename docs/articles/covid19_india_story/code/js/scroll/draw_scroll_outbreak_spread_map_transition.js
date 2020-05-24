@@ -252,10 +252,10 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 			d.num_cases_in_district = +d.num_cases_in_district;
 			d.num_cases_in_state = +d.num_cases_in_state;
 
-			random_district_radius = randomNumber(0, d.num_cases_in_district/1e4);
+			random_district_radius = randomNumber(0, d.num_cases_in_district/2e4);
 			random_district_theta = randomNumber(0, 360)*Math.PI/180;
 
-			random_state_radius = randomNumber(0, d.num_cases_in_state/1e4);
+			random_state_radius = randomNumber(0, d.num_cases_in_state/2e4);
 			random_state_theta = randomNumber(0, 360)*Math.PI/180;
 
 			d.district_lat = +d.district_lat  +  random_district_radius * Math.cos(random_district_theta);  
@@ -288,7 +288,7 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 					if (window.innerWidth >= 768) {
 						return "0.15rem"
 					} else {
-						return "0.10rem"
+						return "0.07rem"
 					}
 				})
 				.style("fill", "#ff0000")
@@ -336,13 +336,21 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 						.style("opacity", 1);
 				*/
 
+		if (window.innerWidth >= 768) {
+			date_font_size = "1.5rem";
+			stat_font_size = "0.85rem";
+		} else {
+			date_font_size = "1.0rem";
+			stat_font_size = "0.75rem";
+		}
+
 		// Date label
 	    g2.append("text")
 			.attr("class", "outbreak_spread_date_label")
 			.attr("x", width-120)
-			.attr("y", 40)
+			.attr("y", 60)
 			.text("")
-			.style("font-size", "1.5rem")
+			.style("font-size", date_font_size)
 			.style("font-weight", "bold")
 			.style("stroke", "none")
 			.style("fill", "black");
@@ -351,9 +359,9 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 		g2.append("text")
 			.attr("class", "outbreak_spread_map_casecount_label")
 			.attr("x", width-120)
-			.attr("y", 60)
+			.attr("y", 80)
 			.text("")
-			.style("font-size", "1rem")
+			.style("font-size", stat_font_size)
 			.style("font-weight", "bold")
 			.style("stroke", "none")
 			.style("fill", "#ff0000");
@@ -361,9 +369,9 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 		g2.append("text")
 			.attr("class", "outbreak_spread_map_recovercount_label")
 			.attr("x", width-120)
-			.attr("y", 80)
+			.attr("y", 95)
 			.text("")
-			.style("font-size", "1rem")
+			.style("font-size", stat_font_size)
 			.style("font-weight", "bold")
 			.style("stroke", "none")
 			.style("fill", "#229954");
@@ -371,9 +379,9 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 		g2.append("text")
 			.attr("class", "outbreak_spread_map_deathcount_label")
 			.attr("x", width-120)
-			.attr("y", 100)
+			.attr("y", 110)
 			.text("")
-			.style("font-size", "1rem")
+			.style("font-size", stat_font_size)
 			.style("font-weight", "bold")
 			.style("stroke", "none")
 			.style("fill", "#0000ff");
@@ -382,18 +390,21 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 
 		//const start_date = data[0].date;
 		const start_date = new Date(2020, 2, 1); //Start from March
-		//const end_date = data[data.length-1].date;
-		//const diff_time = Math.abs(end_date - start_date);
-		//const num_days = Math.ceil(diff_time / (1000 * 60 * 60 * 24)); 
+		const end_date = data[data.length-1].date;
+		var diff_time = Math.abs(end_date - start_date);
+		var num_days = Math.ceil(diff_time / (1000 * 60 * 60 * 24)); 
 		step_duration = 10;
 		step_delay = 50;
 		//total_sim_time = step_duration*num_days;
-		//var init_offset_days = 0;
+		var init_offset_days = 0;
 		//var cdt = start_date;
 
 
 		var anm;
-		setTimeout(repeat_outbreak_spread_animation, 1000);
+		setTimeout(function() {
+			repeat_outbreak_spread_animation();
+			repeat_outbreak_spread_transition();
+		}, 1000);
 		function repeat_outbreak_spread_animation() {
 
 			anm = g2.selectAll(".outbreak_spread_circles")
@@ -426,17 +437,37 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 									}
 								});
 
+			//repeat_outbreak_spread_transition();
+
 		}
 
 
 		//anm.on("end", repeat_outbreak_spread_animation);
 
+		document.getElementById("outbreak_spread_animation_button").onclick = function() {
+			g2.selectAll(".outbreak_spread_circles")
+				.style("opacity", 0)
+				.style("fill", "#ff0000");
+			//g2.selectAll(".outbreak_spread_map_date_label").remove();
+			//g2.selectAll(".outbreak_spread_map_casecount_label").remove();
+			//g2.selectAll(".outbreak_spread_map_recovercount_label").remove();
+			//g2.selectAll(".outbreak_spread_map_deathcount_label").remove();
+
+			repeat_outbreak_spread_animation();
+			repeat_outbreak_spread_transition();
+		};
 
 		//repeat_outbreak_spread_transition();
 		function repeat_outbreak_spread_transition() {
-
-			for (var c=init_offset_days; c<=num_days+init_offset_days; c++) {
-
+			var cdt = new Date(2020, 2, 1);
+			console.log(end_date);
+			console.log(cdt);
+			diff_time = Math.abs(end_date - cdt);
+			num_days = Math.ceil(diff_time / (1000 * 60 * 60 * 24)); 
+			console.log(num_days);
+			console.log(daily_cum_cases_count);
+			for (var c=init_offset_days; c<num_days+init_offset_days; c++) {
+				/*
 				var anm = g2.selectAll(".outbreak_spread_circles")
 							.transition()
 							.delay(function(d,i) { return (c-1)*step_delay; })
@@ -461,7 +492,7 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 										return "#ff0000";
 									}
 								});
-
+				*/
 
 				g2.selectAll(".outbreak_spread_date_label")
 						.transition()
@@ -473,7 +504,11 @@ function draw_scroll_outbreak_spread_map_transition(idname, filename, width, hei
 						.transition()
 						.delay(function(d,i) { return (c-1)*step_delay; })
 						.duration(step_duration)
-							.text(numberWithCommas(daily_cum_cases_count[cdt]) + " cases");
+							.text(function(){
+								console.log(cdt);
+								console.log(daily_cum_cases_count[cdt]);
+								return numberWithCommas(daily_cum_cases_count[cdt]) + " cases"
+							});
 
 				g2.selectAll(".outbreak_spread_map_recovercount_label")
 						.transition()

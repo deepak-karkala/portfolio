@@ -138,6 +138,10 @@
 		margin: 0 auto 50rem auto;
 	}
 
+	.step1 p {
+		font-size: 0.75rem;
+	}
+
 }
 
 
@@ -162,5 +166,14 @@
 }
 
 .large_text {
-	font-size: 1.5rem;
+	font-size: 1.25rem;
+}
+@media (max-width: 767px) {
+	.large_text {
+		font-size: 2rem;
+	}
+}
+
+.larger_text {
+	font-size: 2rem;
 }

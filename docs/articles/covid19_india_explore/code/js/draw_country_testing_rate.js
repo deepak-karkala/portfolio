@@ -2,18 +2,24 @@
 
 script_load_timeout_list.push(setTimeout(load_countryTestingRate_script, 18*script_load_timestep));
 
+
 function load_countryTestingRate_script() {
 	idname = "#country_testing_rate";
 	d3.select(idname).select("svg").remove();
 	filename = "data/country_testing_rate.csv";
 	width_scale_factor = 0.90;
-	//height_scale_factor = 0.40;
+	
+	if (window.innerWidth >= 768) {
+		height_scale_factor = 0.50;
+	} else {
+		height_scale_factor = 0.85;
+	}
 	var bb = d3.select(idname).node().offsetWidth;
 	var margin = {right:10, left:30, top:10, bottom:60};
 	base_width = bb*width_scale_factor - margin.left - margin.right;
-	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
-	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.4]);
-	height_scale_factor = height_scale_factor_width(bb);
+	base_height = bb*height_scale_factor - margin.top - margin.bottom;
+	//var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.4]);
+	//height_scale_factor = height_scale_factor_width(bb);
 	base_height = bb*height_scale_factor - margin.top - margin.bottom;
 	draw_country_testing_rate(idname, filename, base_width, base_height, margin);
 }
@@ -158,7 +164,7 @@ function draw_country_testing_rate(idname, file, width, height, margin) {
 			})
 			.attr("r", function(d,i) {
 				//console.log(d.growth/10);
-				return Math.log10(d.total_cases)/10+"rem";
+				return Math.log10(d.total_cases)/20+"rem";
 			})
 			.attr("cx", function(d,i) {
 				//console.log(d.cases);
@@ -234,7 +240,7 @@ function draw_country_testing_rate(idname, file, width, height, margin) {
 					if (d.country=="India") {
 						return 2;
 					} else {
-						return "0.75rem";
+						return "0.65rem";
 					}
 				});
 

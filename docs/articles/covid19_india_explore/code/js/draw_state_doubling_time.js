@@ -167,7 +167,7 @@ function plot_state_doubling_time(idname, filename, width, height, margin) {
 						}
 					}
 		    	}
-		    	state_latest_doubling_time[state_name] = data[didx-1].rate.toFixed(2);
+		    	state_latest_doubling_time[state_code] = data[didx-1].rate.toFixed(2);
 
 		        // define the line
 				var valueline = d3.line()
@@ -207,12 +207,16 @@ function plot_state_doubling_time(idname, filename, width, height, margin) {
 							show_selected_state_doubling_time(state_code);
 
 	                    	return tooltip.html(`<div class='well'>`+
-	                                                  `<span class="state_name text-center">`+sname_with_state_code.split("_")[0]+`</span></br>` +
-	                                                ` Currently doubling in <span class="case_count_info">`+ state_latest_doubling_time[sname_with_state_code] +`</span> days</div>` )
+	                                                  `<span class="state_name text-center">`+state_code+`</span></br>` +
+	                                                ` Currently doubling in <span class="case_count_info">`+ state_latest_doubling_time[state_code] +`</span> days</div>` )
 	                                          .style("visibility", "visible");
 		                })
 		                .on("mousemove", function(){
-	                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+		                	if (event.pageX >= window.innerWidth/2) {
+		                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-100)+"px");
+		                	} else {
+		                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+		                    }
 	                    })
 		                .on("mouseout", function(d,i) {
 							show_all_states_doubling_time_button_click_handler();

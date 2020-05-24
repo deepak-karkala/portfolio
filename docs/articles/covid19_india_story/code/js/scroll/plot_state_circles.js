@@ -236,7 +236,7 @@ function show_countries_testing_low(idname, filename, width, height, margin) {
 					return y(d.casespm);
 				})
 				.attr("r", function(d,i) {
-					return 0.75*Math.log10(d.cases/5e3)+"rem";
+					return 0.5*Math.log10(d.cases/1e4)+"rem";
 				})
 				.style("fill", function(d) {
 					return continent_color_mapping(country_continent_mapping[d.country]);
@@ -357,6 +357,12 @@ function draw_state_testing_group_rect() {
 
 function plot_state_testspm_vs_casespm(idname, width, height) {
 
+	if (window.innerWidth >= 768) {
+      	font_size = "0.75rem";
+    } else {
+      	font_size = "0.5rem";
+    }
+
 	// set the ranges
     var x = d3.scaleLinear().range([0, width]);
     var y = d3.scaleLinear().range([height, 0]);
@@ -404,7 +410,7 @@ function plot_state_testspm_vs_casespm(idname, width, height) {
 		//.call(d3.axisLeft(y))
 		.call(yAxis)
 		.attr("class", "state_scroll_yaxis")
-		.style("font-size", "0.75rem")
+		.style("font-size", font_size)
 	.append("text")
 		.attr("class", "state_scroll_yaxis_label")
 		.attr("transform", "rotate(-90)")
@@ -417,7 +423,7 @@ function plot_state_testspm_vs_casespm(idname, width, height) {
 		.style("fill", "black")
 		.style("stroke", "none")
 		.style("font-weight", "bold")
-		.style("font-size", "0.75rem");
+		.style("font-size", font_size);
 
 }
 
@@ -437,8 +443,10 @@ function sort_state_circles_by_test_count(idname, width, height, margin) {
 
     if (window.innerWidth >= 768) {
       	state_test_type_rect_font_size = "0.85rem";
+      	font_size = "0.75rem";
     } else {
       	state_test_type_rect_font_size = "0.65rem";
+      	font_size = "0.5rem";
     }
 
 	var colorScale = d3.scaleSequential(d3.interpolateRdYlGn);
@@ -501,7 +509,7 @@ function sort_state_circles_by_test_count(idname, width, height, margin) {
         .style("stroke", "black");
     g4.append("text")
 		.attr("class", "state_test_type_rect")
-		.attr("x", function(d) { return x(3000); })
+		.attr("x", function(d) { return x(2500); })
 		.attr("y", function(d) { return y(170); })
 		.text("Better containment with good testing rate")
 		.style("font-size", state_test_type_rect_font_size)
@@ -531,20 +539,6 @@ function sort_state_circles_by_test_count(idname, width, height, margin) {
         .style("opacity", 0);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	g4.selectAll("dot")
 	    	.data(data)
 	    	.enter()
@@ -558,7 +552,11 @@ function sort_state_circles_by_test_count(idname, width, height, margin) {
 				})
 				.attr("r", function(d,i) {
 					//return d.cases/6000 + "rem"; //Math.log10(d.cases)+"rem"; //d.cases/250;
-					return 0.2*Math.log10(d.cases)+"rem";
+					if (window.innerWidth >= 768) {
+						return 0.2*Math.log10(d.cases)+"rem";
+					} else {
+						return 0.1*Math.log10(d.cases)+"rem";
+					}
 				})
 				.style("fill", function(d) {
 					//return "#FF0000";
@@ -616,8 +614,9 @@ function sort_state_circles_by_test_count(idname, width, height, margin) {
 				} else {
 					return "";
 				}
+				//return d.state_code;
 			})
-			.style("font-size", "0.75rem");
+			.style("font-size", font_size);
 
 
 	var xAxis = d3.axisBottom(x)
@@ -634,10 +633,10 @@ function sort_state_circles_by_test_count(idname, width, height, margin) {
 		.attr("transform", "translate(0," + (height+30)+ ")")
 		.call(xAxis)
 		.attr("class", "state_scroll_xaxis")
-		.style("font-size", "0.75rem")
+		.style("font-size", font_size)
 	.append("text")
 		.attr("class", "state_scroll_xaxis_label")
-		.attr("x", width)
+		.attr("x", width-20)
 		.attr("y", -10)
 		.style("text-anchor", "end")
 		.text(function(){
@@ -646,7 +645,7 @@ function sort_state_circles_by_test_count(idname, width, height, margin) {
 		.style("fill", "black")
 		.style("stroke", "none")
 		.style("font-weight", "bold")
-		.style("font-size", "0.75rem");
+		.style("font-size", font_size);
 
 	
 					
@@ -841,7 +840,11 @@ function state_circles_to_state_center(idname, filename, width, height) {
 					.duration(100)
 					.attr("r", function(d,i){
 						//return d.cases/6000 + "rem"; 
-						return 0.2*Math.log10(d.cases)+"rem";
+						if (window.innerWidth >= 768) {
+							return 0.25*Math.log10(d.cases)+"rem";
+						} else {
+							return 0.1*Math.log10(d.cases)+"rem";
+						}
 					})
 					.style("opacity", 1)
 					.style("fill", function(d) {

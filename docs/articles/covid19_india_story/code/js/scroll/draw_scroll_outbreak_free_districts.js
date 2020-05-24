@@ -5,7 +5,6 @@
 
 function draw_scroll_outbreak_free_districts(idname, filename, width, height, margin, show_virus_states) {
 
-    var outbreak_free_timeouts = [];
     var outbreak_free_g;
     var outbreak_free_max_transition_time = [];
 
@@ -159,6 +158,12 @@ function draw_scroll_outbreak_free_districts(idname, filename, width, height, ma
         }
 
         function update_outbreak_free_date() {
+            d3.select(idname).selectAll(".state_zero_case").style("fill", "#fff");
+            for (var j=0; j<outbreak_free_timeouts.length; j++) {
+              clearTimeout(outbreak_free_timeouts[j]);
+            }
+            outbreak_free_timeouts = [];
+
             outbreak_free_state_counter = 0;
             d3.select(idname).selectAll(".state_zero_case")
                 .transition()
@@ -171,9 +176,7 @@ function draw_scroll_outbreak_free_districts(idname, filename, width, height, ma
                     })
                     .duration(1000)
                         .style("fill",  "#ff4c4c");
-        }
 
-        if ((show_virus_states==1)) {
             dates = d3.keys(data[0]);
             var num_dates = dates.length;
             var num_outbreak_free_districts = [];
@@ -190,36 +193,43 @@ function draw_scroll_outbreak_free_districts(idname, filename, width, height, ma
                 }
             }
 
-        }
         
-        function update_outbreak_free_district_count(num_outbreak_free_districts, current_date) {
+            function update_outbreak_free_district_count(num_outbreak_free_districts, current_date) {
 
-            svg_map.selectAll(".outbreak_free_date_label").remove();
+                svg_map.selectAll(".outbreak_free_date_label").remove();
 
-            svg_map.append("text")
-                .attr("class", "outbreak_free_date_label")
-                .attr("x", width-200)
-                .attr("y", 40)
-                .text(current_date.getDate() + " " + month_list[current_date.getMonth()])
-                .style("font-size", "1.5rem")
-                .style("font-weight", "bold")
-                .style("stroke", "none")
-                .style("fill", "black");
+                svg_map.append("text")
+                    .attr("class", "outbreak_free_date_label")
+                    .attr("x", width-200)
+                    .attr("y", 40)
+                    .text(current_date.getDate() + " " + month_list[current_date.getMonth()])
+                    .style("font-size", "1.5rem")
+                    .style("font-weight", "bold")
+                    .style("stroke", "none")
+                    .style("fill", "black");
 
-            title_idname = "scroll1_chart_title";
-            title_id = document.getElementById(title_idname);
-            per_virus_free_districts = num_outbreak_free_districts/725*100;
-            num_virus_free_districts = 725;
-            title_id.innerHTML = `
-                <div class="progress" style="height: 20px;">`+
-                    `<div class="progress-bar" role="progressbar" style="width: `+per_virus_free_districts+`%;" aria-valuemin="0" aria-valuemax="100">`+
-                    //`<span class="num_virus_free_districts">`+ num_virus_free_districts +`</span>/725 districts, <span class="num_virus_free_people">` +num_virus_free_people+`</span> people free of virus risk</div>`+
-                    num_outbreak_free_districts +` / 725 districts free of virus risk</div>`+
-                `</div>`;
+                title_idname = "scroll1_chart_title";
+                title_id = document.getElementById(title_idname);
+                per_virus_free_districts = num_outbreak_free_districts/725*100;
+                num_virus_free_districts = 725;
+                title_id.innerHTML = `
+                    <div class="progress" style="height: 20px;">`+
+                        `<div class="progress-bar" role="progressbar" style="width: `+per_virus_free_districts+`%;" aria-valuemin="0" aria-valuemax="100">`+
+                        //`<span class="num_virus_free_districts">`+ num_virus_free_districts +`</span>/725 districts, <span class="num_virus_free_people">` +num_virus_free_people+`</span> people free of virus risk</div>`+
+                        num_outbreak_free_districts +` / 725 districts free of virus risk</div>`+
+                    `</div>`;
+            }
+        }
+
+        document.getElementById("outbreak_free_animation_button").onclick = function() {
+            update_outbreak_free_date();
         }
 
 
     }
+
+
+    
 
     // Zoom functionality
     function zoomed() {

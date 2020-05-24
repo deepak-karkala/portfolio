@@ -9,10 +9,10 @@ function load_totalCasesDeaths_script() {
     d3.select(idname).select("svg").remove();
     filename = "data/overall_and_daily_cases_deaths.csv";
     type = "cases";
-    width_scale_factor = 1.0;
+    width_scale_factor = 0.90;
     height_scale_factor = 0.40;
     var bb = d3.select(idname).node().offsetWidth;
-    var margin = {right:70, left:20, top:30, bottom:30};
+    var margin = {right:40, left:10, top:30, bottom:30};
     base_width = bb*width_scale_factor - margin.left - margin.right;
     base_height = bb*height_scale_factor - margin.top - margin.bottom;
     fill_color = "#ffb2b2";
@@ -24,10 +24,10 @@ function load_totalCasesDeaths_script() {
     d3.select(idname).select("svg").remove();
     filename = "data/overall_and_daily_cases_deaths.csv";
     type = "deaths";
-    width_scale_factor = 1.0;
+    width_scale_factor = 0.90;
     height_scale_factor = 0.40;
     var bb = d3.select(idname).node().offsetWidth;
-    var margin = {right:70, left:20, top:30, bottom:30};
+    var margin = {right:40, left:10, top:30, bottom:30};
     base_width = bb*width_scale_factor - margin.left - margin.right;
     base_height = bb*height_scale_factor - margin.top - margin.bottom;
     fill_color = "#ffb2b2";
@@ -66,6 +66,11 @@ function plot_total_cases_deaths(idname, file, width, height, type, fill_color, 
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
     
+    if (window.innerWidth >= 768) {
+      font_size = "0.75rem";
+    } else {
+      font_size = "0.5rem";
+    }
 
     // Get the data
     d3.csv(file, function(error, data) {
@@ -102,8 +107,8 @@ function plot_total_cases_deaths(idname, file, width, height, type, fill_color, 
 
       var xAxis = d3.axisBottom()
         .scale(x)
-        .tickFormat(d3.timeFormat("%B %e"))
-        .tickValues(x.domain().filter(function(d,i){ return !(i%20)}));
+        .tickFormat(d3.timeFormat("%b %e"))
+        .tickValues(x.domain().filter(function(d,i){ return !(i%25)}));
 
       // Add the valueline path.
       if (type=="cases") {
@@ -186,14 +191,14 @@ function plot_total_cases_deaths(idname, file, width, height, type, fill_color, 
           .attr("transform", "translate(0," + height + ")")
           .attr("class", "label_histogram")
           .call(xAxis)
-          .style("font-size", "0.75rem")
+          .style("font-size", font_size)
         .append("text")
           .attr("class", "label_histogram")
           .attr("x", width)
           .attr("y", -40)
           .style("text-anchor", "end")
           .style("fill", "black")
-          .style("font-size", "0.75rem");
+          .style("font-size", font_size);
 
       format = d3.format(",");
       formattedY = format(y);
@@ -201,7 +206,7 @@ function plot_total_cases_deaths(idname, file, width, height, type, fill_color, 
       // Add the Y Axis
       svg.append("g")
           .attr("class", "label_histogram axis--y")
-          .attr("transform", "translate("+(width)+",0)")
+          .attr("transform", "translate("+(width-10)+",0)")
           .call(d3.axisRight(y)
             /*
                   .tickFormat( (d,i) => {
@@ -214,7 +219,7 @@ function plot_total_cases_deaths(idname, file, width, height, type, fill_color, 
             */
                 //.tickPadding(5)
                 .ticks(3))
-          .style("font-size", "0.75rem")
+          .style("font-size", font_size)
         .append("text")
           .attr("class", "label_histogram")
           .attr("transform", "rotate(-90)")
@@ -229,7 +234,7 @@ function plot_total_cases_deaths(idname, file, width, height, type, fill_color, 
             }
           })
           .style("fill", "black")
-          .style("font-size", "0.75rem");
+          .style("font-size", font_size);
 
       svg.selectAll("text")
         .attr("class", "label")
@@ -243,7 +248,7 @@ function plot_total_cases_deaths(idname, file, width, height, type, fill_color, 
       */
       svg.selectAll("line")
         .style("stroke", "black")
-        .style("font-size", "0.75rem")
+        .style("font-size", font_size)
         .style("visibility", "hidden");
 
     });

@@ -25,19 +25,19 @@ function plot_state_recovery_rate(idname, file, width, margin) {
 	if (width>=550) {
 		var min_case_count_to_show_in_recovery_rate_table = 0;
 	} else {
-		var min_case_count_to_show_in_recovery_rate_table = 100;
+		var min_case_count_to_show_in_recovery_rate_table = 250;
 	}
 
-	var row_gap_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([15, 22]);
-    var col_gap_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([15, 15]);
-    var box_width_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([10.0, 12.0]);
-    var font_size_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.5, 0.6]);
+	var row_gap_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([14, 22]);
+    var col_gap_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([12, 16]);
+    var box_width_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([8.0, 12.0]);
+    var font_size_factor = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.4, 0.6]);
     var font_size = font_size_factor(width)+"rem";
 
     //var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([1.5, 0.8]);
     //var height_scale_factor = height_scale_factor_width(bb);
     if (window_inner_width <= small_screen_thresh) {
-        height_scale_factor = 1.5;
+        height_scale_factor = 1.75;
     } else {
         height_scale_factor = 0.6;
     }
@@ -124,7 +124,8 @@ function plot_state_recovery_rate(idname, file, width, margin) {
 	            	return recovery_rate_color_scale(recovery_rate_normalised(d.rate));
             	}
             })
-            //.style("stroke", function(d) { return "#212121"; })
+            .style("stroke", function(d) { return "#000"; })
+            .style("stroke-width", "0.25px")
             .attr("opacity", 0)
             .transition()
                 .duration(1000)
@@ -161,7 +162,7 @@ function plot_state_recovery_rate(idname, file, width, margin) {
         	.text(function(d,i) {
         		return d.getDate() + " " + month_abbrv_list[d.getMonth()];
         	})
-        	.style("font-size", "0.6rem")
+        	.style("font-size", font_size)
         	.style("fill", "black");
         	
 

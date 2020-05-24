@@ -8,9 +8,13 @@ function load_districtDailyCaseCount() {
 	d3.select(idname).select("svg").remove();
 	filename = "data/districtwise_daily_case_count.csv";
 	width_scale_factor = 0.90;
-	height_scale_factor = 1.25;
+	if (window.innerWidth >= 768) {
+		height_scale_factor = 1.0;
+	} else {
+		height_scale_factor = 0.70;
+	}
 	var bb = d3.select(idname).node().offsetWidth;
-	var margin = {right:20, left:20, top:10, bottom:30};
+	var margin = {right:10, left:20, top:10, bottom:30};
 	base_width = bb*width_scale_factor - margin.left - margin.right;
 	base_height = bb*height_scale_factor - margin.top - margin.bottom;
 	draw_district_daily_case_count(idname, filename, base_width, base_height, margin);
@@ -50,9 +54,15 @@ function draw_district_daily_case_count(idname, filename, width, height, margin)
        'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Puducherry',
        'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana',
        'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
+    //var state_list = ["Karnataka"];
 
     width_scale_factor = 0.90;
-	height_scale_factor = 1.25;
+    if (window.innerWidth >= 768) {
+		height_scale_factor = 1.25;
+	} else {
+		height_scale_factor = 1.0;
+	}
+	//height_scale_factor = 1.25;
 
 	// parse the date / time
     var parseTime = d3.timeParse("%Y-%m-%d");
@@ -124,7 +134,7 @@ function draw_district_daily_case_count(idname, filename, width, height, margin)
 
 			// District loop
 			for (var dt=0; dt<state_data.length; dt++){
-			//for (var dt=3; dt<4; dt++){
+			//for (var dt=0; dt<1; dt++){
 				var didx = 0;
 				var data = [];
 				district_case_count = state_data[dt]; //.slice(1, data_csv.length-1));
@@ -149,17 +159,20 @@ function draw_district_daily_case_count(idname, filename, width, height, margin)
 			    //y.domain([0, 1400]);
 		    	//var y = d3.scaleLog().domain([1, 1400]).range([height, 0]); //.base(10);
 	
+				//console.log(state_name);
+				//console.log(district_name);
+
 			    //console.log(data);
 
 	    		// define the line
 				var valueline = d3.line()
 					.x(function(d) {
-						//console.log(x(d.date));
+						//console.log((d.date));
 						return x(d.date);
 					})
 					.y(function(d) {
 						//console.log(y(100));
-						//return y(d.rate);
+						//console.log((d.rate));
 						if (d.rate!=0) {
 							return y(d.rate);
 						} else {
@@ -216,7 +229,7 @@ function draw_district_daily_case_count(idname, filename, width, height, margin)
 
 		    var xAxis = d3.axisBottom()
                     .scale(x)
-                    .tickFormat(d3.timeFormat("%b %e"))
+                    .tickFormat(d3.timeFormat("%b"))
                     .tickValues(x.domain().filter(function(d,i){ return !(i%30)}))
                     //.ticks(3)
 		            .tickSize(0)
@@ -226,8 +239,12 @@ function draw_district_daily_case_count(idname, filename, width, height, margin)
             var yAxis = d3.axisLeft()
 		                  .scale(y)
 		                  .tickFormat( (d,i) => {
-			                  if ((d==10) || (d==100) || (d==400) || (d==1000)) {
-			                    return d;
+			                  if ((d==10) || (d==100) || (d==1000)) {
+			                  	if (d==1000) {
+			                  		return d/1000 + "k";
+			                  	} else {
+				                    return d;
+				                }
 			                  }
 			                })
 		                  .tickSize(0)
@@ -255,6 +272,7 @@ function draw_district_daily_case_count(idname, filename, width, height, margin)
 			  .call(yAxis)
 			  .style("font-size", "0.5rem");
 			
+			/*
 			// Horizontal grid lines
 			horizontal_grid_lines_data = [case_count_10, case_count_100, case_count_1000];
 			for (var hg=0; hg<3; hg++) {
@@ -266,6 +284,7 @@ function draw_district_daily_case_count(idname, filename, width, height, margin)
 		            .attr("stroke-width", "1.5px")
 		            .attr("stroke-dasharray", 2);
 	        }
+	        */
 
 		}
 

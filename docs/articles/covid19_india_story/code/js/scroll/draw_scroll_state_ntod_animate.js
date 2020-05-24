@@ -23,7 +23,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 	//var state_fatality_rate_color_scale = d3.scaleSequential(d3.interpolateYlOrRd);
 
 	//var state_fatality_label_list = ["DL", "MH", "GJ", "MP", "AP", "KL", "RJ", "TN", "UP"];
-	var min_case_count_to_show_testing_rate = 50;
+	var min_case_count_to_show_testing_rate = 200;
 
 	var month_list = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
@@ -67,6 +67,9 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 		data = data.filter(function(d,i) {
 			return +d[end_date_str+"_cases"]>=min_case_count_to_show_testing_rate;
 		});
+		data = data.filter(function(d,i) {
+			return !["OR", "PB"].includes(d.state);
+		})
 
 		// Read last data to set domains
 		data.forEach(function(d, i) {
@@ -89,7 +92,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
       	x.domain([0, d3.max(data, function(d) { return +d.testspm; })+200]);
       	//y.domain([0, d3.max(data, function(d) { return d.deaths; })]);
       	//y.domain([0, d3.max(data, function(d) { return +d.ntod; })]);
-      	y.domain([0, 40]);
+      	y.domain([0, 60]);
 		
 
       	data.forEach(function(d, i) {
@@ -108,13 +111,53 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
       	if (window.innerWidth >= 768) {
 	      	state_type_rect_font_size = "0.85rem";
 	      	axis_font_size = "0.85rem";
+	      	font_size = "0.75rem";
 	    } else {
 	      	state_type_rect_font_size = "0.5rem";
 	      	axis_font_size = "0.75rem";
+	      	font_size = "0.5rem";
 	    }
 
-	    /*
       	//Append type rectangles
+      	svg.append("rect")
+			.attr("class", "state_type_rect")
+	        .attr("x", function(d) { return x(50); })
+	        .attr("y", function(d) { return y(25); })
+	        .attr("width", function(d) { return x(1800) - x(50); })
+	        .attr("height", function(d) { return y(5) - y(25); })
+	        .style("fill", function(d) { return "#FADBD8"; })
+	        .style("opacity", 0)
+	        .style("stroke", "black");
+	    svg.append("text")
+			.attr("class", "state_type_rect_text")
+			.attr("x", function(d) { return x(50); })
+			.attr("y", function(d) { return y(25+1); })
+			.text("Low testing rate, true case count could be much higher")
+			.style("font-size", state_type_rect_font_size)
+			.style("font-weight", "bold")
+			.style("fill", "#E74C3C")
+	        .style("opacity", 0);
+
+	    svg.append("rect")
+			.attr("class", "state_type_rect")
+	        .attr("x", function(d) { return x(4000); })
+	        .attr("y", function(d) { return y(40); })
+	        .attr("width", function(d) { return x(8500) - x(4000); })
+	        .attr("height", function(d) { return y(10) - y(40); })
+	        .style("fill", function(d) { return "#D6EAF8"; })
+	        .style("opacity", 0)
+	        .style("stroke", "black");
+	    svg.append("text")
+			.attr("class", "state_type_rect_text")
+			.attr("x", function(d) { return x(4000); })
+			.attr("y", function(d) { return y(40+1); })
+			.text("Reasonable testing rate but cases doubling quickly")
+			.style("font-size", state_type_rect_font_size)
+			.style("font-weight", "bold")
+			.style("fill", "#2E86C1")
+	        .style("opacity", 0);
+
+	    /*
 		svg.append("rect")
 			.attr("class", "state_type_rect")
 	        .attr("x", function(d) { return x(10); })
@@ -180,7 +223,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 			.attr("class", "state_fatality_circles circles")
 			.attr("r", function(d,i) {
 				//console.log(d.growth/10);
-				return Math.log10(d.cases)/4+"rem";
+				return Math.log10(d.cases)/8+"rem";
 			})
 			.attr("cx", function(d,i) {
 				//console.log(d.cases);
@@ -248,7 +291,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 					//}
 				})
 				.style("z-index", 10)
-				.style("font-size", "0.75rem");
+				.style("font-size", font_size);
 
 			var xAxis = d3.axisBottom(x)
 						.tickFormat( (d,i) => {
@@ -268,7 +311,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 				.attr("transform", "translate(0," + (height+20)+ ")")
 				.call(xAxis)
 				.attr("class", "state_fatality_xaxis")
-				.style("font-size", "0.75rem")
+				.style("font-size", font_size)
 			.append("text")
 				.attr("class", "state_fatality_label")
 				.attr("x", width)
@@ -280,7 +323,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 				.style("fill", "black")
 				.style("stroke", "none")
 				.style("font-weight", "bold")
-				.style("font-size", "0.75rem");
+				.style("font-size", font_size);
 
 			// Add the Y Axis
 			svg.append("g")
@@ -288,7 +331,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 				//.call(d3.axisLeft(y))
 				.call(yAxis)
 				.attr("class", "state_fatality_yaxis")
-				.style("font-size", "0.75rem")
+				.style("font-size", font_size)
 			.append("text")
 				.attr("class", "state_fatality_label")
 				.attr("transform", "rotate(-90)")
@@ -301,7 +344,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 				.style("fill", "black")
 				.style("stroke", "none")
 				.style("font-weight", "bold")
-				.style("font-size", "0.75rem");
+				.style("font-size", font_size);
 
 			/*
 			svg.selectAll("text")
@@ -314,10 +357,10 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 			current_date = new Date(start_date_str);
 		    svg.append("text")
 				.attr("class", "state_fatality_rate_date_label")
-				.attr("x", width-120)
-				.attr("y", 40)
+				.attr("x", width-50)
+				.attr("y", 20)
 				.text(current_date.getDate() + " " + month_list[current_date.getMonth()])
-				.style("font-size", "1.5rem")
+				.style("font-size", "1rem")
 				.style("font-weight", "bold")
 				.style("stroke", "none")
 				.style("fill", "black");
@@ -357,7 +400,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 
 		repeat_circles_transition();
 		function repeat_circles_transition() {
-			/*
+			
 			svg.selectAll(".state_type_rect")
 				.transition()
 				.duration(100)
@@ -367,7 +410,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 				.transition()
 				.duration(100)
 				.style("opacity", 0);
-			*/
+			
 			for (var c=init_offset_days; c<=num_days+init_offset_days; c++) {
 				cdt = columns[c].split("_")[0];
 				current_date = new Date(cdt);
@@ -392,7 +435,7 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 							.attr("r", function(d,i) {
 								//console.log(d.testspm/500);
 								//return Math.log10(d.cases)*3; //d.testspm/100;
-								return Math.log10(d.cases)/4+"rem";
+								return Math.log10(d.cases)/8+"rem";
 							});
 
 				svg.selectAll(".state_fatality_text")
@@ -420,7 +463,6 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 				}
 
 				function on_transition_end() {
-					/*
 					svg.selectAll(".state_type_rect")
 						.transition()
 						.duration(100)
@@ -429,7 +471,6 @@ function draw_scroll_state_ntod_animate(idname, file, width, height, margin) {
 						.transition()
 						.duration(100)
 						.style("opacity", 1);
-					*/
 					setTimeout(repeat_circles_transition, 10*1000);
 				}
 				

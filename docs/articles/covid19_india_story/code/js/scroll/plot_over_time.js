@@ -31,7 +31,7 @@ function plot_over_time(idname, width, height, margin) {
 			.delay(2000)
 			.duration(1000)
 			.delay(function(d,i){
-				return (Math.ceil(Math.abs(d.date - new Date(2020,2,1)) / (1000 * 60 * 60 * 24))+d.day_id)*3;
+				return (Math.ceil(Math.abs(d.date - new Date(2020,2,1)) / (1000 * 60 * 60 * 24))+d.day_id)*1;
 			})
 			.attr("cx", function(d,i) {
 				//console.log(x(d.date));

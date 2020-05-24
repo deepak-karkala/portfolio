@@ -10,14 +10,14 @@ function load_clusterMap_script() {
 	var chart_id = document.getElementById("cluster_map");
 	if (window.innerWidth >= 768) {
 		chart_id.innerHTML = `<div class="row text-center justify-content-center"><div class="col-lg-8 col-12 cluster_video">`+
-								`<video id="cluster_animation_video" controls preload="auto" loop="loop"`+
+								`<video id="cluster_animation_video" preload="auto" loop="loop"`+
 								`muted="muted" autoplay="true">
-						          <source src="docs/cluster_animation_without_legend.mp4" type="video/mp4">
+						          <source src="docs/cluster_animation_without_legend_compressed.mp4" type="video/mp4">
 						          Your browser does not support the video tag.
 						        </video></div></div>`;
 	} else {
-		chart_id.innerHTML = `<div class="row"><div class="col-lg-12 col-12 cluster_video"><video id="cluster_animation_video" controls preload="auto" loop="loop" muted="muted" autoplay="true">
-						          <source src="docs/cluster_animation_without_legend_asr1_lowres.mp4" type="video/mp4">
+		chart_id.innerHTML = `<div class="row"><div class="col-lg-12 col-12 cluster_video"><video id="cluster_animation_video" preload="auto" loop="loop" muted="muted" autoplay="true">
+						          <source src="docs/cluster_animation_without_legend_compressed_mobile.mp4" type="video/mp4">
 						          Your browser does not support the video tag.
 						        </video></div></div>`;
 	}

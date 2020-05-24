@@ -3,6 +3,28 @@
 
 script_load_timeout_list.push(setTimeout(load_outbreakSpreadMap_script, 5*script_load_timestep));
 
+
+function load_outbreakSpreadMap_script() {
+	//idname = "#outbreak_spread_map";
+	//d3.select(idname).select("cluster_animation_svg").remove();
+
+	var chart_id = document.getElementById("outbreak_spread_map");
+	if (window.innerWidth >= 768) {
+		chart_id.innerHTML = `<div class="row text-center justify-content-center"><div class="col-lg-8 col-12 cluster_video">`+
+								`<video id="cluster_animation_video" preload="auto" loop="loop"`+
+								`muted="muted" autoplay="true">
+						          <source src="docs/outbreak_spread_animation_compressed.mp4" type="video/mp4">
+						          Your browser does not support the video tag.
+						        </video></div></div>`;
+	} else {
+		chart_id.innerHTML = `<div class="row"><div class="col-lg-12 col-12 cluster_video"><video id="cluster_animation_video" preload="auto" loop="loop" muted="muted" autoplay="true">
+						          <source src="docs/outbreak_spread_animation_compressed.mp4" type="video/mp4">
+						          Your browser does not support the video tag.
+						        </video></div></div>`;
+	}
+}
+
+/*
 function load_outbreakSpreadMap_script() {
 	idname = "#outbreak_spread_map";
 	outbreak_spread_idname = "#outbreak_spread_map";
@@ -17,7 +39,7 @@ function load_outbreakSpreadMap_script() {
 	base_width = bb*width_scale_factor - margin.left - margin.right;
 	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
 	//base_height = Math.floor(window.innerHeight * 1);
-	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.7, 0.7]);
+	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.95, 0.7]);
 	height_scale_factor = height_scale_factor_width(bb);
 	base_height = bb*height_scale_factor - margin.top - margin.bottom;
 
@@ -41,7 +63,6 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 	    .projection(projection)
     	.pointRadius(5);
 
-    /* Zoom */
 	var zoom = d3.zoom()
 	    .scaleExtent([1, 8])    //.scaleExtent([scale0, 8 * scale0])
 	    .on("zoom", outbreak_spread_zoomed);
@@ -53,7 +74,6 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
         .style("z-index", "10")
         .style("visibility", "hidden");
 
-	/* SVG */
 	svg_outbreak_spread_map = d3.select(idname).append("svg")
               .attr("width", width + margin.left + margin.right)
               .attr("height", height + margin.top + margin.bottom)
@@ -65,6 +85,7 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
     outbreak_spread_circles_g = svg_outbreak_spread_map.append("g");
 	outbreak_spread_base_width = width;
 
+	outbreak_spread_map_font_size = "1rem";
     // Load external data and boot
     //if scroll_data
     d3.queue()
@@ -127,17 +148,6 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 			d.state_lat = +d.state_lat + random_state_radius * Math.cos(random_state_theta);
 		});
 
-		/*
-		// format the data
-		daily_stats_data.forEach(function(d) {
-			d.date = parseTime(d.date);
-			daily_cum_cases_count[d.date] = d.total_confirmed;
-			daily_cum_deaths_count[d.date] = d.total_deaths;
-			daily_cum_recovered_count[d.date] = d.total_recovered;
-		});
-		*/
-
-        
         outbreak_spread_circles_g.selectAll("dot")
         	.data(data)
         	.enter()
@@ -194,6 +204,74 @@ function draw_scroll_outbreak_spread_map(idname, filename, width, height, margin
 				})
 
 		
+		//console.log(daily_stats_date_data);
+		dt_anm_outbreakSpreadMap = svg_outbreak_spread_map.selectAll("text4")
+			.data([daily_stats_date_data[0]])
+			.enter()
+		.append("text")
+			.attr("class", "outbreak_spread_map_date_label")
+			.attr("x", width-150)
+			.attr("y", 10)
+			.attr("opacity", 1)
+			.text(function(d,i){
+				return d.getDate() + " " + month_abbrv_list[d.getMonth()];
+			})
+			.style("font-size", "1rem")
+			.style("font-weight", "bold")
+			.style("stroke", "none")
+			.style("fill", "black");
+
+
+		
+		dt_case_outbreakSpreadMap = svg_outbreak_spread_map.selectAll("text1")
+			.data([daily_stats_cases_data[0]])
+			.enter()
+		.append("text")
+			.attr("class", "outbreak_spread_map_case_label")
+			.attr("x", width-150)
+			.attr("y", 25)
+			.attr("opacity", 1)
+			.text(function(d,i){
+				return d + " Cases";
+			})
+			.style("font-size", "0.75rem")
+			.style("stroke", "none")
+			.style("fill", "black");
+
+
+		dt_death_outbreakSpreadMap = svg_outbreak_spread_map.selectAll("text2")
+			.data([daily_stats_deaths_data[0]])
+			.enter()
+		.append("text")
+			.attr("class", "outbreak_spread_map_death_label")
+			.attr("x", width-150)
+			.attr("y", 40)
+			.attr("opacity", 1)
+			.text(function(d,i){
+				return d + " Deaths";
+			})
+			.style("font-size", "0.75rem")
+			.style("stroke", "none")
+			.style("fill", "black");
+
+
+		dt_recovered_outbreakSpreadMap = svg_outbreak_spread_map.selectAll("text3")
+			.data([daily_stats_recovered_data[0]])
+			.enter()
+		.append("text")
+			.attr("class", "outbreak_spread_map_recovered_label")
+			.attr("x", width-150)
+			.attr("y", 55)
+			.attr("opacity", 1)
+			.text(function(d,i){
+				console.log(d);
+				return d + " Recoveries";
+			})
+			.style("font-size", "0.75rem")
+			.style("stroke", "none")
+			.style("fill", "black");
+		
+
 		//for (let i=1; i<=outbreak_spread_num_sim_days; i++) {
 		//	outbreak_spread_timeouts.push(setTimeout( update_date, i*outbreak_spread_step_delay ));
 		//}
@@ -210,13 +288,74 @@ document.getElementById("outbreak_spread_animation_button").onclick = function()
 			.duration(100)
 			.style("opacity", 0)
 			.style("fill", "#ff0000");
-	repeat_outbreak_spread_animation();
 
-	outbreak_spread_timeouts = [];
-	current_date_outbreakSpreadMap = start_date_outbreakSpreadMap;
-	for (let i=1; i<=outbreak_spread_num_sim_days; i++) {
-		outbreak_spread_timeouts.push(setTimeout( update_date, i*outbreak_spread_step_delay ));
-	}
+	svg_outbreak_spread_map.selectAll(".outbreak_spread_map_date_label").remove();
+	dt_anm_outbreakSpreadMap = svg_outbreak_spread_map.selectAll("text4")
+			.data([daily_stats_date_data[0]])
+			.enter()
+		.append("text")
+			.attr("class", "outbreak_spread_map_date_label")
+			.attr("x", outbreak_spread_base_width-150)
+			.attr("y", 10)
+			.attr("opacity", 1)
+			.text(function(d,i){
+				return d.getDate() + " " + month_abbrv_list[d.getMonth()];
+			})
+			.style("font-size", "1rem")
+			.style("font-weight", "bold")
+			.style("stroke", "none")
+			.style("fill", "black");
+
+	
+	svg_outbreak_spread_map.selectAll(".outbreak_spread_map_case_label").remove();
+	dt_case_outbreakSpreadMap = svg_outbreak_spread_map.selectAll("text1")
+			.data([daily_stats_cases_data[0]])
+			.enter()
+		.append("text")
+			.attr("class", "outbreak_spread_map_case_label")
+			.attr("x", outbreak_spread_base_width-150)
+			.attr("y", 35)
+			.attr("opacity", 1)
+			.text(function(d,i){
+				return d + " Cases";
+			})
+			.style("font-size", "0.75rem")
+			.style("stroke", "none")
+			.style("fill", "black");
+
+	svg_outbreak_spread_map.selectAll(".outbreak_spread_map_death_label").remove();
+	dt_death_outbreakSpreadMap = svg_outbreak_spread_map.selectAll("text2")
+			.data([daily_stats_deaths_data[0]])
+			.enter()
+		.append("text")
+			.attr("class", "outbreak_spread_map_death_label")
+			.attr("x", outbreak_spread_base_width-150)
+			.attr("y", 50)
+			.attr("opacity", 1)
+			.text(function(d,i){
+				return d + " Deaths";
+			})
+			.style("font-size", "0.75rem")
+			.style("stroke", "none")
+			.style("fill", "black");
+
+	svg_outbreak_spread_map.selectAll(".outbreak_spread_map_recovered_label").remove();
+	dt_recovered_outbreakSpreadMap = svg_outbreak_spread_map.selectAll("text3")
+			.data([daily_stats_recovered_data[0]])
+			.enter()
+		.append("text")
+			.attr("class", "outbreak_spread_map_recovered_label")
+			.attr("x", outbreak_spread_base_width-150)
+			.attr("y", 65)
+			.attr("opacity", 1)
+			.text(function(d,i){
+				return d + " Recoveries";
+			})
+			.style("font-size", "0.75rem")
+			.style("stroke", "none")
+			.style("fill", "black");
+	
+	repeat_outbreak_spread_animation();
 
 };
 
@@ -251,30 +390,78 @@ function repeat_outbreak_spread_animation() {
 				}
 			});
 
-}
+
+	dt_idx_outbreakSpreadMap = 0;
+	case_idx_outbreakSpreadMap = 0;
+	death_idx_outbreakSpreadMap = 0;
+	recovered_idx_outbreakSpreadMap = 0;
+	for (var d=0; d<daily_stats_date_data.length; d++) {
+		dt_anm_outbreakSpreadMap = dt_anm_outbreakSpreadMap.transition()
+						.delay(function(d,i) {
+							return outbreak_spread_step_duration; //dt_idx_outbreakSpreadMap*150;
+						})
+						.duration(outbreak_spread_step_duration)
+						.tween("text", function() {
+						    var self = this;
+						    var cdt = daily_stats_date_data[dt_idx_outbreakSpreadMap];
+							dt_idx_outbreakSpreadMap += 1;
+						    return function(t) {
+						        self.textContent = cdt.getDate() + " " + month_abbrv_list[cdt.getMonth()];
+						    };
+						});
+						//.text(daily_stats_date_data[i].getDate() + " " + month_abbrv_list[daily_stats_date_data[i].getMonth()])
+
+		
+		dt_case_outbreakSpreadMap = dt_case_outbreakSpreadMap.transition()
+						.delay(function(d,i) {
+							return outbreak_spread_step_duration; //case_idx_outbreakSpreadMap*outbreak_spread_step_delay;
+						})
+						.duration(outbreak_spread_step_duration)
+						.tween("text", function() {
+						    var self = this;
+						    var txt = daily_stats_cases_data[case_idx_outbreakSpreadMap];
+							case_idx_outbreakSpreadMap += 1;
+						    return function(t) {
+						        self.textContent = numberWithCommas(txt) + " Cases";
+						    };
+						});
+
+		dt_death_outbreakSpreadMap = dt_death_outbreakSpreadMap.transition()
+						.delay(function(d,i) {
+							return outbreak_spread_step_duration; //death_idx_outbreakSpreadMap*outbreak_spread_step_delay;
+						})
+						.duration(outbreak_spread_step_duration)
+						.tween("text", function() {
+						    var self = this;
+						    var txt = daily_stats_deaths_data[death_idx_outbreakSpreadMap];
+							death_idx_outbreakSpreadMap += 1;
+						    return function(t) {
+						        self.textContent = numberWithCommas(txt) + " Deaths";
+						    };
+						});
+
+		dt_recovered_outbreakSpreadMap = dt_recovered_outbreakSpreadMap.transition()
+						.delay(function(d,i) {
+							return outbreak_spread_step_duration; //recovered_idx_outbreakSpreadMap*outbreak_spread_step_delay;
+						})
+						.duration(outbreak_spread_step_duration)
+						.tween("text", function() {
+						    var self = this;
+						    var txt = daily_stats_recovered_data[recovered_idx_outbreakSpreadMap];
+							recovered_idx_outbreakSpreadMap += 1;
+						    return function(t) {
+						        self.textContent = numberWithCommas(txt) + " Recoveries";
+						    };
+						});
+		
 
 
-
-/*
-function ready_outbreak_spread_repeat() {
-
-	//india = cluster_india;
-	d3.select(outbreak_spread_idname).selectAll(".outbreak_spread_circles").style("opacity", 0);
-
-	current_date_outbreakSpreadMap = new Date(2020, 2, 1); //Start from March
-	for (let i=1; i<=outbreak_spread_num_sim_days; i++) {
-		outbreak_spread_timeouts.push(setTimeout( update_date, i*outbreak_spread_num_milliseconds_per_date ));
 	}
 
+
 }
 
-function outbreak_spread_animation_button_click() {
-	for (var i=0; i<outbreak_spread_timeouts.length; i++) {
- 		clearTimeout(outbreak_spread_timeouts[i]);
-	}
-	ready_outbreak_spread_repeat();
-}
-*/
+
 
 function update_date() {
 	// Add a day
@@ -324,34 +511,6 @@ function update_date() {
 			.style("stroke", "none")
 			.style("fill", "#404040");
 		
-		/*
-		outbreak_spread_circles_g.selectAll(".outbreak_spread_circles")
-			.transition()
-				.duration(100)
-				.style("opacity", function(d, i) {
-					dt = d.date;
-					if (current_date_outbreakSpreadMap >= dt) {
-						return 1;
-					} else {
-						return 0;
-					}
-					//return 1;
-				})
-				
-				.style("fill", function(d, i) {
-					if (current_date_outbreakSpreadMap >= d.status_change_date) {
-						if (d.status == "Recovered") {
-							return "#0000FF"; //"#229954";
-						} else if (d.status == "Deceased") {
-							return "#000000";
-						} else if (d.status == "Hospitalized") {
-							return "#FF0000"; //"#FA8072";
-						}
-					} else {
-						return "#FF0000";
-					}
-				});
-		*/		
 	}
 }
 
@@ -367,5 +526,6 @@ function outbreak_spread_zoomed() {
 function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-//})();
 
+//})();
+*/

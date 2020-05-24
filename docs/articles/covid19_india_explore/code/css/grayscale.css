@@ -56,18 +56,17 @@ a:focus, a:hover {
   margin-bottom: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   background-color: black;
-  height: 40px;
-  font-size: 1.0rem;
+  /*height: 40px;*/
+  font-size: 1rem;
 }
 
 #mainNav .navbar-toggler {
-  padding: 11px;
+  padding-top: 0px;
   color: white;
   border: 1px solid white;
 }
 
 #mainNav .navbar-brand {
-  font-weight: 700;
 }
 
 #mainNav a {
@@ -91,10 +90,23 @@ a:focus, a:hover {
   background-color: transparent;
 }
 
+#mainNav{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+#mainNav.navbar-shrink{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.fas {
+    font-size: 0.75rem;
+}
+
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     -webkit-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
     -moz-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
     transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
@@ -103,8 +115,8 @@ a:focus, a:hover {
     background-color: black;
   }
   #mainNav.navbar-shrink {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     background: black;
   }
@@ -151,7 +163,7 @@ a:focus, a:hover {
 }
 
 .heading {
-  padding-top: 15vh;
+  padding-top: 18vh;
   padding-bottom: 20px;
   margin-bottom: 20px;
   text-align: center;
@@ -172,20 +184,36 @@ a:focus, a:hover {
   font-size: 1.0rem;
   font-weight: bold;
 }
-/*
-@media (min-width: 768px) {
+
+.article_author, .article_date {
+  color: #F27200;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
   .masthead {
     height: 100%;
     padding: 0;
   }
-  .masthead .intro-body .brand-heading {
-    font-size: 70px;
+  .brand-heading {
+    font-size: 1.5rem;
   }
-  .masthead .intro-body .intro-text {
-    font-size: 22px;
+  .intro-text {
+    font-size: 1.25rem;
+  }
+
+  .article_author, .article_date {
+    color: #F27200;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 0.75rem;
   }
 }
-*/
+
 
 .btn-circle {
   font-size: 26px;
@@ -376,13 +404,7 @@ select.classic {
   background-repeat: no-repeat;
 }
 
-.article_author, .article_date {
-  color: #F27200;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  font-weight: bold;
-  font-size: 1.25rem;
-}
+
 
 .title_buttons{
   display: block;
@@ -390,11 +412,11 @@ select.classic {
 }
 .button {
   /*min-width: 130px;*/
-  padding: 8px 8px;
-  margin: 3px;
+  padding: 4px 4px;
+  margin: 5px;
   cursor: pointer;
   text-align: center;
-  font-size: 0.90rem;
+  font-size: 1rem;
   font-weight: bold;
   border: 1px solid #8f8f8f; /*#ffffff;*/
   background: #e8e8e8; /*#f1e0d6;*/
@@ -539,6 +561,14 @@ figure p {
     -moz-box-shadow:    3px 3px 5px 2px #999;  /* Firefox 3.5 - 3.6 */
     box-shadow:         3px 3px 5px 2px #999;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
     opacity: 1;
+}
+
+.div_fig_background_darker {
+  background-color: #cdcdcd;
+}
+
+.progress {
+  background-color: #8d8d8d;
 }
 
 #india_districts_basic_map {
@@ -853,6 +883,12 @@ bottom: .5em;
   background-color: #E74C3C;
 }
 
+#outbreak_free_animation_button {
+  margin: 10px 0; 
+  color: white;
+  background-color: #E74C3C;
+}
+
 .country_focus {
   fill: #ecf7fc; /*#c9e9f6;*/
   stroke: #000;
@@ -1080,4 +1116,22 @@ bottom: .5em;
   font-weight: bold;
 }
 
+@media (max-width: 768px) {
+  .cover_stat_title {
+    font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+    font-size: 0.5rem;
+    color: #606060;
+  }
+  .cover_stat {
+    font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+}
 
+.article_author {
+  margin-bottom: 0px;
+}
+.article_date {
+  margin-top: 0px;
+}

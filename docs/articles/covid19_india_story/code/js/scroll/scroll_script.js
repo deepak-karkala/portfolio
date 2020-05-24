@@ -7,6 +7,7 @@
 	var graphic = container.select('.scroll__graphic1');
 	var text = container.select('.scroll__text1');
 	var step = text.selectAll('.step1');
+	var step_bkg = text.selectAll('.step_bkg');
 	// initialize the scrollama
 	var scroller = scrollama();
 	// generic window resize listener event
@@ -77,7 +78,8 @@
 			chart_id.innerHTML = ``;
 		}
 
-		if ((data_step_id == 1) || (data_step_id >= 37)) {
+		//if ((data_step_id == 1) || (data_step_id >= 37)) {
+		if ((data_step_id == 1) || (data_step_id >= 39)) {
 			idname = "#scroll1_chart";
 			d3.select(idname).select("svg").remove();
 			chart_idname = "scroll1_chart";
@@ -116,7 +118,8 @@
 		}
 		
 
-		if ((data_step_id == 30) || (data_step_id == 31) || (data_step_id >= 35)) {
+		//if ((data_step_id == 30) || (data_step_id == 31) || (data_step_id >= 35)) {
+		if ((data_step_id == 30) || (data_step_id == 31) || (data_step_id == 33)) {
 			idname = "#scroll1_chart";
 			d3.select(idname).select("svg").remove();
 
@@ -124,6 +127,8 @@
 			chart_id = document.getElementById(chart_idname);
 			chart_id.innerHTML = ``;
 		}
+
+		
 
 		if (container.node().offsetWidth>=768) {
 			if (data_step_id >= 12) {
@@ -139,12 +144,13 @@
 					.style('left', '40%');
 
 				if (data_step_id>=33) {
+					var stepHeight = Math.floor(window.innerHeight * 0.25);
 					text.style('width', '100%')
 						.style('max-width', '100rem');
 					container.style('background-color', '#000')
 							.style('color', '#fff');
 					step.style('background-color', '#000')
-						//.style('height', '50px')
+						//.style('height', stepHeight + 'px')
 						.style('text-align', 'center');
 				} else {
 					var stepHeight = Math.floor(window.innerHeight * 0.35);
@@ -263,10 +269,10 @@
 			}
 
 		} else {
+			var stepHeight = Math.floor(window.innerHeight * 0.25);
+			step.style('height', stepHeight + 'px');
+
 			if (data_step_id <= 10) {
-				var stepHeight = Math.floor(window.innerHeight * 0.20);
-				step.style('height', stepHeight + 'px');
-				
 				var textWidth = text.node().offsetWidth;
 				var graphicMargin = 16 * 4;
 				var graphicWidth = container.node().offsetWidth; //- textWidth - graphicMargin;
@@ -279,8 +285,8 @@
 			} 
 
 			if (data_step_id >= 11) {
-				var stepHeight = Math.floor(window.innerHeight * 0.20);
-				step.style('height', stepHeight + 'px');
+				//var stepHeight = Math.floor(window.innerHeight * 0.20);
+				//step.style('height', stepHeight + 'px');
 				
 				var textWidth = text.node().offsetWidth;
 				var graphicMargin = 16 * 4;
@@ -290,12 +296,12 @@
 				graphic
 					.style('width', graphicWidth + 'px')
 					.style('height', graphicHeight + 'px')
-					.style('top', '25%');
+					.style('top', '35%');
 			}
 
 			if (data_step_id == 8) {
-				var stepHeight = Math.floor(window.innerHeight * 0.20);
-				step.style('height', stepHeight + 'px');
+				//var stepHeight = Math.floor(window.innerHeight * 0.20);
+				//step.style('height', stepHeight + 'px');
 				
 				var textWidth = text.node().offsetWidth;
 				var graphicMargin = 16 * 4;
@@ -305,7 +311,7 @@
 				graphic
 					.style('width', graphicWidth + 'px')
 					.style('height', graphicHeight + 'px')
-					.style('top', '25%');
+					.style('top', '35%');
 			}
 
 			if (data_step_id == 9) {
@@ -322,8 +328,8 @@
 			}
 
 			if ((data_step_id == 12) || (data_step_id == 13) || (data_step_id == 14)) {
-				var stepHeight = Math.floor(window.innerHeight * 0.20);
-				step.style('height', stepHeight + 'px');
+				//var stepHeight = Math.floor(window.innerHeight * 0.20);
+				//step.style('height', stepHeight + 'px');
 				
 				var textWidth = text.node().offsetWidth;
 				var graphicMargin = 16 * 4;
@@ -333,7 +339,7 @@
 				graphic
 					.style('width', graphicWidth + 'px')
 					.style('height', graphicHeight + 'px')
-					.style('top', '10%');
+					.style('top', '25%');
 			}
 
 			if ((data_step_id == 20) || (data_step_id == 21) || (data_step_id == 22)) {
@@ -344,13 +350,13 @@
 				graphic
 					.style('width', graphicWidth + 'px')
 					.style('height', graphicHeight + 'px')
-					.style('top', '25%')
-					.style('left', '40px');
+					.style('top', '30%')
+					//.style('left', '40px');
 			}
 
 			if (data_step_id >= 23) {
-				var stepHeight = Math.floor(window.innerHeight * 0.20);
-				step.style('height', stepHeight + 'px');
+				//var stepHeight = Math.floor(window.innerHeight * 0.30);
+				//step.style('height', stepHeight + 'px');
 				
 				var textWidth = text.node().offsetWidth;
 				var graphicMargin = 16 * 4;
@@ -360,22 +366,50 @@
 				graphic
 					.style('width', graphicWidth + 'px')
 					.style('height', graphicHeight + 'px')
-					.style('top', '30%')
+					.style('top', '40%')
 					.style('left', 0);
 			}
 
 			if (data_step_id>=33) {
+				var graphicWidth = container.node().offsetWidth; //- textWidth - graphicMargin;
+				var graphicHeight = Math.floor(window.innerHeight * 1);
+				var graphicMarginTop = Math.floor(graphicHeight / 2);
+				graphic
+					.style('width', graphicWidth + 'px')
+					.style('height', graphicHeight + 'px')
+					.style('top', 0)
+					.style('left', 0);
+
+				var stepHeight = Math.floor(window.innerHeight * 0.5);
+				text.style('width', '100%')
+					.style('max-width', '100rem');
 				container.style('background-color', '#000')
 						.style('color', '#fff');
-				step.style('background-color', '#000');
+				step.style('background-color', 'transparent')
+					//.style('height', stepHeight + 'px')
+					.style('text-align', 'center');
 			} else {
+				//var stepHeight = Math.floor(window.innerHeight * 0.35);
+				text.style('width', '100%')
+					.style('max-width', '40rem');
 				container.style('background-color', '#dadada')
 						.style('color', '#000');
-				step.style('background-color', '#fff');
-			}
+				step.style('background-color', '#fff')
+					//.style('height', stepHeight + 'px')
+					.style('text-align', 'left');
+			} 
 
 
 		}
+
+		if (data_step_id>=33) {
+			container.style('background-color', '#000')
+			step.style('background-color', 'transparent')
+		} else {
+			container.style('background-color', '#dadada')
+			step.style('background-color', '#fff')
+		}
+		step_bkg.style('background-color', '#dadada');
 
 		if (data_step_id==2) {
 			//filename = "data/scroll/scroll_data.csv";
@@ -473,14 +507,14 @@
 				base_height = Math.floor(window.innerHeight * 0.750);
 			    //draw_cluster_map_transition(idname, filename, base_width, base_height);
 				chart_id.innerHTML = `<div class="row"><div class="col-lg-10 col-12 cluster_video"><video id="cluster_animation_video" controls preload="auto" loop="loop" muted="muted" autoplay="true">
-							          <source src="docs/cluster_animation_without_legend.mp4" type="video/mp4">
+							          <source src="docs/cluster_animation_without_legend_compressed.mp4" type="video/mp4">
 							          Your browser does not support the video tag.
 							        </video></div></div>`;
 				
 			} else{
 				base_height = Math.floor(window.innerHeight * 0.50);
-				chart_id.innerHTML = `<div class="row"><div class="col-lg-12 col-12 cluster_video"><video id="cluster_animation_video" controls preload="auto" loop="loop" muted="muted" autoplay="true">
-							          <source src="docs/cluster_animation_without_legend_asr1_lowres.mp4" type="video/mp4">
+				chart_id.innerHTML = `<div class="row"><div class="col-lg-12 col-12 cluster_video"><video id="cluster_animation_video" preload="auto" loop="loop" muted="muted" autoplay="true">
+							          <source src="docs/cluster_animation_without_legend_compressed_mobile.mp4" type="video/mp4">
 							          Your browser does not support the video tag.
 							        </video></div></div>`;
 			}
@@ -588,7 +622,7 @@
 			idname = "#scroll1_chart";
 			width_scale_factor = 0.9;
 			var bb = d3.select(idname).node().offsetWidth;
-			var margin = {right:20, left:20, top:20, bottom:20};
+			var margin = {right:10, left:20, top:20, bottom:20};
 			base_width = bb*width_scale_factor - margin.left - margin.right;
 			//base_height = Math.floor(window.innerHeight * 0.6);
 			if (window.innerWidth >= small_screen_thresh) {
@@ -605,7 +639,7 @@
 			width_scale_factor = 0.9;
 			//height_scale_factor = 0.60;
 			var bb = d3.select(idname).node().offsetWidth;
-			var margin = {right:20, left:20, top:20, bottom:20};
+			var margin = {right:10, left:20, top:20, bottom:20};
 			base_width = bb*width_scale_factor - margin.left - margin.right;
 			//base_height = bb*height_scale_factor - margin.top - margin.bottom;
 			//base_height = Math.floor(window.innerHeight * 0.6);
@@ -639,7 +673,7 @@
 			width_scale_factor = 0.9;
 			//height_scale_factor = 0.60;
 			var bb = d3.select(idname).node().offsetWidth;
-			var margin = {right:20, left:30, top:20, bottom:40};
+			var margin = {right:10, left:30, top:20, bottom:40};
 			base_width = bb*width_scale_factor - margin.left - margin.right;
 			//base_height = bb*height_scale_factor - margin.top - margin.bottom;
 			//base_height = Math.floor(window.innerHeight * 0.6);
@@ -672,7 +706,7 @@
 			//base_height = Math.floor(window.innerHeight * 0.6);
 			if (window.innerWidth >= small_screen_thresh) {
 				base_height = Math.floor(window.innerHeight * 0.6);
-				width_scale_factor = 0.75;
+				width_scale_factor = 0.85;
 				base_width = bb*width_scale_factor - margin.left - margin.right;
 			} else {
 				base_height = Math.floor(window.innerHeight * 0.40); 
@@ -688,13 +722,13 @@
 			//width_scale_factor = 0.75;
 			//height_scale_factor = 0.60;
 			var bb = d3.select(idname).node().offsetWidth;
-			var margin = {right:5, left:40, top:20, bottom:50};
+			var margin = {right:5, left:50, top:20, bottom:50};
 			//base_width = bb*width_scale_factor - margin.left - margin.right;
 			//base_height = bb*height_scale_factor - margin.top - margin.bottom;
 			//base_height = Math.floor(window.innerHeight * 0.6);
 			if (window.innerWidth >= small_screen_thresh) {
 				base_height = Math.floor(window.innerHeight * 0.6);
-				width_scale_factor = 0.75;
+				width_scale_factor = 0.85;
 				base_width = bb*width_scale_factor - margin.left - margin.right;
 			} else {
 				base_height = Math.floor(window.innerHeight * 0.40); 
@@ -734,7 +768,7 @@
 			chart_id.innerHTML = ``;
 			chart_id.innerHTML = `<div class="row text-center justify-content-center">`+
 									`<div class="col-lg-12 prediction_model_img">`+
-										`<img src="data/scroll/scenario1.png">`+
+										`<img src="data/scroll/scenario1.jpg">`+
 									`</div>`+
 								`</div>`;
 
@@ -751,7 +785,7 @@
 			chart_id.innerHTML = ``;
 			chart_id.innerHTML = `<div class="row text-center justify-content-center">`+
 									`<div class="col-lg-12 prediction_model_img">`+
-										`<img src="data/scroll/scenario2.png">`+
+										`<img src="data/scroll/scenario2.jpg">`+
 									`</div>`+
 								`</div>`;
 
@@ -768,7 +802,7 @@
 			chart_id.innerHTML = ``;
 			chart_id.innerHTML = `<div class="row text-center justify-content-center">`+
 									`<div class="col-lg-12 prediction_model_img">`+
-										`<img src="data/scroll/scenario3.png">`+
+										`<img src="data/scroll/scenario3.jpg">`+
 									`</div>`+
 								`</div>`;
 
@@ -787,8 +821,10 @@
 									`</div>`+
 								`</div>`;
 
+		/*
 		} else if ((data_step_id==31) || (data_step_id==32)) {
 
+			
 			title_idname = "scroll1_chart_title";
 			per_virus_free_districts = 100;
 			num_virus_free_districts = 725;
@@ -823,13 +859,68 @@
 				show_virus_states = 1;
 			}
 			draw_scroll_outbreak_free_districts(idname, filename, base_width, base_height, margin, show_virus_states);
+		}	
+		*/
 
-
-		} else if (data_step_id==33) {
+		} else if (data_step_id==31) {
 
 			title_idname = "scroll1_chart_title";
 			title_id = document.getElementById(title_idname);
 			title_id.innerHTML = ``;
+
+			chart_idname = "scroll1_chart";
+			chart_id = document.getElementById(chart_idname);
+			chart_id.innerHTML = ``;
+
+			idname = "#scroll1_chart";
+			d3.select(idname).select("svg").remove();
+
+		} else if (data_step_id==32) {
+
+			title_idname = "scroll1_chart_title";
+			title_id = document.getElementById(title_idname);
+			title_id.innerHTML = ``;
+
+			chart_idname = "scroll1_chart";
+			chart_id = document.getElementById(chart_idname);
+			chart_id.innerHTML = ``;
+
+			idname = "#scroll1_chart";
+			d3.select(idname).select("svg").remove();
+			width_scale_factor = 0.7;
+			height_scale_factor = 0.40;
+			var bb = d3.select(idname).node().offsetWidth;
+			//var margin = {right:20, left:40, top:10, bottom:60};
+			var margin = {right:0, left:30, top:50, bottom:30};
+			base_width = bb*width_scale_factor - margin.left - margin.right;
+
+			if (window.innerWidth >= 768) {
+				base_height = Math.floor(window.innerHeight * 0.750);
+			    //draw_cluster_map_transition(idname, filename, base_width, base_height);
+				chart_id.innerHTML = `<div class="row"><div class="col-lg-10 col-12 cluster_video"><video id="cluster_animation_video" preload="auto" loop="loop" muted="muted" autoplay="true">
+							          <source src="docs/outbreak_free_animation_compressed.mp4" type="video/mp4">
+							          Your browser does not support the video tag.
+							        </video></div></div>`;
+				
+			} else{
+				base_height = Math.floor(window.innerHeight * 0.50);
+				chart_id.innerHTML = `<div class="row"><div class="col-lg-12 col-12 cluster_video"><video id="cluster_animation_video" preload="auto" loop="loop" muted="muted" autoplay="true">
+							          <source src="docs/outbreak_free_animation_compressed.mp4" type="video/mp4">
+							          Your browser does not support the video tag.
+							        </video></div></div>`;
+			}
+
+
+		} else if (data_step_id==33) {
+			for (var j=0; j<outbreak_free_timeouts.length; j++) {
+              clearTimeout(outbreak_free_timeouts[j]);
+            }
+            outbreak_free_timeouts = [];
+
+			title_idname = "scroll1_chart_title";
+			title_id = document.getElementById(title_idname);
+			title_id.innerHTML = ``;
+			//document.getElementById(title_idname).remove();
 
 			chart_idname = "scroll1_chart";
 			chart_id = document.getElementById(chart_idname);
@@ -843,10 +934,40 @@
 			var bb = d3.select(idname).node().offsetWidth;
 			var margin = {right:0, left:0, top:0, bottom:30};
 			base_width = bb*width_scale_factor - margin.left - margin.right;
-			base_height = Math.floor(window.innerHeight * 1);
-			show_individual_cases(idname, base_width, base_height, margin, opacity);
+			if (window.innerWidth >= small_screen_thresh) {
+				base_height = Math.floor(window.innerHeight * 1); 
+			} else {
+				base_height = Math.floor(window.innerHeight * 1); 
+			}
+			show_random_points(idname, base_width, base_height, margin);
+			//show_individual_cases(idname, base_width, base_height, margin, opacity);
 
-		} 
+		} else if ((data_step_id>=34) && (data_step_id<=37)) {
+			idname = "#scroll1_chart";
+			width_scale_factor = 1;
+			//height_scale_factor = 0.3;
+			var bb = d3.select(idname).node().offsetWidth;
+			var margin = {right:0, left:0, top:0, bottom:30};
+			base_width = bb*width_scale_factor - margin.left - margin.right;
+			if (window.innerWidth >= small_screen_thresh) {
+				base_height = Math.floor(window.innerHeight * 1); 
+			} else {
+				base_height = Math.floor(window.innerHeight * 0.60); 
+			}
+			move_random_points();
+			
+		} else if (data_step_id>=38) {
+
+			title_idname = "scroll1_chart_title";
+			title_id = document.getElementById(title_idname);
+			title_id.innerHTML = ``;
+			//document.getElementById(title_idname).remove();
+			chart_idname = "scroll1_chart";
+			chart_id = document.getElementById(chart_idname);
+			chart_id.innerHTML = ``;
+			d3.select(idname).select("svg").remove();
+
+		}
 
 		
 

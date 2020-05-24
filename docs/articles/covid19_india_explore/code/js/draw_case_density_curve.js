@@ -181,7 +181,12 @@ function plot_district_case_density_curve(idname, filename, width, height, margi
 		                                          .style("visibility", "visible");
 			                })
 			                .on("mousemove", function(){
-		                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+			                	if (event.pageX >= window.innerWidth/2) {
+			                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-150)+"px");
+			                    } else {
+			                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+			                    }
+		                        //return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
 		                    })
 			                .on("mouseout", function(d,i) {
 								show_all_districts_case_density_button_click_handler();
@@ -191,7 +196,7 @@ function plot_district_case_density_curve(idname, filename, width, height, margi
 
 
 			        svg.append("text")
-			        	.attr("class", district_name+"_label label")
+			        	.attr("class", district_name+"_case_density_label district_case_density_label")
 			        	.attr("x", x(data[didx-1].date)+10)
 			        	.attr("y", y(data[didx-1].rate))
 			        	.text(district_name.replace("_"," "))
@@ -316,11 +321,11 @@ function show_selected_district_case_density(district_name) {
 	state_color = district_case_density_state_color_mapping(state_code_mapping[state_code]);
 
 	d3.selectAll(".case_density_curve").attr("stroke", default_background_color_district_case_density).attr("opacity", 0.25).attr("stroke-width", "2px");
-	d3.selectAll(".label").attr("opacity", 0);
+	d3.selectAll(".district_case_density_label").attr("opacity", 0);
 	d3.selectAll(".case_density_circles").attr("opacity", 0);
 	
 	d3.select("."+district_name+"_case_density_curve").attr('stroke-width', "2px").attr("stroke", state_color).attr("opacity", 1.0);
-	d3.select("."+district_name+"_label").attr("opacity", 1);
+	d3.select("."+district_name+"_case_density_label").attr("opacity", 1);
 	d3.selectAll("."+district_name+"_case_density_circles").attr("opacity", 1);
 }
 
@@ -338,7 +343,7 @@ function show_highlight_districts_case_density() {
 		state_color = district_case_density_state_color_mapping(state_code_mapping[state_code]);
 
 		d3.select("."+highlight_state_name+"_case_density_curve").attr('stroke-width', "2px").attr("stroke", state_color).attr("opacity", 1.0);
-		d3.select("."+highlight_state_name+"_label").attr("opacity", 1);
+		d3.select("."+highlight_state_name+"_case_density_label").attr("opacity", 1);
 		d3.selectAll("."+highlight_state_name+"_case_density_circles").attr("opacity", 1);
 	}
 }
@@ -354,7 +359,7 @@ function set_select_district_case_density(case_density_district_list) {
 
 function show_all_districts_case_density_button_click_handler() {
 	d3.selectAll(".case_density_curve").attr("stroke", default_background_color_district_case_density).attr("opacity", 0.5).attr("stroke-width", "1.5px");
-	d3.selectAll(".label").attr("opacity", 0);
+	d3.selectAll(".district_case_density_label").attr("opacity", 0);
 	d3.selectAll(".case_density_circles").attr("opacity", 0);
 
 	show_highlight_districts_case_density();

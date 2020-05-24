@@ -6,10 +6,10 @@ function load_stateNtod_script() {
 	idname = "#fatality_rate_animation";
 	d3.select(idname).select("svg").remove();
 	filename = "data/state_case_death_testpm_ntod.csv";
-	width_scale_factor = 0.90;
+	width_scale_factor = 0.80;
 	//height_scale_factor = 0.60;
 	var bb = d3.select(idname).node().offsetWidth;
-	var margin = {right:20, left:30, top:10, bottom:60};
+	var margin = {right:10, left:40, top:10, bottom:60};
 	base_width = bb*width_scale_factor - margin.left - margin.right;
 	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
 	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.5]);
@@ -33,7 +33,7 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 	//var state_fatality_rate_color_scale = d3.scaleSequential(d3.interpolateYlOrRd);
 
 	//var state_fatality_label_list = ["DL", "MH", "GJ", "MP", "AP", "KL", "RJ", "TN", "UP"];
-	var min_case_count_to_show_testing_rate = 100;
+	var min_case_count_to_show_testing_rate = 500;
 
 
 	// parse the date / time
@@ -77,6 +77,9 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 			return +d[end_date_str+"_cases"]>=min_case_count_to_show_testing_rate;
 		});
 
+		data = data.filter(function(d,i) {
+			return !["OR", "PB"].includes(d.state);
+		})
 		// Read last data to set domains
 		data.forEach(function(d, i) {
 			//console.log(d["state"]);
@@ -96,31 +99,29 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 		
 
       	data.forEach(function(d, i) {
-      		if (1) { //(+d[end_date_str+"_cases"] >= min_case_count_to_show_testing_rate) {
-	      		cdt = start_date_str;
-				//console.log(d["state"]);
-				//console.log(d[start_date_str+"_cases"]);
-				d.cases = +d[cdt+"_cases"];
-				d.deaths = +d[cdt+"_deaths"];
-				d.ntod = +d[cdt+"_ntod"];
-				d.testspm = +d[cdt+"_testspm"];
-				d.state = d.state;
+      		if (+d[end_date_str+"_cases"] >= min_case_count_to_show_testing_rate) {
+		      		cdt = start_date_str;
+					d.cases = +d[cdt+"_cases"];
+					d.deaths = +d[cdt+"_deaths"];
+					d.ntod = +d[cdt+"_ntod"];
+					d.testspm = +d[cdt+"_testspm"];
+					d.state = d.state;
 			}
 		});
 
       	//Append type rectangles
 		svg.append("rect")
 			.attr("class", "state_type_rect")
-	        .attr("x", function(d) { return x(10); })
+	        .attr("x", function(d) { return x(50); })
 	        .attr("y", function(d) { return y(25); })
-	        .attr("width", function(d) { return x(1200) - x(10); })
+	        .attr("width", function(d) { return x(1800) - x(50); })
 	        .attr("height", function(d) { return y(5) - y(25); })
 	        .style("fill", function(d) { return "#FADBD8"; })
 	        .style("opacity", 0)
 	        .style("stroke", "black");
 	    svg.append("text")
 			.attr("class", "state_type_rect_text")
-			.attr("x", function(d) { return x(10); })
+			.attr("x", function(d) { return x(50); })
 			.attr("y", function(d) { return y(25+1); })
 			.text("Low testing rate, true case count could be much higher")
 			.style("font-size", state_ntod_font_size)
@@ -130,23 +131,24 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 
 	    svg.append("rect")
 			.attr("class", "state_type_rect")
-	        .attr("x", function(d) { return x(1400); })
-	        .attr("y", function(d) { return y(30); })
-	        .attr("width", function(d) { return x(5000) - x(1400); })
-	        .attr("height", function(d) { return y(5) - y(30); })
+	        .attr("x", function(d) { return x(4000); })
+	        .attr("y", function(d) { return y(40); })
+	        .attr("width", function(d) { return x(8500) - x(4000); })
+	        .attr("height", function(d) { return y(10) - y(40); })
 	        .style("fill", function(d) { return "#D6EAF8"; })
 	        .style("opacity", 0)
 	        .style("stroke", "black");
 	    svg.append("text")
 			.attr("class", "state_type_rect_text")
-			.attr("x", function(d) { return x(1600); })
-			.attr("y", function(d) { return y(30+1); })
+			.attr("x", function(d) { return x(4000); })
+			.attr("y", function(d) { return y(40+1); })
 			.text("Reasonable testing rate but cases doubling quickly")
 			.style("font-size", state_ntod_font_size)
 			.style("font-weight", "bold")
 			.style("fill", "#2E86C1")
 	        .style("opacity", 0);
 
+		/*
 	    svg.append("rect")
 			.attr("class", "state_type_rect")
 	        .attr("x", function(d) { return x(600); })
@@ -166,7 +168,7 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 			.attr("fill", "#1D8348")
 			//.style("stroke", "#28B463")
 	        .style("opacity", 0);
-
+		*/
 
       	svg.selectAll(".dot")
 			.data(data)
@@ -174,7 +176,7 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 			.attr("class", "state_fatality_circles circles")
 			.attr("r", function(d,i) {
 				//console.log(d.growth/10);
-				return Math.log10(d.cases)/4+"rem";
+				return Math.log10(d.cases)/8+"rem";
 			})
 			.attr("cx", function(d,i) {
 				//console.log(d.cases);
@@ -194,6 +196,7 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 			.attr("stroke", "#000")
 			.attr("stroke-width", "0.25px")
 			.attr("opacity", 1)
+			/*
 			.on("mouseover", function(d, i) {
 			    d3.selectAll(".state_fatality_circles").style("opacity", 0.5);
 			    d3.select(this).style('stroke-width', '2px').style("opacity", 1.0);
@@ -209,7 +212,11 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 			  }
 			)
 			.on("mousemove", function(){
-				return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+				if (event.pageX >= window.innerWidth/2) {
+					return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-150)+"px");
+				} else {
+					return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+				}
 			})
 			.on("mouseout", function(d, i){
 				//d3.select(this).style('stroke-width', "1px").style("opacity", 1.0);
@@ -217,6 +224,7 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 			    d3.select(this).style('stroke-width', '0.25px').style("opacity", 1.0);
 				return tooltip.style("visibility", "hidden");
 			});
+			*/
 
 			svg.selectAll(".text")
 	      		.data(data)
@@ -273,7 +281,7 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 
 			// Add the Y Axis
 			svg.append("g")
-				//.attr("transform", "translate("+(width)+",0)")
+				.attr("transform", "translate("+(-20)+",0)")
 				//.call(d3.axisLeft(y))
 				.call(yAxis)
 				.attr("class", "state_fatality_yaxis")
@@ -304,7 +312,7 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 		    svg.append("text")
 				.attr("class", "state_fatality_rate_date_label")
 				.attr("x", width-120)
-				.attr("y", 40)
+				.attr("y", 20)
 				.text(current_date.getDate() + " " + month_abbrv_list[current_date.getMonth()])
 				.style("font-size", "1.5rem")
 				.style("font-weight", "bold")
@@ -319,7 +327,7 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 			for (var gi=1; gi<6; gi++) {
 				gridline1_data = [];
 				gridline1_data[0] = []; gridline1_data[0].x = 0; gridline1_data[0].y=gi*10;
-				gridline1_data[1] = []; gridline1_data[1].x=7000; gridline1_data[1].y=gi*10
+				gridline1_data[1] = []; gridline1_data[1].x=8000; gridline1_data[1].y=gi*10
 				svg.append("path")
 			            .data([gridline1_data])
 			            .attr("d", gridline)
@@ -379,7 +387,7 @@ function animate_state_fatality_rate(idname, file, width, height, margin) {
 							.attr("r", function(d,i) {
 								//console.log(d.testspm/500);
 								//return Math.log10(d.cases)*3; //d.testspm/100;
-								return Math.log10(d.cases)/4+"rem";
+								return Math.log10(d.cases)/8+"rem";
 							});
 
 				svg.selectAll(".state_fatality_text")

@@ -56,18 +56,16 @@ a:focus, a:hover {
   margin-bottom: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   background-color: black;
-  height: 40px;
-  font-size: 1.0rem;
+  font-size: 0.75rem;
 }
 
 #mainNav .navbar-toggler {
-  padding: 11px;
+  padding-top: 0px;
   color: white;
   border: 1px solid white;
 }
 
 #mainNav .navbar-brand {
-  font-weight: 700;
 }
 
 #mainNav a {
@@ -91,20 +89,44 @@ a:focus, a:hover {
   background-color: transparent;
 }
 
+#mainNav{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+#mainNav.navbar-shrink{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.fas {
+    font-size: 0.75rem;
+}
+
+.intro_text {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .intro_text {
+    font-size: 0.75rem;
+  }
+}
+
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     -webkit-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
     -moz-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
     transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
     border-bottom: none;
     background: transparent;
     background-color: black;
+    font-size: 1rem;
   }
   #mainNav.navbar-shrink {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     background: black;
   }
@@ -168,20 +190,20 @@ a:focus, a:hover {
   font-size: 1.5rem;
 }
 
-/*
-@media (min-width: 768px) {
+
+@media (max-width: 768px) {
   .masthead {
     height: 100%;
     padding: 0;
   }
-  .masthead .intro-body .brand-heading {
-    font-size: 70px;
+  .brand-heading {
+    font-size: 2rem;
   }
-  .masthead .intro-body .intro-text {
-    font-size: 22px;
+  .intro-text {
+    font-size: 0.75rem;
   }
 }
-*/
+
 
 .btn-circle {
   font-size: 26px;
@@ -278,6 +300,14 @@ footer {
   padding: 50px 0 20px 0;
   color: black;
   font-size: 0.85rem;
+}
+
+footer p {
+  font-size: 0.75rem;
+}
+
+#conclusion {
+  font-size: 1rem;
 }
 
 ::-moz-selection {
@@ -1036,7 +1066,7 @@ bottom: .5em;
 }
 
 .scenario_title {
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   font-weight: bold;
   text-align: center;
 }
@@ -1091,4 +1121,21 @@ bottom: .5em;
 .cover_img video {
   width: 100%;
   height: auto;
+}
+
+#outbreak_spread_animation_button {
+  margin: 10px 0; 
+  color: white;
+  background-color: #E74C3C;
+}
+
+#outbreak_free_animation_button {
+  margin: 10px 0; 
+  color: white;
+  background-color: #E74C3C;
+}
+
+.play_again_button {
+  font-size: 0.75rem;
+  padding: 2px;
 }

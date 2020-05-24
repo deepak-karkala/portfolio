@@ -71,6 +71,11 @@ function plot_daily_cases_deaths(idname, filename, width, height, type, fill_col
         .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    if (window.innerWidth >= 768) {
+      font_size = "0.75rem";
+    } else {
+      font_size = "0.5rem";
+    }
 
     // get the data
     d3.csv(filename, function(error, data) {
@@ -181,21 +186,21 @@ function plot_daily_cases_deaths(idname, filename, width, height, type, fill_col
           .attr("transform", "translate(0," + height + ")")
           .attr("class", "label_histogram")
           .call(xAxis)
-          .style("font-size", "0.75rem")
+          .style("font-size", font_size)
         .append("text")
           .attr("class", "label_histogram")
           .attr("x", width)
           .attr("y", -40)
           .style("text-anchor", "end")
           .style("fill", "black")
-          .style("font-size", "0.75rem");
+          .style("font-size", font_size);
 
       // add the y Axis
       svg.append("g")
           .attr("class", "label_histogram axis--y")
           .attr("transform", "translate("+(width)+",0)")
           .call(yAxis)
-          .style("font-size", "0.75rem")
+          .style("font-size", font_size)
         .append("text")
           .attr("class", "label_histogram")
           .attr("transform", "rotate(-90)")
@@ -210,7 +215,7 @@ function plot_daily_cases_deaths(idname, filename, width, height, type, fill_col
             }
           })
           .style("fill", "black")
-          .style("font-size", "0.75rem");
+          .style("font-size", font_size);
 
       /*
       // add the Y gridlines
@@ -234,7 +239,7 @@ function plot_daily_cases_deaths(idname, filename, width, height, type, fill_col
       */
       svg.selectAll("line")
         .style("stroke", "black")
-        .style("font-size", "0.75rem")
+        .style("font-size", font_size)
         .style("visibility", "hidden");
 
     });
@@ -257,6 +262,11 @@ function plot_daily_cases_deaths_cover(idname, filename, width, height, type, fi
         return d3.axisLeft(y).ticks(3)
     }
 
+    if (window.innerWidth >= 768) {
+      font_size = "0.75rem";
+    } else {
+      font_size = "0.5rem";
+    }
     //var x = d3.scaleTime().range([0, width]);
     var x = d3.scaleBand().rangeRound([0, width], .05).padding(0.1);
     var y = d3.scaleLinear().range([height, 0]);
@@ -388,21 +398,21 @@ function plot_daily_cases_deaths_cover(idname, filename, width, height, type, fi
           .attr("transform", "translate(0," + height + ")")
           .attr("class", "label_histogram")
           .call(xAxis)
-          .style("font-size", "0.75rem")
+          .style("font-size", font_size)
         .append("text")
           .attr("class", "label_histogram")
           .attr("x", width)
           .attr("y", -40)
           .style("text-anchor", "end")
           .style("fill", "black")
-          .style("font-size", "0.75rem");
+          .style("font-size", font_size);
 
       // add the y Axis
       svg.append("g")
           .attr("class", "label_histogram axis--y")
           .attr("transform", "translate("+(width)+",0)")
           .call(yAxis)
-          .style("font-size", "0.75rem")
+          .style("font-size", font_size)
         .append("text")
           .attr("class", "label_histogram")
           .attr("transform", "rotate(-90)")
@@ -417,7 +427,7 @@ function plot_daily_cases_deaths_cover(idname, filename, width, height, type, fi
             }
           })
           .style("fill", "black")
-          .style("font-size", "0.75rem");
+          .style("font-size", font_size);
 
       /*
       // add the Y gridlines
@@ -441,7 +451,7 @@ function plot_daily_cases_deaths_cover(idname, filename, width, height, type, fi
       */
       svg.selectAll("line")
         .style("stroke", "black")
-        .style("font-size", "0.75rem")
+        .style("font-size", font_size)
         .style("visibility", "hidden");
 
     });

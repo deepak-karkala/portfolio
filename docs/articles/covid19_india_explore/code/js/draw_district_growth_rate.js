@@ -11,7 +11,7 @@ function load_districtGrowthRate_script() {
 	width_scale_factor = 0.95;
 	//height_scale_factor = 0.35;
 	var bb = d3.select(idname).node().offsetWidth;
-	var margin = {right:80, left:30, top:20, bottom:60};
+	var margin = {right:60, left:30, top:20, bottom:60};
 	base_width = bb*width_scale_factor - margin.left - margin.right;
 	//base_height = bb*height_scale_factor - margin.top - margin.bottom;
 	var height_scale_factor_width = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.75, 0.3]);
@@ -175,7 +175,11 @@ function plot_district_growth_rate(idname, filename, width, height, margin) {
 	                                          .style("visibility", "visible");
 		                })
 		                .on("mousemove", function(){
-	                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+		                	if (event.pageX >= window.innerWidth/2) {
+		                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-150)+"px");
+		                    } else {
+		                        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+		                    }
 	                    })
 		                .on("mouseout", function(d,i) {
 							show_all_districts_growth_rate_button_click_handler();
@@ -184,8 +188,8 @@ function plot_district_growth_rate(idname, filename, width, height, margin) {
 
 
 		        svg.append("text")
-		        	.attr("class", district_name+"_label label")
-		        	.attr("x", width-margin.right+50)
+		        	.attr("class", district_name+"_growth_rate_label district_growth_rate_label")
+		        	.attr("x", width-margin.right+30)
 		        	.attr("y", y(data[didx-1].rate))
 		        	.text(district_name.replace("_"," "))
 		        	.style("font-size", "0.75rem")
@@ -308,11 +312,11 @@ function show_selected_district_growth_rate(district_name) {
 	state_color = district_growth_rate_state_color_mapping(state_code_mapping[state_code]);
 
 	d3.selectAll(".growth_rate_curve").attr("stroke", default_background_color_district_growth_rate).attr("opacity", 0.25).attr("stroke-width", "2px");
-	d3.selectAll(".label").attr("opacity", 0);
+	d3.selectAll(".district_growth_rate_label").attr("opacity", 0);
 	d3.selectAll(".growth_rate_circles").attr("opacity", 0);
 	
 	d3.select("."+district_name+"_growth_rate_curve").attr('stroke-width', "2px").attr("stroke", state_color).attr("opacity", 1.0);
-	d3.select("."+district_name+"_label").attr("opacity", 1);
+	d3.select("."+district_name+"_growth_rate_label").attr("opacity", 1);
 	d3.selectAll("."+district_name+"_growth_rate_circles").attr("opacity", 1);
 }
 
@@ -330,7 +334,7 @@ function show_highlight_districts_growth_rate() {
 		state_color = district_growth_rate_state_color_mapping(state_code_mapping[state_code]);
 
 		d3.select("."+highlight_state_name+"_growth_rate_curve").attr('stroke-width', "2px").attr("stroke", state_color).attr("opacity", 1.0);
-		d3.select("."+highlight_state_name+"_label").attr("opacity", 1);
+		d3.select("."+highlight_state_name+"_growth_rate_label").attr("opacity", 1);
 		d3.selectAll("."+highlight_state_name+"_growth_rate_circles").attr("opacity", 1);
 	}
 }
@@ -346,7 +350,7 @@ function set_select_district_growth_rate(growth_rate_district_list) {
 
 function show_all_districts_growth_rate_button_click_handler() {
 	d3.selectAll(".growth_rate_curve").attr("stroke", default_background_color_district_growth_rate).attr("opacity", 0.5).attr("stroke-width", "1.5px");
-	d3.selectAll(".label").attr("opacity", 0);
+	d3.selectAll(".district_growth_rate_label").attr("opacity", 0);
 	d3.selectAll(".growth_rate_circles").attr("opacity", 0);
 
 	show_highlight_districts_growth_rate();

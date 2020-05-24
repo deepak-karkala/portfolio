@@ -22,6 +22,8 @@ var india_topojson_data;
 var daily_stats_data;
 var outbreak_free_state_counter = 0;
 var svg_indv_time;
+var outbreak_free_timeouts = [];
+var svg_random;
 
 function load_data(idname, filename, width, height, margin) {
 
@@ -47,8 +49,6 @@ function load_data(idname, filename, width, height, margin) {
         //.attr("transform",
         //      "translate(" + margin.left + "," + margin.top + ")");
 
-
-
 	d3.csv(filename, function(error, data) {
 		if (error) throw error;
 
@@ -71,7 +71,11 @@ function load_data(idname, filename, width, height, margin) {
         .enter().append("circle")
 			.attr("class", "scroll_randompos_circles circles")
 			.attr("r", function(d,i) {
-				return "0.15rem"
+				if (window.innerWidth >= 768) {
+					return "0.25rem";
+				} else {
+					return "0.15rem";
+				}
 			})
 			.attr("cx", function(d,i) {
 				return randomNumber(0, width);
@@ -109,8 +113,6 @@ function load_data(idname, filename, width, height, margin) {
 				return tooltip.style("visibility", "hidden");
 			});
 
-
-
 	});
 
 }
@@ -124,6 +126,100 @@ function hide_existing_cases(idname, opacity) {
 				.style("opacity", opacity);
 }
 
+function move_random_points() {
+	svg_random.selectAll(".randompos_circles")
+				.transition()
+					.duration(1000)
+					.attr("cx", function(d,i) {
+						return d.x + (Math.random()>0.5?1:-1) * Math.random()*10;
+					})
+					.attr("cy", function(d,i) {
+						return d.y + (Math.random()>0.5?1:-1) * Math.random()*10;
+					});
+}
+
+function show_random_points(idname, width, height, margin) {
+	svg_random = d3.select(idname).append("svg")
+			        .attr("width", width + margin.left + margin.right)
+			        .attr("height", height + margin.top + margin.bottom)
+			      .append("g");
+
+	// set the ranges
+    var x = d3.scaleLinear().domain([0,1]).range([0, width]);
+    var y = d3.scaleLinear().domain([0,1]).range([height, 0]);
+
+    var random_data = [];
+    var num_random_points = 1000;
+    for (var i=0; i<num_random_points; i++) {
+    	random_data[i] = [];
+    	random_data[i].x = randomNumber(0, width);
+    	random_data[i].y = randomNumber(0, height);
+    }
+
+	svg_random.selectAll(".dot")
+			.data(random_data)
+        .enter().append("circle")
+			.attr("class", "randompos_circles circles")
+			.attr("r", function(d,i) {
+				if (window.innerWidth >= 768) {
+					return "0.25rem";
+				} else {
+					return "0.15rem";
+				}
+			})
+			.attr("cx", function(d,i) {
+				return d.x;
+			})
+			.attr("cy", function(d,i) {
+				return d.y;
+			})
+			.style("z-index", 0)
+			.attr("fill", function(d,i) {
+				return "#ff0000"; //"#FA8072"; //"#FA8072"; //#FF0000
+			});
+			/*
+			.transition()
+				.duration(1000)
+				.attr("cx", function(d){
+					return d.x + (Math.random()>0.5?1:-1) * Math.random()*10; //randomNumber(0, width);
+				})
+				.attr("cy", function(d){
+					return d.y + (Math.random()>0.5?1:-1) * Math.random()*10; //randomNumber(0, width);
+				});
+				//.on("end", repeat_random_movement);
+			*/
+			/*
+			.transition()
+				.each("end", function(){
+					repeat_random_movement();
+				});
+			*/
+	/*
+	repeat_random_movement();
+	function repeat_random_movement() {
+		svg_random.selectAll(".randompos_circles")
+				.transition()
+					.duration(100)
+					.attr("cx", function(d,i) {
+						return d.x + (Math.random()>0.5?1:-1) * Math.random()*10;
+					})
+					.attr("cy", function(d,i) {
+						return d.y + (Math.random()>0.5?1:-1) * Math.random()*10;
+					})
+				.transition()
+					.duration(100)
+					.attr("cx", function(d,i) {
+						return d.x + (Math.random()>0.5?1:-1) * Math.random()*10;
+					})
+					.attr("cy", function(d,i) {
+						return d.y + (Math.random()>0.5?1:-1) * Math.random()*10;
+					})
+				.on("end", repeat_random_movement);
+	}
+	*/
+	
+
+}
 
 function show_individual_cases(idname, width, height, margin, opacity) {
 
@@ -141,14 +237,18 @@ function show_individual_cases(idname, width, height, margin, opacity) {
         .attr("height", height + margin.top + margin.bottom)
       .append("g");
 
-    console.log(scroll_data);
+    //console.log(scroll_data);
 
 	svg_indv_time.selectAll(".dot")
 			.data(scroll_data)
         .enter().append("circle")
 			.attr("class", "scroll_randompos_circles circles")
 			.attr("r", function(d,i) {
-				return "0.15rem"
+				if (window.innerWidth >= 768) {
+					return "0.25rem";
+				} else {
+					return "0.15rem";
+				}
 			})
 			.attr("cx", function(d,i) {
 				return randomNumber(0, width);
@@ -197,6 +297,13 @@ function show_individual_cases(idname, width, height, margin, opacity) {
 status_color_mapping = {"Hospitalized":"#ff0000", "Recovered":"#229954", "Deceased":"#0000ff"};
 
 function color_case_by_status(idname) {
+
+	var radius;
+	if (window.innerWidth >= 768) {
+		radius = "0.25rem";
+	} else {
+		radius = "0.15rem";
+	}
 
 	// Tooltip
     var tooltip = d3.select("body")
@@ -249,11 +356,7 @@ function color_case_by_status(idname) {
 				return status_color_mapping[d.status];
 			})
 			.attr("r", function(d,i) {
-				if (d.status!="Hospitalized") {
-					return "0.20rem";
-				} else {
-					return "0.15rem";
-				}
+				return radius;
 			})
 			.attr("opacity", function(d){
 				if (d.status=="Hospitalized") {

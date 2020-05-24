@@ -19,25 +19,31 @@ function load_coverImage_script() {
   filename = "data/overall_and_daily_cases_deaths.csv";
   type = "cases";
   width_scale_factor = 0.90;
-  height_scale_factor = 0.40;
+  if (window.innerWidth >= 768) {
+    height_scale_factor = 0.40;
+    var margin = {right:40, left:15, top:10, bottom:30};
+  } else {
+    height_scale_factor = 0.60;
+    var margin = {right:20, left:5, top:10, bottom:30};
+  }
   var bb = d3.select(idname).node().offsetWidth;
-  var margin = {right:40, left:15, top:10, bottom:30};
   base_width = bb*width_scale_factor - margin.left - margin.right;
   base_height = bb*height_scale_factor - margin.top - margin.bottom;
   fill_color = "#ffb2b2";
   plot_daily_cases_deaths_cover(idname, filename, base_width, base_height, type, fill_color, margin);
 
-  idname = "#stats_day_cover"
-  d3.select(idname).select("svg").remove();
-  filename = "data/overall_and_daily_cases_deaths.csv";
-  type = "cases";
-  width_scale_factor = 0.90;
-  height_scale_factor = 0.40;
-  var bb = d3.select(idname).node().offsetWidth;
-  var margin = {right:40, left:15, top:10, bottom:0};
-  base_width = bb*width_scale_factor - margin.left - margin.right;
-  base_height = bb*height_scale_factor - margin.top - margin.bottom;
+  
   setTimeout(function() {
+    idname = "#stats_day_cover";
+    d3.select(idname).select("svg").remove();
+    filename = "data/overall_and_daily_cases_deaths.csv";
+    type = "cases";
+    width_scale_factor = 0.90;
+    height_scale_factor = 0.40;
+    var bb = d3.select(idname).node().offsetWidth;
+    var margin = {right:0, left:0, top:10, bottom:0};
+    base_width = bb*width_scale_factor - margin.left - margin.right;
+    base_height = bb*height_scale_factor - margin.top - margin.bottom;
     load_dailyStats_cover(idname, base_width, base_height)
   }, 1000);
 
@@ -68,8 +74,6 @@ function load_dailyStats_cover(idname, width, height) {
             .attr("y", 70)
             .style("text-anchor", "end")
             .text("Deaths");
-
-  console.log(latest_death_count);
 
   svg.append("text")
       .attr("class", "cover_stat")
@@ -111,19 +115,31 @@ var parseTime = d3.timeParse("%Y-%m-%d");
 daily_cum_cases_count = [];
 daily_cum_deaths_count = [];
 daily_cum_recovered_count = [];
+daily_stats_date_data = [];
+daily_stats_cases_data = [];
+daily_stats_deaths_data = [];
+daily_stats_recovered_data = [];
 load_daily_stats_file("data/overall_and_daily_cases_deaths.csv");
 function load_daily_stats_file(filename) {
     d3.csv(filename, function(error, daily_stats_data) {
         // format the data
-        daily_stats_data.forEach(function(d) {
+        var idx=0;
+        daily_stats_data.forEach(function(d,i) {
             d.date = parseTime(d.date);
-            daily_cum_cases_count[d.date] = d.total_confirmed;
-            daily_cum_deaths_count[d.date] = d.total_deaths;
-            daily_cum_recovered_count[d.date] = d.total_recovered;
+            daily_cum_cases_count[d.date] = +d.total_confirmed;
+            daily_cum_deaths_count[d.date] = +d.total_deaths;
+            daily_cum_recovered_count[d.date] = +d.total_recovered;
+            //daily_stats_date_data[idx] = [];
+            //daily_stats_date_data[idx].date = d.date;
+            daily_stats_date_data.push(d.date);
+            daily_stats_cases_data.push(+d.total_confirmed);
+            daily_stats_deaths_data.push(+d.total_deaths);
+            daily_stats_recovered_data.push(+d.total_recovered);
+            idx+=1;
         });
     });
 }
-
+//console.log(daily_stats_date_data);
 
 
 //Outbreak spread map parameters
@@ -135,12 +151,20 @@ var outbreak_spread_step_duration = 50;
 var outbreak_spread_step_delay = 100;
 var outbreak_spread_timeouts = [];
 var outbreak_spread_base_width;
-var start_date_outbreakSpreadMap = new Date(2020, 2, 1); //Start from March
+var start_date_outbreakSpreadMap = new Date(2020, 1, 1); //Start from March
 var end_date_outbreakSpreadMap = new Date(2020, 4, 17); //Start from March
 var current_date_outbreakSpreadMap = start_date_outbreakSpreadMap;
 var outbreak_spread_num_sim_days = Math.ceil(Math.abs(end_date_outbreakSpreadMap - start_date_outbreakSpreadMap) / (1000 * 60 * 60 * 24)) - 1;
 var outbreak_spread_num_milliseconds_per_date = 500;
-
+var dt_idx_outbreakSpreadMap = 0;
+var dt_delay_idx_outbreakSpreadMap = 0;
+var case_idx_outbreakSpreadMap = 0;
+var death_idx_outbreakSpreadMap = 0;
+var recovered_idx_outbreakSpreadMap = 0;
+var dt_anm_outbreakSpreadMap;
+var dt_case_outbreakSpreadMap;
+var dt_death_outbreakSpreadMap;
+var dt_recovered_outbreakSpreadMap;
 
 //State flattening curve
 var state_latest_case_count = [];
@@ -157,7 +181,7 @@ var state_case_count_highlight_list = ["Delhi", "Maharashtra", "Kerala", "Rajast
 var state_doubling_time_state_color_mapping = d3.scaleOrdinal()
       .domain([0, 36])
       .range(state_colors_list);
-var state_doubling_time_highlight_list = ["MH", "TN", "DL", "KA", "HR", "WB", "PB", "BR"]; 
+var state_doubling_time_highlight_list = ["MH", "TN", "DL", "HR", "WB", "PB", "BR"]; 
 var default_background_color_state_doubling_time = "#c0c0c0";
 var start_date_stateDoublingTime = new Date(2020, 4, 1);
 
@@ -175,7 +199,7 @@ var start_date_districtGrowthRate = new Date(2020, 4, 1);
 var district_case_density_state_color_mapping = d3.scaleOrdinal()
       .domain([0, 36])
       .range(state_colors_list);
-var district_case_density_highlight_list = ["Chennai_TN", "Bhopal_MP",
+var district_case_density_highlight_list = ["Chennai_TN",
       "Indore_MP", "Delhi_DL", "Kasaragod_KL", "Kolkata_WB", "Amritsar_PB", "Perambalur_TN", "Dhalai_TR"]; //"SPS-Nellore_AP"
 var default_background_color_district_case_density = "#c0c0c0";
 var min_case_count_to_plot_case_density = 40;
@@ -245,7 +269,8 @@ function setupButtons() {
           load_topHotspotsTable_script();
           load_districtGrowthRate_script();
           load_districtCaseDensity_script();
-          load_outbreakFreeDistricts();
+          //load_outbreakFreeDistricts();
+          load_outbreakFreeDistricts_script();
           load_emergingHotspotsMap_script();
       } else if (buttonId=="country_analysis") {
           load_countryCaseCount_script();
