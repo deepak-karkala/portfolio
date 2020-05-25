@@ -16,11 +16,24 @@
 		var graphicMargin = 16 * 4;
 		var textWidth = text.node().offsetWidth;
 		var graphicWidth = container.node().offsetWidth - textWidth - graphicMargin;
-		var graphicHeight = Math.floor(window.innerHeight * 0.95)
+		//var graphicHeight = Math.floor(window.innerHeight * 0.95)
+		if (window.innerWidth >= 768) {
+            var graphicHeight = Math.floor(window.innerHeight * 0.75)
+        } else {
+            var graphicHeight = Math.floor(window.innerHeight * 0.6)
+        }
 		var graphicMarginTop = Math.floor(graphicHeight / 2)
 		graphic
 			.style('width', graphicWidth + 'px')
 			.style('height', graphicHeight + 'px')
+			//.style('top', '200px')
+		if (window.innerWidth >= 768) {
+			graphic.style('top', '20%')
+					.style('left', '30%');
+		} else {
+			graphic.style('top', '25%')
+					.style('left', 0);
+		}
 		// 3. tell scrollama to update new element dimensions
 		scroller.resize();
 	}
@@ -69,9 +82,15 @@
             div.innerHTML = "";
 
 		} else if (data_step_id==2) {
-			var width_scale_factor = 0.80;
-			var height_scale_factor = 1.20;
-			var margin = {right:10, left:10, top:100, bottom:10};
+			if (window.innerWidth >= 768) {
+				var margin = {right:80, left:20, top:20, bottom:20};
+				var width_scale_factor = 0.95;
+				var height_scale_factor = 0.8;
+			} else {
+				var width_scale_factor = 0.75;
+				var margin = {right:10, left:10, top:20, bottom:10};
+				var height_scale_factor = 0.75;
+			}
 
 			idname = "#country_water_scarcity";
 			var bb = d3.select(idname).node().offsetWidth;

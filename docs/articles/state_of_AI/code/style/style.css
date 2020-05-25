@@ -44,10 +44,10 @@ h4, h5 {
 
 p {
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 20px;
   text-align: left;
-  font-size: 1.1rem;
+  font-size: 1.0rem;
 }
 
 a,
@@ -402,6 +402,7 @@ figure p {
     padding-top: 100px;
   }
   .masthead .intro-body .brand-heading {
+    padding-top: 15vh;
     font-size: 4rem;
   }
   .masthead .intro-body .intro-text {
@@ -484,10 +485,11 @@ figure p {
   margin: 0;
   top: 0;
   left: 0;
-  height: 180px;
+  height: 200px;
   background-color: black;
-  font-size: 1.5rem;
-  padding-top: 60px;
+  font-size: 2rem;
+  padding-top: 30px;
+  padding-bottom: 30px;
   margin-top: 50px;
   margin-bottom: 50px;
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -499,7 +501,7 @@ figure p {
 /* Tooltip */
 
 .tooltip1 {
-  width: 30vh;
+  width: 35vh;
   display: flex;
   flex-direction: column;
   min-height: 1vh;
@@ -599,7 +601,7 @@ img {
   text-align: right;
 }
 
-.article_author, .article_date {
+.article_author {
   color: #F27200;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -607,8 +609,17 @@ img {
   font-size: 1.25rem;
 }
 
+.article_date {
+  color: #F27200;
+  padding-bottom: 0;
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
 footer {
-  padding: 50px 0;
+  margin-top: 50px;
+  padding: 20px 0;
 }
 
 footer p {
@@ -624,3 +635,68 @@ footer p {
 .footer p {
   padding-top: 3vh;
 }
+
+@media (max-width: 350px) {
+  .masthead {
+    height: 100%;
+    padding: 0;
+    padding-top: 10px;
+  }
+  .masthead .intro-body .brand-heading {
+    font-size: 2rem;
+  }
+  .masthead .intro-body .intro-text {
+    font-size: 1.25rem;
+  }
+  .article_author, {
+    color: #F27200;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 0.75rem;
+  }
+
+  .article_date {
+    color: #F27200;
+    padding-bottom: 0;
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 0.75rem;
+  }
+
+  p {
+    font-size: 0.75rem;
+  }
+
+  li {
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+
+  .footer p {
+    font-size: 0.75rem;
+  }
+
+
+  h3, h5 {
+    font-size: 1.25rem;
+  }
+
+  .navbar a {
+    font-size: 0.75rem;
+    padding: 2px;
+    font-weight: normal;
+  }
+  .navbar-toggler {
+    font-size: 0.75rem;
+    padding: 4px 6px;
+  }
+  .fas {
+    font-size: 0.75rem;
+  }
+  .transition {
+    font-size: 1.5rem;
+  }
+
+}
+

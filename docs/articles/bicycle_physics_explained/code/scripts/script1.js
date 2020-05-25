@@ -21,6 +21,15 @@
 			var figureHeight = window.innerHeight * 0.85// / 2
 			var figureMarginTop = Math.max((window.innerHeight - figureHeight) / 2, 60);  
 
+		} else if (windowWidth <= 350) { 
+			// 1. update height of step elements
+			var stepH = Math.floor(window.innerHeight * 0.30);
+			step.style('height', stepH + 'px');
+
+			var figureHeight = window.innerHeight * 0.70// / 2
+			//var figureMarginTop = Math.max((window.innerHeight - figureHeight) / 2, 60);  
+			var figureMarginTop = Math.max((window.innerHeight - figureHeight), 60);  
+
 		} else {
 			// 1. update height of step elements
 			var stepH = Math.floor(window.innerHeight * 0.40);

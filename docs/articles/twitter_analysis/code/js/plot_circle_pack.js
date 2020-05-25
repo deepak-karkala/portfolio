@@ -167,8 +167,8 @@ function draw_circles_pack(idname, file, width, height, listings_type, color_typ
           }
         })
         .on("mousemove", function(){
-          if (event.pageX >= width/2) {
-            return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX-100)+"px");
+          if (event.pageX >= window.innerWidth/2) {
+            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-150)+"px");
           } else {
             return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
           }
@@ -361,7 +361,12 @@ function draw_circles_pack_likes(idname, file, account, width, height, color_typ
             .style("visibility", "visible");
         })
         .on("mousemove", function(){
-          return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+          if (event.pageX >= window.innerWidth/2) {
+            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-150)+"px");
+          } else {
+            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+          }
+          //return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
         })
         .on("mouseout", function(){
           d3.select(this).style('stroke', 'white').style("stroke-opacity", 0);

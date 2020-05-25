@@ -21,7 +21,7 @@
         graphic
             .style('width', graphicWidth + 'px')
             .style('height', graphicHeight + 'px')
-            .style('top', '80px');
+            //.style('top', '80px');
         // 3. tell scrollama to update new element dimensions
         scroller.resize();
     }

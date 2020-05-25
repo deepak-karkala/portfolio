@@ -55,11 +55,11 @@ function plot_country_water_scarcity(idname, file, width, height) {
     // Legend
     var g = svg.append("g")
         .attr("class", "legendThreshold")
-        .attr("transform", "translate(20,"+20+")");
+        .attr("transform", "translate(20,"+(height-100)+")");
     g.append("text")
         .attr("class", "caption")
         .attr("x", 0)
-        .attr("y", -6)
+        .attr("y", height)
         .text("Water scarcity rank");
     var labels = ['Low', 'Low-medium', 'Medium-high', 'High', 'Extremely High'];
     var legend = d3.legendColor()

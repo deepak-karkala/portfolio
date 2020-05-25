@@ -70,7 +70,7 @@ a:hover {
 }
 .scroll__graphic1, .scroll__graphic2, .scroll__graphic3, .scroll__graphic4, .scroll__graphic5, .scroll__graphic6, .scroll__graphic7 {
 	position: absolute;
-	top: 0;
+	top: 10%;
 	right: 10px; /*1rem;*/
 	bottom: auto;
 	-webkit-transform: translate3d(0, 0, 0);
@@ -148,7 +148,7 @@ a:hover {
 @media (max-width: 767px) {
 	.scroll__graphic1, .scroll__graphic2, .scroll__graphic3, .scroll__graphic4, .scroll__graphic5, .scroll__graphic6, .scroll__graphic7 {
 		position: absolute;
-		top: 20%;
+		top: 30%;
 		right: 10px; /*1rem;*/
 		bottom: auto;
 		-webkit-transform: translate3d(0, 0, 0);

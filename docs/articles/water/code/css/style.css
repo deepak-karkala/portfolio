@@ -69,8 +69,8 @@ a:hover {
 }
 .scroll__graphic1, .scroll__graphic2, .scroll__graphic3, .scroll__graphic4, .scroll__graphic5, .scroll__graphic6, .scroll__graphic7 {
 	position: absolute;
-	top: 0;
-	right: 10px; /*1rem;*/
+	top: 200px;
+	left: 20%; /*1rem;*/
 	bottom: auto;
 	-webkit-transform: translate3d(0, 0, 0);
 	-moz-transform: translate3d(0, 0, 0);
@@ -151,15 +151,34 @@ a:hover {
 	}
 	*/
 	/*.scroll__graphic7, .scroll__graphic3 {*/
-	.scroll__graphic1, .scroll__graphic2, .scroll__graphic3, .scroll__graphic4, .scroll__graphic5, .scroll__graphic6, .scroll__graphic7 {
+	.scroll__graphic1,   .scroll__graphic4, .scroll__graphic5, .scroll__graphic6, .scroll__graphic7 {
 		position: absolute;
-		bottom: 0;
+		top: 10%;
 		right: 10px; 
 		bottom: auto;
 		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
-	    padding-top: 100px;
+	}
+
+	.scroll__graphic2 {
+		position: absolute;
+		top: 20%;
+		right: 10px; 
+		bottom: auto;
+		-webkit-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+
+	.scroll__graphic3, {
+		position: absolute;
+		top: 20%;
+		right: 10px; 
+		bottom: auto;
+		-webkit-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
 	}
 
 	.scroll__graphic1 p, .scroll__graphic2 p, .scroll__graphic3 p, .scroll__graphic4 p, .scroll__graphic5 p, .scroll__graphic6 p, .scroll__graphic7 p {
@@ -470,12 +489,12 @@ footer p {
 #mainNav .navbar-nav .nav-item:hover {
   color: fade(white, 80%);
   outline: none;
-  background-color: transparent;
+  background-color: black;
 }
 
 #mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
   outline: none;
-  background-color: transparent;
+  background-color: black;
 }
 
 .masthead {

@@ -20,8 +20,9 @@
         var graphicMarginTop = Math.floor(graphicHeight / 2)
         graphic
             .style('width', graphicWidth + 'px')
-            .style('height', graphicHeight + 'px')
-            .style('top', '70px');
+            .style('height', graphicHeight + 'px');
+            //.style('top', '70px');
+            //.style('top', '270px');
         // 3. tell scrollama to update new element dimensions
         scroller.resize();
     }

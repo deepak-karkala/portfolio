@@ -124,13 +124,14 @@ a:focus, a:hover {
   color: white;
   /*background: url("../img/intro-bg.jpg") no-repeat bottom center scroll;*/
   /*background: url("../img/cover_individual.png") no-repeat center center scroll;*/
-  background: url("../img/cover.gif") no-repeat top center scroll;
+  /*background: url("../img/cover.gif") no-repeat top center scroll;*/
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: auto;
   /*background-origin: border-box;*/
+  margin-top: 5vh;
 }
 
 .masthead .intro-body {
@@ -139,13 +140,21 @@ a:focus, a:hover {
 }
 
 .masthead .intro-body .brand-heading {
-  padding-top: 30vh;
   font-size: 2.5rem;
   color: #FF5A60;
 }
 
 .masthead .intro-body .intro-text {
   font-size: 1.25rem;
+}
+
+.intro_text {
+  color: #FF5A60;
+}
+
+.cover_img img {
+  width: 100%;
+  height: auto;
 }
 
 /*
@@ -629,5 +638,5 @@ select.classic {
   padding-bottom: 0;
   margin-bottom: 0;
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1.0rem;
 }

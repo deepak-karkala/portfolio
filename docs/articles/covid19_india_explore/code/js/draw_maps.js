@@ -124,7 +124,7 @@ function draw_leaflet_topojson_state_confirmed_map(map_container) {
 
 
 	var map1 = L.map(map_container,
-	              {maxZoom:12,minZoom:3},
+	              {maxZoom:12,minZoom:3,dragging: false},
 	              topoLayer1 = new L.TopoJSON(),
 	              )
 	         //.setView([23.5937, 80.9629], 4.25);
@@ -222,7 +222,7 @@ function draw_leaflet_topojson_state_deaths_map(map_container) {
 
 
 	var map2 = L.map(map_container,
-	              {maxZoom:12,minZoom:3},
+	              {maxZoom:12,minZoom:3,dragging: false},
 	              topoLayer2 = new L.TopoJSON(),
 	              )
 	         .setView([23.5937, 80.9629], 4.50);
@@ -318,7 +318,7 @@ function draw_leaflet_topojson_district_confirmed_map(map_container) {
 
 
 	var map3 = L.map(map_container,
-	              {maxZoom:12,minZoom:3},
+	              {maxZoom:12,minZoom:3,dragging: false},
 	              topoLayer3 = new L.TopoJSON(),
 	              )
 	         .setView([23.5937, 80.9629], 4.50);
@@ -423,7 +423,7 @@ function draw_leaflet_topojson_district_deaths_map(map_container) {
 
 
 	var map4 = L.map(map_container,
-	              {maxZoom:12,minZoom:3},
+	              {maxZoom:12,minZoom:3,dragging:false},
 	              topoLayer4 = new L.TopoJSON(),
 	              )
 	         .setView([23.5937, 80.9629], 4.50);

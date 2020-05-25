@@ -19,7 +19,6 @@ body {
 
 .navbar_style {
 	background-color: black;
-  height: 7vh;
 }
 .nav-link {
 	color: white;
@@ -70,10 +69,10 @@ body {
 .button {
   /*min-width: 130px;*/
   padding: 3px 3px;
-  margin: 5px;
+  margin: 2px;
   cursor: pointer;
   text-align: center;
-  font-size: 1.0rem;
+  font-size: 0.75rem;
   border: 0.04rem solid black;
   border-radius: 5px;
   background: #007fff; /*#00B2EE; /*#f1e0d6;*/
@@ -94,4 +93,46 @@ video, img {
 	background-color: black;
 	color: white;
 	font-size: 0.75rem;
+}
+
+.story_img img {
+  width: 100%;
+  height: auto;
+}
+
+#mainNav {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: black;
+}
+#mainNav a {
+  color: white;
+}
+
+#mainNav a:hover {
+  color: #007fff;
+}
+
+#mainNav .navbar-nav .nav-item {
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+#mainNav .navbar-nav .nav-item:hover {
+  color: fade(white, 80%);
+  outline: none;
+  background-color: transparent;
+}
+
+#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+@media (max-width: 350px) {
+  p {
+    font-size: 0.75rem;
+  }
 }

@@ -156,6 +156,9 @@ a:hover {
 	border-color: black;
 }
 
+.step1, .step5 {
+	margin: 0 auto 25rem auto;
+}
 
 @media (max-width: 767px) {
 
@@ -205,12 +208,13 @@ a:hover {
 		max-width: 80rem;
 		width: 100%;
 	}
+	.step1, .step5 {
+		margin: 0 auto 40rem auto;
+	}
 }
 
 
-.step1, .step5 {
-	margin: 0 auto 25rem auto;
-}
+
 
 .long-step {
 	margin-bottom: 0;
@@ -293,6 +297,7 @@ a:hover {
 }
 
 footer {
+  margin-top: 5vh;
   padding: 50px 0;
 }
 
@@ -509,12 +514,12 @@ footer p {
 #mainNav .navbar-nav .nav-item:hover {
   color: fade(white, 80%);
   outline: none;
-  background-color: transparent;
+  background-color: black;
 }
 
 #mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
   outline: none;
-  background-color: transparent;
+  background-color: black;
 }
 
 .masthead {
@@ -608,4 +613,8 @@ footer p {
 .cover_image {
 	padding-bottom: 0;
 	margin-bottom: 0;
+}
+
+.last_step {
+	margin-bottom: 30px;
 }

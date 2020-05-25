@@ -16,11 +16,24 @@
 		var graphicMargin = 16 * 4;
 		var textWidth = text.node().offsetWidth;
 		var graphicWidth = container.node().offsetWidth; // - textWidth - graphicMargin;
-		var graphicHeight = Math.floor(window.innerHeight * 0.95);
+		//var graphicHeight = Math.floor(window.innerHeight * 0.95);
+		if (window.innerWidth >= 768) {
+            var graphicHeight = Math.floor(window.innerHeight * 0.95)
+        } else {
+            var graphicHeight = Math.floor(window.innerHeight * 0.6)
+        }
 		var graphicMarginTop = Math.floor(graphicHeight / 2);
 		graphic
 			.style('width', graphicWidth + 'px')
 			.style('height', graphicHeight + 'px');
+
+		if (window.innerWidth >= 768) {
+			graphic.style('top', '20%')
+					.style('left', '30%');
+		} else {
+			graphic.style('top', '25%')
+					.style('left', 0);
+		}
 		// 3. tell scrollama to update new element dimensions
 		scroller.resize();
 	}

@@ -146,3 +146,48 @@ a:hover {
   color: #fff;
   border: 1px solid #ffffff;
 }
+
+/*
+#mainNav {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: black;
+}
+
+#mainNav .navbar-toggler {
+  font-size: 1.2rem;
+  color: white;
+  border: 1px solid white;
+  background-color: black;
+}
+
+#mainNav .navbar-brand {
+  font-weight: 700;
+}
+
+#mainNav a {
+  color: white;
+}
+
+#mainNav a:hover {
+  color: #007fff;
+}
+
+#mainNav .navbar-nav .nav-item {
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+#mainNav .navbar-nav .nav-item:hover {
+  color: fade(white, 80%);
+  outline: none;
+  background-color: transparent;
+}
+
+#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+  outline: none;
+  background-color: transparent;
+}
+*/
