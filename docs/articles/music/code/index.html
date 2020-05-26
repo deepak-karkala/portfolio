@@ -155,7 +155,7 @@
 				<p>We observe how similar Ed Sheeran's <em class="explainer_song_name">Shape of You</em> and Sia's <em class="explainer_song_name">Cheap Thrills</em> are visually.</p>
 			</div>
 			<div class='step' data-step='7'>
-				<p class="step_small_text" style="font-size: 1.0rem;">We use the features of a rhythm pattern (pitch and on-off duration of the notes present in the song) to quantify the difference in rhythms and assign similarity scores to each pair of songs.</p>
+				<p class="step_small_text">We use the features of a rhythm pattern (pitch and on-off duration of the notes present in the song) to quantify the difference in rhythms and assign similarity scores to each pair of songs.</p>
 			</div>
 			<div class='step' data-step='8'>
 				<p>For example, the following graphic shows how similar songs are rhythmically to Ed Sheeran's <em class="explainer_song_name">Shape of You</em></p>
@@ -495,9 +495,9 @@
 						So far we have used our rhythm similarity computation algorithm to analyze uniqueness of songs and to find rhythmically similar songs. However each song has an artist who composed it and accordingly once we have uniqueness scores for songs, we can extend that concept to determine uniqueness of artists. The uniqueness scores of all songs belonging to an artist can be averaged to assign an uniqueness score for an artist. Two types of uniqueness scores can be determined for artists, 
 					</p>
 					<ul>
-						<li>Inter-Artist uniqueness score</li>
+						<li class="rhythm_type_title">Inter-Artist uniqueness score</li>
 						<p>This is computed by comparing rhythms in an artist's songs with the rhythms in songs from other artists. This score determines how unique an artist is compared to other artists.</p>
-						<li>Intra-Artist uniqueness score</li>
+						<li class="rhythm_type_title">Intra-Artist uniqueness score</li>
 						<p>The other way of determining uniqueness is by comparing an artist's songs with other songs belonging to same artist. This score indicates the diversity in an artist's compositions.</p>
 					</ul>
 					<p>
@@ -612,8 +612,8 @@
 					<label class="switch-light switch-candy">
 					  <input type="checkbox" id="artist_viz_score_toggle" onclick="artist_viz_score_button_click(this.id)">
 					  <span>
-					    <span>Song similarity score</span>
-					    <span>Song visualisation</span>
+					    <span class="artist_discography_option">Song similarity score</span>
+					    <span class="artist_discography_option">Song visualisation</span>
 					    <a></a>
 					  </span>
 					</label>
@@ -648,7 +648,7 @@
 		</div>
 	</section>
 
-	<div class="transition" id="">In the end, <span class="small_text_transition">(it doesn't even matter)</span></div>
+	<div class="transition" id="">In the end </br><span class="small_text_transition">(it doesn't even matter),</span></div>
 	
 	<section class="conclusion" id="conclusion">
 		<div class="container">

@@ -126,15 +126,17 @@ function hide_existing_cases(idname, opacity) {
 				.style("opacity", opacity);
 }
 
-function move_random_points() {
+function move_random_points(width, height) {
 	svg_random.selectAll(".randompos_circles")
 				.transition()
 					.duration(1000)
 					.attr("cx", function(d,i) {
-						return d.x + (Math.random()>0.5?1:-1) * Math.random()*10;
+						return randomNumber(0, width);
+						//return d.x + (Math.random()>0.5?1:-1) * Math.random()*10;
 					})
 					.attr("cy", function(d,i) {
-						return d.y + (Math.random()>0.5?1:-1) * Math.random()*10;
+						return randomNumber(0, height);
+						//return d.y + (Math.random()>0.5?1:-1) * Math.random()*10;
 					});
 }
 
@@ -149,7 +151,7 @@ function show_random_points(idname, width, height, margin) {
     var y = d3.scaleLinear().domain([0,1]).range([height, 0]);
 
     var random_data = [];
-    var num_random_points = 1000;
+    var num_random_points = 100;
     for (var i=0; i<num_random_points; i++) {
     	random_data[i] = [];
     	random_data[i].x = randomNumber(0, width);

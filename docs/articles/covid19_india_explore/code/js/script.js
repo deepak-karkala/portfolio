@@ -22,6 +22,9 @@ function load_coverImage_script() {
   if (window.innerWidth >= 768) {
     height_scale_factor = 0.40;
     var margin = {right:40, left:15, top:10, bottom:30};
+  } else if (window.innerWidth <= 350) {
+    height_scale_factor = 0.60;
+    var margin = {right:5, left:5, top:10, bottom:30};
   } else {
     height_scale_factor = 0.60;
     var margin = {right:40, left:5, top:10, bottom:30};

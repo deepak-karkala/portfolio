@@ -70,7 +70,7 @@ $("#artist_combobox").change(function() {
             var bb = d3.select(idname).node().offsetWidth;
             width_scale_factor = 0.8;
             height_scale_factor = 0.8;
-            var margin = {right:10, left:10, top:30, bottom:10};
+            var margin = {right:10, left:10, top:10, bottom:10};
             base_width = bb*width_scale_factor - margin.left - margin.right;
             base_height = bb*height_scale_factor - margin.top - margin.bottom;
             if (artist_song_folder=="lady_gaga__I'll_never_love_again") {

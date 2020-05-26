@@ -7,7 +7,7 @@ var bb = d3.select(idname).node().offsetWidth;
 var margin = {right:30, left:40, top:15, bottom:60};
 base_width = bb*width_scale_factor - margin.left - margin.right;
 
-var heightScale = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.65, 0.45]);
+var heightScale = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.9, 0.45]);
 height_scale_factor = heightScale(base_width);
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 
@@ -29,7 +29,7 @@ function plot_airbnbHotelDiff(id, file, width, height) {
   var r = d3.scaleLinear().range([2, maxRadiusScale(width)]);
 
   // Scale for label font size
-  var labelFontSizeScale = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([6, 20]);
+  var labelFontSizeScale = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([10, 20]);
 
   // Scale for axis label font size
   var axisLabelFontSizeScale = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([8, 16]);
@@ -193,8 +193,8 @@ function plot_airbnbHotelDiff(id, file, width, height) {
           return tooltip.html("<div class='well'><span class='city_name'><b>"+d.city+"</b></span><br/>" + "<span class='tooltip_stats'>Average price of Airbnb home: <b>USD "  + Math.round(d.median_entirehome) + "</b><br/>" + " Average price of a hotel room: <b>USD " + Math.round(d.avg_hotel_price) + "</b><br />" +"</span></div>" ).style("visibility", "visible");
         })
         .on("mousemove", function(){
-          if (event.pageX >= width/2) {
-            return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX-100)+"px");
+          if (event.pageX >= window.innerWidth/2) {
+            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-100)+"px");
           } else {
             return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
           }
@@ -208,7 +208,7 @@ function plot_airbnbHotelDiff(id, file, width, height) {
     svg.selectAll(".text")
         .data(data)
       .enter().append("text")
-      //.filter(function(d) { return (d.runs_scored>=400) || (d.bat_avg>=35) || (d.bat_avg<=25 && d.bat_sr<=120) || (d.bat_sr>=170) || (d.bat_avg<=17); })
+      .filter(function(d) { return (d.num_listings>=7000); })
         .attr("x", function(d) { return x(d.airbnb_hotel_diff)+8; })
         .attr("y", function(d) { return y(d.median_entirehome); })
         .text(function(d) { return d.city;})

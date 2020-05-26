@@ -1135,3 +1135,43 @@ bottom: .5em;
 .article_date {
   margin-top: 0px;
 }
+
+section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 350px) {
+  .what_to_look_for_container {
+    font-size: 0.75rem;
+  }
+  .takeaway_container {
+    font-size: 0.75rem;
+  }
+  .section_title {
+    font-size: 1.25rem;
+  }
+  .btn_text {
+    font-size: 0.75rem;
+  }
+  .button {
+    /*min-width: 130px;*/
+    padding: 4px 4px;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border: 1px solid #8f8f8f; /*#ffffff;*/
+    background: #e8e8e8; /*#f1e0d6;*/
+    color: black;
+    /*text-decoration: underline;*/
+    border-radius: 6px;
+  }
+  #cluster_table_body {
+    font-size: 0.75rem;
+  }
+  footer p {
+    font-size: 0.75rem;
+  }
+}

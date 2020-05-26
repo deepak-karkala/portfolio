@@ -213,10 +213,10 @@ function plot_all_artists_similarity_score_initial() {
                                         .style("visibility", "visible");
                                 })
                                 .on("mousemove", function(){
-                                  if (event.pageX >= window.innerwidth*0.75/2) {
-                                    return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX-100)+"px");
+                                  if (event.pageX >= window.innerwidth/2) {
+                                    return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-200)+"px");
                                   } else {
-                                      return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+                                      return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-100)+"px");
                                   }
                                 })
                                 .on("mouseout", function(){

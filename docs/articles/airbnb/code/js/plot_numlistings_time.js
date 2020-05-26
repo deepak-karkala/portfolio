@@ -3,9 +3,13 @@ var maxDeviceWidth = 1024;
 
 idname = "#numlistings_time_plot";
 width_scale_factor = 0.95;
-height_scale_factor = 0.75;
+if (window.innerWidth >= 768) {
+  height_scale_factor = 0.6;
+} else {
+  height_scale_factor = 0.9;
+}
 var bb = d3.select(idname).node().offsetWidth;
-var margin = {right:80, left:60, top:40, bottom:30};
+var margin = {right:50, left:60, top:40, bottom:30};
 base_width = bb*width_scale_factor - margin.left - margin.right;
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 city = "New York City";
@@ -175,7 +179,11 @@ function plot_city_numlistings_time(idname, width, height, city) {
             return tooltip.html("<div class='well'>"+month[d.date.getMonth()]+" "+d.date.getFullYear()+": <span class='city_name'><b>"+d.description+"</b></span><br/>" +"</div>" ).style("visibility", "visible");
           })
           .on("mousemove", function(){
-            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            if (event.pageX >= window.innerWidth/2) {
+              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-230)+"px");
+            } else {
+              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            }
           })
           .on("mouseout", function(){
             d3.select(this).style('stroke', "#FF5A60").style("stroke-width", 1).style("stroke-opacity", 1.0);

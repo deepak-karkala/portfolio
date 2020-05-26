@@ -1,7 +1,7 @@
 
 //(function(){
 
-script_load_timeout_list.push(setTimeout(load_topHotspotsTable_script, 12*script_load_timestep));
+script_load_timeout_list.push(setTimeout(load_topHotspotsTable_script, 20*script_load_timestep));
 
 function load_topHotspotsTable_script() {
 	table_idname = "top_hotspots_table_body";

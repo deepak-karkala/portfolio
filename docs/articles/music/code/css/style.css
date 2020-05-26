@@ -23,8 +23,7 @@ body {
 }
 
 p {
-  font-size: 1.1rem;
-  font-weight: 50;
+  font-size: 1.05rem;
   padding-top: 20px;
 }
 
@@ -34,6 +33,7 @@ h4 {
 
 .intro_text {
   font-size: 1.15rem;
+  text-align: center;
 }
 
 .intro_data_text {
@@ -129,7 +129,7 @@ figure p {
 .step p {
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
-  font-size: 1.15rem;
+  font-size: 1rem;
   color: black;
   font-weight: bold;
 }
@@ -613,7 +613,9 @@ figure p {
   }
 }
 
-
+.nav-link {
+  padding: 2px;
+}
 
 
 
@@ -755,21 +757,82 @@ figure p {
 }
 
 .small_text_transition {
-  font-size: 0.75rem;
+  font-size: 1.25rem;
 }
 
 .footer {
   background-color: #000;
   font-size: 0.75rem;
-  margin-top: 40px;
+  margin-top: 70px;
   padding: 20px 0;
 }
 
 .footer p {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
 
 .footer .large_footer_text {
   font-size: 1.0rem;
 }
 
+@media (max-width: 350px) {
+  .masthead {
+    height: 100%;
+    padding: 0;
+    padding-top: 5px;
+  }
+  .masthead .intro-body .brand-heading {
+    font-size: 1.5rem;
+  }
+  .masthead .intro-body .intro-text {
+    padding-top: 10px;
+    font-size: 1.25rem;
+  }
+  .rhythm_types_cover img { 
+    margin-top: 8vh;
+  }
+  .article_author, .article_date {
+    color: #F27200;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 0.75rem;
+  }
+  .intro_text {
+    font-size: 1rem;
+  }
+  .transition {
+    font-size: 1.75rem;
+  }
+  .step p{
+    font-size: 0.75rem;
+  }
+  .rhythm_viz_frame_subtitle {
+    font-size: 0.5rem;
+  }
+  .artist_name {
+    font-size: 0.5rem;
+  }
+  .song_name {
+    font-size: 0.5rem;
+  }
+  p {
+    font-size: 0.8rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  #plot_song_artist_rhythm_visualisation_subtitle {
+    font-size: 1rem;
+  }
+  .rhythm_type_title {
+    font-size: 1rem;
+  }
+  .artist_discography_option {
+    font-size: 0.75rem;
+  }
+
+  .footer p {
+    font-size: 0.75rem;
+  }
+}

@@ -7,7 +7,7 @@ var bb = d3.select(idname).node().offsetWidth;
 var margin = {right:30, left:40, top:20, bottom:30};
 base_width = bb*width_scale_factor - margin.left - margin.right;
 
-var heightScale = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.65, 0.45]);
+var heightScale = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([0.8, 0.45]);
 height_scale_factor = heightScale(base_width);
 base_height = bb*height_scale_factor - margin.top - margin.bottom;
 
@@ -29,7 +29,7 @@ function plot_city_commercial(id, file, width, height) {
   var r = d3.scaleLinear().range([2, maxRadiusScale(width)]);
 
   // Scale for label font size
-  var labelFontSizeScale = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([6, 20]);
+  var labelFontSizeScale = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([10, 20]);
 
   // Scale for axis label font size
   var axisLabelFontSizeScale = d3.scaleLinear().domain([minDeviceWidth, maxDeviceWidth]).range([8, 16]);
@@ -191,8 +191,8 @@ function plot_city_commercial(id, file, width, height) {
           return tooltip.html("<div class='well'><span class='city_name'><b>"+d.city+"</b></span><br/>" + "<span class='tooltip_stats'> <b>"  + Math.round(d.frac_of_users_more_than_one) + "</b>% of all the hosts offer more than one listings. </b><br/>" + " <b>" + Math.round(d.frac_entireapt) + "</b>% of all the listings are entire homes</b><br />" +"</span></div>" ).style("visibility", "visible");
         })
         .on("mousemove", function(){
-          if (event.pageX >= width/2) {
-            return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX-100)+"px");
+          if (event.pageX >= window.innerWidth/2) {
+            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-200)+"px");
           } else {
             return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
           }
@@ -208,7 +208,7 @@ function plot_city_commercial(id, file, width, height) {
     svg.selectAll(".text")
         .data(data)
       .enter().append("text")
-      .filter(function(d) { if (!cities_nolabels.includes(d.city)) {return d;} })
+      .filter(function(d) { if ((d.num_listings>=7000) && (!cities_nolabels.includes(d.city))) {return d;} })
         .attr("x", function(d) { return x(d.frac_of_users_more_than_one)+8; })
         .attr("y", function(d) { return y(d.frac_entireapt); })
         .text(function(d) { return d.city;})

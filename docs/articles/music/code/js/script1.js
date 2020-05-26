@@ -9,7 +9,13 @@ function handleResize() {
     // 1. update height of step elements
     var stepH = Math.floor(window.innerHeight * 0.75);
     //step.style('height', stepH + 'px');
-    step.style('height', '5rem');
+    if (window.innerWidth >= 768) {
+        step.style('height', '5rem');
+    } else if (window.innerWidth <= 350) { 
+        step.style('height', '6rem');
+    } else {
+        step.style('height', '9rem');
+    }
     //var figureHeight = Math.floor(window.innerHeight * 0.95);
     //var figureMarginTop = Math.floor(figureHeight / 2);
     var figureHeight = Math.floor(window.innerHeight / 2);
@@ -267,10 +273,10 @@ function handleStepTransition(data_step_id) {
         //d3.select(idname).select("svg").remove();
         var bb = d3.select(idname).node().offsetWidth;
         base_width = bb*width_scale_factor; //- margin.left - margin.right;
-        if (bb>=500) {
+        if (window.innerWidth >= 768) {
             var height_scale_factor = 0.40;
         } else {
-            var height_scale_factor = 0.50;
+            var height_scale_factor = 0.90;
         }
         base_height = bb*height_scale_factor; //- margin.top - margin.bottom;
 
@@ -351,19 +357,19 @@ function get_rhythm_definition_examples() {
                             <img src="data/thumbnail/queen.jpg" class="card-img-top" style="padding: 10px;" alt="...">
                             <div class="card-body" style="padding-top:0;">
                                 <div class="row card-text">
-                                    <div class="col-lg-8" style="text-align: left;">
+                                    <div class="col-lg-8 col-12" style="text-align: left;">
                                         <div class="row">
-                                            <div class="col-lg-12 artist_name">
+                                            <div class="col-lg-12 col-12 artist_name">
                                                 Queen
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-12 song_name">
+                                            <div class="col-lg-12 col-12 song_name">
                                                 Rock You
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4" style="padding-top: 5px;">
+                                    <div class="col-lg-4 col-12" style="padding-top: 5px;">
                                         <audio id="song_player_1" src="data/rhythm_definition/trim/Rock_You.mp3"></audio>
                                         <button type="button" id="button_icon_1" onclick="song_play_pause_onclick(this.id)" class="btn btn-default btn-sm play_pause_button"></button>
                                     </div>
@@ -772,7 +778,7 @@ function plot_score_explainer(idname, score_file, song_file, width, height) {
             .force("y", d3.forceY(height / 2))
             //.force("center", d3.forceCenter( function(d) { return xScale(d.score), height/2; } ))
             //.force("center", d3.forceCenter( width/2, height/2 ))
-            .force("collide", d3.forceCollide(5))
+            .force("collide", d3.forceCollide(8))
             .stop();
     
         for (var i = 0; i < 120; ++i) simulation.tick();

@@ -268,10 +268,10 @@ function draw_circles_pack(idname, file, width, height, listings_type, color_pri
           }
         })
         .on("mousemove", function(){
-          if (event.pageX >= width/2) {
-            return tooltip.style("top", (event.pageY-10)+"px").style("right",(width-event.pageX+100)+"px");
+          if (event.pageX >= window.innerWidth/2) {
+            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-200)+"px");
           } else {
-            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-50)+"px");
           }
           //return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
         })

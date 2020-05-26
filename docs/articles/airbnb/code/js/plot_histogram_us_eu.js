@@ -1,5 +1,10 @@
 width_scale_factor = 1.0;
 height_scale_factor = 0.50;
+if (window.innerWidth >= 768) {
+  height_scale_factor = 0.5;
+} else {
+  height_scale_factor = 0.75;
+}
 
 idname = "#histogram_us_eu";
 var bb = d3.select(idname).node().offsetWidth;
@@ -138,7 +143,11 @@ function plot_histogram_us_eu(idname, filename, width, height, listing_type) {
             }
           })
           .on("mousemove", function(){
-            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            if (event.pageX >= window.innerWidth/2) {
+              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-220)+"px");
+            } else {
+              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            }
           })
           .on("mouseout", function(){
             d3.select(this).style('stroke', theme_font_color).style("opacity", 1.0);
@@ -165,7 +174,11 @@ function plot_histogram_us_eu(idname, filename, width, height, listing_type) {
             }
           })
           .on("mousemove", function(){
-            return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            if (event.pageX >= window.innerWidth/2) {
+              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX-220)+"px");
+            } else {
+              return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            }
           })
           .on("mouseout", function(){
             d3.select(this).style('stroke', theme_font_color).style("opacity", 1.0);

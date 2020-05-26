@@ -952,9 +952,9 @@
 			if (window.innerWidth >= small_screen_thresh) {
 				base_height = Math.floor(window.innerHeight * 1); 
 			} else {
-				base_height = Math.floor(window.innerHeight * 0.60); 
+				base_height = Math.floor(window.innerHeight * 1); 
 			}
-			move_random_points();
+			move_random_points(base_width, base_height);
 			
 		} else if (data_step_id>=38) {
 

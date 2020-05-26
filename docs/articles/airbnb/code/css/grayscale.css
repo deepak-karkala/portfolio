@@ -92,8 +92,8 @@ a:focus, a:hover {
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     -webkit-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
     -moz-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
     transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
@@ -101,8 +101,8 @@ a:focus, a:hover {
     background: transparent;
   }
   #mainNav.navbar-shrink {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     background: black;
   }
@@ -418,7 +418,7 @@ img::-moz-selection {
   position: absolute;           
   text-align: center;           
   width: 180px;                  
-  height: 60px;                 
+  height: 100px;                 
   font-size: 0.75rem;
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
   background: white;   
@@ -478,6 +478,17 @@ img::-moz-selection {
   border-color: black;
   box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.4);
 }
+
+@media (min-width: 768px) {
+  .tooltip_hotel {
+    font-size: 0.6rem;
+  }
+
+  .tooltip_commercial {
+    font-size: 0.6rem;
+  }
+}
+
 
 .tooltip_hotel .city_name {
   font-size: 14px;
@@ -633,10 +644,58 @@ select.classic {
   margin-bottom: 20px;
 }
 
-.article_author, .article_date {
+
+p {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.article_author {
   color: #F27200;
   padding-bottom: 0;
   margin-bottom: 0;
   font-weight: bold;
   font-size: 1.0rem;
+}
+
+.article_date {
+  color: #F27200;
+  margin-top: 0;
+  padding-top: 0;
+  font-weight: bold;
+  font-size: 1.0rem;
+}
+
+footer p {
+  padding-top: 10px;
+}
+
+@media (max-width: 350px) {
+  .masthead {
+    margin-top: 12vh;
+  }
+  .masthead .intro-body .brand-heading {
+    font-size: 1.5rem;
+    color: #FF5A60;
+  }
+
+  .masthead .intro-body .intro-text {
+    font-size: 1rem;
+    padding-top: 20px;
+  }
+
+  .intro_text {
+    font-size: 0.8rem;
+    color: #FF5A60;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+  li {
+    font-size: 0.75rem;
+  }
+  .section_title {
+    font-size: 1.5rem;
+  }
 }
