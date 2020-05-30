@@ -66,7 +66,7 @@ video {
 }
 
 .intro_name {
-	font-size: 4.0rem;
+	font-size: 3.5rem;
 	font-weight: bolder;
 }
 
@@ -140,6 +140,14 @@ video {
 	font-weight: bold;
 }
 
+.nav a {
+	padding: 5px;
+}
+
+.nav li a {
+	color: black;
+}
+
 .section_title {
 	text-align: center;
 	font-size: 2.5rem;
@@ -167,7 +175,7 @@ video {
 }
 
 .section_about_me {
-	margin-top: 50px;
+	margin-top: 100px;
 }
 
 .section_contact_me {
@@ -180,4 +188,40 @@ video {
 
 .footer {
 	padding-bottom: 20px;
+}
+
+@media (max-width: 350px) {
+	.intro_name {
+		font-size: 2.5rem;
+	}
+	.intro_description {
+		font-size: 1rem;
+	}
+	.intro_contact {
+		font-size: 1rem;
+	}
+	.section_title {
+		font-size: 2rem;
+	}
+	.article_title {
+		font-size: 1.75rem;
+	}
+	.article_description {
+		font-size: 1.25rem;
+	}
+	.section_about_me {
+		margin-top: 30vh;
+	}
+	.section_about_me_text {
+		font-size: 1rem;
+	}
+	.outro_contact {
+		font-size: 1rem;
+	}
+	.footer {
+		font-size: 0.75rem;
+	}
+	.nav li a {
+		font-size: 1.25rem;
+	}
 }
