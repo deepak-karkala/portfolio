@@ -102,8 +102,17 @@ video {
 	font-weight: bold;
 }
 
+.mlds_article_title {
+	font-size: 1.75rem;
+	font-weight: bold;
+}
+
 .article_description {
 	font-size: 1.5rem;
+}
+
+.mlds_article_description {
+	font-size: 1.25rem;
 }
 
 .article_date {
@@ -206,8 +215,14 @@ video {
 	.article_title {
 		font-size: 1.75rem;
 	}
+	.mlds_article_title {
+		font-size: 1.5rem;
+	}
 	.article_description {
 		font-size: 1.25rem;
+	}
+	.mlds_article_description {
+		font-size: 1.0rem;
 	}
 	.section_about_me {
 		margin-top: 30vh;
