@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Explained: Regularisation in Machine Learning</title>
+	<meta name="description" content="Scrollama: Sticky Overlay Example">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/vendor/fontawesome/css/brands.min.css">
+  <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+  <link rel='stylesheet' href='style/style.css'>
+</head>
+
+
+<nav class="navbar navbar-expand-lg navbar_style fixed-top" id="mainNav">
+    <a class="nav-link" href="../../../../index.html">Home</a>
+    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        
+    </button>
+    <div id="navbarNavDropdown" class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto">
+            <!--
+            <li class="nav-item">
+                <a class="nav-link" href="../about/index.html">About this project</a>
+            </li>
+            -->
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="../../../../index.html#projects_portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../../../../index.html#about_me">About me</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../../../../index.html#contact_me">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<body>
+	<!-- Navigation -->
+    <!--<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">-->
+    <!--
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+      <div class="container">
+        <a class="nav-link js-scroll-trigger" href="#page-top">HOME</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="http://deepak-karkala-portfolio.herokuapp.com/">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    -->
+
+    <!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
+              <h1 class="brand-heading">Explained: Regularisation in Machine Learning</h1>
+              <p class="intro-text text-center">An intuitive explanation of how regularisation works, how it relates to PCA, how early stopping is a type of regularisation.
+                <br></p>
+              <p class="article_author text-center">Deepak Karkala</p>
+              <p class="article_date text-center">October 2020</p>
+              <a href="#introduction" class="btn btn-circle js-scroll-trigger" style="color:white; border: 1px solid white; font-size: 26px;">
+                <i class="fa fa-angle-double-down animated"><span ></span></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+	<section class="description" id="introduction">
+		<div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          	<p>The story goes back to when a walking tour guide on my trip to Amsterdam asked me what do I do ? He was visibly unsettled when I replied 'I work on Machine Learning systems'. He went on to explain how the machine that defeats the best chess player today may one day go rogue like in numerous Hollywood flicks over the years. The term 'Artificial Intelligence' is one of those polarising ones and for a lot of people working on Machine Learning and AI, concerns over rise of AI is one of those topics that keeps coming up when interacting with people. 
+            </p>
+          </div>
+        </div>
+      </div>
+	</section>
+
+
+  <!-- Project Goal -->
+  <section class="description" id="ai_future">
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h3>Goals and objectives of the project</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            Block-diagram/Sticky notes of how the end-product should operate and look like
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            List and briefly explain project objectives, requirements:
+            Goals,
+            User experience,
+            Performance constraints,
+            Evaluation,
+            Personalization,
+            Project constraints
+          </p>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5>Project overview</h5>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            Block-diagram of overall project components
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            Briefly explain the different components of the overall system
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <!-- Data Pipeline -->
+  <section class="description" id="ai_future">
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h3>Data pipeline</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            Block-diagram of data-pipeline
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            List and briefly explain project objectives, requirements:
+            Data availability and collection (About dataset)
+            User data
+            Storage
+            Data preprocessing & representation (Scraping, labeling)
+            Challenges
+            Privacy
+            Biases
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- Modeling, training -->
+  <section class="description" id="ai_future">
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h3>Modeling and Training Deep learning models</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Setting up baseling models</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p-text">
+            ...
+          </p>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Transfer learning and fine-tuning pre-trained models</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p-text">
+            Hyperparameter tuning
+            Tensorboard
+            Optimise pipeline performance
+            Custom training
+            ablation studies
+          </p>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Model Comparison and Selection</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p-text">
+            Our model vs baseline models vs existing pre-trained models: Compare AP, AR, IoU, Speed, Model size, Number of operations (multiplications)
+            Justify training new model instead of using existing pre-trained model => Training (fine-tuning)/ Transfer learning was successful — Our model had better accuracy speed trade off compared to existing pre-trained models
+          </p>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Model Scaling, Quantisation and Saving</h5>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p-text">
+            ...
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <!-- Serving -->
+  <section class="description" id="ai_future">
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h3>Model Serving, Deployment and Production</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Serving the trained model</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            You need to think of what feedback you'd like to get from your users, whether to allow users to suggest better predictions, and from user reactions, how to defer whether your model does a good job.
+            You should also think about how to run inferencing: on the user device or on the server and the tradeoffs between them.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Model deployment and Production</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            Block-diagram of deployment and production setup
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            TFX production:
+            Modeling
+            Model Analysis
+            Serving:
+              Serving with Flask, Docker, Kubernetes:
+                API for serving models
+              Pipeline:
+                Scalability, security, speed, size factors
+            Fairness Indicators
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <!-- Conclusion and learnings -->
+  <section class="description" id="ai_future">
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h3>Conclusion and learnings</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            How did you collect data ? Label ?
+            Training prodecure followed, challenges encountered
+            Why did you use the model you ended up using ?
+            Things you learned through this project
+            Biggest challenges
+            What will you change if you have to redo ?
+            Things to improve on
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  
+
+    <!-- Footer -->
+    <footer class="footer" name="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <h6 class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a>. You can also send me an email at <a href="mailto:dkarkala01@gmail.com" target="_top"><span class="contact_link">dkarkala01@gmail.com</span></a></h6>
+            <p class="text-center">Copyright &copy; Deepak Karkala 2019</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+<!--
+-->
+	
+	<!-- <div class='debug'></div> -->
+	<!--<script src='https://unpkg.com/d3@5.9.1/dist/d3.min.js'></script>
+	<script src='https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js'></script>-->
+  <!--
+	<script src="https://d3js.org/d3-color.v1.min.js"></script>
+	<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  -->
+  <script src="/vendor/d3.v4.min.js"></script>
+
+	<!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery3.3.1/jquery.min.js"></script>
+  <script src="/vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery-easing1.4.1/jquery.easing.min.js"></script>
+
+	<script src='scripts/stickyfill.min.js'></script>
+	<script src='scripts/scrollama.min.js'></script>
+
+  <script src="scripts/grayscale.js"></script>
+	<!--<script src='scripts/script1.js'></script>-->
+  <script src="scripts/draw_expert_views.js"></script>
+
+</body>
+
+</html>
