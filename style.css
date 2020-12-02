@@ -121,10 +121,28 @@ video {
 	opacity: 0.6;
 }
 
+.article_title_explainers {
+	color: black; /*#BF988F; #C0334D*/
+	font-size: 1.75rem;
+	font-weight: bold;
+}
+
+.article_date_explainers {
+	color: black;
+	font-size: 1.5rem;
+	padding-left: 20px;
+	opacity: 0.6;
+	font-weight: bold;
+}
+
 .article_tags {
 	padding-top: 10px;
 	color: #B22222;
 	font-size: 1.25rem;
+}
+
+.container_explainers {
+	margin-bottom: 60px;
 }
 
 .button {
