@@ -580,7 +580,6 @@ blockquote:before {
 img {
   width: 100%;
   height: auto;
-  max-height: 100px;
 }
 
 .application_name {
@@ -700,3 +699,6 @@ footer p {
 
 }
 
+.block_diagram {
+  width: 100%;
+}

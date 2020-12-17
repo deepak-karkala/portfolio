@@ -577,11 +577,6 @@ blockquote:before {
     color: #7a7a7a;
 }
 
-img {
-  width: 100%;
-  height: auto;
-  max-height: 100px;
-}
 
 .application_name {
   font-weight: bold;
@@ -700,3 +695,44 @@ footer p {
 
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
+.img_container {
+  padding: 20px;
+}
+
+.img_block {
+  padding-bottom: 30px;
+}
+
+.image_top {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #ededed;
+}
+
+video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.subtitle {
+  color: #FF5A60;
+  padding-top: 40px;
+}
+
+.no_top_gap {
+  margin-top: 0px;
+}
+
+h6 {
+  font-weight: bold;
+}
+
+h4 {
+  margin-top: 30px;
+}
