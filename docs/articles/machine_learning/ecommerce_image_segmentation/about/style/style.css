@@ -702,3 +702,13 @@ footer p {
 .block_diagram {
   width: 100%;
 }
+
+video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.prediction_image {
+  background-color: black;
+}

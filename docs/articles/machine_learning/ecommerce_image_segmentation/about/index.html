@@ -113,7 +113,28 @@
 
       <div class="row">
         <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
-          <img class="block_diagram" src="images/ecommerce_product_segmentation-projectSetup.jpg">
+          <img class="block_diagram" src="images/ecom_prod_seg_goal.png">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <video controls preload="auto" autoplay="autoplay" loop="loop" muted="muted">
+            <source src="images/demo_2x.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Project Setup and Considerations</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+          <img class="block_diagram" src="images/ecom_prod_seg_setup.png">
         </div>
       </div>
 
@@ -134,26 +155,18 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h5>Project overview</h5>
+          <h5 class="sub-title">Project overview</h5>
         </div>
       </div>
 
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            Block-diagram of overall project components
-          </p>
+          <img class="block_diagram" src="images/ecom_prod_seg_overview.png">
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            Briefly explain the different components of the overall system
-          </p>
-        </div>
-      </div>
+      
 
     </div>
   </section>
@@ -173,7 +186,7 @@
 
       <div class="row">
         <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
-          <img class="block_diagram" src="images/ecommerce_product_segmentation-dataPipeline.jpg">
+          <img class="block_diagram" src="images/ecom_prod_seg_data.png">
         </div>
       </div>
 
@@ -194,7 +207,7 @@
 
       <div class="row">
         <div class="col-lg-4 col-md-10 col-sm-10 col-12 mx-auto">
-          <img class="block_diagram" src="images/ecommerce_product_segmentation-data.jpg">
+          <img class="block_diagram" src="images/ecom_prod_seg_datapipeline.png">
         </div>
       </div>
 
@@ -252,16 +265,191 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h5 class="sub-title">Model Comparison and Selection</h5>
+          <h5 class="sub-title">Hyperparameter tuning</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
+          <script src="https://gist.github.com/deepak-karkala/c6cd15f96f9fc26d4ac14287f44e8d65.js"></script>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
+          <div class="row">
+            <div class="col-lg-9 col-md-10 col-sm-10 col-12 mx-auto">
+              <img src="images/hp_table.png">
+            </div>
+            <div class="col-lg-3 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/hp_matrix.png">
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p class="p-text">
-            Our model vs baseline models vs existing pre-trained models: Compare AP, AR, IoU, Speed, Model size, Number of operations (multiplications)
-            Justify training new model instead of using existing pre-trained model => Training (fine-tuning)/ Transfer learning was successful — Our model had better accuracy speed trade off compared to existing pre-trained models
-          </p>
+          <h5 class="sub-title">Tensorfolow Input Data Pipeline</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <script src="https://gist.github.com/deepak-karkala/9995c9a8301ba53ab3c9eccbc38bce04.js"></script>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <img src="images/trace_inputdatapipeline.png">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Tensorfolow Profiler</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
+          <div class="row">
+            <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/profiler_steptime.png">
+            </div>
+            <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/profiler_memory.png">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/profiler_time.png">
+            </div>
+            <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/profiler_gpukernel.png">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Transfer Learning: Fine-tuning pre-trained model</h5>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
+          <script src="https://gist.github.com/deepak-karkala/142606e650351778b3f9a09ed817aff2.js"></script>
+        </div>
+      </div>
+      
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <img src="images/model.png">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Model Training</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
+          <div class="row">
+            <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/accuracy.png">
+            </div>
+            <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/loss.png">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Logging data to Tensorboard</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
+          <script src="https://gist.github.com/deepak-karkala/f8d150b1c01361b2dbefb859e0975ca7.js"></script>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-10 col-sm-10 col-12 mx-auto">
+          <img src="images/iou.png">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Model learning</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-12 mx-auto">
+          <div class="row">
+            <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/learning/input.png">
+            </div>
+            <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/learning/true_mask.png">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-12 mx-auto">
+          <div class="row">
+            <div class="col-lg-3 col-md-10 col-sm-10 col-12 mx-auto">
+              <img src="images/learning/epoch0.png">
+            </div>
+            <div class="col-lg-3 col-md-10 col-sm-10 col-12 mx-auto">
+              <img src="images/learning/epoch5.png">
+            </div>
+            <div class="col-lg-3 col-md-10 col-sm-10 col-12 mx-auto">
+              <img src="images/learning/epoch10.png">
+            </div>
+            <div class="col-lg-3 col-md-10 col-sm-10 col-12 mx-auto">
+              <img src="images/learning/epoch15.png">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Model Comparison and Selection</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
+          <div class="row">
+            <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/iou_time.png">
+            </div>
+            <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+              <img  src="images/iou_boxplot.png">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -272,12 +460,50 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
+          <script src="https://gist.github.com/deepak-karkala/a125c1a8b21296172cfa5c95f6fbc792.js"></script>
+        </div>
+      </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p class="p-text">
-            ...
-          </p>
+          <img src="images/model_quantisation.png">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
+          <script src="https://gist.github.com/deepak-karkala/4b88a079afdf636ff6358bd9f59d6383.js"></script>
+        </div>
+      </div>      
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Model Predictions</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-6 mx-auto">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 mx-auto">
+              <img  src="images/predictions/test0.png">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 mx-auto prediction_image">
+              <img  src="images/predictions/prediction0.png">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-6 mx-auto">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 mx-auto">
+              <img  src="images/predictions/test28.png">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 mx-auto prediction_image">
+              <img  src="images/predictions/prediction28.png">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -325,6 +551,12 @@
           <p>
             Block-diagram of deployment and production setup
           </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
+          <img class="block_diagram" src="images/ecom_prod_seg_production.png">
         </div>
       </div>
 
