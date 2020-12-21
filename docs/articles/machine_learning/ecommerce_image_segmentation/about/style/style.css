@@ -712,3 +712,67 @@ video {
 .prediction_image {
   background-color: black;
 }
+
+.prediction_image_row {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #dcdcdc;
+  padding: 10px;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+
+.learning_image {
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0px;
+}
+
+.learning_epoch {
+  padding: 0px;
+  margin: 0px;
+}
+.learning_epoch_title {
+  margin-left: 25px;
+  margin-right: 5px; 
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  font-size: 0.85rem;
+}
+
+.learning_image_top {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.image_row {
+  padding: 5px 0 20px 0;
+}
+
+.video_row {
+  background-color: black;
+  padding: 20px 20px;
+}
+
+.sub-title {
+  color: #FF6500;
+  padding-top: 50px;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+h3 {
+  padding-top: 30px;
+}
+
+.script_row {
+  padding: 5px 0 30px 0;
+}
+
+.profiler_image {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
