@@ -759,7 +759,7 @@ video {
   color: #FF6500;
   padding-top: 50px;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1.45rem;
 }
 
 h3 {
@@ -775,4 +775,14 @@ h3 {
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
+}
+
+.p_no_top_gap {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.bold_text {
+  font-weight: bold;
+  font-size: 1.15rem;
 }

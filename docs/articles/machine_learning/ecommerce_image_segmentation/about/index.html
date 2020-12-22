@@ -26,7 +26,7 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="../about/index.html">About this project</a>
+                <a class="nav-link" href="http://ec2-65-0-106-104.ap-south-1.compute.amazonaws.com/">AWS-Webapp</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -93,7 +93,24 @@
 		<div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          	<p>The story goes back to when a walking tour guide on my trip to Amsterdam asked me what do I do ? He was visibly unsettled when I replied 'I work on Machine Learning systems'. He went on to explain how the machine that defeats the best chess player today may one day go rogue like in numerous Hollywood flicks over the years. The term 'Artificial Intelligence' is one of those polarising ones and for a lot of people working on Machine Learning and AI, concerns over rise of AI is one of those topics that keeps coming up when interacting with people. 
+            <p>
+            </p>
+            <p class="p_no_top_gap">
+              <ul>
+                <li>The project is deployed on AWS as a webapp and can be viewed here: <img src="/vendor/misc_images/aws.png" style="height: 20px; width:20px;"><a href="http://ec2-65-0-106-104.ap-south-1.compute.amazonaws.com/">AWS Webapp</a></li>
+                <li>The code for the project is on <img src="/vendor/misc_images/github.png" style="height: 30px; width:50px;"><a href="https://github.com/deepak-karkala/product-segmentation-ecommerce">Github</a></li>
+                <li>The Google Colab notebook for building and training the model is shared here: <img src="/vendor/misc_images/colab.png" style="height: 30px; width:30px;"><a href="">Google Colab Notebook</a></li>
+              </ul>
+            </p>
+            <p>
+              The project documentation has the following sections:
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
             </p>
           </div>
         </div>
@@ -117,6 +134,17 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            <span class="bold_text">The Problem: </span>One of the major factor that holds people back while shopping online for furniture and home decor products is that they won't be able to touch, see in person and feel how the product would fit into their home. The user has to go solely by the images of products posted on the ecommerce websites. This makes the user more hesitant while shopping online for such products.
+          </p>
+          <p class="p_no_top_gap">
+            <span class="bold_text">The Solution: </span>The project aims to address this issue by providing an option for the user to segment the product from the image and then visualise how it fits in their own home. This is done by using an Image Segmentation Model which can separate the predefined set of product categories from the rest of the image, which can then be placed on a video stream of the user's room for visualisation. 
+          </p>
+        </div>
+      </div>
+
       <div class="row image_row">
         <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto">
           <img class="block_diagram" src="images/ecom_prod_seg_goal.png">
@@ -129,6 +157,14 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            The end result of this project is shown below. The screen capture (from the app deployed on AWS) shows an example use case of the user selecting a product on a typical ecommerce website, the Image segmentation model returning the segmented product after which the user can then adjust the size and position of the product placed on the video stream of user's room.
+          </p>
+        </div>
+      </div>
+
       <div class="row image_row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto video_row">
           <video controls preload="auto" autoplay="autoplay" loop="loop" muted="muted">
@@ -137,6 +173,9 @@
           </video>
         </div>
       </div>
+
+      
+
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
@@ -241,7 +280,7 @@
       
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h3>Modeling and Training Deep learning models</h3>
+          <h3>Modeling: Fitting and Training Deep learning models</h3>
         </div>
       </div>
 
@@ -260,19 +299,57 @@
       </div>
 
 
+      
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Tensorflow Input Data Pipeline</h5>
+        </div>
+      </div>
+      <div class="row script_row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <script src="https://gist.github.com/deepak-karkala/9995c9a8301ba53ab3c9eccbc38bce04.js"></script>
+        </div>
+      </div>
+      <div class="row image_row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <img src="images/trace_inputdatapipeline.png">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Transfer Learning: Fine-tuning pre-trained model</h5>
+        </div>
+      </div>
+      <div class="row script_row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
+          <script src="https://gist.github.com/deepak-karkala/142606e650351778b3f9a09ed817aff2.js"></script>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Segmentation Model: Custom Layers on top of MobileNet Base Model</h5>
+        </div>
+      </div>
+      <div class="row image_row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <img src="images/model.png">
+        </div>
+      </div>
+
+
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h5 class="sub-title">Hyperparameter tuning</h5>
         </div>
       </div>
-
       <div class="row script_row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
           <script src="https://gist.github.com/deepak-karkala/c6cd15f96f9fc26d4ac14287f44e8d65.js"></script>
         </div>
       </div>
-
-
       <div class="row image_row">
         <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row">
@@ -286,31 +363,12 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h5 class="sub-title">Tensorflow Input Data Pipeline</h5>
-        </div>
-      </div>
-
-      <div class="row script_row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <script src="https://gist.github.com/deepak-karkala/9995c9a8301ba53ab3c9eccbc38bce04.js"></script>
-        </div>
-      </div>
-
-      <div class="row image_row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <img src="images/trace_inputdatapipeline.png">
-        </div>
-      </div>
-
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h5 class="sub-title">Tensorflow Profiler</h5>
         </div>
       </div>
-
       <div class="row">
         <div class="col-lg-10 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row">
@@ -335,36 +393,9 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h5 class="sub-title">Transfer Learning: Fine-tuning pre-trained model</h5>
-        </div>
-      </div>
-
-
-      <div class="row script_row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
-          <script src="https://gist.github.com/deepak-karkala/142606e650351778b3f9a09ed817aff2.js"></script>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h5 class="sub-title">Segmentation Model: Custom Layers on top of MobileNet Base Model</h5>
-        </div>
-      </div>
-
-      <div class="row image_row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <img src="images/model.png">
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h5 class="sub-title">Model Training</h5>
         </div>
       </div>
-
       <div class="row image_row">
         <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row">
@@ -383,19 +414,16 @@
           <h5 class="sub-title">Logging data to Tensorboard</h5>
         </div>
       </div>
-
       <div class="row script_row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
           <script src="https://gist.github.com/deepak-karkala/f8d150b1c01361b2dbefb859e0975ca7.js"></script>
         </div>
       </div>
-
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h5 class="sub-title">IoU during Model Training</h5>
         </div>
       </div>
-
       <div class="row image_row">
         <div class="col-lg-4 col-md-10 col-sm-10 col-12 mx-auto">
           <img src="images/iou.png">
@@ -408,7 +436,6 @@
           <h5 class="sub-title">Model learning</h5>
         </div>
       </div>
-
       <div class="row image_row">
         <div class="col-lg-4 col-md-6 col-sm-8 col-8 mx-auto">
           <div class="row">
@@ -423,7 +450,6 @@
           </div>
         </div>
       </div>
-
       <div class="row learning_image_top">
         <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row">
