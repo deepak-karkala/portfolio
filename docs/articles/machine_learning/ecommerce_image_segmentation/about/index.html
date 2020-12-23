@@ -296,10 +296,8 @@
             <span class="bold_text">Major Challenges</span>:
             <ul>
               <li><b>Limited Data Availability</b>: One of the major challenges that most enterprises face while planning to adopt Machine Learning into their system is the lack of availability of massive datasets necessary to train powerful Models. While in this project, although more data could have been acquired by scraping more product images, this is avoided in order to be constrained to work with a very limited dataset. Will this small dataset be enough to get satisfactory performance is one of the questions to be answered through this project.</li>
-              <li>
+              <li><b>Non-resuability of pre-trained models</b>: While there are already many pre-trained Image Segmentation Models which can be used for this purpose, there are two major challenges,
                 <ul>
-                  While there are already many pre-trained Image Segmentation Models which can be used for this purpose, there are two major challenges,
-
                   <li><b>Custom classes</b>: Most pre-trained models would be trained on standard datasets such as MS-COCO, PASCAL-VOC whereas for our application there is a need to segment product categories which are not part of those datasets. As a result, a custom model will need to be built on top of the pre-trained model and the final layers of this model will then have to be trained using custom dataset.</li>
                   
                   <li><b>Model evaluation time</b>: The pre-trained models are often massive in size since they have been trained to classify a wide variety of objects. Due to this, such models are slow in nature. However one of the challenges in this application is to have really fast response time such that user can view the segmented product in real-time.</li>
@@ -401,36 +399,35 @@
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p class="p_no_top_gap">
             After scraping for product images and obtaining reference masks using pre-trained model, the data is stored in a JSON file (paths to images and masks). Pre-processing is then performed on this dataset after which the dataset is divided into 3 sets,
-            <ul>
-              <li><b>Training Data</b>: To fit data</li>
-              <li><b>Validation Data</b>: To tune hyperparameters</li>
-              <li><b>Test Data</b>: To evaluate model performance</li>
-            </ul>
           </p>
           <table class="table table-sm">
             <thead>
               <tr>
                 <th scope="col">Data</th>
+                <th scope="col">Purpose</th>
                 <th scope="col">Number of Images</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">Training</th>
+                <td>To fit Model</td>
                 <td>285</td>
               </tr>
               <tr>
                 <th scope="row">Validation</th>
+                <td>To tune hyperparameters</td>
                 <td>95</td>
               </tr>
               <tr>
                 <th scope="row">Test</th>
+                <td>To evaluate model performance</td>
                 <td>95</td>
               </tr>
             </tbody>
           </table>
           <p class="p_no_top_gap">
-            As can be observed, this is a very small dataset which is to be used to fine-tune the pre-trained Image Segmentation Model.
+            As can be observed, this is a very small dataset which is to be used to fine-tune the final layers of a pre-trained Image Segmentation Model.
           </p>
         </div>
       </div>
@@ -666,31 +663,17 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h5 class="sub-title">Tensorflow Input Data Pipeline</h5>
+          <h5 class="sub-title">Tensorflow Profiler</h5>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p class="p_no_top_gap">
-            During training, one of the 
+            During training, one of the aspects to be monitored is the amount of time it takes to compute the various stages of the data pipeline. Inspecting this will help in identifying the most time intensive section of the pipeline which can then be addressed in order to reduce the total training time.
           </p>
-        </div>
-      </div>
-      <div class="row script_row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <script src="https://gist.github.com/deepak-karkala/9995c9a8301ba53ab3c9eccbc38bce04.js"></script>
-        </div>
-      </div>
-      <div class="row image_row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <img src="images/trace_inputdatapipeline.png">
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h5 class="sub-title">Tensorflow Profiler</h5>
+          <p class="p_no_top_gap">
+            Tensorflow's Profiler makes it easier to track various metrics such as Time Taken on Host, Time Taken on Device, Time Spent for various operations on GPU, Memory Profile and Performance Summary, the stats for which are presented in the following figures below.
+          </p>
         </div>
       </div>
       <div class="row">
@@ -714,15 +697,65 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Tensorflow Input Data Pipeline</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            In order to reduce the time spent in Input Data Pipeline and improve the memory footprint, a number of steps can be adopted as suggested in <a href="https://www.tensorflow.org/guide/data_performance">Tensorflow's Input Data Pipeline Guide</a>. The following operations are used in this project,
+            <ul>
+              <li><b>Prefetching</b>: Prefetching overlaps the preprocessing and model execution of a training step. While the model is executing training step <em>n</em>, the input pipeline is reading the data for step <em>n+1</em>. Doing so reduces the step time to the maximum (as opposed to the sum) of the training and the time it takes to extract the data.</li>
+              <li><b>Parallel mapping</b>: When preparing data, input elements may need to be pre-processed. To this end, the map transformation, which applies a user-defined function to each element of the input dataset is used. Because input elements are independent of one another, the pre-processing can be parallelized across multiple CPU cores.</li>
+              <li><b>Caching</b>: Caching a dataset, either in memory or on local storage will save some operations (like file opening and data reading) from being executed during each epoch.</li>
+              <li><b>Batching</b>: Invoking a user-defined function passed into the map transformation has overhead related to scheduling and executing the user-defined function. By applying the batch transformation before the map transformation the user-defined function can operate over a batch of inputs at once.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+      <div class="row script_row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <script src="https://gist.github.com/deepak-karkala/9995c9a8301ba53ab3c9eccbc38bce04.js"></script>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            The timeline for various Input Data Pipeline operations as seen in Tensorflow's Trace Viewer is presented here,
+          </p>
+        </div>
+      </div>
+      <div class="row image_row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <img src="images/trace_inputdatapipeline.png">
+        </div>
+      </div>
+
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h5 class="sub-title">Logging data to Tensorboard</h5>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            In addition to the <em>Loss</em> and <em>Accuracy</em> metrics, other custom data can be logged to Tensorboard during Model training. Since this project uses <b>Intersection Over Union (IoU)</b> as one of the performance metrics, the <em>IoU</em> value on the validation dataset was logged to Tensorboard at the end of each epoch, the code for which is presented below,
+          </p>
+        </div>
+      </div>
       <div class="row script_row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
           <script src="https://gist.github.com/deepak-karkala/f8d150b1c01361b2dbefb859e0975ca7.js"></script>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            In the following figure, we can observe the improvements in <em>IoU</em> with more epochs during Model training.
+          </p>
         </div>
       </div>
       <div class="row">
@@ -740,6 +773,13 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h5 class="sub-title">Model learning</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            The following figures shows how the model improves on its predicted segmentation mask as the training progresses. The first row shows the <em>Input Image</em> and the <em>Reference Mask</em>. The following rows shows the <em>Predicted Masks</em> during various epochs. 
+          </p>
         </div>
       </div>
       <div class="row image_row">
@@ -817,7 +857,13 @@
           <h5 class="sub-title">Model Comparison and Selection</h5>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            The following figures compares the performance of our Custom Model against the Baseline Models. It can be observed that although there is a drop in <em>IoU</em> for the Custom Model, the evaluation time is less than 1/10th of the best time for any of the Baseline Models. The drop in <em>IoU</em> can be improved by training the Custom Model with a bigger dataset.
+          </p>
+        </div>
+      </div>
       <div class="row image_row">
         <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row">
@@ -830,20 +876,86 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            Let us revisit the table of our Baseline Models and now compare it with our Custom Model.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Model</th>
+                <th scope="col">Size (in MB)</th>
+                <th scope="col">Evaluation Time (in seconds)</th>
+                <th scope="col">IoU</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Detectron 2</th>
+                <td>178 MB</td>
+                <td>0.10 seconds</td>
+                <td>0.89</td>
+              </tr>
+              <tr>
+                <th scope="row">Mask RCNN</th>
+                <td>170 MB</td>
+                <td>6.29 seconds</td>
+                <td>0.66</td>
+              </tr>
+              <tr>
+                <th scope="row">Custom Model</th>
+                <td>64 MB</td>
+                <td>0.01 seconds</td>
+                <td>0.59</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            As we can observe, the trained Custom Model has served the purposes required for this application,
+            <ul>
+              <li><b>Custom Product Categories</b>: The Custom Model can segment all the product categories used in this application.</li>
+              <li><b>Model Size</b>: The Custom Model is less than half the size of the other Baseline models which makes it easier to be deployed in production pipelines.</li>
+              <li><b>Model Evaluation Time</b>: The Custom Model takes about 1/10th of the best time for any of the Baseline models. Due to the model being used in real time predictions, the Model Evaluation Time was one of the major challenges before starting this project, and with this performance, the project has successfully achieved its goal.</li>
+              <li><b>Acceptable IoU</b>: While the <em>IoU</em> is comparably lower than the Baseline Models, this can be improved by training the Custom Model with a bigger dataset.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
 
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h5 class="sub-title">Model Quantisation</h5>
+          <h5 class="sub-title">Post Training Model Quantisation</h5>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            Before using the trained model in production, it will be useful to further reduce the Model Size using Model Quantisation. While various techniques are used, this project uses <b>Float 16 Quantisation</b> which reduce the size of a floating point model by quantizing the weights to float16 (IEEE Standard). The code snippet to achieve this is shared below,
+          </p>
+        </div>
+      </div>
       <div class="row script_row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
           <script src="https://gist.github.com/deepak-karkala/a125c1a8b21296172cfa5c95f6fbc792.js"></script>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            As can be noticed in the following figure, this operation reduces the model size in half with minimal loss in accuracy. 
+          </p>
+        </div>
+      </div>
       <div class="row image_row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <img src="images/model_quantisation.png">
@@ -855,7 +967,13 @@
           <h5 class="sub-title">Saving Model</h5>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            The trained and quantised Model will then have to be saved in order to be used in Production. As shown in the following code block, the Model can be saved either in <b>.h5 Format</b> or Tensorflow's <b>SaveModel Format</b>.
+          </p>
+        </div>
+      </div>
       <div class="row script_row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
           <script src="https://gist.github.com/deepak-karkala/4b88a079afdf636ff6358bd9f59d6383.js"></script>
@@ -867,7 +985,13 @@
           <h5 class="sub-title">Model Predictions</h5>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            Finally, the following figures present few sample images of various product categories from Test Dataset and the corresponding Segmented Products (based on Segmentation Masks) produced by the Model.
+          </p>
+        </div>
+      </div>
       <div class="row">
         <div class="col-lg-10 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row">
@@ -972,6 +1096,14 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            It can be observed that there is still lots of room for improvements in predictions, one possible solution would be to use a bigger dataset to train the model since the dataset used in this project was very small in size with limited number of images for each product categories.
+          </p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1003,8 +1135,13 @@
           <h5 class="sub-title">Model deployment using FLASK Application</h5>
         </div>
       </div>
-
-
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            A FLASK Webapp is developed in order to serve the Model Predictions and showcase the capabilites of the project. The following code block shows how the model is used to get inference for a given input image. 
+          </p>
+        </div>
+      </div>
       <div class="row script_row">
         <div class="col-lg-8 col-md-8 col-sm-8 col-8 mx-auto" style="height: 60vh; overflow: scroll;">
             <script src="https://gist.github.com/deepak-karkala/a1b3e42b52cc44748bcdb708474b7b01.js"></script>
@@ -1016,13 +1153,25 @@
           <h5 class="sub-title">Serving Model Predictions: REST API as Web Service</h5>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            The Model predictions can also be served as a Web Service by using REST API. The following code snippet shows how this can be accomplished. The model output is returned as a JSON object.
+          </p>
+        </div>
+      </div>
       <div class="row script_row">
         <div class="col-lg-8 col-md-8 col-sm-8 col-8 mx-auto">
             <script src="https://gist.github.com/deepak-karkala/d51c41cad25ea0363708378c5595b791.js"></script>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            The following figure shows how the Model predictions can be obtained using the above REST API.
+          </p>
+        </div>
+      </div>
       <div class="row image_row">
         <div class="col-lg-8 col-md-6 col-sm-6 col-6 mx-auto">
           <img  src="images/restapi/prediction_api.png">
@@ -1035,7 +1184,32 @@
           <h5 class="sub-title">Model in Production: FLASK, Docker, AWS</h5>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            The production pipeline consists of the following components,
+            <ul>
+              <li><b>FLASK Webapp</b>: Webapp and REST API to serve Model Predictions</li>
+              <li><b>Docker</b>: Containersied FLASK Webapp which can then be deployed in any environment</li>
+              <li><b>AWS</b>: CI/CD Pipeline</li>
+              <ul>
+                <li><b>ECR Repository</b>: The Docker Image is stored in this repository. Any changes to this image will trigger changes in the rest of the pipeline and the updates to the image will then be deployed to the Web Application.</li>
+                <li><b>CodeCommit </b>: The pipeline is configured to use a source location where the following two files are stored,
+                  <ul>
+                    <li><b>Amazon ECS Task Definition file</b>: The task definition file lists Docker image name, container name, Amazon ECS service name, and load balancer configuration.</li>
+                    <li><b>CodeDeploy AppSpec file</b>: This specifies the name of the Amazon ECS task definition file, the name of the updated application's container, and the container port where CodeDeploy reroutes production traffic.</li>
+                  </ul>
+                <li><b>CodeDeploy</b>: Used during deployment to reference the correct deployment group, target groups, listeners and traffic rerouting behaviour. CodeDeploy uses a listener to reroute traffic to the port of the updated container specified in the AppSpec file
+                  <ul>
+                    <li><b>ECS Cluster</b>: Cluster where CodeDeploy routes traffic during deployment</li>
+                    <li><b>Load Balancer</b>: The load balancer uses a VPC with two public subnets in different Availability Zones.</li>
+                  </ul>
+                </li>
+              </ul>
+            </ul>
+          </p>
+        </div>
+      </div>
       <div class="row image_row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <img class="block_diagram" src="images/ecom_prod_seg_production.png">
@@ -1047,27 +1221,88 @@
 
 
 
-
   <!-- Conclusion and learnings -->
   <section class="description" id="ai_future">
     <div class="container">
       
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h3>Conclusion and learnings</h3>
+          <h3>Conclusion: FAQ, Challenges and Learnings</h3>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            How did you collect data ? Label ?
-            Training prodecure followed, challenges encountered
-            Why did you use the model you ended up using ?
-            Things you learned through this project
-            Biggest challenges
-            What will you change if you have to redo ?
-            Things to improve on
+            <ul>
+              <li><b>Why this Project ?</b>
+                <ul>
+                  <li><b>The Problem: </b>One of the major factor that holds people back while shopping online for furniture and home decor products is that they won't be able to touch, see in person and feel how the product would fit into their home. The user has to go solely by the images of products posted on the ecommerce websites. This makes the user more hesitant while shopping online for such products.</li>
+                  <li><b>The Solution: </b>The project aims to address this issue by providing an option for the user to segment the product from the image and then visualise how it fits in their own home. This is done by using an Image Segmentation Model which can separate the predefined set of product categories from the rest of the image, which can then be placed on a video stream of the user's room for visualisation. </li>
+                </ul>
+              </li>
+              <li><b>What were the major project constraints ?</b>
+                <ul>
+                  <li>
+                    <b>Limited Data Availability</b>: One of the major challenges that most enterprises face while planning to adopt Machine Learning into their system is the lack of availability of massive datasets necessary to train powerful Models. While in this project, although more data could have been acquired by scraping more product images, this is avoided in order to be constrained to work with a very limited dataset. Will this small dataset be enough to get satisfactory performance is one of the questions to be answered through this project.
+                  </li>
+                  <li>
+                    <b>Non-resuability of pre-trained models</b>: While there are already many pre-trained Image Segmentation Models which can be used for this purpose, there are two major challenges,
+                    <ul>
+                      <li><b>Custom classes</b>: Most pre-trained models would be trained on standard datasets such as MS-COCO, PASCAL-VOC whereas for our application there is a need to segment product categories which are not part of those datasets. As a result, a custom model will need to be built on top of the pre-trained model and the final layers of this model will then have to be trained using custom dataset.</li>
+                      
+                      <li><b>Model evaluation time</b>: The pre-trained models are often massive in size since they have been trained to classify a wide variety of objects. Due to this, such models are slow in nature. However one of the challenges in this application is to have really fast response time such that user can view the segmented product in real-time.</li>
+                    </ul>
+                    As a result of this, such pre-trained models could not be used for this application, instead a custom model which can perform image segmentation on custom product categories with very small size and evaluation time had to be developed which formed the goal of this project.
+                  </li>
+                </ul>
+              </li>
+              <li><b>How did you collect data and label it ?</b>
+                <ul>
+                  <li>
+                    The Data was collected by scraping product images from ecommerce websites.
+                  </li>
+                  <li>
+                    Labels were obtained using Detectron2 Model but this model in itself could not be used in the application due to its bigger size and higher evaluation time.
+                  </li>
+                </ul>
+              <li><b>What training prodecure did you follow ?</b>
+                <ul>
+                  <li>Building Image segmentation model using MobileNet as base model
+                  <li>Fine-tuning last layer of pre-trained model</li>
+                  <li>Tuning Model Hyperparameters</li>
+                  <li>Using Tensorboard to monitor metrics using Model Training</li>
+                  <li>Using Profiler to inspect, identify memory and time intensive sections of the pipeline.</li>
+                </ul>
+              </li>
+              <li><b>Why did you use the model you ended up using ?</b>
+                <ul>
+                  <li><b>Custom Product Categories</b>: The Custom Model can segment all the product categories used in this application.</li>
+                  <li><b>Model Size</b>: The Custom Model is less than half the size of the other Baseline models which makes it easier to be deployed in production pipelines.</li>
+                  <li><b>Model Evaluation Time</b>: The Custom Model takes about 1/10th of the best time for any of the Baseline models. Due to the model being used in real time predictions, the Model Evaluation Time was one of the major challenges before starting this project, and with this performance, the project has successfully achieved its goal.</li>
+                  <li><b>Acceptable IoU</b>: While the <em>IoU</em> is comparably lower than the Baseline Models, this can be improved by training the Custom Model with a bigger dataset.</li>
+                </ul>
+              </li>
+              <li><b>What were the major challenges and learnings through this project ?</b>
+                <ul>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </li>
+              <li><b>What will you change if you have to redo ?</b>
+                <ul>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </li>
+              <li><b>What further work can be done to improve ?</b>
+                <ul>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </li>
+            </ul>
+            
           </p>
         </div>
       </div>
