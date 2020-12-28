@@ -390,7 +390,7 @@ figure p {
 .masthead .intro-body .intro-text {
   font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1rem;
-  color: #DC143C;
+  color: #F27200; /*#f1e0d6; #DC143C;*/
   font-weight: bold;
   text-shadow: 1px 1px #000;
 }
@@ -400,10 +400,10 @@ figure p {
   .masthead {
     height: 100%;
     padding: 0;
-    padding-top: 100px;
+    padding-top: 80px;
   }
   .masthead .intro-body .brand-heading {
-    padding-top: 10vh;
+    padding-top: 3vh;
     font-size: 2.75rem;
   }
   .masthead .intro-body .intro-text {
@@ -602,7 +602,7 @@ img {
 }
 
 .article_author {
-  color: #F27200;
+  color: #f1e0d6; /*#F27200;*/
   padding-bottom: 0;
   margin-bottom: 0;
   font-weight: bold;
@@ -610,7 +610,7 @@ img {
 }
 
 .article_date {
-  color: #F27200;
+  color: #f1e0d6; /*#F27200;*/
   padding-bottom: 0;
   margin-top: 0;
   font-weight: bold;
@@ -793,6 +793,6 @@ h3 {
   border-radius: 12px;
   color: black;
   border-color: black;
-  font-size: 0.85rem;
+  font-size: 0.65rem;
   font-weight: 500;
 }
