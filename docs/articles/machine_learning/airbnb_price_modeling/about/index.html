@@ -75,6 +75,43 @@
           <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
               <h1 class="brand-heading">Predictive Price Modeling for Airbnb listings</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-12 mx-auto">
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-2 mx-auto">
+                  <a href="http://ec2-65-0-106-104.ap-south-1.compute.amazonaws.com:5000/"><button type="button" class="btn btn-primary btn-sm btn-links">
+                    <img src="/vendor/misc_images/aws.png" style="height: 30px; width:30px; padding:2px;">
+                    AWS Webapp
+                  </button></a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-10 mx-auto">
+                  <a href="https://colab.research.google.com/drive/1IBYyAjdGXzAeNPSdNbfIyzgu-lG6Hvlp?usp=sharing"><button type="button" class="btn btn-primary btn-sm btn-links">
+                    <img src="/vendor/misc_images/colab.png" style="height: 30px; width:30px; padding:2px;">
+                    Run in Google Colab
+                  </button></a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-2 mx-auto">
+                  <a href="https://github.com/deepak-karkala/airbnb-data-science/tree/master/webapp_predict_price"><button type="button" class="btn btn-primary btn-sm btn-links">
+                    <img src="/vendor/misc_images/github.png" style="height: 30px; width:30px; padding:2px;">
+                    View Source
+                  </button></a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-10 mx-auto">
+                  <button type="button" class="btn btn-primary btn-sm btn-links">
+                    <img src="/vendor/misc_images/docker.png" style="height: 30px; width:30px; padding:2px;">
+                    dkarkala01/airbnb-predict
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
               <p class="intro-text text-center">The project aimed at predicting the price of an Airbnb listing given a number of features.
                 <br></p>
               <p class="article_author text-center">Deepak Karkala</p>
@@ -84,6 +121,7 @@
               </a>
             </div>
           </div>
+
         </div>
       </div>
     </header>
@@ -107,17 +145,46 @@
       
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h3>What are the goals of the project ?</h3>
+          <h4 style="margin-bottom:0px;">What is the goal of the project ?</h4>
+          <p style="margin-top:0px;">The Short Answer: Assisting Airbnb hosts to set appropriate price for their listings</p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            <b>The Problem</b>:
+          </p>
+          <p class="p_no_top_gap">
+            <b>The Solution</b>:
           </p>
         </div>
       </div>
+
+      
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Project Overview</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            The project involved the following steps,
+            <ul>
+              <li><b>Exploratory Data Analysis</b>: </li>
+              <li><b>Pre-processing and Data Cleaning</b>:</li>
+              <li><b>Feature Selection</b>:</li>
+              <li><b>Model Fitting and Selection</b>:</li>
+              <li><b>Model Serving</b>: Using FLASK to deploy and serve Model predictions using REST API</li>
+              <li><b>Container</b>: Using Docker to containerise the Web Application</li>
+              <li><b>Production</b>: Using AWS CI/CD Pipeline for continuous integration and deployment.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+
 
       <div class="row">
         <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto image_top">
@@ -127,14 +194,14 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h3>Assisting Airbnb hosts to set appropriate price for their listings</h3>
+          <h5 class="sub-title">End Result</h5>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+          <p class="p_no_top_gap">
+            The screen capture of the entire application in use is shown below. Users can enter all the relevant details of their listings, the trained Predictive Model will then predict and return the price of the listing given all the features. 
           </p>
         </div>
       </div>
@@ -152,44 +219,59 @@
   </section>
 
 
-  <!-- Modeling price of Airbnb listings -->
-  <!--
-  <section class="description" id="ai_future">
-    <div class="container">
-      
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h3>Assisting Airbnb hosts to set appropriate price for their listings</h3>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-  -->
-
-
   <!-- About Dataset -->
   <section class="description" id="ai_future">
     <div class="container">
       
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h3>About Dataset</h3>
+          <h4>About Dataset</h4>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+          <p class="p_no_top_gap">
+            The Dataset used in this project was obtained from <a href="https://public.opendatasoft.com/explore/dataset/airbnb-listings/table/?disjunctive.host_verifications&disjunctive.amenities&disjunctive.features&dataChart=eyJxdWVyaWVzIjpbeyJjaGFydHMiOlt7InR5cGUiOiJjb2x1bW4iLCJmdW5jIjoiQ09VTlQiLCJ5QXhpcyI6Imhvc3RfbGlzdGluZ3NfY291bnQiLCJzY2llbnRpZmljRGlzcGxheSI6dHJ1ZSwiY29sb3IiOiJyYW5nZS1jdXN0b20ifV0sInhBeGlzIjoiY2l0eSIsIm1heHBvaW50cyI6IiIsInRpbWVzY2FsZSI6IiIsInNvcnQiOiIiLCJzZXJpZXNCcmVha2Rvd24iOiJyb29tX3R5cGUiLCJjb25maWciOnsiZGF0YXNldCI6ImFpcmJuYi1saXN0aW5ncyIsIm9wdGlvbnMiOnsiZGlzanVuY3RpdmUuaG9zdF92ZXJpZmljYXRpb25zIjp0cnVlLCJkaXNqdW5jdGl2ZS5hbWVuaXRpZXMiOnRydWUsImRpc2p1bmN0aXZlLmZlYXR1cmVzIjp0cnVlfX19XSwidGltZXNjYWxlIjoiIiwiZGlzcGxheUxlZ2VuZCI6dHJ1ZSwiYWxpZ25Nb250aCI6dHJ1ZX0%3D">public.opendatasoft.com</a>. There are a total of 494,954 records each of which contains details of one Airbnb listing. The total size of dataset is 1.89 GB. 
+          </p>
+          <p class="p_no_top_gap">
+            The dataset has a large number of features which can be categorised into following types,
+            <ul>
+              <li>
+                <b>Location related</b>: Country, City, Neighbourhood
+              </li>
+              <li>
+                <b>Property related</b>: Property Type, Room Type, Accommodates, Bedrooms, Beds, Bed Type, Cancellation Policy, Minimum Nights
+              </li>
+              <li>
+                <b>Booking Availability</b>: Availability 30, Availability 60, Availability 90, Availability 365
+              </li>
+              <li>
+                <b>Reviews related</b>: Number of Reviews, Reviews per Month, Review Scores Rating, Review Scores Accuracy, Review Scores Cleanliness, Review Scores Checkin, Review Scores Communication, Review Scores Location, Review Scores Value
+              </li>
+              <li>
+                <b>Host related</b>: Host Since, Host Response Time, Host Response Rate, Calculated host listings count, Host Since Days, Host Has Profile Pic, Host Identity Verified, Is Location Exact, Instant Bookable, Host Is Superhost, Require Guest Phone Verification, Require Guest Profile Picture, Requires License
+              </li>
+              <li>
+                <b>Amenities</b>: TV, Wireless Internet, Kitchen, Heating,
+                 Family/kid friendly, Washer, Smoke detector, Fire extinguisher,
+                 Essentials, Cable TV, Internet, Dryer, First aid kit,
+                 Safety card, Shampoo, Hangers, Laptop friendly workspace,
+                 Air conditioning, Breakfast, Free parking on premises,
+                 Elevator in building, Buzzer/wireless intercom, Hair dryer,
+                 Private living room, Iron, Wheelchair accessible, Hot tub,
+                 Carbon monoxide detector, 24-hour check-in,
+                 Pets live on this property, Dog(s), Gym, Lock on bedroom door,
+                 Private entrance, Indoor fireplace, Smoking allowed,
+                 Pets allowed, Cat(s), Self Check-In, Doorman Entry,
+                 Suitable for events, Pool, Lockbox, Bathtub,
+                 Room-darkening shades, Game console, Doorman, High chair,
+                 Pack ’n Play/travel crib, Keypad, Other pet(s), Smartlock
+              </li>
+            </ul>
+          </p>
+          <p class="p_no_top_gap">
+            The price of the listing will serve as labels for the regression task. The goal of this project would be to predict these price of the listings.
           </p>
         </div>
       </div>
@@ -210,8 +292,17 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="p_no_top_gap">
+            To get a better insight into where the listings are located, the number of listings in various cities and countries are plotted in the figure below. In the given dataset, United States has the most number of listings followed by European countries and Australia. In terms of cities, Paris, London, New York, Berlin, Los Angeles are some of the cities with most number of listings. 
+          </p>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            Airbnb offers three types of listings,
+            <ul>
+              <li><b>Entire home/apartment</b></li>
+              <li><b>Private Room</b></li>
+              <li><b>Shared Room</b></li>
+            </ul>
+            Entire home is by far the most popular type of listing offered followed by Private Rooms and then a small share of the total listings are shared rooms.
           </p>
         </div>
       </div>
@@ -241,7 +332,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            Intuitively it is reasonable to expect that the listing location and the listing property type are two of the most important factors in determining the price of the listing. The following plots shows the distribution of listing prices across various cities and the difference in price amongst the three property types.
           </p>
         </div>
       </div>
@@ -271,7 +362,13 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            Few noticeable observations from the above plots,
+            <ul>
+              <li>Netherlands, US, Switzerland, Ireland, UK have amongst the highest average listing price.</li>
+              <li>In terms of cities, 10 of the top 12 cities with the highest average listing price are in the US. Clearly Airbnb listings are more expensive in the US compared to other European cities.</li>
+              <li>As expected, the cities with the highest listing prices are all major tourist attractions. Outside of the US, Amsterdam and Venice are the cities with highest average listing price.</li>
+              <li>As expected, <em>Entire homes</em> have the highest prices followed by <em>Private Room</em> and then <em>Shared Rooms</em>.</li>
+            </ul>
           </p>
         </div>
       </div>
@@ -293,23 +390,61 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            Although the dataset consists of large number of features for listings, not all of them will help in predicting the listing price. In fact, different features will have different influences in .Feature Engineering refers to selecting a subset of features or adding new features which will aid in better prediction of the response variable which is the <em>Listing Price</em> in this project. 
           </p>
+          <p>
+            The following figures show the distribution of various features against the listing price. This will aid in determining which features are correlated with the listing price and can thereby result in the Models making better predictions.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
+          <div class="row img_block">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/accommodates_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/bedrooms_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/beds_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/review_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/hostresponserate_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/family_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/tv_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/ac_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/fireplace_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/superhost_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/wifi_price.png">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+              <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/24hourcheckin_price.png">
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            
-          </p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            As expected, the most important factors that determine the price of a listing are <em>Number of people accommodated</em>, <em>Number of bedrooms</em>, <em>Number of beds</em>, all of which have a Pearson's Correlation Factor of more about 0.45 with the <em>Listing Price</em>. Amenities like TV, AC also show a slight positive correlation. But it is clear that there are no hidden features which plays a major role in determining the listing price, bigger the home/apartment with more bedrooms and beds, higher is the listing price.
           </p>
         </div>
       </div>
@@ -332,7 +467,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            Before feeding these features as input to the Machine Learning Model, the data will need to be pre-processed and cleaned. The following block diagram shows the Data Pipeline with the operations involved in pre-processing and data splitting.
           </p>
         </div>
       </div>
@@ -345,8 +480,43 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h5 class="sub-title">Data Pre-processing</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            The pre-processing operations involved are listed in the following table.
+          </p>
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Feature Type</th>
+                <th scope="col">Operation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Imputer</th>
+                <td>Numerical</td>
+                <td>Replace NULL values with Median</td>
+              </tr>
+              <tr>
+                <th scope="row">Standard Scaler </th>
+                <td>Numerical</td>
+                <td>Standardise input data to have 0 mean and unit variance</td>
+              </tr>
+              <tr>
+                <th scope="row">Ordinal Encoder</th>
+                <td>Categorical</td>
+                <td>Encode discrete values into integers</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            The following code snippet shows the pre-processing pipeline implemented using the Python library <em>Scikit learn</em>.
           </p>
         </div>
       </div>
@@ -354,6 +524,45 @@
       <div class="row">
         <div class="col-lg-8 col-md-6 col-sm-6 col-6 mx-auto" style="max-height: 60vh; overflow: scroll;">
           <script src="https://gist.github.com/deepak-karkala/5ca9cc9f97d8f5aecae91edea2060f01.js"></script>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            After pre-processing, the dataset is divided into 3 splits the details of which are listed in the following table.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Purpose</th>
+                <th scope="col">Number of Samples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Training</th>
+                <td>To fit Model</td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Validation</th>
+                <td>To tune hyperparameters</td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Test</th>
+                <td>To evaluate model performance</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -375,6 +584,34 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h6>Model Evaluation Metric</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h6>Machine Learning Models</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h5 class="subtitle">Linear Regression</h5>
         </div>
       </div>
@@ -382,7 +619,21 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p class="no_top_gap">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h6>Feature Importance</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="no_top_gap">
+            
           </p>
         </div>
       </div>
@@ -395,8 +646,14 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h6>Model Learning, Performance and Stability</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            The following code snippet shows how <em>Scikit Learn</em>'s <em>learning_curve</em> method can be used to study the Model learning, performance and stability.
           </p>
         </div>
       </div>
@@ -410,7 +667,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            The learning, performance and stability for the <em>Linear Regression</em> Model are shown in the following figures. Learning curve shows how the Model predictions improve as it sees more training examples. The fact that the training and validation RMSE converge to similar value, shows that the Model is not overfitting.
           </p>
         </div>
       </div>
@@ -431,6 +688,13 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            Model scalability can be studied by plotting the time it takes to fit the Model as the number of training examples increases. The Model performance can be examined by plotting the Model Evaluation Metric (RMSE) against the time it takes to fit the Model. Together these curves will be very useful in comparing various Models and selecting a final Model for predictions.
+          </p>
+        </div>
+      </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
@@ -440,9 +704,17 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p class="no_top_gap">
+            
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h6>Feature Importance</h6>
           <p class="no_top_gap">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            The following figure shows the Top5 features sorted by the <em>Feature Importance</em> as determined by the <em>Decision Tree Regressor</em>. As expected, the number of bedrooms, people accommodated, room type and location of the listing (country, city) are the most important features in determining the listing price.
           </p>
         </div>
       </div>
@@ -457,7 +729,7 @@
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h6>Hyper-parameter tuning</h6>
           <p class="no_top_gap">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            In order to get the best possible results from any Model, it is vital to determine the right combination of hyper-parameters to be used. This process is known as hyper-parameter tuning. It involves training the Model with different values for a set of parameters. The Model performance is then computed using the Validation Dataset. The parameter combination which yields the best performance is the one that will eventually be selected while comparing various Models. The code snippet to do this using <em>Grid Search</em> and <em>Randomized Search</em> Cross Validation is shown here,
           </p>
         </div>
       </div>
@@ -471,10 +743,36 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            To determine the best possible values for parameters of <em></em>, the following different values of parameters were tried using <em>Grid Search</em> Cross Validation. 
+          </p>
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Hyper-parameter</th>
+                <th scope="col">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Maximum Depth</th>
+                <td>[1, 20, 100]</td>
+              </tr>
+              <tr>
+                <th scope="row">Maximum Number of Features</th>
+                <td>[1, 5, 15, 20]</td>
+              </tr>
+              <tr>
+                <th scope="row">Maximum number of leaf nodes</th>
+                <td>[5, 50, 100]</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            The best estimator for <em></em> was determined to be with the following values of hyper-parameters, <em>Max Depth=20</em> , <em>Max Features=20</em> and <em>Max Leaf Nodes=100</em>.
           </p>
         </div>
       </div>
+
 
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
@@ -495,12 +793,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h6>Learning Curve, Model Scalability and Performance</h6>
-          <p class="no_top_gap">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          </p>
         </div>
       </div>
-
 
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
@@ -522,7 +816,7 @@
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h4>Model Evaluation and Comparison</h5>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            The final step of Model Selection is to compare the Prediction RMSE of all the tuned classifiers on Test Dataset. In this step, it is important to consider not just the <em>Mean or Median RMSE</em>, instead consider the entire range of RMSE obtained over different samples in the Test Dataset or over different splits of Cross Validation Data. The box plots of <em>RMSE on Test DaTa</em> for different Regression Models are shown in the following plot,
           </p>
         </div>
       </div>
@@ -530,6 +824,14 @@
       <div class="row">
         <div class="col-lg-5 col-md-8 col-sm-10 col-12 mx-auto image_top">
           <img src="images/exploratory/model_comparison.png">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            It can be observed that amongst the Models considered here, <em>Random Forest</em> seems to be the one with the lowest Median RMSE, also with the lowest <em>IQR (Inter-Quartile Range)</em>.
+          </p>
         </div>
       </div>
 
@@ -547,14 +849,97 @@
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h4>Serving, Production</h4>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            The following ...
           </p>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h6>Model deployment using FLASK Application</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            A FLASK Webapp is developed in order to serve the Model Predictions and showcase the capabilites of the project. The following code block shows how the model is used to get inference for a given input image. 
+          </p>
+        </div>
+      </div>
+      <div class="row script_row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-8 mx-auto" style="height: 60vh; overflow: scroll;">
+            <script src="https://gist.github.com/deepak-karkala/7c62510825ed01574ff0a2c7dec8e2ab.js"></script>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h6>Serving Model Predictions: REST API as Web Service</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            The Model predictions can also be served as a Web Service by using REST API. The following code snippet shows how this can be accomplished. The model output is returned as a JSON object.
+          </p>
+        </div>
+      </div>
+      <div class="row script_row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-8 mx-auto" style="height: 60vh; overflow: scroll;">
+            <script src="https://gist.github.com/deepak-karkala/cc0a89aae96b934e192fb4db81f698cf.js"></script>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            The following figure shows how the Model predictions can be obtained using the above REST API.
+          </p>
+        </div>
+      </div>
+      <div class="row image_row">
+        <div class="col-lg-8 col-md-6 col-sm-6 col-6 mx-auto">
+          <img  src="images/restapi_prediction.png">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h6>Model in Production: FLASK, Docker, AWS</h6>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto image_top">
           <img src="images/airbnb_predict_production.png">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <p>
+            The production pipeline consists of the following components,
+            <ul>
+              <li><b>FLASK Webapp</b>: Webapp and REST API to serve Model Predictions</li>
+              <li><b>Docker</b>: Containersied FLASK Webapp which can then be deployed in any environment</li>
+              <li><b>AWS</b>: CI/CD Pipeline</li>
+              <ul>
+                <li><b>ECR Repository</b>: The Docker Image is stored in this repository. Any changes to this image will trigger changes in the rest of the pipeline and the updates to the image will then be deployed to the Web Application.</li>
+                <li><b>CodeCommit </b>: The pipeline is configured to use a source location where the following two files are stored,
+                  <ul>
+                    <li><b>Amazon ECS Task Definition file</b>: The task definition file lists Docker image name, container name, Amazon ECS service name, and load balancer configuration.</li>
+                    <li><b>CodeDeploy AppSpec file</b>: This specifies the name of the Amazon ECS task definition file, the name of the updated application's container, and the container port where CodeDeploy reroutes production traffic.</li>
+                  </ul>
+                <li><b>CodeDeploy</b>: Used during deployment to reference the correct deployment group, target groups, listeners and traffic rerouting behaviour. CodeDeploy uses a listener to reroute traffic to the port of the updated container specified in the AppSpec file
+                  <ul>
+                    <li><b>ECS Cluster</b>: Cluster where CodeDeploy routes traffic during deployment</li>
+                    <li><b>Load Balancer</b>: The load balancer uses a VPC with two public subnets in different Availability Zones.</li>
+                  </ul>
+                </li>
+              </ul>
+            </ul>
+          </p>
         </div>
       </div>
 
