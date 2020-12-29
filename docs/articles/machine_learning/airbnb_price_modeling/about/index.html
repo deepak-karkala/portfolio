@@ -26,7 +26,7 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="../about/index.html">About this project</a>
+                <a class="nav-link" href="http://ec2-65-0-106-104.ap-south-1.compute.amazonaws.com:5000/">AWS-Webapp</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -81,25 +81,25 @@
           <div class="row">
             <div class="col-lg-9 col-md-12 col-sm-12 col-12 mx-auto">
               <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-2 mx-auto">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-2 mx-auto">
                   <a href="http://ec2-65-0-106-104.ap-south-1.compute.amazonaws.com:5000/"><button type="button" class="btn btn-primary btn-sm btn-links">
                     <img src="/vendor/misc_images/aws.png" style="height: 30px; width:30px; padding:2px;">
                     AWS Webapp
                   </button></a>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-10 mx-auto">
+                <div class="col-lg-3 col-md-4 col-sm-10 col-10 mx-auto">
                   <a href="https://colab.research.google.com/drive/1IBYyAjdGXzAeNPSdNbfIyzgu-lG6Hvlp?usp=sharing"><button type="button" class="btn btn-primary btn-sm btn-links">
                     <img src="/vendor/misc_images/colab.png" style="height: 30px; width:30px; padding:2px;">
                     Run in Google Colab
                   </button></a>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-2 mx-auto">
+                <div class="col-lg-3 col-md-2 col-sm-2 col-2 mx-auto">
                   <a href="https://github.com/deepak-karkala/airbnb-data-science/tree/master/webapp_predict_price"><button type="button" class="btn btn-primary btn-sm btn-links">
                     <img src="/vendor/misc_images/github.png" style="height: 30px; width:30px; padding:2px;">
                     View Source
                   </button></a>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-10 mx-auto">
+                <div class="col-lg-3 col-md-4 col-sm-10 col-10 mx-auto">
                   <button type="button" class="btn btn-primary btn-sm btn-links">
                     <img src="/vendor/misc_images/docker.png" style="height: 30px; width:30px; padding:2px;">
                     dkarkala01/airbnb-predict
@@ -109,10 +109,9 @@
             </div>
           </div>
 
-
           <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
-              <p class="intro-text text-center">The project aimed at predicting the price of an Airbnb listing given a number of features.
+              <p class="intro-text text-center">The project aimed at predicting the price of an Airbnb listing given a number of features. The project involved exploratory data analysis, data pre-processing, feature selection, Model Fitting, Model Comparison and deploying the containerised Webapp on AWS using CI/CD Pipeline.
                 <br></p>
               <p class="article_author text-center">Deepak Karkala</p>
               <p class="article_date text-center">September 2020</p>
@@ -147,16 +146,11 @@
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h4 style="margin-bottom:0px;">What is the goal of the project ?</h4>
           <p style="margin-top:0px;">The Short Answer: Assisting Airbnb hosts to set appropriate price for their listings</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            <b>The Problem</b>:
+          <p class="p_no_top_gap">
+            <b>The Problem</b>: Currently there is no convenient way for a new Airbnb host to decide the price of his or her listing. New hosts must often rely on the price of neighbouring listings when deciding on the price of their own listing.
           </p>
           <p class="p_no_top_gap">
-            <b>The Solution</b>:
+            <b>The Solution</b>: A Predictive Price Modelling tool whereby a new host can enter all the relevant details such as location of the listing, listing properties, available amenities etc and the Machine Learning Model will suggest the Price for the listing. The Model would have previously been trained on similar data from already existing Airbnb listings.
           </p>
         </div>
       </div>
@@ -173,10 +167,10 @@
           <p class="p_no_top_gap">
             The project involved the following steps,
             <ul>
-              <li><b>Exploratory Data Analysis</b>: </li>
-              <li><b>Pre-processing and Data Cleaning</b>:</li>
-              <li><b>Feature Selection</b>:</li>
-              <li><b>Model Fitting and Selection</b>:</li>
+              <li><b>Exploratory Data Analysis</b>: Explore the various features, their distributions using Histograms and Box-plots</li>
+              <li><b>Pre-processing and Data Cleaning</b>: Normalisation, filling missing values, encoding categorical values</li>
+              <li><b>Feature Selection</b>: Study the correlation with response variable (Listing Price) and determine which features are most useful in predicting the price.</li>
+              <li><b>Model Fitting and Selection</b>: Training different models, tuning hyper-parameters and studying Model performance using Learning Curve.</li>
               <li><b>Model Serving</b>: Using FLASK to deploy and serve Model predictions using REST API</li>
               <li><b>Container</b>: Using Docker to containerise the Web Application</li>
               <li><b>Production</b>: Using AWS CI/CD Pipeline for continuous integration and deployment.</li>
@@ -187,7 +181,7 @@
 
 
       <div class="row">
-        <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto image_top">
+        <div class="col-lg-6 col-md-10 col-sm-10 col-10 mx-auto image_top">
           <img src="images/predict_overview.png">
         </div>
       </div>
@@ -310,10 +304,10 @@
       <div class="row">
         <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row img_block">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12 mx-auto img_container">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mx-auto img_container">
               <img src="images/exploratory/histograms/city.png">
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12 mx-auto">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mx-auto">
               <div class="row">
                 <div class="col-lg-12 col-12 img_container">
                   <img src="images/exploratory/histograms/country.png">
@@ -331,7 +325,7 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             Intuitively it is reasonable to expect that the listing location and the listing property type are two of the most important factors in determining the price of the listing. The following plots shows the distribution of listing prices across various cities and the difference in price amongst the three property types.
           </p>
         </div>
@@ -340,10 +334,10 @@
       <div class="row">
         <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row img_block">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12 mx-auto img_container">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mx-auto img_container">
               <img src="images/exploratory/correlation_with_price/city_price.png">
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-12 mx-auto">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mx-auto">
               <div class="row">
                 <div class="col-lg-12 col-12 img_container">
                   <img src="images/exploratory/correlation_with_price/country_price.png">
@@ -361,7 +355,7 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             Few noticeable observations from the above plots,
             <ul>
               <li>Netherlands, US, Switzerland, Ireland, UK have amongst the highest average listing price.</li>
@@ -399,42 +393,42 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-11 mx-auto">
           <div class="row img_block">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/accommodates_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/bedrooms_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/beds_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/review_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/hostresponserate_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/family_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/tv_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/ac_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/fireplace_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/superhost_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/wifi_price.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mx-auto">
               <img class="correlation_with_price_pic" src="images/exploratory/correlation_with_price/24hourcheckin_price.png">
             </div>
           </div>
@@ -443,7 +437,7 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             As expected, the most important factors that determine the price of a listing are <em>Number of people accommodated</em>, <em>Number of bedrooms</em>, <em>Number of beds</em>, all of which have a Pearson's Correlation Factor of more about 0.45 with the <em>Listing Price</em>. Amenities like TV, AC also show a slight positive correlation. But it is clear that there are no hidden features which plays a major role in determining the listing price, bigger the home/apartment with more bedrooms and beds, higher is the listing price.
           </p>
         </div>
@@ -466,14 +460,14 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             Before feeding these features as input to the Machine Learning Model, the data will need to be pre-processed and cleaned. The following block diagram shows the Data Pipeline with the operations involved in pre-processing and data splitting.
           </p>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-lg-5 col-md-8 col-sm-10 col-12 mx-auto image_top">
+        <div class="col-lg-5 col-md-8 col-sm-10 col-11 mx-auto image_top">
           <img src="images/predict_datapipeline.png">
         </div>
       </div>
@@ -486,10 +480,10 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             The pre-processing operations involved are listed in the following table.
           </p>
-          <table class="table table-sm">
+          <table class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
                 <th scope="col">Name</th>
@@ -522,7 +516,7 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-8 col-md-6 col-sm-6 col-6 mx-auto" style="max-height: 60vh; overflow: scroll;">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="max-height: 60vh; overflow: scroll;">
           <script src="https://gist.github.com/deepak-karkala/5ca9cc9f97d8f5aecae91edea2060f01.js"></script>
         </div>
       </div>
@@ -537,11 +531,12 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <table class="table table-sm">
+          <table class="table table-sm  table-bordered table-hover">
             <thead>
               <tr>
                 <th scope="col">Data</th>
                 <th scope="col">Purpose</th>
+                <th scope="col">Split Ratio</th>
                 <th scope="col">Number of Samples</th>
               </tr>
             </thead>
@@ -549,17 +544,20 @@
               <tr>
                 <th scope="row">Training</th>
                 <td>To fit Model</td>
-                <td></td>
+                <td>0.8</td>
+                <td>270,058</td>
               </tr>
               <tr>
                 <th scope="row">Validation</th>
                 <td>To tune hyperparameters</td>
-                <td></td>
+                <td>0.1</td>
+                <td>33,757</td>
               </tr>
               <tr>
                 <th scope="row">Test</th>
                 <td>To evaluate model performance</td>
-                <td></td>
+                <td>0.1</td>
+                <td>33,757</td>
               </tr>
             </tbody>
           </table>
@@ -584,89 +582,116 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h6>Model Evaluation Metric</h6>
+          <h5 class="sub-title">Model Evaluation Metric</h5>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            
+          <p class="p_no_top_gap">
+            Since this is a Regression task (predicting the price of listing), various evaluation metrics such as <em>Variance Explained Score</em>, <em>Mean Absolute Error</em>, <em>R2-score</em>, <em>RMSE (Root Mean Squared Error)</em> can be used. In this project, <em>RMSE</em> is used to evaluate and compare different Machine Learning Models.
           </p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h6>Machine Learning Models</h6>
+          <h5 class="sub-title">Regression Models</h5>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            
+          <p class="p_no_top_gap">
+            The following Regression Models were explored in this project,
+            <ul>
+              <li>
+                Baseline Models
+                <ul>
+                  <li>Average Neighbourhood Price</li>
+                  <li>K-Nearest Neighbours Regression</li>
+                </ul>
+              </li>
+              <li>Linear Regression</li>
+              <li>Decision Tree Regression</li>
+              <li>Random Forest Regression</li>
+              <li>XGBoost Regression</li>
+            </ul>
           </p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h5 class="subtitle">Linear Regression</h5>
+          <h4 class="subtitle">Baseline Models</h4>
+          <p>
+            Before trying various Machine Learning Models, it is important to set baseline performances based on simple heuristics or simple models. Accordingly the following two models were used as baseline to compare the other Machine Learning Models.
+            <ul>
+              <li><b>Average Neighbourhood Price</b>: Estimate the listing price to be the average price of all the listings in the neighbourhood.</li>
+              <li><b>K-Nearest Neighbours Regression</b>: As defined <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html"></a>, the target is predicted by local interpolation of the targets associated of the k-nearest neighbors in the training set.
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h4 class="subtitle">Linear Regression</h4>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p class="no_top_gap">
-            
+            As defined <a href="https://scikit-learn.org/stable/modules/linear_model.html">here</a>, LinearRegression fits a linear model to minimize the residual sum of squares between the observed targets in the dataset, and the targets predicted by the linear approximation.
           </p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h6>Feature Importance</h6>
+          <h6 class="sub-title">Linear Regression: Feature Importance</h6>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p class="no_top_gap">
-            
+            The Importance of features as determined by the Linear Regression coefficients is shown in the following plot. As expected <em>Room Type</em>, <em>Number of people accommodated</em> and <em>Number of bedrooms</em> are the most important features in determining the price of the listing.
           </p>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-lg-6 col-md-4 col-sm-4 col-4 mx-auto image_top">
+        <div class="col-lg-6 col-md-8 col-sm-10 col-10 mx-auto image_top">
           <img src="images/exploratory/models/linreg_featurescore.png">
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h6>Model Learning, Performance and Stability</h6>
+          <h6 class="sub-title">Linear Regression: Model Learning, Performance and Stability</h6>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             The following code snippet shows how <em>Scikit Learn</em>'s <em>learning_curve</em> method can be used to study the Model learning, performance and stability.
           </p>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-lg-8 col-md-6 col-sm-6 col-6 mx-auto" style="max-height: 60vh; overflow: scroll;">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="max-height: 60vh; overflow: scroll;">
           <script src="https://gist.github.com/deepak-karkala/9ae6c2833361414525f0baa0cf79c72d.js"></script>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             The learning, performance and stability for the <em>Linear Regression</em> Model are shown in the following figures. Learning curve shows how the Model predictions improve as it sees more training examples. The fact that the training and validation RMSE converge to similar value, shows that the Model is not overfitting.
           </p>
         </div>
@@ -675,13 +700,13 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto image_top">
+            <div class="col-lg-4 col-md-4 col-sm-8 col-10 mx-auto image_top">
               <img class="row_image" src="images/exploratory/models/linreg_lc.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto image_top">
+            <div class="col-lg-4 col-md-4 col-sm-8 col-10 mx-auto image_top">
               <img class="row_image" src="images/exploratory/models/linreg_fittime.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto image_top">
+            <div class="col-lg-4 col-md-4 col-sm-8 col-10 mx-auto image_top">
               <img  class="row_image" src="images/exploratory/models/linreg_perf.png">
             </div>
           </div>
@@ -698,21 +723,18 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h5 class="subtitle">Decision Tree Regressor</h5>
+          <h4 class="subtitle">Decision Tree Regressor</h4>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p class="no_top_gap">
-            
-          </p>
+          <h6 class="sub-title">Decision Tree Regressor: Feature Importance</h6>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h6>Feature Importance</h6>
           <p class="no_top_gap">
             The following figure shows the Top5 features sorted by the <em>Feature Importance</em> as determined by the <em>Decision Tree Regressor</em>. As expected, the number of bedrooms, people accommodated, room type and location of the listing (country, city) are the most important features in determining the listing price.
           </p>
@@ -720,14 +742,19 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto image_top">
+        <div class="col-lg-4 col-md-8 col-sm-10 col-10 mx-auto image_top">
           <img src="images/exploratory/models/dectree_featurescore.png">
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h6>Hyper-parameter tuning</h6>
+          <h6 class="sub-title">Decision Tree Regressor: Hyper-parameter tuning</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p class="no_top_gap">
             In order to get the best possible results from any Model, it is vital to determine the right combination of hyper-parameters to be used. This process is known as hyper-parameter tuning. It involves training the Model with different values for a set of parameters. The Model performance is then computed using the Validation Dataset. The parameter combination which yields the best performance is the one that will eventually be selected while comparing various Models. The code snippet to do this using <em>Grid Search</em> and <em>Randomized Search</em> Cross Validation is shown here,
           </p>
@@ -735,7 +762,7 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-8 col-md-6 col-sm-6 col-6 mx-auto">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <script src="https://gist.github.com/deepak-karkala/237d37585d8fd0f5f552c2a88b73d27f.js"></script>
         </div>
       </div>
@@ -745,7 +772,7 @@
           <p>
             To determine the best possible values for parameters of <em></em>, the following different values of parameters were tried using <em>Grid Search</em> Cross Validation. 
           </p>
-          <table class="table table-sm">
+          <table class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
                 <th scope="col">Hyper-parameter</th>
@@ -777,13 +804,13 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row img_block">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto image_top">
+            <div class="col-lg-4 col-md-4 col-sm-8 col-10 mx-auto image_top">
               <img src="images/exploratory/hparams/dectree_maxdepth.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto image_top">
+            <div class="col-lg-4 col-md-4 col-sm-8 col-10 mx-auto image_top">
               <img src="images/exploratory/hparams/dectree_maxfeatures.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto image_top">
+            <div class="col-lg-4 col-md-4 col-sm-8 col-10 mx-auto image_top">
               <img src="images/exploratory/hparams/dectree_maxleafnodes.png">
             </div>
           </div>
@@ -792,20 +819,20 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h6>Learning Curve, Model Scalability and Performance</h6>
+          <h6 class="sub-title">Decision Tree: Learning Curve, Model Scalability and Performance</h6>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
           <div class="row img_block">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto image_top">
+            <div class="col-lg-4 col-md-4 col-sm-8 col-10 mx-auto image_top">
               <img src="images/exploratory/models/dectree_lc.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto image_top">
+            <div class="col-lg-4 col-md-4 col-sm-8 col-10 mx-auto image_top">
               <img src="images/exploratory/models/dectree_fittime.png">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-4 mx-auto image_top">
+            <div class="col-lg-4 col-md-4 col-sm-8 col-10 mx-auto image_top">
               <img src="images/exploratory/models/dectree_perf.png">
             </div>
           </div>
@@ -822,7 +849,7 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-5 col-md-8 col-sm-10 col-12 mx-auto image_top">
+        <div class="col-lg-5 col-md-8 col-sm-10 col-10 mx-auto image_top">
           <img src="images/exploratory/model_comparison.png">
         </div>
       </div>
@@ -830,7 +857,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            It can be observed that amongst the Models considered here, <em>Random Forest</em> seems to be the one with the lowest Median RMSE, also with the lowest <em>IQR (Inter-Quartile Range)</em>.
+            It can be observed that amongst the Models considered here, <em>Random Forest</em> seems to be the one with the lowest Median RMSE, also with the lowest <em>IQR (Inter-Quartile Range)</em>. The Median RMSE error for <em>Random Forest</em> is less than 20 USD, so the Model is successful to a large extent in predicting the price of the listing.
           </p>
         </div>
       </div>
@@ -847,58 +874,55 @@
       
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h4>Serving, Production</h4>
-          <p>
-            The following ...
-          </p>
+          <h4>Deployment, Serving and Production: CI/CD Pipeline</h4>
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <h6 class="sub-title">Model deployment using FLASK Application</h6>
+        </div>
+      </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h6>Model deployment using FLASK Application</h6>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             A FLASK Webapp is developed in order to serve the Model Predictions and showcase the capabilites of the project. The following code block shows how the model is used to get inference for a given input image. 
           </p>
         </div>
       </div>
       <div class="row script_row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-8 mx-auto" style="height: 60vh; overflow: scroll;">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
             <script src="https://gist.github.com/deepak-karkala/7c62510825ed01574ff0a2c7dec8e2ab.js"></script>
         </div>
       </div>
       
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h6>Serving Model Predictions: REST API as Web Service</h6>
+          <h6 class="sub-title">Serving Model Predictions: REST API as Web Service</h6>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             The Model predictions can also be served as a Web Service by using REST API. The following code snippet shows how this can be accomplished. The model output is returned as a JSON object.
           </p>
         </div>
       </div>
       <div class="row script_row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-8 mx-auto" style="height: 60vh; overflow: scroll;">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto" style="height: 60vh; overflow: scroll;">
             <script src="https://gist.github.com/deepak-karkala/cc0a89aae96b934e192fb4db81f698cf.js"></script>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             The following figure shows how the Model predictions can be obtained using the above REST API.
           </p>
         </div>
       </div>
       <div class="row image_row">
-        <div class="col-lg-8 col-md-6 col-sm-6 col-6 mx-auto">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-10 mx-auto">
           <img  src="images/restapi_prediction.png">
         </div>
       </div>
@@ -906,19 +930,19 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h6>Model in Production: FLASK, Docker, AWS</h6>
+          <h6 class="sub-title">Model in Production: FLASK, Docker, AWS CI/CD Pipeline</h6>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-lg-6 col-md-10 col-sm-10 col-12 mx-auto image_top">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-10 mx-auto image_top">
           <img src="images/airbnb_predict_production.png">
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
+          <p class="p_no_top_gap">
             The production pipeline consists of the following components,
             <ul>
               <li><b>FLASK Webapp</b>: Webapp and REST API to serve Model Predictions</li>
@@ -947,37 +971,25 @@
   </section>
 
 
-
-
-  <!-- Business insights -->
+  <!-- Serving -->
   <section class="description" id="ai_future">
     <div class="container">
-      
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <h3>How using ML models improved business metrics/ provided business insights ?</h3>
-        </div>
-      </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-          </p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-          </p>
+          <h4>Resources</h4>
+          <ul>
+            <li>The <a href="http://ec2-65-0-106-104.ap-south-1.compute.amazonaws.com:5000/">AWS Webapp</a> for this project</li>
+            <li><a href="https://public.opendatasoft.com/explore/dataset/airbnb-listings/information/?disjunctive.host_verifications&disjunctive.amenities&disjunctive.features&dataChart=eyJxdWVyaWVzIjpbeyJjaGFydHMiOlt7InR5cGUiOiJjb2x1bW4iLCJmdW5jIjoiQ09VTlQiLCJ5QXhpcyI6Imhvc3RfbGlzdGluZ3NfY291bnQiLCJzY2llbnRpZmljRGlzcGxheSI6dHJ1ZSwiY29sb3IiOiJyYW5nZS1jdXN0b20ifV0sInhBeGlzIjoiY2l0eSIsIm1heHBvaW50cyI6IiIsInRpbWVzY2FsZSI6IiIsInNvcnQiOiIiLCJzZXJpZXNCcmVha2Rvd24iOiJyb29tX3R5cGUiLCJjb25maWciOnsiZGF0YXNldCI6ImFpcmJuYi1saXN0aW5ncyIsIm9wdGlvbnMiOnsiZGlzanVuY3RpdmUuaG9zdF92ZXJpZmljYXRpb25zIjp0cnVlLCJkaXNqdW5jdGl2ZS5hbWVuaXRpZXMiOnRydWUsImRpc2p1bmN0aXZlLmZlYXR1cmVzIjp0cnVlfX19XSwidGltZXNjYWxlIjoiIiwiZGlzcGxheUxlZ2VuZCI6dHJ1ZSwiYWxpZ25Nb250aCI6dHJ1ZX0%3D">Airbnb Dataset</a> used in the project</li>
+            <li>Run this code on <a href="https://colab.research.google.com/drive/1IBYyAjdGXzAeNPSdNbfIyzgu-lG6Hvlp?usp=sharing">Google Colab</a></li>
+            <li>View Source on <a href="https://github.com/deepak-karkala/airbnb-data-science/tree/master/webapp_predict_price">Github</a></li>
+            <li>Docker Container for the project: dkarkala01/airbnb-predict</li>
+          </ul>
         </div>
       </div>
 
     </div>
   </section>
-
 
 
       <!-- Footer -->
