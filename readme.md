@@ -2,7 +2,12 @@
 
 ## Deepak Karkala
 <h5>2+ years experience in Machine Learning and Data Analytics. Masters degree from EPFL Switzerland with focus on Machine learning and Data Science. Currently looking for full time, contract or freelancing based position as Machine Learning Engineer, Data Scientist, Data-Visualisation Engineer or similar roles</h5>
+
 <p>
+<a href="https://linkedin.com/in/deepak-karkala-3465684b">LinkedIn</a> &nbsp &#8729 &nbsp <a href="https://github.com/deepak-karkala/">Github</a> &nbsp &#8729 &nbsp <a href="http://deepakkarkala.com/docs/cv_deepak-karkala.pdf">CV</a> &nbsp &#8729 &nbsp <a href="https://twitter.com/deepak_karkala">Twitter</a> &nbsp &#8729 &nbsp dkarkala01@gmail.com
+</p>
+
+<p>  
 <b>About Me</b><br/>
 After graduating in Electronics and Communication Engineering, I worked as a Junior Research Fellow at IISc, Bangalore and worked on developing efficient algorithms for image reconstruction in Diffuse Optical Tomography. I then joined a semiconductor startup in Bangalore, where I worked on signal processing algorithms for wireless communication (WCDMA, LTE). In 2018, I completed Masters from EPFL Switzerland with a focus on Machine Learning and Data Science. For my thesis project, I worked on data analytics and anomaly detection in IoT sensor data. I then worked remotely as a Data Engineer for eSMART Technologies, a Swiss company in home automation and building management. Since then, I have become interested in Data-Storytelling, Visualisation and built a number of side projects presented here in my portfolio. Currently looking for full time, contract or freelancing based position as Machine Learning Engineer, Data Scientist, Data-Visualisation Engineer or similar roles.
 </p>
@@ -192,3 +197,9 @@ After graduating in Electronics and Communication Engineering, I worked as a Jun
   
   
 </ul>
+
+
+## Contact Me
+<p>
+<a href="https://linkedin.com/in/deepak-karkala-3465684b">LinkedIn</a> &nbsp &#8729 &nbsp <a href="https://github.com/deepak-karkala/">Github</a> &nbsp &#8729 &nbsp <a href="http://deepakkarkala.com/docs/cv_deepak-karkala.pdf">CV</a> &nbsp &#8729 &nbsp <a href="https://twitter.com/deepak_karkala">Twitter</a> &nbsp &#8729 &nbsp dkarkala01@gmail.com
+</p>
