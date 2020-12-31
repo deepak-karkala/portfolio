@@ -82,25 +82,25 @@
           <div class="row">
             <div class="col-lg-9 col-md-12 col-sm-12 col-12 mx-auto">
               <div class="row">
-                <div class="col-lg-3 col-md-2 col-sm-2 col-2 mx-auto">
+                <div class="col-lg-3 col-md-2 col-sm-3 col-3 mx-auto">
                   <a href="http://ec2-65-0-106-104.ap-south-1.compute.amazonaws.com/"><button type="button" class="btn btn-primary btn-sm btn-links">
                     <img src="/vendor/misc_images/aws.png" style="height: 30px; width:30px; padding:2px;">
                     AWS Webapp
                   </button></a>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-10 col-10 mx-auto">
+                <div class="col-lg-3 col-md-4 col-sm-9 col-9 mx-auto">
                   <a href="https://colab.research.google.com/drive/1snDybPVSYFC2swpiexTW5_F6Prv_fQ_F?usp=sharing"><button type="button" class="btn btn-primary btn-sm btn-links">
                     <img src="/vendor/misc_images/colab.png" style="height: 30px; width:30px; padding:2px;">
                     Run in Google Colab
                   </button></a>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-2 col-2 mx-auto">
+                <div class="col-lg-3 col-md-2 col-sm-3 col-3 mx-auto">
                   <a href="https://github.com/deepak-karkala/product-segmentation-ecommerce"><button type="button" class="btn btn-primary btn-sm btn-links">
                     <img src="/vendor/misc_images/github.png" style="height: 30px; width:30px; padding:2px;">
-                    View Source
+                    Code
                   </button></a>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-10 col-10 mx-auto">
+                <div class="col-lg-3 col-md-4 col-sm-9 col-9 mx-auto">
                   <button type="button" class="btn btn-primary btn-sm btn-links">
                     <img src="/vendor/misc_images/docker.png" style="height: 30px; width:30px; padding:2px;">
                     dkarkala01/ecom-prod-seg-app
@@ -113,7 +113,7 @@
 
           <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
-              <p class="intro-text text-center">The project aimed at using image segmentation for products on e-commerce websites. It involved creating dataset by scraping product images, using transfer learning to fine-tune the pre-trained deep learning model to perform segmentation of products from images. The Model predictions were served using FLASK Webapp, containerised using Docker and deployed on AWS through CI/CD Pipeline.
+              <p class="intro-text text-center">The project aims at using image segmentation for products on e-commerce websites. It involved creating dataset by scraping product images, using transfer learning to fine-tune the pre-trained deep learning model to perform segmentation of products from images. The Model predictions were served using FLASK Webapp, containerised using Docker and deployed on AWS through CI/CD Pipeline.
                 <br></p>
               <p class="article_author text-center">Deepak Karkala</p>
               <p class="article_date text-center">August 2020</p>
@@ -132,7 +132,7 @@
 
         
         <div class="row">
-          <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+          <div class="col-lg-8 col-md-12 col-sm-12 col-12 mx-auto">
             <h5 class="sub-title">Project Overview: Image segmentation using Deep Learning for e-commerce applications</h5>
           </div>
         </div>
@@ -401,7 +401,7 @@
           <p class="p_no_top_gap">
             After scraping for product images and obtaining reference masks using pre-trained model, the data is stored in a JSON file (paths to images and masks). Pre-processing is then performed on this dataset after which the dataset is divided into 3 sets,
           </p>
-          <table class="table table-sm table-bordered">
+          <table class="table table-sm table-bordered table-responsive">
             <thead>
               <tr>
                 <th scope="col">Data</th>
@@ -497,11 +497,11 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <table class="table table-sm table-bordered">
+          <table class="table table-sm table-bordered table-responsive">
             <thead>
               <tr>
                 <th scope="col">Model</th>
-                <th scope="col">Size (in MB)</th>
+                <th scope="col">Size</th>
                 <th scope="col">Evaluation Time</th>
                 <th scope="col">IoU</th>
               </tr>
@@ -886,12 +886,12 @@
       </div>
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
-          <table class="table table-sm table-bordered">
+          <table class="table table-sm table-bordered table-responsive">
             <thead>
               <tr>
                 <th scope="col">Model</th>
-                <th scope="col">Size (in MB)</th>
-                <th scope="col">Evaluation Time (in seconds)</th>
+                <th scope="col">Size</th>
+                <th scope="col">Evaluation Time</th>
                 <th scope="col">IoU</th>
               </tr>
             </thead>
