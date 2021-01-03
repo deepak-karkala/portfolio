@@ -770,7 +770,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p>
-            To determine the best possible values for parameters of <em></em>, the following different values of parameters were tried using <em>Grid Search</em> Cross Validation. 
+            To determine the best possible values, the following different values of parameters were tried using <em>Grid Search</em> Cross Validation. 
           </p>
           <table class="table table-sm table-bordered table-hover">
             <thead>
@@ -843,7 +843,7 @@
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <h4>Model Evaluation and Comparison</h5>
           <p>
-            The final step of Model Selection is to compare the Prediction RMSE of all the tuned classifiers on Test Dataset. In this step, it is important to consider not just the <em>Mean or Median RMSE</em>, instead consider the entire range of RMSE obtained over different samples in the Test Dataset or over different splits of Cross Validation Data. The box plots of <em>RMSE on Test DaTa</em> for different Regression Models are shown in the following plot,
+            The final step of Model Selection is to compare the Prediction RMSE of all the tuned classifiers on Test Dataset. In this step, it is important to consider not just the <em>Mean or Median RMSE</em>, instead consider the entire range of RMSE obtained over different samples in the Test Dataset or over different splits of Cross Validation Data. The box plots of <em>RMSE on Test Data</em> for different Regression Models are shown in the following plot,
           </p>
         </div>
       </div>
@@ -887,7 +887,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
           <p class="p_no_top_gap">
-            A FLASK Webapp is developed in order to serve the Model Predictions and showcase the capabilites of the project. The following code block shows how the model is used to get inference for a given input image. 
+            A FLASK Webapp is developed in order to serve the Model Predictions and showcase the capabilities of the project. The following code block shows how the model is used to get inference for a given input image. 
           </p>
         </div>
       </div>
@@ -946,7 +946,7 @@
             The production pipeline consists of the following components,
             <ul>
               <li><b>FLASK Webapp</b>: Webapp and REST API to serve Model Predictions</li>
-              <li><b>Docker</b>: Containersied FLASK Webapp which can then be deployed in any environment</li>
+              <li><b>Docker</b>: Containerised FLASK Webapp which can then be deployed in any environment</li>
               <li><b>AWS</b>: CI/CD Pipeline</li>
               <ul>
                 <li><b>ECR Repository</b>: The Docker Image is stored in this repository. Any changes to this image will trigger changes in the rest of the pipeline and the updates to the image will then be deployed to the Web Application.</li>
