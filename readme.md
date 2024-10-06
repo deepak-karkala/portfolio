@@ -1,7 +1,7 @@
 # Personal Portfolio
 
 ## Deepak Karkala
-<h5>2+ years experience in Machine Learning and Data Analytics. Masters degree from EPFL Switzerland with focus on Machine learning and Data Science. Currently looking for full time, contract or freelancing based position as Machine Learning Engineer, Data Scientist, Data-Visualisation Engineer or similar roles</h5>
+<h5>6+ years experience in Machine Learning and Data Analytics. Masters degree from EPFL Switzerland with focus on Machine learning and Data Science. Currently looking for full time, contract or freelancing based position as Machine Learning Engineer, Data Scientist, Data-Visualisation Engineer or similar roles</h5>
 
 <p>
 <a href="https://linkedin.com/in/deepak-karkala-3465684b">LinkedIn</a> &nbsp &#8729 &nbsp <a href="https://github.com/deepak-karkala/">Github</a> &nbsp &#8729 &nbsp <a href="http://deepakkarkala.com/docs/cv_deepak-karkala.pdf">CV</a> &nbsp &#8729 &nbsp <a href="https://twitter.com/deepak_karkala">Twitter</a> &nbsp &#8729 &nbsp dkarkala01@gmail.com
@@ -76,14 +76,14 @@ After graduating in Electronics and Communication Engineering, I worked as a Jun
   
 </ul>
 
-
+<!--
 ## Machine Learning, AI Explainers
 <ul>
   <li><a href="http://deepakkarkala.com/docs/articles/machine_learning/ml_pipeline_visualised/about/index.html">Visualised: End-to-end Machine Learning Project Pipeline</a></li>
   <li><a href="http://deepakkarkala.com/docs/articles/machine_learning/deep_learning_vision_papers/about/index.html">Deep Learning Computer Vision Papers Roadmap</a></li>
   <li><a href="http://deepakkarkala.com/docs/articles/state_of_AI/code/index.html">Debunking the fear of rise of AI</a></li>
 </ul>
-
+-->
 
 ## Data-Visualisation, Storytelling Projects, Data-Journalism Projects
 <ul>
