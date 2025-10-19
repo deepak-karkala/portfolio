@@ -21,6 +21,7 @@ export interface ContentItem {
   level?: string;
   video?: string;
   order?: number;
+  highlights?: string[];
 }
 
 export interface PlaybookChapter extends ContentItem {
@@ -57,6 +58,12 @@ export async function getAllContent(contentType: string): Promise<ContentItem[]>
           ? [String(data.techStack)]
           : [];
 
+        const highlights = Array.isArray(data.highlights)
+          ? data.highlights.map((item) => String(item))
+          : data.highlights
+          ? [String(data.highlights)]
+          : [];
+
         const order =
           typeof data.order === 'number'
             ? data.order
@@ -78,6 +85,7 @@ export async function getAllContent(contentType: string): Promise<ContentItem[]>
           level: data.level || '',
           video: data.video || '',
           order,
+          highlights,
         } as ContentItem;
       })
   );
@@ -102,6 +110,12 @@ export async function getContentBySlug(contentType: string, slug: string): Promi
       ? [String(data.techStack)]
       : [];
 
+    const highlights = Array.isArray(data.highlights)
+      ? data.highlights.map((item) => String(item))
+      : data.highlights
+      ? [String(data.highlights)]
+      : [];
+
     const order =
       typeof data.order === 'number'
         ? data.order
@@ -123,6 +137,7 @@ export async function getContentBySlug(contentType: string, slug: string): Promi
       level: data.level || '',
       video: data.video || '',
       order,
+      highlights,
     } as ContentItem;
   } catch {
     return null;

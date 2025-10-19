@@ -59,6 +59,17 @@ export default async function CaseStudyPage({ params }: Props) {
           <p className="text-xl mb-6" style={{color: 'var(--color-primary)'}}>
             {caseStudy.summary}
           </p>
+
+          {caseStudy.highlights && caseStudy.highlights.length > 0 && (
+            <ul className="mb-8 space-y-3 text-base" style={{color: 'var(--color-primary)'}}>
+              {caseStudy.highlights.map((highlight) => (
+                <li key={highlight} className="flex gap-3">
+                  <span aria-hidden="true">•</span>
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          )}
           
           {/* Meta Information */}
           <div className="flex flex-wrap gap-6 text-sm" style={{color: 'var(--color-primary)'}}>
