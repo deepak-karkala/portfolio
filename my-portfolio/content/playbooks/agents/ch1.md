@@ -3,7 +3,6 @@ title: 'Chapter 1: Agent Fundamentals'
 summary: 'Clarifies what separates true AI agents from augmented LLMs and outlines the architecture that enables autonomous decision-making.'
 date: '2024-09-01'
 order: 1
-video: '/playbooks/agents/video/ch1.mp4'
 excerpt: 'Clarifies what separates true AI agents from augmented LLMs and outlines the architecture that enables autonomous decision-making'
 ---
 
@@ -35,6 +34,11 @@ To sharpen this definition, it's crucial to distinguish agents from their simple
 
 At a high level, every agent is composed of three core components. Think of this as the agent's anatomy:
 
+<img src="/playbooks/agents/img/ch1/1.png" width="100%" style="background-color: #FCF1EF;"/>
+
+* [Google Agents whitepaper](https://www.kaggle.com/whitepaper-agents)
+
+
 **1. The Model (The "Brain")**
 This is the LLM that powers the agent's reasoning and decision-making. It's the central processing unit.
 *   **Function:** The model interprets the user's goal, maintains the plan, selects tools, and synthesizes results.
@@ -46,10 +50,18 @@ Tools are the external functions and APIs the agent can call to interact with th
 *   **Action Tools:** Functions that change the state of an external system (e.g., `send_email`, `create_calendar_event`, `execute_code`).
 *   **Orchestration Tools:** Other agents that can be invoked as a tool by a "manager" agent
 
+
+
+
 **3. The Orchestration Layer (The "Nervous System")**
 This is the cyclical process that connects the brain to the hands. It dictates how the agent assimilates information, reasons, and acts.
 *   **Function:** This layer implements the core agent loop: **perceive -> reason -> act**. It is responsible for maintaining state, managing memory, and applying reasoning frameworks.
 *   **Implementation:** It employs prompt engineering frameworks to steer the model's reasoning. Common techniques applied within this layer include **Chain-of-Thought (CoT)** to force step-by-step thinking, **ReAct (Reason+Act)** to explicitly verbalize reasoning before choosing a tool, and more advanced methods like **Tree-of-Thoughts (ToT)** for exploring multiple reasoning paths.
+
+
+<img src="/playbooks/agents/img/ch1/2.png" width="100%" style="background-color: #FCF1EF;"/>
+
+* [Google Agents whitepaper](https://www.kaggle.com/whitepaper-agents)
 
 ---
 
@@ -72,7 +84,6 @@ Apply this framework, derived from OpenAI's practical guide, to vet potential us
 Always seek the simplest possible solution first. The path to a production-grade agent is iterative. Start with an augmented LLM or a simple prompt chain. Only add the complexity of an autonomous agent loop when you can prove, through evaluation, that simpler methods are insufficient. Over-engineering is the most common pitfall in agent development.
 
 ___
-
 
 ### Quiz: Short-Answer Questions
 

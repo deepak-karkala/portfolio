@@ -22,6 +22,13 @@ export interface ContentItem {
   video?: string;
   order?: number;
   highlights?: string[];
+  // Product-specific properties
+  heroSubtitle?: string;
+  demoVideos?: string[];
+  features?: Record<string, unknown>[];
+  steps?: Record<string, unknown>[];
+  pricing?: Record<string, unknown>[];
+  stats?: Record<string, unknown>[];
 }
 
 export interface PlaybookChapter extends ContentItem {
@@ -48,8 +55,8 @@ export async function getAllContent(contentType: string): Promise<ContentItem[]>
         const fileContents = fs.readFileSync(fullFilePath, 'utf8');
         const { data, content } = matter(fileContents);
 
-        // Convert markdown to HTML
-        const processedContent = await remark().use(remarkGfm).use(remarkHtml).process(content);
+        // Convert markdown to HTML (allow dangerous HTML for images)
+        const processedContent = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(content);
         const contentHtml = processedContent.toString();
 
         const techStack = Array.isArray(data.techStack)
@@ -86,6 +93,13 @@ export async function getAllContent(contentType: string): Promise<ContentItem[]>
           video: data.video || '',
           order,
           highlights,
+          // Product-specific properties
+          heroSubtitle: data.heroSubtitle || '',
+          demoVideos: data.demoVideos || [],
+          features: data.features || [],
+          steps: data.steps || [],
+          pricing: data.pricing || [],
+          stats: data.stats || [],
         } as ContentItem;
       })
   );
@@ -100,8 +114,8 @@ export async function getContentBySlug(contentType: string, slug: string): Promi
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    // Convert markdown to HTML
-    const processedContent = await remark().use(remarkGfm).use(remarkHtml).process(content);
+    // Convert markdown to HTML (allow dangerous HTML for images)
+    const processedContent = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(content);
     const contentHtml = processedContent.toString();
 
     const techStack = Array.isArray(data.techStack)
@@ -138,6 +152,13 @@ export async function getContentBySlug(contentType: string, slug: string): Promi
       video: data.video || '',
       order,
       highlights,
+      // Product-specific properties
+      heroSubtitle: data.heroSubtitle || '',
+      demoVideos: data.demoVideos || [],
+      features: data.features || [],
+      steps: data.steps || [],
+      pricing: data.pricing || [],
+      stats: data.stats || [],
     } as ContentItem;
   } catch {
     return null;
@@ -172,7 +193,7 @@ export async function getPlaybookChapters(playbookSlug: string): Promise<Playboo
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
 
-      const processedContent = await remark().use(remarkGfm).use(remarkHtml).process(content);
+      const processedContent = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(content);
       const contentHtml = processedContent.toString();
 
       const techStack = Array.isArray(data.techStack)
@@ -203,6 +224,13 @@ export async function getPlaybookChapters(playbookSlug: string): Promise<Playboo
         level: data.level || '',
         video: data.video || '',
         order,
+        // Product-specific properties
+        heroSubtitle: data.heroSubtitle || '',
+        demoVideos: data.demoVideos || [],
+        features: data.features || [],
+        steps: data.steps || [],
+        pricing: data.pricing || [],
+        stats: data.stats || [],
       } as PlaybookChapter;
     })
   );
@@ -230,7 +258,7 @@ export async function getPlaybookChapterBySlug(
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    const processedContent = await remark().use(remarkGfm).use(remarkHtml).process(content);
+    const processedContent = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(content);
     const contentHtml = processedContent.toString();
 
     const techStack = Array.isArray(data.techStack)
@@ -261,6 +289,13 @@ export async function getPlaybookChapterBySlug(
       level: data.level || '',
       video: data.video || '',
       order,
+      // Product-specific properties
+      heroSubtitle: data.heroSubtitle || '',
+      demoVideos: data.demoVideos || [],
+      features: data.features || [],
+      steps: data.steps || [],
+      pricing: data.pricing || [],
+      stats: data.stats || [],
     } as PlaybookChapter;
   } catch {
     return null;
