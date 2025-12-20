@@ -249,3 +249,24 @@ body {
   color: var(--color-primary);
   padding-top: 0.75rem;
 }
+
+/* Product pages body text styling to match markdown-body */
+.product-body p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.product-body li {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.product-body .text-sm {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.product-body .text-xs {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}

@@ -35,24 +35,42 @@ export interface PlaybookChapter extends ContentItem {
   parentSlug: string;
 }
 
+// Helper to recursively get all files
+function getAllFiles(dirPath: string, arrayOfFiles: string[] = []) {
+  const files = fs.readdirSync(dirPath);
+
+  files.forEach((file) => {
+    if (fs.statSync(path.join(dirPath, file)).isDirectory()) {
+      arrayOfFiles = getAllFiles(path.join(dirPath, file), arrayOfFiles);
+    } else {
+      arrayOfFiles.push(path.join(dirPath, file));
+    }
+  });
+
+  return arrayOfFiles;
+}
+
 // Generic function to get all content items from a directory
 export async function getAllContent(contentType: string): Promise<ContentItem[]> {
   const fullPath = path.join(contentDirectory, contentType);
-  
+
   // Create directory if it doesn't exist
   if (!fs.existsSync(fullPath)) {
     fs.mkdirSync(fullPath, { recursive: true });
     return [];
   }
 
-  const fileNames = fs.readdirSync(fullPath);
+  const allFiles = getAllFiles(fullPath);
+
   const allContentData = await Promise.all(
-    fileNames
-      .filter((name) => name.endsWith('.md'))
-      .map(async (fileName) => {
-        const slug = fileName.replace(/\.md$/, '');
-        const fullFilePath = path.join(fullPath, fileName);
-        const fileContents = fs.readFileSync(fullFilePath, 'utf8');
+    allFiles
+      .filter((filePath) => filePath.endsWith('.md'))
+      .map(async (filePath) => {
+        // Calculate slug relative to the content type directory
+        const relativePath = path.relative(fullPath, filePath);
+        const slug = relativePath.replace(/\.md$/, '');
+
+        const fileContents = fs.readFileSync(filePath, 'utf8');
         const { data, content } = matter(fileContents);
 
         // Convert markdown to HTML (allow dangerous HTML for images)
@@ -62,21 +80,21 @@ export async function getAllContent(contentType: string): Promise<ContentItem[]>
         const techStack = Array.isArray(data.techStack)
           ? data.techStack
           : data.techStack
-          ? [String(data.techStack)]
-          : [];
+            ? [String(data.techStack)]
+            : [];
 
         const highlights = Array.isArray(data.highlights)
           ? data.highlights.map((item) => String(item))
           : data.highlights
-          ? [String(data.highlights)]
-          : [];
+            ? [String(data.highlights)]
+            : [];
 
         const order =
           typeof data.order === 'number'
             ? data.order
             : data.order
-            ? Number(data.order)
-            : undefined;
+              ? Number(data.order)
+              : undefined;
 
         return {
           slug,
@@ -111,6 +129,11 @@ export async function getAllContent(contentType: string): Promise<ContentItem[]>
 export async function getContentBySlug(contentType: string, slug: string): Promise<ContentItem | null> {
   try {
     const fullPath = path.join(contentDirectory, contentType, `${slug}.md`);
+
+    if (!fs.existsSync(fullPath)) {
+      return null;
+    }
+
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
@@ -121,21 +144,21 @@ export async function getContentBySlug(contentType: string, slug: string): Promi
     const techStack = Array.isArray(data.techStack)
       ? data.techStack
       : data.techStack
-      ? [String(data.techStack)]
-      : [];
+        ? [String(data.techStack)]
+        : [];
 
     const highlights = Array.isArray(data.highlights)
       ? data.highlights.map((item) => String(item))
       : data.highlights
-      ? [String(data.highlights)]
-      : [];
+        ? [String(data.highlights)]
+        : [];
 
     const order =
       typeof data.order === 'number'
         ? data.order
         : data.order
-        ? Number(data.order)
-        : undefined;
+          ? Number(data.order)
+          : undefined;
 
     return {
       slug,
@@ -169,7 +192,18 @@ export async function getContentBySlug(contentType: string, slug: string): Promi
 export const getCaseStudies = () => getAllContent('case-studies');
 export const getCaseStudyBySlug = (slug: string) => getContentBySlug('case-studies', slug);
 
-export const getProducts = () => getAllContent('products');
+export const getProducts = async () => {
+  const allProducts = await getAllContent('products');
+  // Filter out non-product markdown files (reference docs, analysis files, etc.)
+  const excludePatterns = [
+    'case_study_for_portfolio',
+    'narrative_captions_qualitative_analysis',
+  ];
+
+  return allProducts.filter(product => {
+    return !excludePatterns.some(pattern => product.slug.includes(pattern));
+  });
+};
 export const getProductBySlug = (slug: string) => getContentBySlug('products', slug);
 
 export const getPlaybooks = () => getAllContent('playbooks');
@@ -199,15 +233,15 @@ export async function getPlaybookChapters(playbookSlug: string): Promise<Playboo
       const techStack = Array.isArray(data.techStack)
         ? data.techStack
         : data.techStack
-        ? [String(data.techStack)]
-        : [];
+          ? [String(data.techStack)]
+          : [];
 
       const order =
         typeof data.order === 'number'
           ? data.order
           : data.order
-          ? Number(data.order)
-          : undefined;
+            ? Number(data.order)
+            : undefined;
 
       return {
         slug,
@@ -264,15 +298,15 @@ export async function getPlaybookChapterBySlug(
     const techStack = Array.isArray(data.techStack)
       ? data.techStack
       : data.techStack
-      ? [String(data.techStack)]
-      : [];
+        ? [String(data.techStack)]
+        : [];
 
     const order =
       typeof data.order === 'number'
         ? data.order
         : data.order
-        ? Number(data.order)
-        : undefined;
+          ? Number(data.order)
+          : undefined;
 
     return {
       slug: chapterSlug,
