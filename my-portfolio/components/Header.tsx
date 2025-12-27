@@ -2,10 +2,11 @@ import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 
 const navItems = [
+    { name: 'Agentic AI Products', href: '/agentic-ai-products' },
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'Products', href: '/products' },
     { name: 'Playbooks', href: '/playbooks' },
-    { name: 'Research', href: '/research' },
+    { name: 'Illustrated Guides', href: '/illustrated-guides' },
     { name: 'About', href: '/about' },
 ];
 

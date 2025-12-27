@@ -29,6 +29,8 @@ export interface ContentItem {
   steps?: Record<string, unknown>[];
   pricing?: Record<string, unknown>[];
   stats?: Record<string, unknown>[];
+  externalUrl?: string;
+  githubUrl?: string;
 }
 
 export interface PlaybookChapter extends ContentItem {
@@ -118,6 +120,8 @@ export async function getAllContent(contentType: string): Promise<ContentItem[]>
           steps: data.steps || [],
           pricing: data.pricing || [],
           stats: data.stats || [],
+          externalUrl: data.externalUrl || '',
+          githubUrl: data.githubUrl || '',
         } as ContentItem;
       })
   );
@@ -182,6 +186,8 @@ export async function getContentBySlug(contentType: string, slug: string): Promi
       steps: data.steps || [],
       pricing: data.pricing || [],
       stats: data.stats || [],
+      externalUrl: data.externalUrl || '',
+      githubUrl: data.githubUrl || '',
     } as ContentItem;
   } catch {
     return null;
@@ -341,3 +347,9 @@ export const getResearchBySlug = (slug: string) => getContentBySlug('research', 
 
 export const getBlogPosts = () => getAllContent('blog');
 export const getBlogPostBySlug = (slug: string) => getContentBySlug('blog', slug);
+
+export const getAgenticAIProducts = () => getAllContent('agentic-ai-products');
+export const getAgenticAIProductBySlug = (slug: string) => getContentBySlug('agentic-ai-products', slug);
+
+export const getIllustratedGuides = () => getAllContent('illustrated-guides');
+export const getIllustratedGuideBySlug = (slug: string) => getContentBySlug('illustrated-guides', slug);
