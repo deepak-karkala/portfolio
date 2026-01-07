@@ -1,0 +1,1141 @@
+body {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: black;
+  background-color: white; /*#eee;*/
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /*font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  margin: 30px 0 10px 0;
+}
+
+/*
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 25px;
+}
+
+@media (min-width: 768px) {
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 0 35px;
+  }
+}
+*/
+
+a {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+a:focus, a:hover {
+  text-decoration: none;
+}
+
+#mainNav {
+  /*font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: black;
+  font-size: 0.75rem;
+}
+
+#mainNav .navbar-toggler {
+  padding-top: 0px;
+  color: white;
+  border: 1px solid white;
+}
+
+#mainNav .navbar-brand {
+}
+
+#mainNav a {
+  color: white;
+}
+
+#mainNav .navbar-nav .nav-item {
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+#mainNav .navbar-nav .nav-item:hover {
+  color: fade(white, 80%);
+  outline: none;
+  background-color: transparent;
+}
+
+#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+#mainNav{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+#mainNav.navbar-shrink{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.fas {
+    font-size: 0.75rem;
+}
+
+.intro_text {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .intro_text {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    -webkit-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+    -moz-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+    transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+    border-bottom: none;
+    background: transparent;
+    background-color: black;
+    font-size: 1rem;
+  }
+  #mainNav.navbar-shrink {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background: black;
+  }
+  #mainNav .nav-link.active {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  #mainNav .nav-link.active:hover {
+    color: white;
+  }
+}
+
+.masthead {
+  display: table;
+  width: 100%;
+  height: 100%; /*auto;*/
+  /*padding: 200px 0;*/
+  text-align: center;
+  color: black;
+  /*background: url("../img/intro-bg.jpg") no-repeat bottom center scroll;*/
+  /*background: url("../img/cover_individual.png") no-repeat center center scroll;*/
+  /*background: url("../docs/covid19_story_cover.mp4") no-repeat top center scroll;*/
+  background-color: #f0f0f0; /*white;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: auto;
+  /*background-origin: border-box;*/
+}
+
+.masthead .intro-body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.masthead .intro-body .brand-heading {
+  padding-top: 0vh;
+  font-size: 3rem;
+  color: black; /*#FF5A60;*/
+}
+
+.masthead .intro-body .intro-text {
+  font-size: 1.5rem;
+}
+
+.heading {
+  padding-top: 8vh;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: white; /*#f0f0f0; /*white;*/
+}
+
+.brand-heading {
+  padding-top: 0vh;
+  font-size: 3rem;
+  color: black; /*#FF5A60;*/
+}
+
+.intro-text {
+  font-size: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+  .masthead {
+    height: 100%;
+    padding: 0;
+  }
+  .brand-heading {
+    font-size: 2rem;
+  }
+  .intro-text {
+    font-size: 0.75rem;
+  }
+}
+
+
+.btn-circle {
+  font-size: 26px;
+  width: 55px;
+  height: 55px;
+  margin-top: 15px;
+  line-height: 45px;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+  color: black;
+  border: 2px solid black;
+  border-radius: 100% !important;
+  background: transparent;
+}
+
+.btn-circle:focus, .btn-circle:hover {
+  color: black;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.content-section {
+  padding-top: 50px; /*150px;*/
+  padding-bottom: 10px; /*150px;*/
+}
+
+.download-section {
+  color: white;
+  background: url("../img/downloads-bg.jpg") no-repeat center center scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+@media (min-width: 992px) {
+  .content-section {
+    padding-top: 50px; /*150px;*/
+    padding-bottom: 10px; /*150px;*/
+  }
+}
+
+/*
+.btn {
+  font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
+.btn-default {
+  color: #42DCA3;
+  border: 1px solid #42DCA3;
+  background-color: transparent;
+}
+
+.btn-default:focus, .btn-default:hover {
+  color: black;
+  border: 1px solid #42DCA3;
+  outline: none;
+  background-color: #42DCA3;
+}
+ul.banner-social-buttons {
+  margin-top: 0;
+}
+
+@media (max-width: 1199px) {
+  ul.banner-social-buttons {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  ul.banner-social-buttons li {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  ul.banner-social-buttons li:last-child {
+    margin-bottom: 0;
+  }
+}
+*/
+
+footer {
+  background-color: #dadada;
+  margin-top: 50px;
+  padding: 50px 0 20px 0;
+  color: black;
+  font-size: 0.85rem;
+}
+
+footer p {
+  font-size: 0.75rem;
+}
+
+#conclusion {
+  font-size: 1rem;
+}
+
+::-moz-selection {
+  background: #fcfcfc;
+  background: rgba(255, 255, 255, 0.2);
+  text-shadow: none;
+}
+
+::selection {
+  background: #fcfcfc;
+  background: rgba(255, 255, 255, 0.2);
+  text-shadow: none;
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+/*
+.button {
+  min-width: 100px;
+  padding: 3px 2px;
+  margin: 2px;
+  cursor: pointer;
+  text-align: center;
+  font-family: Times New Roman;
+  font-weight: bold;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  background: #f1e0d6;
+  color: black;
+}
+
+.button.active {
+  background: #000;
+  color: #fff;
+  border: 1px solid #ffffff;
+}
+*/
+
+/*
+.dropdown_menu {
+  padding-left: 50px;
+  background-color: #f1e0d6;
+  font-family: Times New Roman;
+  font-weight: bold;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  background: #f1e0d6;
+  color: black;
+  height: 30px;
+}
+*/
+
+select {
+  /* styling */
+  background-color: white;
+  border: thin solid blue;
+  border-radius: 2px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 2.5em 0.5em 1em;
+
+  /* reset */
+
+  margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select.classic {
+  background-image:
+    linear-gradient(45deg, transparent 50%, black 50%),
+    linear-gradient(135deg, black 50%, transparent 50%),
+    linear-gradient(to right, skyblue, skyblue);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    100% 0;
+  background-size:
+    5px 5px,
+    5px 5px,
+    2.5em 2.5em;
+  background-repeat: no-repeat;
+}
+
+.article_author { 
+  color: #F27200;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1.0rem;
+}
+
+.article_date {
+  color: #F27200;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.title_buttons{
+  display: block;
+}
+.button {
+  /*min-width: 130px;*/
+  padding: 8px 8px;
+  margin: 3px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.90rem;
+  font-weight: bold;
+  border: 1px solid #8f8f8f; /*#ffffff;*/
+  background: #e8e8e8; /*#f1e0d6;*/
+  color: black;
+  /*text-decoration: underline;*/
+  border-radius: 6px;
+}
+
+.button.active {
+  background: #000;
+  color: #fff;
+  border: 1px solid #ffffff;
+}
+
+.section_title {
+  text-align: center;
+}
+
+.section_subtitle {
+  margin-top: 5px;
+  padding-top: 0px;
+}
+
+
+/* Scrolly */
+/* Sticky overlay */
+/*
+#scrolly {
+  position: relative;
+  background-color: black; 
+  padding: 1rem;
+}
+article {
+  position: relative;
+  padding: 0;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+figure {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  background-color: black; 
+}
+figure p {
+  text-align: center;
+  padding: 1rem;
+  position: absolute;
+  top: 50%
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 8rem;
+  font-weight: 900;
+  color: #fff;
+}
+.step {
+  margin: 0 auto 0.5rem auto;
+  color: #fff;
+  background-color: transparent; 
+}
+.step:last-child {
+  margin-bottom: 0;
+}
+.step.is-active p {
+  background-color: transparent; 
+  color: white; 
+}
+.step p {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  background-color: transparent; 
+}
+*/
+
+
+
+
+/* Daily cases and deaths */
+.tooltip_daily_cases_deaths {   
+  position: absolute;           
+  text-align: center;           
+  width: 180px;                  
+  height: 25px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
+.rolling_avg_line {
+  fill: none;
+  stroke: #e50000;
+  stroke-width: 3px;
+}
+
+.total_cases_death_line {
+  fill: none;
+  stroke: #cc0000; /*steelblue;*/
+  stroke-width: 2px;
+}
+
+.total_cases_death_line {
+  fill: none;
+  stroke: #ffb2b2; /*steelblue;*/
+  stroke-width: 2px;
+}
+
+.div_fig_background {
+  background-color: #ededed;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 3px 3px 5px 2px rgba(0,0,0,0.2);
+}
+
+.div_fig_background:hover {
+    -webkit-box-shadow: 3px 3px 5px 2px #999;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    3px 3px 5px 2px #999;  /* Firefox 3.5 - 3.6 */
+    box-shadow:         3px 3px 5px 2px #999;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+    opacity: 1;
+}
+
+#india_districts_basic_map {
+    /*background-color: #efefef; /*rgba(255,0,0,0.0);*/
+}
+
+.india_cases_map, .india_deaths_map {
+  background-color: #efefef;
+}
+
+.map_option_button {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: #e8e8e8; /*#66d8ff;*/
+  border: 0.5px solid #a0a0a0;
+  border-radius: 8px;
+}
+
+.map_option_button.active {
+  background-color: white;
+}
+
+/* Flattening curve */
+.tooltip_flattening_curve {   
+  position: absolute;           
+  text-align: center;           
+  width: 150px;                  
+  height: 60px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+.state_name {
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+.state_name_streamgraph {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.case_count_info {
+  color: #ff0000;
+}
+
+.show_all_button {
+  background-color: #33acdd;
+  padding: 2px 4px;
+}
+
+.what_to_look_for_container {
+  margin: 10px 0;
+  background-color: #ffffd8;
+  font-size: 1rem;
+}
+
+.what_to_look_for_title, .takeaway_title {
+  font-weight: bold;
+}
+
+.takeaway_container {
+  margin: 10px 0;
+  background-color: #FFA07A;
+  font-size: 1rem;
+}
+
+#flattening_curve_legend {
+  height: 20px;
+  font-size: 0.75rem;
+}
+
+.legend_text {
+  font-size: 0.75rem;
+}
+
+.chart_text {
+  font-size: 0.5rem;
+}
+
+/* Top hotspots */
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}
+
+.div_table_background {
+  background-color: #ededed;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 3px 3px 5px 2px rgba(0,0,0,0.2);
+}
+
+.div_table_background:hover {
+    -webkit-box-shadow: 3px 3px 5px 2px #999;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    3px 3px 5px 2px #999;  /* Firefox 3.5 - 3.6 */
+    box-shadow:         3px 3px 5px 2px #999;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+    opacity: 1;
+}
+
+.label_histogram {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+}
+
+/* Table */
+.table-header {
+  font-size: 0.75rem;
+}
+
+.top_hotspots_table {
+  font-size: 0.75rem;
+}
+
+
+/* Case density */
+.case_density_curve {
+  position: relative;
+}
+
+.tooltip_case_density {
+  position: absolute;           
+  text-align: center;           
+  width: 200px;                  
+  height: 60px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+/* Emerging hotspots map */
+#slider_cases_handle, #slider_growth_handle, #slider_density_handle {
+    width: 2.5em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+    font-size: 1.0rem;
+    background-color: white;
+    color: #000;
+    border: 1px solid #33acdd;
+  }
+
+
+#slider_cases, #slider_growth, #slider_density {
+  border: 1px solid #33acdd;
+}
+
+.slider_top {
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.css-icon {
+
+  }
+
+  .gps_ring { 
+    border: 3px solid #999;
+     -webkit-border-radius: 30px;
+     height: 18px;
+     width: 18px;   
+      -webkit-animation: pulsate 1s ease-out;
+      -webkit-animation-iteration-count: infinite; 
+      /*opacity: 0.0*/
+  }
+  
+  @-webkit-keyframes pulsate {
+        0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+        50% {opacity: 1.0;}
+        100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+  }
+
+/* State fatality */
+.tick line{
+  visibility:hidden;
+}
+
+.tooltip_state_fatality_rate {
+  position: absolute;           
+  text-align: center;           
+  width: 180px;                  
+  height: 120px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+.state_fatality_text {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+}
+
+.state_fatality_label {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+}
+
+/* Outbreak free districts */
+.tooltip_outbreak_free_districts {
+  position: absolute;           
+  text-align: center;           
+  width: 120px;                  
+  height: 50px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+/* Recovery rate */
+.legend_text {
+  font-size: 0.75rem;
+}
+
+
+/* Cluster table */
+.cluster_table_heading {
+  font-weight: bold;
+}
+
+/* Cluster network map */
+.countries {
+  fill: #eee;
+  stroke: #fff; /* #aaa;*/
+  stroke-linejoin: round;
+}
+
+.country_focus {
+  fill: #ecf7fc; /*#c9e9f6;*/
+  stroke: #000;
+}
+
+#takeaway_container_cluster_map {
+  text-align: left;
+}
+/*
+.network_arc {
+  stroke-dasharray: 0;
+}
+*/
+
+/* District case count */
+.district_daily_case_count_state_name {
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  font-weight: bold;
+}
+
+.tooltip_district_daily_case_count {
+  position: absolute;           
+  text-align: center;           
+  width: 100px;                  
+  height: 50px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+.district_daily_state_name{
+  font-size: 0.75rem;
+}
+.district_daily_case_count_info {
+  font-size: 0.75rem;
+  color: red;
+}
+
+
+/* State testing rate */
+.state_type_rect_text {
+  color: "red";
+}
+
+
+/* State streamgraph */
+.tooltip_state_streamgraph {
+  position: absolute;           
+  text-align: center;           
+  width: 120px;                  
+  height: 50px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+/* Outbreak spread*/
+.tooltip_outbreak_spread {
+  position: absolute;           
+  text-align: center;           
+  width: 120px;                  
+  height: 50px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+/*India vs world*/
+.tooltip_country_daily_case_count {
+  position: absolute;           
+  text-align: center;           
+  width: 100px;                  
+  height: 50px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+/* Country testing */
+.tooltip_country_testing_rate {
+  position: absolute;           
+  text-align: center;           
+  width: 180px;                  
+  height: 90px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+/* State case count */
+.tooltip_state_case_count {
+  position: absolute;           
+  text-align: center;           
+  width: 180px;                  
+  height: 70px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+/* Scroll */
+.tooltip_scroll {
+  position: absolute;           
+  text-align: center;           
+  width: 180px;                  
+  height: 40px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+.tooltip_outbreak_spread_scroll {
+  position: absolute;           
+  text-align: center;           
+  width: 180px;                  
+  height: 40px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+.tooltip_scroll_state_circles {
+  position: absolute;           
+  text-align: center;           
+  width: 180px;                  
+  height: 100px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white; /*#c8c8c8;*/
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+.tooltip_scroll_country_circles {
+  position: absolute;           
+  text-align: center;           
+  width: 180px;                  
+  height: 100px;                 
+  font-size: 0.75rem;
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;        
+  background: white;   
+  border: 2px;      
+  border-radius: 3px;           
+  pointer-events: none;
+  color: black;
+  border-color: black;
+  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px;
+}
+
+.prediction_model_img img {
+  width: 100%;
+  height: auto;
+}
+
+.scenario_title {
+  font-size: 1.0rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.prediction_cases {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.prediction_deaths {
+  color: #0000ff;
+  font-weight: bold;
+}
+
+.scroll_circle_country_name, .scroll_circle_state_name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.scroll_circle_state_fact {
+  color: red;
+}
+.country_type_rect {
+  z-index: 0;
+}
+.scroll_country_circles {
+  z-index: 10;
+}
+
+.state_scroll_xaxis, .state_scroll_yaxis, .state_scroll_xaxis_label, .state_scroll_yaxis_label,
+.country_scroll_yaxis_label, .country_scroll_xaxis_label, .country_scroll_yaxis, .country_scroll_xaxis {
+  font-family: 'Lora', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.conclusion {
+  margin-top: 20px;
+}
+
+.cluster_map_legend {
+  font-size: 0.75rem;
+}
+
+.cluster_video video {
+  width: 100%;
+  height: auto;
+}
+
+.intro_text {
+  text-align: center;
+}
+
+.cover_img video {
+  width: 100%;
+  height: auto;
+}
+
+#outbreak_spread_animation_button {
+  margin: 10px 0; 
+  color: white;
+  background-color: #E74C3C;
+}
+
+#outbreak_free_animation_button {
+  margin: 10px 0; 
+  color: white;
+  background-color: #E74C3C;
+}
+
+.play_again_button {
+  font-size: 0.75rem;
+  padding: 2px;
+}
