@@ -3,6 +3,10 @@ import {
   getPlaybookChapterBySlug,
   getPlaybookChapters,
   getPlaybooks,
+  getAwsCategories,
+  getAwsCategoryServices,
+  getAwsCategoryComparison,
+  type AwsCategory,
 } from '@/lib/content';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -30,9 +34,223 @@ export async function generateStaticParams() {
   return params.flat();
 }
 
+// AWS Sidebar Component
+async function AwsSidebar({
+  categories,
+  activeCategory,
+  activeService,
+}: {
+  categories: AwsCategory[];
+  activeCategory?: string;
+  activeService?: string;
+}) {
+  // Get services for the active category only to improve performance
+  const categoriesWithServices = await Promise.all(
+    categories.map(async (cat) => {
+      if (cat.slug === activeCategory) {
+        return {
+          ...cat,
+          services: await getAwsCategoryServices(cat.slug),
+        };
+      }
+      return { ...cat, services: [] };
+    })
+  );
+
+  return (
+    <div className="card sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
+      <h2
+        className="text-xl font-bold mb-4"
+        style={{ color: 'var(--color-foreground)' }}
+      >
+        Categories
+      </h2>
+      <nav className="space-y-2">
+        {categoriesWithServices.map((category) => {
+          const isActive = category.slug === activeCategory;
+
+          return (
+            <div key={category.slug}>
+              {/* Category header */}
+              <Link
+                href={`/playbooks/aws-for-mlops/${category.slug}`}
+                className="block px-4 py-2 rounded transition-all duration-200"
+                style={{
+                  backgroundColor: isActive ? 'color-mix(in srgb, var(--color-secondary) 20%, transparent)' : 'transparent',
+                  borderColor: isActive ? 'var(--color-secondary)' : 'transparent',
+                  color: isActive ? 'var(--color-foreground)' : 'var(--color-primary)',
+                }}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold">{category.title}</span>
+                  {/* Dropdown arrow */}
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${isActive ? 'rotate-90' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </Link>
+
+              {/* Expandable services list */}
+              {isActive && category.services.length > 0 && (
+                <div className="ml-4 mt-2 space-y-1">
+                  {category.services.map((service) => (
+                    <Link
+                      key={service.slug}
+                      href={`/playbooks/aws-for-mlops/${category.slug}/${service.slug}`}
+                      className="block px-3 py-1 text-sm rounded transition-all duration-200"
+                      style={{
+                        backgroundColor:
+                          service.slug === activeService
+                            ? 'color-mix(in srgb, var(--color-accent) 20%, transparent)'
+                            : 'transparent',
+                        color:
+                          service.slug === activeService
+                            ? 'var(--color-accent)'
+                            : 'var(--color-primary)',
+                      }}
+                    >
+                      {service.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </nav>
+    </div>
+  );
+}
+
+// AWS Category Page Component
+async function AwsCategoryPage({ categorySlug }: { categorySlug: string }) {
+  const [categories, services, comparison] = await Promise.all([
+    getAwsCategories(),
+    getAwsCategoryServices(categorySlug),
+    getAwsCategoryComparison(categorySlug),
+  ]);
+
+  const currentCategory = categories.find((cat) => cat.slug === categorySlug);
+
+  if (!currentCategory) {
+    notFound();
+  }
+
+  return (
+    <div className="min-h-screen py-12">
+      <div className="max-w-6xl mx-auto px-4 lg:px-8 xl:px-0">
+        {/* Breadcrumb */}
+        <div className="mb-8">
+          <Link
+            href="/playbooks/aws-for-mlops"
+            className="text-sm hover:opacity-80 transition-opacity"
+            style={{ color: 'var(--color-primary)' }}
+          >
+            ← Back to AWS for MLOps
+          </Link>
+        </div>
+
+        <div className="lg:grid lg:grid-cols-12 lg:gap-6 xl:gap-10">
+          {/* Sidebar with expandable categories */}
+          <aside className="lg:col-span-4 xl:col-span-3 mb-8 lg:mb-0">
+            <AwsSidebar categories={categories} activeCategory={categorySlug} />
+          </aside>
+
+          {/* Main content */}
+          <article className="lg:col-span-8 xl:col-span-9">
+            <header className="mb-10">
+              <h1
+                className="text-4xl font-bold mb-3"
+                style={{ color: 'var(--color-foreground)' }}
+              >
+                {currentCategory.title}
+              </h1>
+              <p className="text-lg" style={{ color: 'var(--color-primary)' }}>
+                {services.length} service{services.length !== 1 ? 's' : ''} in this category
+              </p>
+            </header>
+
+            {/* Service list */}
+            <div className="space-y-4 mb-12">
+              {services.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/playbooks/aws-for-mlops/${categorySlug}/${service.slug}`}
+                  className="card block hover:shadow-xl transition-all duration-300 group"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h3
+                        className="text-2xl font-bold mb-2 group-hover:opacity-80 transition-opacity"
+                        style={{ color: 'var(--color-foreground)' }}
+                      >
+                        {service.title}
+                      </h3>
+                      {service.summary && (
+                        <p
+                          className="text-base"
+                          style={{ color: 'var(--color-primary)' }}
+                        >
+                          {service.summary}
+                        </p>
+                      )}
+                    </div>
+                    <span
+                      className="text-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity"
+                      style={{ color: 'var(--color-accent)' }}
+                    >
+                      →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            {/* Comparison section */}
+            {comparison && (
+              <div className="card mt-12">
+                <h2
+                  className="text-3xl font-bold mb-6"
+                  style={{ color: 'var(--color-foreground)' }}
+                >
+                  Service Comparison Guide
+                </h2>
+                <div
+                  className="markdown-body"
+                  dangerouslySetInnerHTML={{ __html: comparison }}
+                />
+              </div>
+            )}
+          </article>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default async function PlaybookChapterPage({ params }: PlaybookChapterPageProps) {
   const { slug, chapterSlug } = await params;
 
+  // Check if this is AWS playbook
+  if (slug === 'aws-for-mlops') {
+    const categories = await getAwsCategories();
+    const isCategory = categories.some((cat) => cat.slug === chapterSlug);
+
+    if (isCategory) {
+      // Render category page
+      return <AwsCategoryPage categorySlug={chapterSlug} />;
+    } else {
+      // It's not a category, so it should be handled by the service route
+      notFound();
+    }
+  }
+
+  // Original logic for other playbooks
   const [playbook, chapter, chapters] = await Promise.all([
     getPlaybookBySlug(slug),
     getPlaybookChapterBySlug(slug, chapterSlug),
@@ -62,7 +280,7 @@ export default async function PlaybookChapterPage({ params }: PlaybookChapterPag
 
         <div className="lg:grid lg:grid-cols-12 lg:gap-6 xl:gap-10">
           <aside className="lg:col-span-4 xl:col-span-3 mb-8 lg:mb-0">
-            <div className="card sticky top-24">
+            <div className="card sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
               <h2
                 className="text-xl font-bold mb-4"
                 style={{ color: 'var(--color-foreground)' }}

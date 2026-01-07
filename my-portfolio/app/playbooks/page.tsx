@@ -26,80 +26,20 @@ export default async function PlaybooksPage() {
           {playbooks.length > 0 ? (
             playbooks.map((playbook) => (
               <Link href={`/playbooks/${playbook.slug}`} key={playbook.slug}>
-                <div className="card hover:shadow-lg transition-all duration-300 cursor-pointer group h-full flex flex-col">
-                  <div className="flex justify-between items-start mb-4">
-                    <span
-                      className="px-3 py-1 rounded-full text-sm font-medium"
-                      style={{
-                        backgroundColor: 'var(--color-secondary)',
-                        color: 'var(--color-foreground)',
-                      }}
-                    >
-                      {playbook.status || 'In Progress'}
-                    </span>
-                    {playbook.level && (
-                      <span
-                        className="text-sm"
-                        style={{ color: 'var(--color-primary)' }}
-                      >
-                        {playbook.level}
-                      </span>
-                    )}
-                  </div>
-
+                <div className="card hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer group">
                   <h3
-                    className="text-2xl font-bold mb-3 group-hover:opacity-80 transition-opacity"
-                    style={{ color: 'var(--color-foreground)' }}
+                    className="text-2xl font-bold mb-3 group-hover:opacity-90 transition-opacity"
+                    style={{ color: 'var(--color-accent)' }}
                   >
                     {playbook.title}
                   </h3>
 
                   <p
-                    className="mb-6 text-base flex-1"
+                    className="text-base"
                     style={{ color: 'var(--color-primary)' }}
                   >
                     {playbook.summary}
                   </p>
-
-                  {playbook.techStack && playbook.techStack.length > 0 && (
-                    <div className="mb-6">
-                      <div className="flex flex-wrap gap-2">
-                        {playbook.techStack.slice(0, 4).map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-2 py-1 rounded text-xs"
-                            style={{
-                              backgroundColor: 'var(--color-card-bg)',
-                              color: 'var(--color-foreground)',
-                              border: '1px solid var(--color-card-border)',
-                            }}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {playbook.techStack.length > 4 && (
-                          <span
-                            className="text-xs"
-                            style={{ color: 'var(--color-primary)' }}
-                          >
-                            +{playbook.techStack.length - 4} more
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm" style={{ color: 'var(--color-primary)' }}>
-                      {playbook.date}
-                    </span>
-                    <span
-                      className="text-sm font-medium"
-                      style={{ color: 'var(--color-accent)' }}
-                    >
-                      View Curriculum →
-                    </span>
-                  </div>
                 </div>
               </Link>
             ))

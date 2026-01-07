@@ -9,7 +9,7 @@ level: 'Advanced'
 excerpt: 'A multi-chapter guide covering the fundamentals and operational practices for deploying autonomous AI agents in production'
 ---
 
-## Playbook Overview
+### Playbook Overview
 
 This playbook distills my end-to-end framework for designing, building, and operating production-grade AI agents. It blends architectural blueprints, operational checklists, and real-world battle scars into a structured guide for technical leaders.
 
@@ -19,9 +19,6 @@ This playbook distills my end-to-end framework for designing, building, and oper
 - AI Engineers migrating from RAG/Pipelines to agentic systems
 - Engineering teams that need an opinionated framework for experimentation, evaluation, and governance
 
-### How To Use This Playbook
-
-Each chapter combines deep technical guidance with pragmatic best practices. I recommend working through the material sequentially, since later chapters assume familiarity with earlier concepts and shared vocabulary.
 
 ### What You Will Learn
 
@@ -30,3 +27,14 @@ By the end of this playbook you will have:
 1. A precise definition of what a true AI agent is (and is not), plus a reusable blueprint for reasoning, planning, and tool integration.
 2. A production-ready AgentOps workflow covering instrumentation, observability, evaluation harnesses, and governance guardrails.
 3. Frameworks and scorecards that help qualify agent use cases before you commit to building.
+
+### A Note on This Playbook
+
+In my 5 years of experience as a Machine Learning Engineer, I've noticed a significant gap between academic tutorials and the realities of production MLOps. Many guides stop at deploying a model in a FastAPI container, leaving aspiring engineers without the strategic frameworks and practical insights needed for building robust, end-to-end systems.
+
+This playbook is a sincere attempt to provide a practitioner's blueprint for production machine learning, moving beyond the code to explore the critical decision-making, trade-offs, and challenges involved. My goal is to eventually expand this work into a comprehensive, project-based MLOps course.
+
+**Important Disclaimers:**
+
+- **On Authenticity**: The methodologies and frameworks shared here are drawn directly from my professional experience.
+- **On Collaboration**: These posts were created with the assistance of AI for diagram, code and prose generation. The strategic framing, project context, and real-world insights that guide the content are entirely my own.
