@@ -10,7 +10,7 @@ export async function generateMetadata() {
 }
 
 export default async function ProductBusinessPage() {
-    const content = await getAgenticAIProductBySlug('product/agentic_ai_product_business_playbook_portfolio');
+    const content = await getAgenticAIProductBySlug('product/agentic_ai_product_business_playbook');
 
     return (
         <div className="min-h-screen py-12">

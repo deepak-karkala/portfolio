@@ -10,7 +10,7 @@ export async function generateMetadata() {
 }
 
 export default async function ContextEngineeringPage() {
-    const content = await getAgenticAIProductBySlug('context_engineering/context_engineering_portfolio_layout');
+    const content = await getAgenticAIProductBySlug('context_engineering/context_engineering_playbook');
 
     return (
         <div className="min-h-screen py-12">

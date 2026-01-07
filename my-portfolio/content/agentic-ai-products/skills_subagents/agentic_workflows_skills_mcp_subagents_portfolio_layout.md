@@ -9,7 +9,6 @@ updated: "2025-12-20"
 <!-- Hero -->
 <!-- ========================= -->
 
-# 🧩 Agentic Workflows Playbook  
 **Skills × MCP × Project Context × Subagents**  
 Build agents that are *reliable, governable, and scalable*—without turning your prompt into a monolith.
 
@@ -45,50 +44,23 @@ Build agents that are *reliable, governable, and scalable*—without turning you
 <!-- Card Grid 1: Mental Model -->
 <!-- ========================= -->
 
-## 🧠 Mental model {#mental-model}
+## Mental model {#mental-model}
 
-<div class="card-grid">
+### The 4 layers
+![Agentic workflows layer diagram](/agentic-ai-products/skills_subagents/1.png)
 
-<div class="card">
-
-### 🔩 The 4 layers
-```mermaid
-flowchart TB
-  U[User intent] --> P[Prompting & UX]
-  P --> C[Project Context\n(static + retrieved)]
-  C --> K[Skills\n(procedures + scripts + templates)]
-  K --> E[Subagents\n(execution roles + permissions)]
-  E --> T[MCP servers\n(data + tools)]
-  T --> O[Outputs]
-  O --> Obs[Observability\ntraces + evals + audit]
-  Obs --> K
-  Obs --> E
-```
-
-</div>
-
-<div class="card">
-
-### 🧾 One sentence each
+### One sentence each
 - **Project Context**: persistent *background* for a workspace  
 - **Skills**: reusable *procedures* + optional scripts (load on-demand)  
 - **Subagents**: specialized workers with isolated context + tool permissions  
 - **MCP**: standardized connectors to external data & tools  
 
-</div>
-
-<div class="card">
-
-### 🎯 Your north-star
+### Your north-star
 Agents are production-ready when they:
 - **route correctly** (right tool/skill/agent)
 - **cite and validate** (no silent guesses)
 - **operate safely** (least privilege + approvals)
 - **improve over time** (failure capture → regression evals)
-
-</div>
-
-</div>
 
 ---
 
@@ -96,31 +68,12 @@ Agents are production-ready when they:
 <!-- Card Grid 2: Choosing Blocks -->
 <!-- ========================= -->
 
-## 🧭 Choosing the right building block {#choosing-blocks}
+## Choosing the right building block {#choosing-blocks}
 
-<div class="card-grid">
+### Decision tree
+![Building block decision tree](/agentic-ai-products/skills_subagents/2.png)
 
-<div class="card">
-
-### 🌳 Decision tree
-```mermaid
-flowchart TD
-  Q[What do you need?] --> A{Persistent background\nabout a specific initiative?}
-  A -->|Yes| P[Project Context]
-  A -->|No| B{Reusable procedure\nor standard output?}
-  B -->|Yes| S[Skill]
-  B -->|No| C{Access external tools/data?}
-  C -->|Yes| M[MCP]
-  C -->|No| D{Specialized execution\n+ tool sandboxing?}
-  D -->|Yes| SA[Subagent]
-  D -->|No| PR[Prompt]
-```
-
-</div>
-
-<div class="card">
-
-### 📊 Quick comparison
+### Quick comparison
 | Component | Best for | Main control |
 |---|---|---|
 | Prompt | one-off steering | prompt hygiene |
@@ -129,19 +82,11 @@ flowchart TD
 | Subagent | specialization + permissions | allowlists + HITL |
 | MCP | tool/data integration | auth + scopes + audit |
 
-</div>
-
-<div class="card">
-
-### ⚠️ Anti-patterns
+### Anti-patterns
 - stuffing **procedures** into project context  
 - turning a single skill into “everything”  
 - giving subagents broad write permissions by default  
 - using MCP for *reasoning* instead of *access*
-
-</div>
-
-</div>
 
 ---
 
@@ -149,11 +94,7 @@ flowchart TD
 <!-- Card Grid 3: Design Process -->
 <!-- ========================= -->
 
-## 🧱 Workflow design process {#design-process}
-
-<div class="card-grid">
-
-<div class="card">
+## Workflow design process {#design-process}
 
 ### 1) Map outcomes → verbs
 - Outcome artifact/action
@@ -161,10 +102,6 @@ flowchart TD
 - Agent verbs (plan/search/draft/validate/publish)
 - Quality bars
 - Constraints (cost/privacy/time)
-
-</div>
-
-<div class="card">
 
 ### 2) Split responsibilities
 | Concern | Default home |
@@ -175,28 +112,9 @@ flowchart TD
 | execution roles | Subagents |
 | ambiguity | UX/Prompts |
 
-</div>
-
-<div class="card">
-
 ### 3) Pick orchestration
 Router → Planner/Executor → Reviewer → HITL  
-```mermaid
-flowchart LR
-  I[Request] --> R[Router]
-  R --> P[Planner]
-  P --> X[Executors/Subagents]
-  X --> V[Verifier/Critic]
-  V -->|pass| A[Action]
-  V -->|fail| P
-  A --> H{Approval?}
-  H -->|Yes| U[User] --> A2[Execute/Publish]
-  H -->|No| A2
-```
-
-</div>
-
-</div>
+![Orchestration flow diagram](/agentic-ai-products/skills_subagents/3.png)
 
 ---
 
@@ -204,10 +122,9 @@ flowchart LR
 <!-- Collapsibles: Deep Dives -->
 <!-- ========================= -->
 
-## 📦 Deep dives (expand as needed)
+## Deep dives
 
-<details id="skills">
-<summary><strong>🧰 Skills playbook</strong> — encode “how we do this”</summary>
+### Skills playbook — encode “how we do this” {#skills}
 
 ### What makes a skill trigger reliably
 - include verbs + inputs + outputs + boundaries  
@@ -252,10 +169,7 @@ Build 6–10 signature skills:
 - rubric-based reviewers  
 - domain SOPs (shipping, deploy, incident)  
 
-</details>
-
-<details id="context">
-<summary><strong>📚 Project Context playbook</strong> — persistent background, not a dumping ground</summary>
+### Project Context playbook — persistent background, not a dumping ground {#context}
 
 ### Three-tier context
 1. Always-on: glossary, overview, constraints, guardrails  
@@ -267,10 +181,7 @@ Build 6–10 signature skills:
 - decision log (ADRs)  
 - version assets; link instead of copy  
 
-</details>
-
-<details id="subagents">
-<summary><strong>🧑‍🤝‍🧑 Subagents playbook</strong> — specialization + safe autonomy</summary>
+### Subagents playbook — specialization + safe autonomy {#subagents}
 
 ### Use subagents when you need:
 - parallelism  
@@ -295,26 +206,10 @@ policy:
 | 2 | reversible actions | allowlist + rollback |
 | 3 | execute + iterate | eval gates |
 
-</details>
-
-<details id="mcp">
-<summary><strong>🔌 MCP playbook</strong> — tools + data integration</summary>
+### MCP playbook — tools + data integration {#mcp}
 
 ### Sequence
-```mermaid
-sequenceDiagram
-  participant Host as Agent host
-  participant Client as MCP client
-  participant Server as MCP server
-  participant Sys as External system
-
-  Host->>Client: tool call
-  Client->>Server: request
-  Server->>Sys: action
-  Sys-->>Server: result
-  Server-->>Client: response
-  Client-->>Host: tool output
-```
+![MCP sequence diagram](/agentic-ai-products/skills_subagents/4.png)
 
 ### Put behind MCP
 - systems of record (Drive/Jira/GitHub/DB)  
@@ -327,15 +222,13 @@ sequenceDiagram
 - tool-call logging  
 - treat tool outputs as untrusted text  
 
-</details>
-
 ---
 
 <!-- ========================= -->
 <!-- Failure Modes + Governance -->
 <!-- ========================= -->
 
-## 🧯 Failure modes & mitigations {#failure-modes}
+## Failure modes & mitigations {#failure-modes}
 
 | What breaks | Detection | Constraint | Prevent regression |
 |---|---|---|---|
@@ -348,7 +241,7 @@ sequenceDiagram
 
 ---
 
-## 🛡️ Governance posture {#governance}
+## Governance posture {#governance}
 
 **Default:** Humans own irreversible actions; agents own drafting & reversible ops.
 
@@ -368,7 +261,7 @@ Feature flags + canaries + fast rollback
 
 ---
 
-## ✅ Ship checklists {#checklists}
+## Ship checklists {#checklists}
 
 **Before launch**
 - [ ] workflow map + metrics  
@@ -387,26 +280,8 @@ Feature flags + canaries + fast rollback
 
 ---
 
-## 🏗️ Reference architecture {#reference-architecture}
+## Reference architecture {#reference-architecture}
 
-```mermaid
-flowchart TB
-  UI[Chat UI\n+ artifact panel] --> O[Orchestrator\n(router + planner)]
-  O --> C[Project Context\n(KB + RAG)]
-  O --> S[Skill Library\n(SKILL.md + scripts)]
-  O --> A1[Subagent: Research]
-  O --> A2[Subagent: Build]
-  O --> A3[Subagent: Review]
-  A1 --> M1[MCP: Docs/Search]
-  A2 --> M2[MCP: Repo/CI]
-  A3 --> M3[MCP: Policy/Security]
-  O --> Obs[Tracing + Evals + Audit]
-  Obs --> S
-  Obs --> C
-```
+![Reference architecture diagram](/agentic-ai-products/skills_subagents/5.png)
 
 ---
-
-### 🔗 Downloads / reuse
-- Use this page as-is, or copy into your site markdown renderer.
-- The “standard playbook” markdown is also available as a standalone file (see downloadable link in chat).

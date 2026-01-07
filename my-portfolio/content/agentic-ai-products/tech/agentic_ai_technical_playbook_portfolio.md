@@ -6,9 +6,6 @@ last_updated: "2025-12-20"
 
 <a id="top"></a>
 
-# Technical Playbook — Building Effective Agentic AI Systems
-**Production patterns for reliability, safety, evals, observability, and governance**
-
 > **Audience:** Senior Tech Leads • CTOs • AI/MLOps Engineers • Product Leaders  
 > **Promise:** Ship the *smallest* agent that solves the job — and make it **safe, observable, and governable**.
 
@@ -73,28 +70,7 @@ Agents are engineered from **four primitives**:
 3. **Memory/Data** — what it knows (session, RAG, long-term)
 4. **Orchestration** — how it plans/loops (routing, planners, subagents)
 
-```mermaid
-flowchart TB
-  U[User] --> UI[Copilot UI]
-  UI --> R[Agent Runtime]
-
-  subgraph R[Agent Runtime]
-    I[Instructions\n(system prompt + policies)]
-    O[Orchestrator\n(router/planner)]
-    T[Tools\n(functions/APIs/MCP)]
-    M[Memory\n(session + RAG + long-term)]
-    V[Verifier & Guardrails\nvalidate + stop rules]
-  end
-
-  I --> O
-  O --> T
-  O --> M
-  O --> V
-  T --> W[(World / Systems)]
-  W --> T
-  R --> Obs[Observability\ntraces + metrics]
-  R --> E[Evals\nCI + staging + prod]
-```
+![Agent runtime primitives diagram](/agentic-ai-products/tech/1.png)
 
 <div class="callout">
 <strong>Mental model:</strong> every failure maps to one primitive. Fix the primitive — don’t just tweak prompts.
@@ -103,82 +79,32 @@ flowchart TB
 ---
 
 <a id="cards"></a>
-## Playbook cards (3 grids)
+## Playbook cards (Key Principles)
 
-### Grid 1 — Core mental models
-<div class="card-grid">
-<div class="card">
+### Core mental models
 
-### 🧠 Autonomy ladder
-Start simple; earn autonomy via eval evidence.
+- **Autonomy ladder:** Start simple; earn autonomy via eval evidence.
+- **Four primitives:** Instructions • Tools • Memory • Orchestration.
+- **Glass-box agents:** Traces + metrics + replayability from day 1.
 
-</div>
-<div class="card">
+### Reliability & safety
 
-### 🧩 Four primitives
-Instructions • Tools • Memory • Orchestration.
+- **Layered guardrails:** Input → tool gating → output validation → stop rules.
+- **Tool contracts:** Typed IO, strict parsing, budgets, idempotency, rollback.
+- **Evals as a pipeline:** CI → staging → prod monitoring; failures become tests.
 
-</div>
-<div class="card">
+### Governance & rollout
 
-### 🔍 Glass-box agents
-Traces + metrics + replayability from day 1.
-
-</div>
-</div>
-
-### Grid 2 — Reliability & safety
-<div class="card-grid">
-<div class="card">
-
-### 🛡️ Layered guardrails
-Input → tool gating → output validation → stop rules.
-
-</div>
-<div class="card">
-
-### ✅ Tool contracts
-Typed IO, strict parsing, budgets, idempotency, rollback.
-
-</div>
-<div class="card">
-
-### 🧪 Evals as a pipeline
-CI → staging → prod monitoring; failures become tests.
-
-</div>
-</div>
-
-### Grid 3 — Governance & rollout
-<div class="card-grid">
-<div class="card">
-
-### 🔐 Least privilege
-Deny-by-default tools, role-based capabilities, scoped creds.
-
-</div>
-<div class="card">
-
-### 👤 HITL approvals
-Interrupt + resume for high-risk actions; clear escalation.
-
-</div>
-<div class="card">
-
-### 🚦 Safe shipping
-Flags → canaries → A/B → rollback → kill switch.
-
-</div>
-</div>
+- **Least privilege:** Deny-by-default tools, role-based capabilities, scoped creds.
+- **HITL approvals:** Interrupt + resume for high-risk actions; clear escalation.
+- **Safe shipping:** Flags → canaries → A/B → rollback → kill switch.
 
 ---
 
 <a id="orchestration"></a>
 ## Orchestration ladder (start simple)
-<details>
-<summary><strong>Show ladder + when to use each level</strong></summary>
 
-**Rule:** Don’t build a multi-agent “society” until you’ve proven a single agent fails.
+**Rule:** Don't build a multi-agent "society" until you've proven a single agent fails.
 
 | Level | Pattern | Use when | Main risk |
 |---:|---|---|---|
@@ -189,45 +115,26 @@ Flags → canaries → A/B → rollback → kill switch.
 | 5 | Orchestrator–workers | dynamic decomposition | coordination bugs |
 | 6 | Evaluator–optimizer loops | quality-critical outputs | loops + latency |
 
-✅ Use multi-agent when you need:
+Use multi-agent when you need:
 - specialization (domain experts)
 - parallel research or parallel checks
 - independent verification / debate
 - strict permission boundaries by role
 
-⚠️ Avoid multi-agent when:
+Avoid multi-agent when:
 - the task is short and linear
-- you lack evals/observability (you’ll ship chaos faster)
+- you lack evals/observability (you'll ship chaos faster)
 
 ### Two stable patterns
-1) **Manager–Worker** (manager decomposes, workers execute, manager synthesizes)  
+1) **Manager–Worker** (manager decomposes, workers execute, manager synthesizes)
 2) **Handoffs** (control transfers to specialist agents)
 
-```mermaid
-sequenceDiagram
-  participant U as User
-  participant M as Manager/Planner
-  participant A as Specialist Agent
-  participant V as Verifier
-  participant T as Tools/Data
-  U->>M: Goal + constraints
-  M->>A: Subtask
-  A->>T: Tool calls
-  T-->>A: Results
-  A-->>M: Work product
-  M->>V: Validate + safety checks
-  V-->>M: Pass / Fix / Escalate
-  M-->>U: Answer + artifacts
-```
-
-</details>
+![Manager-worker pattern sequence diagram](/agentic-ai-products/tech/2.png)
 
 ---
 
 <a id="tools"></a>
 ## Tools are product (Tool Contracts + ACI)
-<details>
-<summary><strong>Show tool contract checklist + ACI heuristics</strong></summary>
 
 If the agent can call it, you need a **tool contract**:
 - strict schema (typed inputs/outputs)
@@ -240,16 +147,12 @@ If the agent can call it, you need a **tool contract**:
 - make tool names unambiguous
 - embed examples + edge cases in tool descriptions
 - return structured errors, not prose
-- minimize “free-form” tool results
-
-</details>
+- minimize "free-form" tool results
 
 ---
 
 <a id="mcp"></a>
 ## MCP integration (tool/data plane)
-<details>
-<summary><strong>Show when MCP helps + security posture</strong></summary>
 
 Use MCP when you have **many tools × many agents** and want:
 - standard interfaces to tools/resources
@@ -261,14 +164,10 @@ Security posture:
 - assume tool outputs can be malicious (prompt injection is real)
 - validate everything at boundaries
 
-</details>
-
 ---
 
 <a id="guardrails"></a>
 ## Guardrails + Human-in-the-Loop (default stance)
-<details>
-<summary><strong>Show layered guardrails + HITL trigger policy</strong></summary>
 
 Layer guardrails:
 - **Failure-resistant input**: injection, policy, relevance checks
@@ -283,14 +182,10 @@ Require approval when:
 - safety classifier flags elevated risk
 - agent exceeds retry/loop thresholds
 
-</details>
-
 ---
 
 <a id="observability"></a>
 ## Observability: make it a glass box
-<details>
-<summary><strong>Show minimum instrumentation + trace schema</strong></summary>
 
 Minimum instrumentation:
 - traces: generations, tool calls, handoffs, guardrails decisions
@@ -303,14 +198,11 @@ Minimum instrumentation:
 - totals: tokens_in/out, cost_estimate, p95 latency
 - safety: flags, approvals, escalations
 
-</details>
-
 ---
 
 <a id="evals"></a>
 ## Evals: CI + staging + prod monitoring (AgentOps)
-<details>
-<summary><strong>Show 3-tier pipeline + failure→regression loop</strong></summary>
+### 3-tier pipeline + failure→regression loop
 
 Agents need **scenario-driven, multi-metric** evals.
 
@@ -319,24 +211,13 @@ Agents need **scenario-driven, multi-metric** evals.
 2. **Staging/canary:** full suite + adversarial + rubric  
 3. **Production:** A/B for major changes + continuous monitoring
 
-```mermaid
-flowchart LR
-  PR[PR/Commit] --> CI[CI evals\n(unit + golden)]
-  CI --> STG[Staging/Canary\nfull suite + rubric]
-  STG --> PROD[Prod\nA/B + monitoring]
-  PROD --> FAIL[Failures/Incidents]
-  FAIL --> REG[Failure replays\nnew regression tests]
-  REG --> CI
-```
-
-</details>
+![Evals pipeline diagram](/agentic-ai-products/tech/3.png)
 
 ---
 
 <a id="failure-modes"></a>
 ## Failure modes & mitigations (what breaks + what to do)
-<details>
-<summary><strong>Show failure taxonomy + detect/constrain/prevent</strong></summary>
+### Failure taxonomy + detect/constrain/prevent
 
 ### Failure modes (common + expensive)
 | Category | What breaks | Typical symptom |
@@ -379,14 +260,11 @@ flowchart LR
 - New regression tests added
 - Rollback/kill-switch criteria updated
 
-</details>
-
 ---
 
 <a id="governance"></a>
 ## Governance posture (permissions, approvals, audit, rollout)
-<details>
-<summary><strong>Show governance checklist</strong></summary>
+### Governance checklist
 
 ### Permissions model (capability-based)
 - tool access is granted per **role** and **environment** (dev/staging/prod)
@@ -421,14 +299,10 @@ Store immutable logs:
 - [ ] audit logs verified
 - [ ] incident on-call + playbook ready
 
-</details>
-
 ---
 
 <a id="templates"></a>
 ## Templates (copy/paste)
-<details>
-<summary><strong>Show one-page Agent Spec</strong></summary>
 
 ### One-page Agent Spec (required for each workflow)
 - Goal / non-goals
@@ -441,13 +315,5 @@ Store immutable logs:
 - Observability plan (trace schema + dashboards)
 - Rollout plan (flags/canary/kill switch)
 - Ownership + on-call
-
-</details>
-
----
-
-### Notes for your site
-- The collapsible sections use HTML `<details>` / `<summary>` (widely supported in GitHub/GitLab-style Markdown renderers).  
-- Mermaid diagrams require Mermaid rendering enabled in your Markdown/MDX pipeline.
 
 <a href="#top">Back to top ↑</a>

@@ -5,8 +5,6 @@ date: "2025-12-21"
 category: "Development Methodology"
 ---
 
-# Spec-Driven Development with Coding Agents
-
 Spec-Driven Development (SDD) is an emerging methodology where a structured specification (typically in Markdown) is created before writing code. The spec serves as a shared "source of truth" for both humans and AI coding agents, bringing rigor and context to AI-assisted coding while avoiding ad-hoc "prompt-by-prompt" development.
 
 ## Why Spec-Driven Development?

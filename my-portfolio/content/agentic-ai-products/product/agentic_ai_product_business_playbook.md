@@ -1,4 +1,11 @@
-# Agentic AI Product & Business Strategy Playbook (Portfolio Edition)
+---
+title: "Agentic AI Product + Business Strategy Playbook"
+description: "How to pick winning agent wedges, design adoption + distribution loops, price safely, and govern rollout"
+subtitle: "How to pick winning agent wedges, design adoption + distribution loops, price safely, and govern rollout"
+series: "Building Effective AI Agents"
+version: "v1.0"
+last_updated: "2025-12-20"
+---
 
 > **Audience:** CTOs • Senior Tech Leads • AI/ML Engineers • Product Managers  
 > **Purpose:** turn “LLM demos” into **reliable, adoptable, defensible, profitable** agentic products.
@@ -22,17 +29,7 @@ For agents, **reliability, auditability, and oversight** are not “enterprise a
 
 ## Playbook map
 
-```mermaid
-flowchart LR
-  A[Value Hypothesis] --> B[Wedge + ICP]
-  B --> C[UX Paradigm + Autonomy]
-  C --> D[Unit Economics + Pricing]
-  D --> E[Trust, Safety, Governance]
-  E --> F[Distribution System]
-  F --> G[Scale & Moat Flywheel]
-  G --> H[Evals + Regression Prevention]
-  H --> E
-```
+![Playbook map diagram](/agentic-ai-products/product/1.png)
 
 ---
 
@@ -52,18 +49,7 @@ flowchart LR
 
 ## 2) A 5-phase roadmap to ship & scale (use this to run programs)
 
-```mermaid
-flowchart TB
-  P1[Phase 1: Direction
-Choose wedge + moat] --> P2[Phase 2: Differentiation
-Workflow-native UX + scaffolding]
-  P2 --> P3[Phase 3: Design
-Architecture + guardrails + feedback loops]
-  P3 --> P4[Phase 4: Deployment
-Scale without breaking cost/trust]
-  P4 --> P5[Phase 5: Leadership
-Operating model + governance]
-```
+![5-phase roadmap diagram](/agentic-ai-products/product/2.png)
 
 ---
 
@@ -79,14 +65,6 @@ Operating model + governance]
 - **Workflow moat:** you become the OS of the workflow
 - **Data moat:** unique structured feedback + labeled traces
 - **Trust moat:** governance + reliability others can’t match
-
-```mermaid
-flowchart TB
-  U[Usage] --> A[Moat assets
-Data / Workflow / Trust]
-  A --> X[Better outcomes + lower cost]
-  X --> U
-```
 
 ---
 
@@ -164,22 +142,7 @@ Data / Workflow / Trust]
 - **Rollout strategy:** flags, canary cohorts, kill switch
 - **Incident playbook:** escalation, rollback, postmortem + eval updates
 
-```mermaid
-sequenceDiagram
-  participant U as User
-  participant A as Agent
-  participant P as Policy/Permissions
-  participant T as Tools
-  participant L as Logs/Audit
-  U->>A: Request
-  A->>P: Check scope & risk
-  P-->>A: Allowed + requires approval?
-  A->>U: Plan + approve?
-  U-->>A: Approve/Reject
-  A->>T: Execute bounded actions
-  A->>L: Record prompt/tool/decision trace
-  A-->>U: Outcome + evidence
-```
+![Governance flow sequence diagram](/agentic-ai-products/product/3.png)
 
 ---
 
@@ -213,7 +176,7 @@ A compact checklist for senior leaders shipping agentic products end-to-end.
 
 ---
 
-## 11) Templates (copy/paste)
+## 11) Templates
 
 ### A) Agent PRD (one page)
 - Problem + ICP
@@ -234,12 +197,3 @@ A compact checklist for senior leaders shipping agentic products end-to-end.
 - Net value = (time + quality + risk) − agent cost
 
 ---
-
-## References (selected)
-- NIST AI Risk Management Framework (AI RMF) — GOVERN/MAP/MEASURE/MANAGE
-- EU AI Act — human oversight + record-keeping
-- Microsoft Responsible AI Standard — impact assessments
-- OpenAI enterprise privacy + data controls
-- Industry: McKinsey “State of AI” (2025), Deloitte “AI ROI” (2025), BCG “AI value gap” (2025)
-
-*Last updated: 20 Dec 2025*

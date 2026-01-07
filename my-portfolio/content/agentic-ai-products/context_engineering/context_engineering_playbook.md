@@ -1,12 +1,13 @@
 ---
-title: "Context Engineering Playbook (Agents)"
+title: "Context Engineering"
+description: "A systems-first guide to keeping agent context small, relevant, reliable, and auditable."
 subtitle: "A systems-first guide to keeping agent context small, relevant, reliable, and auditable."
+series: "Building Effective AI Agents"
 audience: ["CTO", "Staff+ AI Engineer", "MLOps Lead", "Product Lead"]
 version: "v1.0"
 last_updated: "2025-12-20"
 ---
 
-# Context Engineering Playbook for AI Agents
 
 > **Context engineering** is the discipline of giving an LLM *exactly* the information + tools it needs **for the next step**, while keeping everything else **stored, searchable, and recoverable**.
 
@@ -14,11 +15,11 @@ last_updated: "2025-12-20"
 
 ## 0) The promise (what this playbook helps you ship)
 
-✅ Agents that **stay on-task** across long horizons  
-✅ Lower **latency + cost** (token discipline, cache-friendly prompts)  
-✅ Fewer **tool mistakes** (wrong tool / wrong schema / wrong args)  
-✅ Faster debugging (structured traces, deterministic context builds)  
-✅ Safer autonomy (scoped permissions, approvals, audit trails)
+- Agents that **stay on-task** across long horizons  
+- Lower **latency + cost** (token discipline, cache-friendly prompts)  
+- Fewer **tool mistakes** (wrong tool / wrong schema / wrong args)  
+- Faster debugging (structured traces, deterministic context builds)  
+- Safer autonomy (scoped permissions, approvals, audit trails)
 
 ---
 
@@ -30,37 +31,7 @@ last_updated: "2025-12-20"
 - **Compiler pipeline**: processors that select/transform/compress/format
 - **Working context**: the **compiled projection** sent to the model for *this* call
 
-```mermaid
-flowchart TB
-  subgraph Sources["Sources of Truth (durable)"]
-    S[Session event log
-(messages, tool calls, tool results, errors)]
-    A[Artifacts
-(files, images, datasets, docs)]
-    M[Memory
-(vector store / graph / key-value)]
-    T[Tool outputs
-(search, DB queries, APIs)]
-  end
-
-  subgraph Compiler["Context Compiler (per invocation)"]
-    P1[Select
-(min history, relevant events)]
-    P2[Transform
-(normalize roles, schemas)]
-    P3[Compress
-(compact / summarize / prune)]
-    P4[Format
-(stable prefix, tool defs, cache-friendly)]
-  end
-
-  subgraph Working["Working Context (ephemeral)"]
-    WC[LLM Input
-(system + instructions + selected history + snippets + handles)]
-  end
-
-  Sources --> Compiler --> Working
-```
+![Context compiler diagram](/agentic-ai-products/context_engineering/1.png)
 
 ### 1.2 “Fit red to green” (Total vs Needed vs Retrieved)
 
@@ -78,16 +49,7 @@ Too large → slow, expensive, “lost in the middle”.
 
 Think of these as your “context knobs”.
 
-```mermaid
-flowchart LR
-  W[Write
-Offload to env/files/memory] --> S[Select
-Retrieve just-in-time]
-  S --> C[Compress
-Compact or summarize]
-  C --> I[Isolate
-Split contexts across agents/env]
-```
+![Write-select-compress-isolate loop](/agentic-ai-products/context_engineering/2.png)
 
 ### 2.1 Write: offload context *outside* the window
 
@@ -161,17 +123,7 @@ A failed tool call is *signal*. Keeping it in the trace helps the model avoid re
 
 ## 4) Reference architecture: the Context Stack
 
-```mermaid
-flowchart TB
-  U[User request] --> CE[Context Engine]
-  CE -->|Build working context| LLM[LLM call]
-  LLM -->|Tool call| TH[Tool Harness]
-  TH --> Tools[(Tools/APIs)]
-  Tools --> TH --> CE
-  CE -->|Write/Read| FS[(Filesystem / Artifact Store)]
-  CE -->|Query| MEM[(Memory Store)]
-  CE --> OBS[(Tracing / Metrics)]
-```
+![Context stack reference architecture](/agentic-ai-products/context_engineering/3.png)
 
 **Components**
 - **Context Engine**: selection + formatting + compaction/summarization
@@ -317,18 +269,7 @@ If you need a governance vocabulary: align your internal controls to
 
 ## 8) Quick reference: decision tree
 
-```mermaid
-flowchart TD
-  Q[Do I need this info on every step?] -->|Yes| PIN[Pin it in stable prefix or short always-on context]
-  Q -->|No| BIG[Is it large / token-heavy?]
-  BIG -->|Yes| OFFLOAD[Write to filesystem/artifacts; keep handle + summary]
-  BIG -->|No| RETR[Retrieve just-in-time via search/memory]
-  RETR --> LIMIT[Cap snippets + cite sources]
-  OFFLOAD --> LIMIT
-  LIMIT --> ROT[Context window pressure?]
-  ROT -->|Low| DONE[Proceed]
-  ROT -->|High| COMPACT[Compaction first; summarize only if needed]
-```
+![Context decision tree](/agentic-ai-products/context_engineering/4.png)
 
 ---
 
@@ -376,17 +317,3 @@ compaction:
 ```
 
 ---
-
-## 10) Further reading (add links in your site)
-- “Context engineering” definition and failures: Karpathy; Breunig
-- Filesystem for context: LangChain deep agents
-- KV-cache + tool masking + filesystem: Manus lessons
-- Tiered context stack + processors: Google ADK context architecture
-- Context window mechanics: Claude docs
-- Multi-agent orchestration + context isolation: Anthropic research system
-- Governance: NIST AI RMF, EU AI Act human oversight
-
----
-
-### Notes
-This playbook is intentionally opinionated: it biases toward **simple systems with explicit contracts** over “prompt magic”.
