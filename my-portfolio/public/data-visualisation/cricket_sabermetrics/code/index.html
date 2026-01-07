@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="expires" content="0">
+
+    <title>IPL 2019</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale_light.css" rel="stylesheet">
+    <!--<link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />-->
+
+  </head>
+
+  <body id="page-top">
+    <!-- Minimal Navigation -->
+    <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.85); padding: 12px 24px; display: flex; justify-content: space-between; align-items: center;">
+      <a href="/data-visualisation" style="color: #fff; text-decoration: none; font-size: 14px; opacity: 0.9; transition: opacity 0.2s;"
+         onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+        ← Back to Data Visualisation
+      </a>
+      <a href="/" style="color: #fff; text-decoration: none; font-size: 14px; opacity: 0.9; transition: opacity 0.2s;"
+         onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+        About Me
+      </a>
+    </nav>
+    <div style="height: 48px;"></div>
+
+    <!-- Navigation -->
+  <!--
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar_style" id="mainNav">
+      <div class="container">
+        <a class="js-scroll-trigger" href="/index.html">Home</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="../about/index.html">About this project</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/index.html#projects_portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/index.html#about_me">About me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/index.html#contact_me">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  -->
+
+    <!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
+              <h1 class="brand-heading">IPL 2019: Who needs what to win ?</h1>
+              <p class="intro-text">A Data Analytics based approach to selecting a winning team combination and playing the perfect T20 game.
+                <br></p>
+              <p class="article_author">Deepak Karkala</p>
+              <p class="article_date">December 2018</p>
+              <a href="#about" class="btn btn-circle js-scroll-trigger" style="color:white; border: 1px solid white; font-size: 26px;">
+                <i class="fas fa-angle-double-down"><span ></span></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="content-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+            <h2 class="text-center">Introduction</h2>
+              <p>
+                The IPL auction strategies of the franchises have improved a lot over the years. This had resulted in selection of much more balanced teams for the tenth season which was expected to be the most closely fought IPL season. But midway through the season, nearly half the teams were struggling to win games and stay alive in the competition. Clearly lack of talent is not an issue with every team consisting of carefully selected group of players.  It comes down largely to right team combination and assigning clear roles to all the players in the team. This is especially critical in IPL since players get together only a few days ahead of the season and get to play as a team for only couple of months a year. Throughout the past 10 years, it is very evident that the teams that could find the right combination early on in the tournament invariably made it to the playoffs. This is also the reason franchises such as <em>CSK, MI, KKR</em> strive to retain the core of the team and unsurprisingly these are the franchises who have won more IPL titles than others. 
+              </p>
+              <p>    
+                That brings us to the question of how to build an ideal T20 side. Are there certain player combinations and player roles that can maximise chances of winning ? In this article, we analyse data from T20 leagues from around the world to see if we can determine the all elusive winning formula. We study if there are any commonalities or underlying pattern in the team composition and the playing styles of the successful T20 teams from around the world. In particular, we look at the following aspects,
+                  <ul> 
+                    <li><b>Team composition</b>: What constitutes the batting and bowling line ups of a successful T20 team ?</li>
+                    <li><b>Player Impact</b>: How to assign specific roles to players during various phases of play in a T20 game ?</li>
+                    <li><b>Player contribution</b>: A quantitative method of determining a player’s contribution to winning (or losing) cause.</li>
+                  </ul>
+              </p>
+              <p>
+                By answering the above questions, we seek to build an ideal T20 team with the right combinations of players and specific roles assigned to every  player in the team. Based on this analysis, we identify what each of the eight IPL teams lacked in the previous season. We conclude by recommending a few players from the domestic circuit who could fill those missing roles and thereby improve teams' chances of winning IPL 2019.
+              </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="about" class="teamComposition-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+            <h2 class="text-center">Team composition</h2>
+            <p>
+              Is there a certain team composition that maximises a team’s chances of winning ? Do the successful T20 teams all have something common in their batting and bowling lineups ? To answer this, we look at the batting and bowling metrics such as average, strike-rate, economy rates of the top and bottom ranked teams in different leagues from around the world.
+            </p>
+            <p>
+              Let us begin by studying the batting and bowling charts of IPL 2018. The horizontal and vertical axes of the batting chart represent average and strike-rate respectively. Based on the average and strike-rate, each batsman is categorised into one of five types as shown in the following table. Similarly in the bowling chart, the horizontal and vertical axes represent economy rate and strike rate respectively. Based on the economy rate and strike-rate, each bowler is categorised into one of five types. A similar analysis was performed by <a href="http://www.espncricinfo.com/story/_/id/19244009/how-build-ideal-t20-side">Jarrod Kimber</a>. While that was predominantly intuitive in nature, we perform a more quantitative analysis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="teamComposition-section">
+      <div class="jumbotron"> 
+        <div class="container">
+          <div class="row justify-content-center text-center plot_title">
+            <div class="col-lg-8 col-md-10 col-sm-10 col-12">
+              <h4>Batsmen and Bowler Types in T20 Cricket</h4>
+            </div>
+          </div>
+          <div class="row justify-content-center text-center plot_caption">
+            <div class="col-lg-8 col-md-10 col-sm-10 col-12">
+              Batsmen are categorized into one of five types based on average and strike-rate drawn on horizontal and vertical axes of the batting chart respectively. Similarly bowlers are categorized based on economy rate and strike-rate. Each player is denoted by a circle whose size represents the runs scored or wickets taken. Click on the circles to explore more details of each player.
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row plot_padding">
+              <div class="col-lg-6 col-md-6 col-12 teamComposition text-center" id="ipl_batting"><h6 class="plot_sub_title">IPL 2018 batting chart</h6></div>
+              <div class="col-lg-6 col-md-6 col-12 teamComposition text-center" id="ipl_bowling"><h6 class="plot_sub_title">IPL 2018 bowling chart</h6></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="teamComposition-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-6">
+                <table class="table table-bordered table-hover table-condensed">
+                  <thead>
+                    <tr class="text-center table-large-font" style="background-color:#DCDCDC;">
+                      <th scope="col" colspan="3">T20 Batsmen types</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="text-center table-large-font" style="background-color:#DCDCDC;">
+                      <td style="width: 23%">Batsman type</td>
+                      <td>Features</td>
+                      <td style="width: 10%">IPL 2018 Examples</td>
+                    </tr>
+                    <tr style="background-color:#baffc9;">
+                      <td class="em_text">Ideal</td>
+                      <td>Batsmen with both phenomenal average and very high strike-rates. Every team's dream player, ideally a team expects one of its batsmen to be in this category.</td>
+                      <td>Pant, Rahul, Ab de Villiers</td>
+                    </tr>
+                    <tr style="background-color:#ffffba;">
+                      <td class="em_text">Aggressors</td>
+                      <td>Batsmen with good averages and good strike-rates. Batsmen who can adapt based on the game situation and perform consistently under pressure.</td>
+                      <td>Dhoni, Watson, Rayudu</td>
+                    </tr>
+                    <tr style="background-color:#ffdfba;">
+                      <td class="em_text">Accumulators</td>
+                      <td>Batsmen with good averages but relatively low strike-rates. Especially suited for conditions not ideal for batting typically with average scores around 150 mark.</td>
+                      <td>Kohli, Suryakumar Yadav, Dhawan</td>
+                    </tr>
+                    <tr style="background-color:#bae1ff;">
+                      <td class="em_text">Hitters</td>
+                      <td>Batsmen who may not score lots of runs but get runs at very high strike-rate. Vital when the innings requires some impetus or when the required rate is climbing sharply.</td>
+                      <td>Narine, Russell</td>
+                    </tr>
+                    <tr style="background-color:#ffb3ba;">
+                      <td class="em_text">Flops</td>
+                      <td>Batsmen who score very few runs at low strike-rates. Although no one wants to be in this category, it is inevitable that every team will have batsmen going through poor form.</td>
+                      <td>Pandey, Shakib, Rohit</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-lg-6">
+                <table class="table table-bordered table-hover table-condensed">
+                  <thead>
+                    <tr class="text-center table-large-font" style="background-color:#DCDCDC;">
+                      <th scope="col" colspan="3">T20 Bowlers types</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="text-center table-large-font" style="background-color:#DCDCDC;">
+                      <td style="width: 20%">Bowler type</td>
+                      <td>Features</td>
+                      <td style="width: 10%">IPL 2018 Examples</td>
+                    </tr>
+                    <tr style="background-color:#baffc9;">
+                      <td class="em_text">Ideal</td>
+                      <td>Bowlers with many wickets at very low economy rates. They are every captain's dream, although it is unrealistic to expect such performances during every season.</td>
+                      <td>Rashid, Bumrah</td>
+                    </tr>
+                    <tr style="background-color:#ffffba;">
+                      <td class="em_text">Containers</td>
+                      <td>Bowlers who may not get lot of wickets but operate at low economy rate. Perfect for bowling in the powerplay and in high scoring games.</td>
+                      <td>Bhuvaneshwar, Ashwin</td>
+                    </tr>
+                    <tr style="background-color:#ffdfba;">
+                      <td class="em_text">Average</td>
+                      <td>Bowlers who pick up fair number of wickets at reasonable economy rates. These are the bowlers a captain can bank on and expect them to be consistent and not concede too many runs.</td>
+                      <td>Kuldeep, Kaul</td>
+                    </tr>
+                    <tr style="background-color:#bae1ff;">
+                      <td class="em_text">Strikers</td>
+                      <td>Bowlers who pick lot of wickets but at high economy rates. Perfect when the captain needs break-throughs in the powerplay and middle overs.</td>
+                      <td>Tye, Hardik, Umesh Yadav</td>
+                    </tr>
+                    <tr style="background-color:#ffb3ba;">
+                      <td class="em_text">Flops</td>
+                      <td>Bowlers who concede lot of runs with very few wickets to show for. Critical to have backups when one of the frontline bowlers end up in this category.</td>
+                      <td>Bravo, Unadkat, Mohit</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">                  
+            <p>
+              Given these categories of players, how do we go about picking our batting and bowling line ups. Given a chance, all teams would want to have a line up filled up with <em>Ideals</em> and no <em>Flops</em>. While it is likely that any player could hit purple patch and end up being <em>Ideal</em>, it is not something we can count on. Instead we would like to find the optimum numbers of <em>Accumulators, Aggressors</em> and <em>Hitters</em> required in a batting line up. This is a tricky question because too many <em>Accumulators</em> in the top order often results in sub 200 score even with good starts whereas a team filled with <em>Strikers</em> will invariably have scores either around the 200 mark or have batting collapses with scores around the 140 runs mark. Similarly for bowling, the question is how many of each kind of these bowlers does a team need in order to increase its chances of winning ?
+            </p>
+            <p>
+              In order to answer this, we begin by looking at the batting and bowling charts of few of the T20 league champions for the 2018 season. This should provide some insights to determine the winning combination.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="jumbotron"> 
+        <div class="container">
+          <div class="row">    
+            <div class="col-lg-6 text-center top_batting" id="top_batting">
+              <span class="top_bottom_heading"><h5 class="plot_title">Batting charts of top ranked teams</h5></span>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="top_batting1"><span class="top_bottom_chart bold_text">Chennai Super Kings</span><img src="img/team_composition/top_batting/csk_batting.png"></div>
+                <div class="col-lg-6 col-md-6" id="top_batting2"><span class="top_bottom_chart bold_text">Adelaide Strikers</span><img src="img/team_composition/top_batting/adelaide_batting.png"></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="top_batting3"><span class="top_bottom_chart bold_text">Worcestershire</span><img src="img/team_composition/top_batting/worcestershire_batting.png"></div>
+                <div class="col-lg-6 col-md-6" id="top_batting4"><span class="top_bottom_chart bold_text">Kolkata Knight Riders</span><img src="img/team_composition/top_batting/kkr_batting.png"></div>
+              </div>
+            </div>
+            <div class="col-lg-6 text-center bottom_batting" id="bottom_batting">
+              <span class="top_bottom_heading"><h5 class="plot_title">Batting charts of bottom ranked teams</h5></span>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="bottom_batting1"><span class="top_bottom_chart bold_text">Royal Challengers Bangalore</span><img src="img/team_composition/bottom_batting/rcb_batting.png"></div>
+                <div class="col-lg-6 col-md-6" id="bottom_batting2"><span class="top_bottom_chart bold_text">Barbados Tridents</span><img src="img/team_composition/bottom_batting/barbados_batting.png"></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="bottom_batting3"><span class="top_bottom_chart bold_text">Brisbane Heat</span><img src="img/team_composition/bottom_batting/brisbane_batting.png"></div>
+                <div class="col-lg-6 col-md-6" id="bottom_batting4"><span class="top_bottom_chart bold_text">Lahore Qalandars</span><img src="img/team_composition/bottom_batting/lahore_batting.png"></div>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              A quick glance at the batting charts of top ranked teams reveals that a minimum of four batsmen will need to score consistently throughout the season in order for the team to do well. 
+              While CSK had 3 <em>Aggressors</em> (Dhoni, Watson, Rayudu) and one <em>Accumulator</em> (Raina), Adelaide Strikers had 2 <em>Aggressors</em> (Carey, Head) and 2 <em>Accumulators</em> (Ingram, Weatherald). Worcestershire had 2 <em>Aggressors</em> (Joe Clarke, Guptill), 1 <em>Accumulator</em> (Ferguson) and 1 <em>Ideal</em> (Moeen Ali). KKR on the other hand seemed to have a wide variety of players suited for various stages of the game. They have 2 <em>Hitters</em> (Narine at top, Russell at the end of the innings), 1 <em>Aggressor</em> (Karthik) and <em>2 Accumulators</em> (Lynn and Uthappa).
+            </p>
+            <p>
+              Based on these observations, we can infer that the batting line up of a successful team will consist of one of following combinations
+              <ul><em>
+                <li>3 Aggressors, 1 Accumulator</li>
+                <li>2 Aggressors, 2 Accumulators</li>
+                <li>1 Aggressor, 2 Accumulators, 1 or 2 hitters</li>
+              </em></ul>
+            </p>
+            <p>
+              It is vital that the batting strategies be appropriately adapted based on the different combinations of players and roles assigned to them. In case of multiple aggressors, one of them is expected to bat through most of the innings and score majority of team’s runs like Rayudu, Watson did for CSK. With only one aggressor, the team expects one of the hitters to provide momentum to the batting innings like Narine and Russell did for KKR and the accumulators to play around them.
+            </p>
+            <p>
+              The batting charts of some of the bottom ranked teams show that such roles are clearly missing. While RCB had 1 <em>Ideal</em> (AB de Villiers) and 1 <em>Accumulator</em>s (Kohli), very little support from other batsmen suggests lack of clearly assigned roles resulting in over reliance on their top two batsmen. This further puts the pressure on AB de Villiers and Kohli since they will need to perform the roles of both <em>Accumulators</em> and <em>Aggressors</em>. This is where assigning definite roles to different batsmen makes a massive difference to a team’s on field performance.
+            </p>
+            <p>
+              Now on to the bowler types charts of top and bottom ranked teams.
+            </p>
+          </div>
+        </div>
+      </div>    
+
+      <div class="jumbotron"> 
+        <div class="container">
+          <div class="row">    
+            <div class="col-lg-6 text-center top_bowling" id="top_bowling">
+              <span class="top_bottom_heading"><h5 class="plot_title">Bowling charts of top ranked teams</h5></span>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="top_bowling1"><span class="top_bottom_chart bold_text">Sunrisers Hyderabad</span><img src="img/team_composition/top_bowling/srh_bowling.png"></div>
+                <div class="col-lg-6 col-md-6" id="top_bowling2"><span class="top_bottom_chart bold_text">Trinbago Knight Riders</span><img src="img/team_composition/top_bowling/trinbago_bowling.png"></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="top_bowling3"><span class="top_bottom_chart bold_text">Adelaide Strikers</span><img src="img/team_composition/top_bowling/adelaide_bowling.png"></div>
+                <div class="col-lg-6 col-md-6" id="top_bowling4"><span class="top_bottom_chart bold_text">Worcestershire</span><img src="img/team_composition/top_bowling/worcestershire_bowling.png"></div>
+              </div>
+            </div>
+            <div class="col-lg-6 text-center bottom_bowling" id="bottom_batting">
+              <span class="top_bottom_heading"><h5 class="plot_title">Bowling charts of bottom ranked teams</h5></span>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="bottom_bowling1"><span class="top_bottom_chart bold_text">Brisbane Heat</span><img src="img/team_composition/bottom_bowling/brisbane_bowling.png"></div>
+                <div class="col-lg-6 col-md-6" id="bottom_bowling2"><span class="top_bottom_chart bold_text">Middlesex</span><img src="img/team_composition/bottom_bowling/middlesex_bowling.png"></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="bottom_bowling3"><span class="top_bottom_chart bold_text">Chittagong Vikings</span><img src="img/team_composition/bottom_bowling/chittagong_bowling.png"></div>
+                <div class="col-lg-6 col-md-6" id="bottom_bowling4"><span class="top_bottom_chart bold_text">Northamptonshire</span><img src="img/team_composition/bottom_bowling/northamptonshire_bowling.png"></div>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              Similar to the batting charts, the bowling charts of few of the top ranked teams in the 2018 season reveals the following. SRH had 1 <em>Ideal</em> (Rashid) 2 <em>Average</em> (Sandeep, Kaul) and 2 <em>Containers</em> (Shakib, Bhuvaneshwar). Trinbago Knight Riders had 2 <em>Ideals</em> (K Pierre, Fawad Ahmed), 1 <em>Average</em> (Ali Khan) and 1 <em>Container</em> (Narine). Adelaide Strikers had 1 <em>Ideal</em> (Rashid), 1 <em>Average</em> (Laughlin) and 2 <em>Containers</em> (Siddle, Stanlake).
+            </p>
+            <p>
+              Based on these, we can infer that the bowling line up of a successful T20 team should consist of the following combination
+              <ul><em>
+                <li>1 Ideal, 2 Average and 2 Containers</li>
+                <li>1 Ideal, 1 Average, 1 Striker and 2 Containers</li>
+              </em></ul>
+            </p>
+            <p>
+              It is clear that such roles are missing in the bowling charts of bottom ranked teams leading to dismal bowling performances. While Brisbane and Middlesex for example had no bowler in <em>Container</em> or <em>Striker</em> category. Northamptonshire had two bowlers in <em>Flops</em> and no player in <em>Average</em> or <em>Striker</em> categories. Similar to batting, with no clear roles assigned, bowlers are often uncertain about going for wickets or containing runs, eventually leading to erroneous line and lengths.   
+            </p>
+            <p>
+              This brings us to the end of the section on team composition. The batting and bowling charts of the top and bottom ranked teams from different leagues around the world illustrated that successful teams almost always have players performing different roles assigned to them. Absence of such clearly defined roles will invariably result in poor performances. Such insights if appropriately used by the team think tank can lead to a change in team’s batting or bowling strategy which in turn will lead to better to better results.                
+            </p>
+            <p>
+              Explore the interactive graph below to visualise the batting and bowling charts of your favourite team.
+            </p>
+          </div>
+        </div>
+      </div>      
+    </section>
+
+
+
+    <section id="about" class="interactivePlayerTypes-section">
+      <div class="jumbotron">
+
+        <div class="container">
+          <div class="row justify-content-center text-center plot_title">
+            <div class="col-lg-8 col-md-10 col-sm-10 col-12">
+              <h4 class="plot_title">Interactive Graph: Batsmen and Bowler Types</h4>
+            </div>
+          </div>
+          <div class="row justify-content-center text-center plot_caption">
+            <div class="col-lg-8 col-md-10 col-sm-10 col-12">
+              Explore the interactive graph below to visualise the batting and bowling charts of your favourite team.
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row plot_padding">
+            <div class="col-lg-12 text-center">
+
+              <div id="metric_league_button_bar">
+                <button type="button" id="ipl" class="btn btn-primary active">IPL</button>
+                <button type="button" id="bbl" class="btn btn-primary">BBL</button>
+                <button type="button" id="blast" class="btn btn-primary">BLAST</button>
+                <button type="button" id="cpl" class="btn btn-primary">CPL</button>
+                <button type="button" id="bpl" class="btn btn-primary">BPL</button>
+                <button type="button" id="psl" class="btn btn-primary">PSL</button>
+              </div>
+
+              <div class="team_button_bar" id="metric_team_button_bar" style="padding-top:10px;">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="container" id="interactivePlayerTypeChart">
+          <div class="row">
+              <div class="col-lg-6 col-md-6 teamComposition">
+                <div class="text-center" id="team_batting_type"></div>
+                <div id="interactive_batting"></div>
+              </div>
+              <div class="col-lg-6 col-md-6 teamComposition">
+                <div class="text-center" id="team_bowling_type"></div>
+                <div id="interactive_bowling"></div>
+              </div>
+          </div>
+        </div>
+
+      </div>          
+    </section>
+
+
+    <section id="about" class="impactPeriod-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-center">Player Impact</h2>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              Having found the optimum team composition, the other vital aspect of winning a T20 game is doing well during different phases of the game. A T20 game can be divided into three phases: Powerplay, Middle and Death overs and it is crucial that in order to maximise chances of winning, a team should not have any shortcomings during any of these phases. Similar to team composition, let us examine the impact charts of the top and bottom ranked teams in order to gain some insights into what separates the top teams from an average team.
+            </p>
+            <p>
+              In order to do this, we first define <em>Impact</em> for a batsman and bowler. Traditional measures such as average, strike-rates, economy rates etc do not entirely reflect the performance of a player. There are other factors such as the playing conditions in a particular game and also the match situation which determines the number of runs scored or wickets taken by a player. For example, it is unfair to compare a bowler’s economy rate at Bengaluru's Chinnaswamy stadium with those at the slow surfaces in Hyderabad. The batting surface and the small outfield in Bangalore will invariably impact a bowler’s economy rate.  
+            </p>
+            <p>
+              Further the traditional statistics also do not take into the account the match situation. For example, a bowler bowling in the Powerplays and death overs will have higher economy rates than someone bowling in the middle overs. Similarly in a game where both teams have scored in excess of 200, a batsman scoring at a SR of 140 will need to be penalised.
+            </p>
+            <p>
+              The new measure termed as <em>Player Impact</em> will take such factors into account. This will lead to a fairer comparison of players resulting in metrics which are neutral with respect to venue and match situations. While the exact mathematical equations are not included here, it is similar but not exactly the same as ESPNCricinfo’s <a href="http://www.espncricinfo.com/story/_/id/23046591/espncricinfo-smart-stats-new-way-understand-t20-cricket">SMART Stats</a> for T20 Cricket.
+            </p>
+            <p>
+              Presented below are the batting impact charts of CSK, RCB and KXIP for IPL 2018.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="jumbotron"> 
+        <div class="container">
+          <div class="row justify-content-center text-center">
+            <h4 class="plot_sub_title">Batting Impact Charts</h4>
+          </div>
+          <div class="row">
+              <div class="col-lg-4 impactPeriod text-center" id="csk_batting_impact"><span class="bold_text">CSK batting impact</span></div>
+              <div class="col-lg-4 impactPeriod text-center" id="rcb_batting_impact"><span class="bold_text">RCB batting impact</span></div>
+              <div class="col-lg-4 impactPeriod text-center" id="kxip_batting_impact"><span class="bold_text">KXIP batting impact</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              These charts show the impacts created by different players during various phases of the game. Each player’s impact is shown in different color. It can be observed that <em>CSK</em>’s batting impact chart is consistently high right from the Powerplay through the middle until the death overs. While Watson provided the initial impact, Rayudu and Raina made an impact during the middle overs and Dhoni created a significant impact in the death overs. This is how a batting impact chart of a top batting side would look like.
+            </p>
+            <p>
+              In contrast, the batting impact charts of <em>RCB</em> and <em>KXIP</em> illustrate the lack of impact during the Death overs thereby significantly impacting the final score put on by these teams. Similar contrasting observation can be made by comparing the batting impact charts of top ranked teams (<em>Sussex</em>, <em>Adelaide Strikers</em>) with those of bottom ranked teams (<em>Mumbai Indians</em>, <em>Melbourne Stars</em>, <em>Hampshire</em>). Also interesting to note that in some instances like with <em> Rangpur Riders</em>, a single dominating performance (Gayle) was enough for the team to go on to win the title. Although this is more of an exception.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="jumbotron"> 
+        <div class="container">
+          <div class="row">    
+            <div class="col-lg-6 text-center top_batting" id="impact_top_batting">
+              <h5 class="plot_title top_bottom_heading">Batting Impact of top ranked teams</h5>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="impact_top_batting1"><span class="top_bottom_chart bold_text">Chennai Super Kings</span><img src="img/impact_period/top_batting/csk_batting.png"></div>
+                <div class="col-lg-6 col-md-6" id="impact_top_batting2"><span class="top_bottom_chart bold_text">Sussex</span><img src="img/impact_period/top_batting/sussex_batting.png"></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="impact_top_batting3"><span class="top_bottom_chart bold_text">Adelaide Strikers</span><img src="img/impact_period/top_batting/adelaide_batting.png"></div>
+                <div class="col-lg-6 col-md-6" id="impact_top_batting4"><span class="top_bottom_chart bold_text">Rangpur Riders</span><img src="img/impact_period/top_batting/rangpur_batting.png"></div>
+              </div>
+            </div>
+            <div class="col-lg-6 text-center bottom_batting" id="impact_bottom_batting">
+              <h5 class="plot_title top_bottom_heading">Batting Impact of bottom ranked teams</h5>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="bottom_batting1"><span class="top_bottom_chart bold_text">Mumbai Indians</span><img src="img/impact_period/bottom_batting/mi_batting.png"></div>
+                <div class="col-lg-6 col-md-6" id="bottom_batting2"><span class="top_bottom_chart bold_text">Melbourne Stars</span><img src="img/impact_period/bottom_batting/melstars_batting.png"></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="bottom_batting3"><span class="top_bottom_chart bold_text">Hampshire</span><img src="img/impact_period/bottom_batting/hampshire_batting.png"></div>
+                <div class="col-lg-6 col-md-6" id="bottom_batting4"><span class="top_bottom_chart bold_text">Chittagong Vikings</span><img src="img/impact_period/bottom_batting/chittagong_batting.png"></div>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              Similar analysis can be made for bowling impacts. Presented below are the bowling impact charts of SRH, MI and RCB for IPL 2018.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="jumbotron"> 
+        <div class="container">
+          <div class="row justify-content-center text-center">
+            <h4 class="plot_sub_title">Bowling Impact Charts</h4>
+          </div>
+          <div class="row">
+              <div class="col-lg-4 impactPeriod text-center" id="srh_bowling_impact"><span class="bold_text">SRH bowling impact</span></div>
+              <div class="col-lg-4 impactPeriod text-center" id="mi_bowling_impact"><span class="bold_text">MI bowling impact</span></div>
+              <div class="col-lg-4 impactPeriod text-center" id="rcb_bowling_impact"><span class="bold_text">RCB bowling impact</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              <em>SRH</em>’s bowling impact is near ideal. Notice how much of an impact Rashid Khan and S Kaul do in the Middle and Death overs. In contrast, <em>RCB</em>’s dismal bowling at the death is highlighted by lack of any support for Umesh Yadav who was the only bowler to have made an impact during Powerplay and Middle overs.
+              The bowling impact charts of top ranked teams (<em>Trinbago Knight Riders</em>, <em>Sussex</em>, <em>Adelaide Strikers</em>) when compared with bottom ranked teams (<em>Delhi Daredevils</em>, <em>Barbados Tridents</em>, <em>Sydney Thunder</em>, <em>Rajasthan Royals</em>) further illustrate the contrasting bowling performances.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="jumbotron"> 
+        <div class="container">
+          <div class="row">    
+            <div class="col-lg-6 text-center top_bowling" id="impact_top_bowling">
+              <h5 class="plot_title top_bottom_heading">Bowling Impact of top ranked teams</h5>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="impact_top_bowling1"><span class="top_bottom_chart bold_text">Sunrisers Hyderabad</span><img src="img/impact_period/top_bowling/srh_bowling.png"></div>
+                <div class="col-lg-6 col-md-6" id="impact_top_bowling2"><span class="top_bottom_chart bold_text">Trinbago Knight Riders</span><img src="img/impact_period/top_bowling/trinbago_bowling.png"></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="impact_top_bowling3"><span class="top_bottom_chart bold_text">Sussex</span><img src="img/impact_period/top_bowling/sussex_bowling.png"></div>
+                <div class="col-lg-6 col-md-6" id="impact_top_bowling4"><span class="top_bottom_chart bold_text">Adelaide Strikers</span><img src="img/impact_period/top_bowling/adelaide_bowling.png"></div>
+              </div>
+            </div>
+            <div class="col-lg-6 text-center bottom_batting" id="impact_bottom_batting">
+              <h5 class="plot_title top_bottom_heading">Bowling Impact of bottom ranked teams</h5>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="impact_bottom_bowling1"><span class="top_bottom_chart bold_text">Delhi Daredevils</span><img src="img/impact_period/bottom_bowling/dd_bowling.png"></div>
+                <div class="col-lg-6 col-md-6" id="impact_bottom_bowling2"><span class="top_bottom_chart bold_text">Barbados Tridents</span><img src="img/impact_period/bottom_bowling/barbados_bowling.png"></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6" id="impact_bottom_bowling3"><span class="top_bottom_chart bold_text">Sydney Thunder</span><img src="img/impact_period/bottom_bowling/sydney_thunder_bowling.png"></div>
+                <div class="col-lg-6 col-md-6" id="impact_bottom_bowling4"><span class="top_bottom_chart bold_text">Rajasthan Royals</span><img src="img/impact_period/bottom_bowling/rr_bowling.png"></div>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              This brings us to the end of <em>Impact Period</em> section. A new performance measure <em>Impact</em> was introduced to measure a player’s performance taking into account the match situation and the playing conditions. The analysis showed that the <em>Impact</em> measure was successfully able to illustrate how top teams perform consistently well throughout the game whereas bottom ranked teams often have shortcomings during certain phases of the game.
+            </p>
+            <p>
+              While it does not require data analysis to know that RCB lacks in death bowling, using data we are able to quantitatively illustrate the extent of shortcoming and also to pinpoint the precise phase in the game where the team needs to improve. Such insights when utilised adequately by the team management can lead to significant improvements in the team's on field performance.
+            </p>
+            <p>
+              Explore the interactive graph below to visualise the batting and bowling impact charts and see your favourite team’s <em>Impact</em> during different phases of the game.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+    <section id="about" class="interactiveImpactPeriod-section">
+      <div class="jumbotron">
+
+        <div class="container">
+          <div class="row justify-content-center text-center plot_title">
+            <div class="col-lg-8 col-md-10 col-sm-10 col-12">
+              <h4 class="plot_title">Interactive Graph: Player Impact</h4>
+            </div>
+          </div>
+          <div class="row justify-content-center text-center plot_caption">
+            <div class="col-lg-8 col-md-10 col-sm-10 col-12">
+              Explore the interactive graph below to visualise the batting and bowling impact charts and see your favourite team’s <em>Impact</em> during different phases of the game. Each player’s impact is shown in different colors.
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row plot_padding">
+            <div class="col-lg-12 text-center">
+
+              <div id="impact_league_button_bar">
+                <button type="button" id="ipl" class="btn btn-primary active">IPL</button>
+                <button type="button" id="bbl" class="btn btn-primary">BBL</button>
+                <button type="button" id="blast" class="btn btn-primary">BLAST</button>
+                <button type="button" id="cpl" class="btn btn-primary">CPL</button>
+                <button type="button" id="bpl" class="btn btn-primary">BPL</button>
+                <button type="button" id="psl" class="btn btn-primary">PSL</button>
+              </div>
+
+              <div class="impact_team_button_bar" id="impact_team_button_bar" style="padding-top:10px;">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="container" id="interactiveImpactPeriodChart">
+          <div class="row">
+              <div class="col-lg-6 col-md-6 interactiveImpactPeriod">
+                <div class="text-center" id="team_batting_impact"></div>
+                <div id="impact_batting"></div>
+              </div>
+              <div class="col-lg-6 col-md-6 interactiveImpactPeriod">
+                <div class="text-center" id="team_bowling_impact"></div>
+                <div id="impact_bowling"></div>
+              </div>
+          </div>
+        </div>
+
+      </div>          
+    </section>
+
+
+    <section id="about" class="xfactor-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-center">Player contribution to winning and losing causes</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              It is well known that one of the most crucial aspects of winning a T20 league is getting the team selection right early on in the tournament.
+              This is a very arduous task for the team management since the players get to play together as a team only for couple of months every year.
+              While it is easy to pick players with best averages and strike-rates, this will not necessarily be the most optimum team combination.
+            </p>
+            <p>
+              Besides considering just the averages, strike-rates can be misleading while selecting a team. Not all runs and wickets are the same in a T20 game. Wickets towards the end of the innings or runs after the required run rate has gone beyond reach should be weighed less.
+              In this regard, it becomes all the more crucial that the players who contribute most towards winning cause are selected even if their overall runs or wickets is less.
+              What matters is more is the crucial break through they might have provided or an innings at very high strike-rate during a critical phase of the game.
+            </p>
+            <p>
+              This raises the question of how can we determine a player’s contribution to winning or losing cause ?  
+              The answer lies in win probability, a concept widely used in sabermetrics for baseball and surprisingly underutilized in cricket.
+              Win probability refers to the probability of winning of a given team during any stage of the game. While the math is not included here, it is based on the past results under similar game situations including factors such as required run rate, wickets remaining.
+            </p>
+            <p>
+              According to this, every ball is an event which will either decrease or increase a team’s chances of winning. 
+              Thus the bowler and the batsman involved in that particular ball would have impacted the win probability. The amount by which the win probability has changed after the events of current ball is termed as <em>Win probability added</em> (<em>WPA</em>) and this change will be attributed to the players involved in that particular ball. 
+              Accordingly we can add the <em>WPA</em> for each player over the entire duration of a game or over an entire tournament.
+              Two such examples are presented below.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="jumbotron"> 
+
+
+        <div class="container">
+          <div class="row justify-content-center text-center plot_title">
+            <div class="col-lg-8 col-md-10 col-sm-10 col-12">
+              <h4 class="plot_title">Win Probability: Examples of Contributions to Winning Cause</h4>
+            </div>
+          </div>
+          <div class="row justify-content-center text-center plot_caption">
+            <div class="col-lg-8 col-md-10 col-sm-10 col-12">
+              Win probability refers to the probability of winning of a given team during any stage of the game. Every ball is an event which will either decrease or increase a team’s chances of winning. The amount by which the Win Probability has changed after the events of current ball is termed as <em>Win Probability Added</em> (<em>WPA</em>) and this change will be attributed to the batsman and the bowler involved in that particular ball. Two such examples are presented below.
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container">
+          <!--
+          <div class="row justify-content-center text-center">
+            <h4 class="plot_title">Examples of Contributions to Winning Cause</h4>
+          </div>
+          -->
+          <div class="row plot_padding">
+              <div class="col-lg-6 col-12 xfactor text-center" id="batting_xfactor"><span class="bold_text">AB De Villiers in RCB vs DD</span></div>
+              <div class="col-lg-6 col-12 xfactor text-center" id="bowling_xfactor"><span class="bold_text">Rashid Khan in SRH vs KKR</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              As our first example, let us consider AB de Villier's innings (90 of 39 balls) in the game between <a href="https://www.cricbuzz.com/live-cricket-scorecard/20079/rcb-vs-dcs-19th-match-indian-premier-league-2018"><em>RCB</em> and <em>DD</em></a>. 
+              Blue line is the probability of winning for <em>RCB</em>. The game starts with win probability of 0.5 for both teams. <em>RCB</em> were set a target of 175.
+              It can be observed that the game remains in balance till the Powerplay of RCB innings.
+              The red markers are the balls faced by AB de Villiers. Notice how the win probability increases for <em>RCB</em> during AB de Villier's innings.
+            </p>
+            <p>
+              For out second example, we look at Rashid Khan's all round performance in the IPL 2018 Qualifier 2 between <a href="https://www.cricbuzz.com/cricket-scores/20119/srh-vs-kkr-qualifier-2-indian-premier-league-2018"><em>SRH</em> and <em>KKR</em></a>.
+              Blue line is the probability of winning for <em>SRH</em>.
+              The red markers are the balls impacted by Rashid Khan.
+              Notice how <em>SRH's</em> win probability increases during his innings of 34 of 10 balls and later on during the fall of wickets of Lynn and Russell at a critical passage of play.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              Traditional statistics such as averages and strike-rates will not be able to indicate the contributions of a player to a winning cause. <em>WPA</em> instead can do precisely that.
+              Such quantitative measures can prove to be invaluable while selecting a few key remaining spots in the team with the most of the players picking themselves. More often than not data analysis throws some surprises when measures such as <em>WPA</em> are used.
+              For example while everyone remembers IPL 2018 for the brilliances of Rayudu, Watson, Dhoni, Rashid, Pant, Rahul, when considering <em>WPA</em> few other names came up too.
+              Presented below are some of the top contributions to winning and losing causes in IPL 2018.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="jumbotron"> 
+
+        <div class="container">
+          <div class="row justify-content-center text-center plot_title">
+            <div class="col-lg-12 col-md-10 col-sm-10 col-12">
+              <h4 class="plot_title"><em>WPA</em>: Top contributions to winning and losing causes in IPL 2018</h4>
+            </div>
+          </div>
+          <div class="row justify-content-center text-center plot_caption">
+            <div class="col-lg-8 col-md-10 col-sm-10 col-12">
+              <em>Win probability added (WPA)</em> is a statistic which measures a player's contribution to his/her team's win (or loss). Positive and negative <em>WPA</em> indicates contribution to win and loss respectively. Following are some of the top contributions to winning and losing causes in IPL 2018.
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row plot_padding">
+            <div class="col-lg-8 mx-auto">
+              <!--
+              <h4 class="text-center plot_title"><em>WPA</em>: Top contributions to winning and losing causes in IPL 2018</h4>
+              -->
+              <div id="top_bottom_xfactor"></div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-8 mx-auto xfactor text-center" id="xfactor_top_bottom"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              Clearly not many would have thought of Gowtham, Narine or Shreyas Gopal but data suggests that their contributions to winning causes were noteworthy. On the other hand, Unadkat, Stokes, Binny, Corey Anderson, Pandey were amongst the top contributors to the losing causes of their respective teams.
+            </p>
+            <p>
+              Building on <em>Player WPA</em>, <em>Team WPA</em> can be determined by adding up <em>WPA</em> of all the players in a team over the entire course of the league. Shown below are the Batting and bowling <em>WPA</em> of all the teams over the entire season of IPL 2018.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="jumbotron"> 
+        <div class="container">
+          <div class="row">
+            <!--
+              <div class="col-lg-6 xfactor text-center" id="xfactor_team_batting"></div>
+              <div class="col-lg-6 xfactor text-center" id="xfactor_team_bowling"></div>
+            -->
+              <div class="col-lg-6 xfactor text-center">
+                <h5 class="plot_title text-center">IPL 2018 Batting WPA</h5>
+                <div id="xfactor_team_batting"></div>
+              </div>
+              <div class="col-lg-6 xfactor text-center">
+                <h5 class="plot_title text-center">IPL 2018 Bowling WPA</h5>
+                <div id="xfactor_team_bowling"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              Unsurprisingly <em>CSK</em> and <em>SRH</em> are on top of the batting and bowling WPA metrics respectively. The graphic illustrates how dominating <em>CSK</em>’s batting was in the 2018 season.
+              Overall <em>KKR</em> seem to be the most balanced side with second place in both batting and bowling <em>WPA</em>. Careful inspection of the batting and bowling <em>WPA</em> reveals some very interesting insights.
+              <em>DD</em> who finished last in the table, were actually the third best batting team in the season. This illustrates how poor their bowling was.
+              After promising start, <em>KXIP</em> were disappointing with both bat and the ball in the second half of the league.
+              <em>MI</em> struggled with the bat while <em>RCB</em> had a middling season with both bat and the ball.
+            </p>
+            <p>
+              Thus by using <em>WPA</em> we are successfully able to quantitatively measure a player’s contribution to team’s winning cause. When used appropriately, this can provide some priceless insights leading to data driven team selections and thereby improve the chances of winning for the team.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+    <section id="about" class="analysis-section">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h2 class="text-center">Who needs what to win ?</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              The final section of this essay summarises all the findings so far. Explore the interactive graph presented below to visualise the charts for Team Composition and Player Impact of your favourite team. This should help determine couple of vital aspects. First the types of roles that are missing in the team combination. Secondly it will help in identifying the different phases in the game where the team needs to improve its execution. Together this will help determine the shortcomings of a team. Overall this can be a handy tool for the team management involved in auction process and later on during the league for devising strategies and team selections.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="jumbotron"> 
+
+        <div class="container">
+          <div class="row justify-content-center text-center plot_title">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-12">
+              <h4 class="plot_title">Interactive Graph: Who needs what to win ?</h4>
+            </div>
+          </div>
+          <div class="row justify-content-center text-center plot_caption">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-12">
+              Explore the interactive graph to visualise the charts for Team Composition and Player Impact and see how your favourite team can improve its chances of winning ?
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <div id="analysis_league_button_bar">
+                <button type="button" id="ipl" class="btn btn-primary active">IPL</button>
+                <!--
+                <button type="button" id="bbl" class="btn btn-primary">BBL</button>
+                <button type="button" id="blast" class="btn btn-primary">BLAST</button>
+                <button type="button" id="cpl" class="btn btn-primary">CPL</button>
+                <button type="button" id="bpl" class="btn btn-primary">BPL</button>
+                <button type="button" id="psl" class="btn btn-primary">PSL</button>
+                -->
+              </div>
+
+              <div class="team_button_bar" id="analysis_team_button_bar" style="padding-top:10px;">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="container justify-content-center text-center">
+          <div class="row justify-content-center text-center" class="analysis" style="padding-top:20px;">
+
+            <div class="col-lg-12 col-12 text-center analysis_graphic" id="analysis_graphic">
+              <div class="row">
+                <div class="col-lg-6 analysis_batting" style="border-style:solid;border-width: 1px;">
+
+                  <div class="row">
+                    <div class="col-lg-12 bold_text analysis_color_text">Batting</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12 text-center analysis_types" id="analysis_batting_metric">
+                      <span class="text-center analysis_types bold_text" id="analysis_batting_metric_title"></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12 text-center analysis_impact" id="analysis_batting_impact">
+                      <span class="text-center analysis_types bold_text" id="analysis_batting_impact_title"></span>
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-center text-center">
+                    <div class="col-lg-10 analysis_shortcoming">
+                      <table class="table table-bordered table-hover table-striped table-sm">
+                        <thead>
+                          <tr class="table-primary">
+                            <th scope="col" id="analysis_batting_team_title"></th>
+                          </tr>
+                        </thead>
+                        <tbody class="missing_list" id="batting_shortcoming">
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                </div>
+
+
+                
+                <div class="col-lg-6 analysis_bowling" style="border-style:solid;border-width: 1px;">
+
+                  <div class="row">
+                    <div class="col-lg-12 bold_text analysis_color_text">Bowling</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12 text-center analysis_types" id="analysis_bowling_metric">
+                      <span class="text-center analysis_types bold_text" id="analysis_bowling_metric_title"></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12 text-center analysis_impact" id="analysis_bowling_impact">
+                      <span class="text-center analysis_types bold_text" id="analysis_bowling_impact_title"></span>
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-center text-center">
+                    <div class="col-lg-10 analysis_shortcoming">
+                      <table class="table table-bordered table-hover table-striped table-sm">
+                        <thead>
+                          <tr class="table-primary">
+                            <th scope="col" id="analysis_bowling_team_title"></th>
+                          </tr>
+                        </thead>
+                        <tbody class="missing_list" id="bowling_shortcoming">
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              This tool can be used to determine the shortcomings of a team. Overall the tool should be very useful for the team management involved in auction process and later on during the league for team selections.
+            </p>
+          </div>
+        </div>
+      </div>
+      -->
+    </section>
+
+
+    <section id="about" class="analysis-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h2 class="text-center">Scouting</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">    
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              One of the most striking traits of 10 years of IPL has been the contribution of the young Indian players in helping their teams win the competition.
+              While the experience of international stars is indispensable, past seasons have shown that the contributions from local talent is integral to any team’s success.
+              We list some of the top performers in the Indian domestic T20 competitions. Since the top performers from BBL, Vitality Blast, CPL are certainly not missed by the scouting radar, those names are not included in this list.
+              Following is a list of top performers in <em>SMAT</em> (Syed Mushtaq Ali Trophy), <em>KPL</em> (Karnataka Premier League), and <em>TNPL</em> (Tamil Nadu Premier League) grouped by the roles they perform. Irrespective of the auction which may or may not feature these names, there is a lot of exciting talent that may be of interest to scouting personnel of franchises.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="jumbotron">
+
+        <div class="container">
+          <div class="row justify-content-center text-center plot_title">
+            <div class="col-lg-8 col-md-12 col-sm-10 col-12">
+              <h4 class="plot_title">Top performers in Indian domestic T20 leagues</h4>
+            </div>
+          </div>
+          <div class="row justify-content-center text-center plot_caption">
+            <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+              <em>SMAT</em>: Syed Mushtaq Ali Trophy &nbsp &nbsp <em>TNPL</em>: Tamil Nadu Premier League &nbsp &nbsp<em>KPL</em>: Karnataka Premier League.
+            </div>
+          </div>
+        </div>
+
+      <div class="container plot_padding">
+        <div class="row text-center">
+          <div class="col-lg-4">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped table-condensed">
+                <thead>
+                  <tr class="table-primary table-analysis-large">
+                    <th scope="col" colspan="4">Batsmen: Top order aggressors</th>
+                  </tr>
+                </thead>
+                <tbody class="table-analysis">
+                  <tr class="table-primary">
+                    <td>Batsman</td>
+                    <td>Runs</td>
+                    <td>Strike Rate</td>
+                    <td>League</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>Arun Karthik</td>
+                    <td>319</td>
+                    <td>158</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>Anirudha</td>
+                    <td>184</td>
+                    <td>140</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>Shahrukh Khan</td>
+                    <td>293</td>
+                    <td>140</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>Kaushik Gandhi</td>
+                    <td>239</td>
+                    <td>150</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>Hari Nishanth</td>
+                    <td>250</td>
+                    <td>150</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>Abhishek Reddy</td>
+                    <td>163</td>
+                    <td>145</td>
+                    <td>KPL</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>UM Patel</td>
+                    <td>201</td>
+                    <td>153</td>
+                    <td>SMAT</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                  <tr class="table-primary table-analysis-large">
+                    <th scope="col" colspan="4">Batsmen: Middle order accumulators</th>
+                  </tr>
+                </thead>
+                <tbody class="table-analysis">
+                  <tr class="table-primary">
+                    <td>Batsman</td>
+                    <td>Runs</td>
+                    <td>Strike Rate</td>
+                    <td>League</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>S Dinesh</td>
+                    <td>190</td>
+                    <td>138</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>N Jagadeesan</td>
+                    <td>348</td>
+                    <td>130</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>Suresh Kumar</td>
+                    <td>218</td>
+                    <td>132</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>Pavan Deshpande</td>
+                    <td>196</td>
+                    <td>143</td>
+                    <td>KPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>Shoaib Manager</td>
+                    <td>157</td>
+                    <td>141</td>
+                    <td>KPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>Chipli</td>
+                    <td>192</td>
+                    <td>138</td>
+                    <td>KPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>KH Devdhar</td>
+                    <td>411</td>
+                    <td>137</td>
+                    <td>SMAT</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>B Vivek Singh</td>
+                    <td>286</td>
+                    <td>142</td>
+                    <td>SMAT</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                  <tr class="table-primary table-analysis-large">
+                    <th scope="col" colspan="4">Batsmen: Death overs hitters</th>
+                  </tr>
+                </thead>
+                <tbody class="table-analysis">
+                  <tr class="table-primary">
+                    <td>Batsman</td>
+                    <td>Runs</td>
+                    <td>Strike Rate</td>
+                    <td>League</td>
+                  </tr>
+                  <tr class="table-info">
+                    <td>J Kousik</td>
+                    <td>167</td>
+                    <td>148</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-info">
+                    <td>Sathish</td>
+                    <td>220</td>
+                    <td>193</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-info">
+                    <td>R Vivek</td>
+                    <td>262</td>
+                    <td>208</td>
+                    <td>TNPL</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-lg-4">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped table-condensed">
+                <thead>
+                  <tr class="table-primary table-analysis-large">
+                    <th scope="col" colspan="4">Bowlers: Powerplay strikers</th>
+                  </tr>
+                </thead>
+                <tbody class="table-analysis">
+                  <tr class="table-primary">
+                    <td>Bowler</td>
+                    <td>Wickets</td>
+                    <td>Economy Rate</td>
+                    <td>League</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>S Ajith Ram</td>
+                    <td>11</td>
+                    <td>5.9</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>AA Sheth</td>
+                    <td>14</td>
+                    <td>7.0</td>
+                    <td>SMAT</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>DG Pathania</td>
+                    <td>11</td>
+                    <td>7.2</td>
+                    <td>SMAT</td>
+                  </tr>
+                  <tr class="table-success">
+                    <td>K Vignesh</td>
+                    <td>11</td>
+                    <td>7.3</td>
+                    <td>SMAT</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                  <tr class="table-primary table-analysis-large">
+                    <th scope="col" colspan="4">Bowlers: Middle order containers</th>
+                  </tr>
+                </thead>
+                <tbody class="table-analysis">
+                  <tr class="table-primary">
+                    <td>Bowler</td>
+                    <td>Wickets</td>
+                    <td>Economy Rate</td>
+                    <td>League</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>Chakravathi</td>
+                    <td>9</td>
+                    <td>4.7</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>Rajkumar</td>
+                    <td>10</td>
+                    <td>7.3</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>S Manigandan</td>
+                    <td>7</td>
+                    <td>5.4</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>Mahesh Patel</td>
+                    <td>12</td>
+                    <td>6.0</td>
+                    <td>KPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>Anand Doddamani</td>
+                    <td>8</td>
+                    <td>5.9</td>
+                    <td>KPL</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>LI Meriwala</td>
+                    <td>13</td>
+                    <td>8.0</td>
+                    <td>SMAT</td>
+                  </tr>
+                  <tr class="table-warning">
+                    <td>S Bhati</td>
+                    <td>12</td>
+                    <td>7.0</td>
+                    <td>SMAT</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                  <tr class="table-primary table-analysis-large">
+                    <th scope="col" colspan="4">Bowlers: Death overs strikers</th>
+                  </tr>
+                </thead>
+                <tbody class="table-analysis">
+                  <tr class="table-primary">
+                    <td>Bowler</td>
+                    <td>Wickets</td>
+                    <td>Economy Rate</td>
+                    <td>League</td>
+                  </tr>
+                  <tr class="table-info">
+                    <td>Abhishek Tanwar</td>
+                    <td>14</td>
+                    <td>9.0</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-info">
+                    <td>Athisayaraj Davidson</td>
+                    <td>12</td>
+                    <td>8.9</td>
+                    <td>TNPL</td>
+                  </tr>
+                  <tr class="table-info">
+                    <td>Vyshak V</td>
+                    <td>11</td>
+                    <td>9.3</td>
+                    <td>KPL</td>
+                  </tr>
+                  <tr class="table-info">
+                    <td>RD Thakur</td>
+                    <td>11</td>
+                    <td>8.3</td>
+                    <td>SMAT</td>
+                  </tr>
+                  <tr class="table-info">
+                    <td>T Natarajan</td>
+                    <td>11</td>
+                    <td>4.7</td>
+                    <td>TNPL</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      </div>
+
+    </section>
+
+
+    <section id="conclusion" class="content-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h2 class="text-center">Conclusion</h2>
+              <p>
+                Cricket like every other sport is delightfully unpredictable and in its unpredictability lies the highs and lows we experience as spectators. 
+                By adding mathematical models and quantitative element to this may seem like trying to remove some of its unpredictability and thereby making the sport little less exciting and little more mundane.
+                While this is true to some extent, quite a few instances in recent years have shown that data guided decision making in sports has lead to some remarkable results in itself. This has added an entirely new facet to the sport.
+                This process termed as Sabermetrics in now being used in a wide range of sports including <a href="https://www.techrepublic.com/article/how-big-data-won-the-2017-world-series/">Baseball</a>, <a href="https://qz.com/1104922/data-analytics-have-revolutionized-the-nba/">Basketball</a>, <a href="https://www.intel.co.uk/content/www/uk/en/it-management/cloud-analytic-hub/big-data-in-tennis.html">Tennis</a>, <a href="https://www.independent.co.uk/sport/football/premier-league/transfer-window-football-betting-analytics-moneyball-a7934181.html">Football.</a>
+              </p>
+              <p>    
+                Until recently cricket has been reluctant to harness the potency of data analytics.
+                This essay tried to uncover some of the aspects that data scientists working for T20 franchises may be interested in.
+                The article demonstrated how all successful teams possess a variety of players with clear roles assigned to them. More often than not, this translates to clarity in each player’s game leading to better on-field performances.
+                We saw how critical it is to have players who can make an impact during different phases of a game.
+                The essay also demonstrated a quantitative way of measuring a player’s contribution to team’s win or loss, a metric which is rarely used in cricket.
+                Based on these findings, the shortcomings of each of the 8 IPL teams were determined.
+              </p>
+              <p>
+                While data analytics has successfully been able to analyse and predict outcomes in different domains, using past performances as a measure to select a player is a fool’s errand.
+                For all we know, players such as Yuvraj Singh or Ishant Sharma snubbed by the franchises in the recent past, may very well go on to have their best IPL season yet.
+                And it is this fickle nature of sport where any player can overcome the odds and win a game for their team that makes us stay glued to our TV screens.
+              </p>
+              <p>
+                After 10 years, the IPL is at a pivotal stage where we could see only few teams dominating resulting in a wide gulf in the quality of the teams much like Premier League Football.
+                This is certainly not good news for the IPL and its fans. Using data analytics to assist in better team selections and better strategies may well be the decisive factor in retaining even contest amongst all the teams.
+                As a data scientist I am thrilled when the mathematical models and algorithms I designed, predict the events on the field. Having said that, as an avid cricket fan I would still prefer to see an underdog overcome the odds and win a nail biting encounter.
+                Regardless, lets hope for many more years of fascinating and closely contested IPL.
+              </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!--
+    <section id="about" class="additionalnotes-section">
+      <div class="footer">
+        <div class="row">
+          <div class="col-lg-12 col-md-10 mx-auto">
+            <p>
+              Note: Mathematical equations are avoided in this article. Contact the author for more details regarding the underlying mathematical models and the complete list of players with numbers and other information.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+-->
+
+    <!-- Footer -->
+    <footer class="footer" name="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <!--
+            <p>
+              All the code for this project can be found on <a href="https://github.com/deepak-karkala/portfolio/tree/master/docs/articles/cricket_sabermetrics">Github</a>.
+            </p>
+            -->
+            <p>
+              The data for this research article was obtained from this <a href="https://www.kaggle.com/manasgarg/ipl">dataset</a> on Kaggle and also from <a href="https://www.cricbuzz.com/cricket-series/2676/indian-premier-league-2018/matches">Cricbuzz</a> website.
+            </p>
+            <!--
+            <p>
+              Mathematical equations are avoided in this article. Contact the author for more details regarding  mathematical models and the underlying algorithms. Reach out at <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a>.
+            </p>
+            -->
+            <p>
+              This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://d3js.org/">d3js</a>. The template for this html page was adapted from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>. The banner image was obtained from <a href="https://www.flickr.com/photos/74576085@N00/5460870340/sizes/l">here</a> courtesy <a href="https://www.flickr.com/photos/74576085@N00/">slalit</a>.
+            </p>
+            <h5 class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a>. You can also send me an email at <a href="mailto:dkarkala01@gmail.com" target="_top"><span class="contact_link">dkarkala01@gmail.com</span></a></h5>
+            <p class="text-center">Copyright &copy; Deepak Karkala 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery3.3.1/jquery.min.js"></script>
+    <script src="/vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing1.4.1/jquery.easing.min.js"></script>
+
+    <!-- D3js -->
+    <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+    <script src="/vendor/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="js/grayscale.js"></script>
+    
+    <script src="js/plot_metric_chart_light.js"></script>
+    <script src="js/plot_impact_chart_light.js"></script>
+    <script src="js/plot_xfactor_we_light.js"></script>
+    <script src="js/plot_analysis_graphic_light.js"></script>
+</html>
