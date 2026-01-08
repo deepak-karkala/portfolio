@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Rhythm similarity in songs</title>
+	<meta name="description" content="Scrollama Demo: Fixed JS">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+    <!--<link rel="stylesheet" href="vendor/jquery-ui-1.12.1/jquery-ui.min.css">-->
+	
+
+    <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/vendor/jquery3.3.1/jquery.min.js"></script>
+    <script src="/vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>
+	<link href="css/select2.css" rel="stylesheet"/>
+	<link href="css/style.css" rel="stylesheet"></style>
+	<script src="js/select2.js"></script>
+    <script>
+		$(document).ready(function() {
+		    //$('.js-example-basic-single').select2();
+		    $('#combobox').select2();
+		    $('#viz_combobox').select2();
+		    $('#artist_combobox').select2();
+		});
+    </script>
+
+	<link href="/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+  	<link rel="stylesheet" href="/vendor/fontawesome/css/brands.min.css">
+  	<link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
+    <link href="vendor/toggle-switch/toggle-switch.css" rel="stylesheet">
+    <link href="vendor/toggle-switch/toggle-switch-px.css" rel="stylesheet">
+    <link href="vendor/toggle-switch/toggle-switch-rem.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  	<link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+</head>
+
+<body style="background-color:#2a2a2a; color:white;"> <!--#f1e0d6-->
+  <!-- Minimal Navigation -->
+  <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.85); padding: 12px 24px; display: flex; justify-content: space-between; align-items: center;">
+    <a href="/data-visualisation" style="color: #fff; text-decoration: none; font-size: 14px; opacity: 0.9; transition: opacity 0.2s;"
+       onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+      ← Back to Data Visualisation
+    </a>
+    <a href="/" style="color: #fff; text-decoration: none; font-size: 14px; opacity: 0.9; transition: opacity 0.2s;"
+       onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+      About Me
+    </a>
+  </nav>
+  <div style="height: 48px;"></div>
+
+	<!--
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+            	<h1 class="text-center">Rhythm Similarity</h2>
+			</div>
+		</div>
+	</div>
+	-->
+
+	<!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2 col-6 mx-auto rhythm_types_cover">
+            	<img src="images/rhythm_types.gif">
+            </div>
+          </div>	
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-12 mx-auto">
+              <h1 class="brand-heading">Are Ed Sheeran's <em class="brand-heading-song-name">Shape of you</em> and Sia's <em class="brand-heading-song-name">Cheap thrills</em> rhythmically similar ?</h1>
+              <p class="intro-text text-center">How to measure rhythmic similarity of songs ?<br></p>
+              <p class="article_author text-center">Deepak Karkala</p>
+              <p class="article_date text-center" style="padding-top: 0px;">January 2020</p>
+              <a href="#introduction" class="btn btn-circle js-scroll-trigger" style="color:white; border: 1px solid white; font-size: 26px;">
+                <i class="fa fa-angle-double-down animated"><span ></span></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <section class="description" id="introduction">
+		<div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+            <p class="intro_text">
+            	At some point while listening to music we have all wondered if the song we are listening to sounds a lot like some other song ? This is not suprising since artists have always tried to churn out new rhythm patterns based on successful music that came out earlier. This makes perfect sense with research suggesting that people tend to like certain kind of rhythm patterns more than others. But quite often such similarities are based on listener's perception and is therefore highly subjective. This leads us to seek if there is a way to measure the rhythm similarities of two songs quantitatively.
+            </p>
+            <p class="intro_text">
+            	So how to measure rhythmic similarity of two songs ? Can we classify the songs based on their rhythm patterns ? Can we visualize the rhythm of a song ? If we can assign similarity scores to songs, then can we determine the most unique song and the most similar sounding song pairs ? Further by combining uniqueness of songs belonging to a certain artist, can we measure uniqueness of an artist ? This post attempts to answer these questions.
+            </p>
+            <h4 class="text-center intro_data_text_title">About the data-set used</h4>
+            <p class="intro_data_text">
+            	Before we begin, a note about the dataset used in the project. This project uses MIDI data to compare rhythm patterns of songs. MIDI (short for <em>Musical Instrument Digital Interface</em>) carries event messages, data that specify the instructions for music, such a note's notation, pitch, velocity and tempo of the song. The MIDI data was personally collected from <a href="https://musescore.com/">Musescore</a>. We considered artists by total number-one singles on <a href="https://en.wikipedia.org/wiki/List_of_Billboard_Hot_100_chart_achievements_by_decade">Billboard Hot 100 chart for every decade</a> from 1960s. For each artist, we then obtained MIDI data of all the songs available on <a href="https://musescore.com/">Musescore</a>. For artists from before 2000s, MIDI data were available for only few songs. So in order to expand the dataset, we also considered popular artists of 2000s and 2010s not in the Billboard Hot 100 chart. Overall the dataset consists of MIDI data for close to 400 songs. Although this is still a small dataset, the analysis that follows here does provide interesting insights into visualizing and measuring similarities in rhythm patterns of songs.
+            </p>
+            <h4 class="text-center">Keep scrolling to learn more.</h4>
+          </div>
+        </div>
+      </div>
+	</section>
+
+
+	<div class="transition" id="transition1">How to measure similarities in rhythm ?</div>
+
+	<section id='scrolly'>
+		<figure id="figure">
+			<div class="row">
+				<div class="col-lg-12">
+					<p id="text1"></p>
+				</div>
+			</div>
+		</figure>
+
+		<article>
+			<div class='step' data-step='0'>
+				<p>How to compare rhythm similarity of two songs ?</p>
+			</div>
+			<div class='step' data-step='1'>
+				<p>What is Rhythm ?</p>
+			</div>
+			<div class='step' data-step='2'>
+				<p>Here are 3 instantly recognisable rhythm patterns from across the eras</p>
+			</div>
+			<div class='step' data-step='3'>
+				<p>Simply put,</p>
+			</div>
+			<div class='step' data-step='4'>
+				<p>Rhythm is characterised by 
+				</p>
+			</div>
+			<div class='step' data-step='5'>
+				<p>Here are visualisations of rhythm patterns in few popular songs</p>
+			</div>
+		
+			<div class='step' data-step='6'>
+				<p>We observe how similar Ed Sheeran's <em class="explainer_song_name">Shape of You</em> and Sia's <em class="explainer_song_name">Cheap Thrills</em> are visually.</p>
+			</div>
+			<div class='step' data-step='7'>
+				<p class="step_small_text">We use the features of a rhythm pattern (pitch and on-off duration of the notes present in the song) to quantify the difference in rhythms and assign similarity scores to each pair of songs.</p>
+			</div>
+			<div class='step' data-step='8'>
+				<p>For example, the following graphic shows how similar songs are rhythmically to Ed Sheeran's <em class="explainer_song_name">Shape of You</em></p>
+			</div>
+			<div class='step' data-step='9'>
+				<p>Backing our visual interpretation, the algorithm does assign very high similarity score to <em class="explainer_song_name">Shape of You</em> and <em class="explainer_song_name">Cheap Thrills</em></p>
+			</div>
+			<div class='step' data-step='10'>
+				<p>To substantiate this method of measuring rhythm similarity, let us hear the vocals of one song with rhythm of another song.</p>
+			</div>
+			<div class='step' data-step='11'>
+				<p>We can hear how well the rhythm of <em class="explainer_song_name">Shape of You</em> fits to <em class="explainer_song_name">Cheap Thrills</em> whereas fails miserably with Beyonce's <em class="explainer_song_name">Halo</em></p>
+			</div>
+			<div class='step' data-step='12'>
+				<p>Thus we have now established a reliable way of measuring similarity of rhythms in two tracks.</p>
+			</div>
+		
+			<div class='step step_invisible' data-step='13'>
+				<p></p>
+			</div>
+		</article>
+	</section>
+
+
+	<div class="transition" id="transition5">Rhythm visualisation</div>
+
+	<section id="rhythm_visualisation">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<p>
+						We now have a method to measure similarities in rhythm patterns between any two songs. In the process of determining that, we also developed a methodology to visualize the rhythm pattern of a song. Before proceeding to determine the most unique songs, most similar song pairs, most unique artists, let us explore the rhythm visualization in more detail. 
+					</p>
+					<p>
+						To recap, this is how we visualized the rhythm of a song. <span class="rhythm_viz_explaination">Each note in the song is shown as a circle. The pitch of the note determines the distance of the circle from center. The colors denote the various notes present in the song. The space between the circles are based on the on and off duration of the notes. Together these features constitute a rhythm pattern.</span> Based on this, we can now plot the rhythm pattern of an entire song. We can plot the rhythm over time horizontally but instead let us do it in a circular fashion. This will help us visualize better the repetitive patterns present in the song. So now the rhythm patterns will be shown as circles with clockwise direction representing increasing time. 
+					</p>
+					<p>
+						This next interactive graphic lets you visualize rhythm patterns of songs. Search from the list of available songs to visualize the rhythm patterns of some of your favourite songs.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="container plot_song_artist_rhythm_visualisation">
+			<div class="row">
+				<div class="col-lg-12 col-12 plot_song_artist_rhythm_visualisation_title" id="plot_song_artist_rhythm_visualisation_title">
+					<h3 class="text-center">Visualize rhythm of a song</h3>
+				</div>
+			</div>
+			
+			<div class="row">
+	         	<div class="col-lg-12 text-center">
+					<div class="control-group">
+						<select id="viz_combobox" class="select2_select">
+							<option value="">Search for a song...</option>
+						</select> 
+					</div> 
+	          	</div>
+	        </div>
+	        <div class="row">
+				<div class="col-lg-10 col-md-12 col-12 mx-auto justify-content-center text-center">
+					<div id="plot_song_artist_rhythm_visualisation_subtitle"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 col-md-12 col-12 mx-auto justify-content-center text-center plot_song_artist_rhythm_visualisation">
+					<div class="row justify-content-center" id="plot_song_artist_rhythm_visualisation">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<p>
+						Now that we have visualized rhythms of few songs, let us examine if rhythms can be categorized into few distinct types. Based on visual inspection, I came up with the following categories of rhythms.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container plot_rhythm_visualisation_types">
+			<div class="row">
+				<div class="col-lg-12 col-12 plot_rhythm_visualisation_types_title" id="plot_rhythm_visualisation_types_title">
+					<h3 class="text-center">Types of Rhythms</h3>
+				</div>
+			</div>
+			</br>
+			<div class="row text-center justify-content-center">
+				<div class="col-lg-10 col-12 rhythm_types_img">
+					<img src="images/rhythm_types.png">
+				</div>
+			</div>
+			<!--
+			<div class="row">
+				<div class="col-lg-10 col-md-12 col-12 mx-auto justify-content-center text-center">
+					<div id="plot_rhythm_visualisation_types"></div>
+				</div>
+			</div>
+			-->
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<p>
+						<ul>
+							<li class="rhythm_type_title">Repetitive Rhythm </li>
+							<p>These are songs which have a consistent rhythm throughout the song. Such songs are characterized by the presence of the same repetitive beats over and over. This is a popular category of rhythm patterns. Songs like <span class="song_name_text"> Ed Sheeran's Shape of You</span> and <span class="song_name_text">Coldplay's Viva La Vida</span> are classic examples of this category. The near perfect symmetry in the rhythm patterns of such songs are strikingly evident.</p>
+							
+							<li class="rhythm_type_title">Alternating Rhythm </li>
+							<p>Alternating rhythms are where songs possess multiple beat patterns switching amongst these patterns during the course of a song. These are often used to make the song diverse and keep the listener engaged by using beat patterns of varying tempo or style. One of the classic songs of this variety is <span class="song_name_text">Eminem's Love the way you lie ft. Rihanna</span> where the two rhythm patterns, one during Rihanna's vocals and the other during Eminem's rap are very distinctly visible.</p>
+
+							<li class="rhythm_type_title">Staggered Rhythm </li>
+							<p>Another popular variety of rhythms is where the pitch of a note is progressively increased over a short duration before returning to the original pitch and then repeating this cycle over and over again. <span class="song_name_text">Katy Perry's I kissed a girl</span> and <span class="song_name_text">Calvin Harris's Outside</span> are examples of this type of rhythm pattern.</p>
+
+							<li class="rhythm_type_title">Multiple Notes Rhythm </li>
+							<p>Rhythm patterns we explored till now had notes of few distinct pitch values and in most songs only such distinct pitch values are used throughout the whole song. However a small number of songs use unusually large number of notes with widely different pitch values. Such songs are filled with notes continuously with very little off duration of the notes making them feel more lively, colorful and dynamic. <span class="song_name_text">Focus by Ariana Grande</span> and <span class="song_name_text">Work by Rihanna</span> are examples of such rhythm pattern.</p>
+						</ul>
+					</p>
+					<p>
+						This concludes the section on visualizing and categorizing rhythm patterns of songs. We now move on to exploring uniqueness of songs, artists, rhythmically most similar song pairs and more.
+					</p>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+
+
+
+	<div class="transition" id="transition3">Uniqueness of a song</div>
+
+	<section id="song_similarity_scores">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<p>
+						Since we now have a method to measure similarity of rhythm in two songs, we can use this to determine the uniqueness of a song. In order to do this, we measure the similarity of a song to every other song in our dataset. The average similarity score of a song to all other songs will determine the uniqueness of a song. Songs which sound similar to most others will have a very high similarity score whereas songs with distinct rhythm patterns will have much lower similarity scores.
+					</p>
+					<p>
+						The graphic below shows the similarity scores of all the songs used in this project's dataset. The position of the songs on the horizontal axis determines how unique a song is, songs lying more towards right are more similar to other songs in the dataset whereas songs towards left side of the chart possess more unique rhythm patterns. 
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container all_songs_similarity_scores">
+			<div class="row div_top_padding">
+				<div class="col-lg-12 col-12 all_songs_similarity_scores_title" id="all_songs_similarity_scores_title">
+					<h3 class="text-center">Rhythm Similarity Scores of Songs</h3>
+				</div>
+			</div>
+			<div class="row">
+	         	<div class="col-lg-12">
+	        		<div class="btn-toolbar all_songs_similarity_scores_button  justify-content-center" id="all_songs_similarity_scores_button" aria-label="Basic example">
+	        			<button type="button" class="button mr-1 active" id="all" onclick="all_songs_similarity_scores_button_click(this.id)">All</button>
+						<button type="button" class="button mr-1" id="2010" onclick="all_songs_similarity_scores_button_click(this.id)">'10s</button>
+						<button type="button" class="button mr-1" id="2000" onclick="all_songs_similarity_scores_button_click(this.id)">'00s</button>
+						<button type="button" class="button mr-1" id="1990" onclick="all_songs_similarity_scores_button_click(this.id)">'90s</button>
+						<button type="button" class="button mr-1" id="1980" onclick="all_songs_similarity_scores_button_click(this.id)">'80s</button>
+						<button type="button" class="button mr-1" id="1970" onclick="all_songs_similarity_scores_button_click(this.id)">'70s</button>
+						<button type="button" class="button mr-1" id="1960" onclick="all_songs_similarity_scores_button_click(this.id)">'60s</button>
+	            	</div>
+	          	</div>
+	        </div>
+			<div class="row">
+				<div class="col-lg-10 col-md-12 col-12 mx-auto justify-content-center text-center">
+					<div id="plot_all_songs_similarity_scores"></div>
+				</div>
+			</div>
+			<div class="row div_bottom_padding">
+				<div class="col-lg-6 col-12 mx-auto justify-content-center text-center">
+					<div class="row">
+						<div class="col-lg-4 col-4 legend_text">
+							More unique rhythms 
+						</div>
+						<div class="col-lg-4 col-4 justify-content-center text-center">
+							<div id="all_songs_similarity_scores_legend"></div>
+						</div>
+						<div class="col-lg-4 col-4 legend_text">
+							Less unique rhythms
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<p>
+						Going by this, we observe that our rhythm similarity algorithm declares <span class="song_name_text">Lady Gaga's Stupid Love</span>, <span class="song_name_text">Pink Floyd's High Hopes</span>, <span class="song_name_text">Shawn Mendes's If I can't have you</span>, <span class="song_name_text">One Direction's Walking in the wind</span>, <span class="song_name_text">David Guetta's This ones for you</span> as the some of the most rhythmically unique songs amongst the songs considered in this project. The top 25 most unique songs are listed in this table below.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container top_unique_songs">
+			<div class="row">
+				<div class="col-lg-12 col-12 top_unique_songs_title text-center" id="top_unique_songs_title">
+					<h3 class="text-center">Top 25 most unqiue songs</h3>
+				</div>
+			</div>
+	        <div class="row">
+				<div class="col-lg-12 col-12 top_unique_songs_subtitle">
+					<div class="text-center" id="top_unique_songs_subtitle"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-12 col-12 top_unique_songs_table mx-auto justify-content-center text-center">
+					<div id="top_unique_songs_table"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<p>
+						Having seen the most unique songs, we now return to the question we posed at the beginning of this article, that feeling of having heard a similar rhythm elsewhere while listening to a song and if we can determine which are those other songs which possess similar rhythm. The interactive graphic below lets you select a song and see which other songs are rhythmically most similar to it. The similarity scores of the songs pairs are also listed for reference. Scores closer to <em>"1"</em> suggests that the songs have very similar rhythm patterns. 
+					</p>
+					<p>
+						Explore which songs are most similar to some of your favourite songs.
+					</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container song_discography">
+			<div class="row">
+				<div class="col-lg-12 col-12 song_discography_title text-center" id="song_discography_title">
+					<h3 class="text-center">Select a song and see which other songs are rhythmically most similar to it</h3>
+				</div>
+			</div>
+			<div class="row">
+	         	<div class="col-lg-12 text-center">
+	         		<!--
+	        		<div class="ui-widget">
+						<label>Select a song: </label>
+						<select id="combobox">
+						</select>
+					</div>
+					-->
+					<div class="control-group">
+						<select id="combobox" class="select2_select">
+							<option value="">Search for a song...</option>
+						</select> 
+					</div> 
+	          	</div>
+	        </div>
+	        <div class="row">
+				<div class="col-lg-12 col-12 song_discography_subtitle">
+					<div class="text-center" id="song_discography_subtitle"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-12 col-12 song_discography_table mx-auto justify-content-center text-center">
+					<div id="song_discography_table"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--
+		<div class="container decade_similarity">
+			<div class="row">
+				<div class="col-lg-12 col-12 decade_similarity_title text-center" id="decade_similarity_title">
+					Similarity scores of songs over decades
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-12 col-12 mx-auto justify-content-center text-center">
+					<div id="decade_similarity_graphic"></div>
+				</div>
+			</div>
+		</div>
+		-->
+	</section>
+
+
+
+	<div class="transition" id="transition4">Most similar songs</div>
+
+	<section id="most_similar_songs">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<p>
+						Our analysis so far naturally leads to the question of <em>Which are the most rhythmically similar song pairs ?</em> The table below lists the most similar song pairs amongst the songs considered in this project's dataset. The rhythm similarity computation algorithm considers these songs to have extremely similar rhythm patterns. You can inspect the list and ask yourself if you too ever felt like some of these song pairs are similar to each other.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container most_similar_songs">
+			<div class="row">
+				<div class="col-lg-12 col-12 most_similar_songs_title" id="most_similar_songs_title">
+					<h3 class="text-center">Most Similar Pairs of Songs</h3>
+				</div>
+			</div>
+			<div class="row">
+	         	<div class="col-lg-12">
+	        		<div class="btn-toolbar most_similar_songs_button  justify-content-center" id="most_similar_songs_button" aria-label="Basic example">
+	        			<button type="button" class="button mr-1 active" id="all" onclick="most_similar_songs_button_click(this.id)">All</button>
+						<button type="button" class="button mr-1" id="2010" onclick="most_similar_songs_button_click(this.id)">'10s</button>
+						<button type="button" class="button mr-1" id="2000" onclick="most_similar_songs_button_click(this.id)">'00s</button>
+						<button type="button" class="button mr-1" id="1990" onclick="most_similar_songs_button_click(this.id)">'90s</button>
+						<button type="button" class="button mr-1" id="1980" onclick="most_similar_songs_button_click(this.id)">'80s</button>
+						<button type="button" class="button mr-1" id="1970" onclick="most_similar_songs_button_click(this.id)">'70s</button>
+						<button type="button" class="button mr-1" id="1960" onclick="most_similar_songs_button_click(this.id)">'60s</button>
+	            	</div>
+	          	</div>
+	        </div>
+			
+			<div class="row">
+				<div class="col-lg-6 col-md-12 col-12 most_similar_songs_table mx-auto justify-content-center text-center">
+					<div id="most_similar_songs_table"></div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+
+
+	<div class="transition" id="transition5">Uniqueness of artists</div>
+
+	<section id="artist_similarity_scores">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<p>
+						So far we have used our rhythm similarity computation algorithm to analyze uniqueness of songs and to find rhythmically similar songs. However each song has an artist who composed it and accordingly once we have uniqueness scores for songs, we can extend that concept to determine uniqueness of artists. The uniqueness scores of all songs belonging to an artist can be averaged to assign an uniqueness score for an artist. Two types of uniqueness scores can be determined for artists, 
+					</p>
+					<ul>
+						<li class="rhythm_type_title">Inter-Artist uniqueness score</li>
+						<p>This is computed by comparing rhythms in an artist's songs with the rhythms in songs from other artists. This score determines how unique an artist is compared to other artists.</p>
+						<li class="rhythm_type_title">Intra-Artist uniqueness score</li>
+						<p>The other way of determining uniqueness is by comparing an artist's songs with other songs belonging to same artist. This score indicates the diversity in an artist's compositions.</p>
+					</ul>
+					<p>
+						The below graphic arranges the artists on the horizontal axis based on their uniqueness scores. Artists lying further to the right have higher similarity score and hence lower uniquenss score. Artists lying towards left are more unique. Use the toggle switch to compare the two scores of artists.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container all_artists_similarity_scores">
+			<div class="row">
+				<div class="col-lg-12 col-12 all_artists_similarity_scores_title" id="all_artists_similarity_scores_title">
+					<h3 class="text-center">Uniqueness of Artists</h3>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-10 col-12 all_artists_similarity_scores_subtitle">
+					<p>Uniqueness score of artists can be computed either by comparing an artist's songs with one's own songs (<b class="artist_score_type">Intra-Artist</b>) or with those from other artists (<b class="artist_score_type">Inter-Artist</b>). Toggle switch to compare the two scores</p>
+				</div>
+			</div>
+			<div class="row">
+	         	<div class="col-lg-4 mx-auto justify-content-center text-center">
+					<label class="switch-light switch-candy">
+					  <input type="checkbox" id="artist_inter_intra_toggle" onclick="all_artists_similarity_scores_button_click(this.id)">
+					  <span>
+					    <span>Inter-Artist</span>
+					    <span>Intra-Artist</span>
+					    <a></a>
+					  </span>
+					</label>
+	          	</div>
+	        </div>
+			<div class="row">
+				<div class="col-lg-10 col-md-12 col-12 mx-auto justify-content-center text-center">
+					<div id="plot_all_artists_similarity_scores"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-12 mx-auto justify-content-center text-center">
+					<div class="row">
+						<div class="col-lg-4 col-4 legend_text">
+							More unique artists 
+						</div>
+						<div class="col-lg-4 col-4 justify-content-center text-center">
+							<div id="all_artists_similarity_scores_legend"></div>
+						</div>
+						<div class="col-lg-4 col-4 legend_text">
+							Less unique artists
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<p>
+						The <span>Inter-Artist uniqueness score</span> is an indication of whether an artist has tried to replicate similar rhythm patterns of songs from other artists from the past. An artist who has higher uniqueness score (lower similarity) has composed more unique rhythms. Whereas <span>Intra-Artist uniqueness score</span> indicates the uniqueness in an artist's own compositions. A higher uniqueness score (lower similarity) for an artist means that the rhythm patterns in that artist's songs are very different from each other.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<div class="transition" id="transition6">Artist Discography</div>
+
+	<section id="artist_discography">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<p>
+						In the final section of this article, let us explore an artist's compositions more closely. The previous section showed the uniqueness scores of artists. Let us now inspect where an artist's songs are positioned on the uniqueness scale. This will help us determine the extent to which different songs contributed to uniqueness score of artist. 
+					</p>
+					<p>
+						The interactive graphic below lets you view all of an artist's songs arranged on uniqueness scale. Further it also lets you visualize the rhythm patterns of all the songs belonging to that artist. Use the toggle switch to alternate between the two modes. 
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container artist_discography">
+			<div class="row">
+				<div class="col-lg-12 col-12 artist_discography_title text-center" id="artist_discography_title">
+					Explore the diversity in an artist's songs
+				</div>
+			</div>
+			<div class="row">
+	         	<div class="col-lg-12 text-center">
+	         		<!--
+	        		<div class="ui-widget">
+						<label>Select an artist: </label>
+						<select id="artist_combobox">
+						</select>
+					</div>
+					-->
+					<div class="control-group">
+						<select id="artist_combobox" class="select2_select">
+							<option value="Lady Gaga">Search for an artist...</option>
+						</select> 
+					</div> 
+	          	</div>
+	        </div>
+	        <div class="row">
+				<div class="col-lg-12 col-12 artist_discography_subtitle">
+					<div class="text-center" id="artist_discography_subtitle">Toggle to see similarity scores of songs or to view rhythm visualisation</div>
+				</div>
+			</div>
+			<div class="row">
+	         	<div class="col-lg-4 mx-auto justify-content-center text-center">
+					<label class="switch-light switch-candy">
+					  <input type="checkbox" id="artist_viz_score_toggle" onclick="artist_viz_score_button_click(this.id)">
+					  <span>
+					    <span class="artist_discography_option">Song similarity score</span>
+					    <span class="artist_discography_option">Song visualisation</span>
+					    <a></a>
+					  </span>
+					</label>
+	          	</div>
+	        </div>
+	        <div class="row">
+				<div class="col-lg-10 col-md-12 col-12 mx-auto justify-content-center text-center">
+					<div id="plot_artist_discography_artist_name"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-10 col-md-12 col-12 mx-auto justify-content-center text-center">
+					<!--<div id="plot_artist_discography"></div>-->
+					<div class="row justify-content-center" id="plot_artist_discography"></div>
+				</div>
+			</div>
+			<div class="row" id="artist_discography_legend">
+				<div class="col-lg-6 col-12 mx-auto justify-content-center text-center">
+					<div class="row">
+						<div class="col-lg-4 col-4 legend_text">
+							More unique rhythms 
+						</div>
+						<div class="col-lg-4 col-4 justify-content-center text-center">
+							<div id="artist_songs_similarity_scores_legend"></div>
+						</div>
+						<div class="col-lg-4 col-4 legend_text">
+							Less unique rhythms
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="transition" id="">In the end </br><span class="small_text_transition">(it doesn't even matter),</span></div>
+	
+	<section class="conclusion" id="conclusion">
+		<div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-10 col-12 mx-auto">
+            <p>
+				We started this article with the question of <span>How can we measure similarities in rhythm patterns of two songs ?</span>. The article began by explaining what is rhythm, introducing a new method to visualize rhythm pattern in a song and also presenting a novel algorithm to compute how similar two songs are in terms of their rhythm. 
+            </p>
+            <p>
+            	The debate of explore vs exploit is a common theme across multiple domains of life. In terms of song composition, this translates to the question of whether an artist should exploit well known successful rhythm patterns of past and use them in new songs ? Or should the artist explore using entirely new rhythm patterns while composing new songs ? The right answer is like with most things lies in finding the middle ground between the two. Research has shown that people tend to like certain kinds of rhythm patterns more than others. In this regard, it is natural for artists to exploit such popular rhythm patterns over and over. However in order to stand apart in an ultra-competitive world, an artist should also be coming up with new and unique rhythm patterns. This will avoid the artist from being stereotyped into being associated with producing only certain kinds of songs.
+            </p>
+            <p>
+            	As fans of music, we have all had plenty of times when we strongly felt that a song we are listening to sounds eerily similar to another song which we have listened to in the past. However such moments are often closely followed by the feeling of frustration of not being able to pin point which other song it exactly is. The new methodology of finding similarities in rhythm patterns introduced in this article helps us determine precisely that. By assigning rhythm similarity scores to each song pairs, we determined the rhythmically most unique songs, pairs of songs with most similar rhythms. Further by extending the same concept, we assigned uniqueness scores to artists based on how unqiue their songs are.
+            </p>
+            <p>
+            	We can further build on this theory to inspect if using certain kinds of rhythm patterns in songs guarantee any sort of success to the song. Perhaps that question is for another post. As a data scientist, this was a fun exercise to explore rhythm similarities and assign quantitative scores to songs. However we all know that there is so much more to music, it transcends all the math behind it and is often a source of so much joy to listeners. Perhaps in that sense, we should let it be just that and not make it quantitative. Still the next time you listen to a song, observe closely, you may have heard that rhythm before !
+            </p>
+          </div>
+        </div>
+      </div>
+	</section>
+
+
+	<!-- Footer -->
+    <footer class="footer" name="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+			<!--
+            <p>
+              	All the code for this project can be found on <a href="https://github.com/deepak-karkala/portfolio/tree/master/docs/articles/music/code">Github</a>. Click <a href="../about/index.html">here</a> to know more about the methodology and design of this project.
+            </p>
+            <p class="">
+            	To make this article accessible to everyone, mathematical details of the algorithm are avoided in this post. For any queries and more details about the algorithm used, you can send me an email at <a href="mailto:dkarkala01@gmail.com" target="_top"><i class="fa fa-envelope fa-lg intro_icon" aria-hidden="true"></i><span class="contact_link">dkarkala01@gmail.com</span></a>. You can also contact me on twitter at <a href="https://twitter.com/deepak_karkala"><i class="fab fa-twitter fa-lg intro_icon" aria-hidden="true"></i><span class="contact_link">@deepak_karkala</span></a>.
+            </p>
+			-->
+            <p>
+            	A note about the dataset used in the project. This project uses MIDI data to compare rhythm patterns of songs. MIDI (short for <em>Musical Instrument Digital Interface</em>) carries event messages, data that specify the instructions for music, such a note's notation, pitch, velocity and tempo of the song. The MIDI data was personally collected from <a href="https://musescore.com/">Musescore</a>. We considered artists by total number-one singles on <a href="https://en.wikipedia.org/wiki/List_of_Billboard_Hot_100_chart_achievements_by_decade">Billboard Hot 100 chart for every decade</a> from 1960s. For each artist, we then obtained MIDI data of all the songs available on <a href="https://musescore.com/">Musescore</a>. For artists from before 2000s, MIDI data were available for only few songs. So in order to expand the dataset, we also considered popular artists of 2000s and 2010s not in the Billboard Hot 100 chart. Overall the dataset consists of MIDI data for close to 400 songs. Although this is still a small dataset, the analysis that follows here does provide interesting insights into visualizing and measuring similarities in rhythm patterns of songs.
+            </p>
+            <p>
+              	This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://d3js.org/">d3js</a>. The template for this html page was adapted from <a href="https://github.com/russellgoldenberg/scrollama">scrollama.js</a>, a very handy Javascript library for scrollytelling by <a href="https://twitter.com/codenberg?lang=en">Russell Goldenberg</a>.
+            </p>
+            <p class="text-center">Copyright &copy; Deepak Karkala 2020</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+<!--
+	<section id='outro'></section>
+	<div class='debug'></div>
+-->
+
+	<!-- Bootstrap core JavaScript -->
+	<!--
+    <script src="/vendor/jquery3.3.1/jquery.min.js"></script>
+    <script src="/vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>-->
+    <script src="/vendor/jquery-easing1.4.1/jquery.easing.min.js"></script>
+	<script src="/vendor/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    
+
+    <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+    <!--<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/jquery-ui-1.12.1/jquery-ui.min.js"></script>-->
+
+	<!--
+	<script src="js/jquery.min.js"></script>
+	<script src="js/selectize.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/set_selectize_option.js"></script>
+	-->
+
+
+	<script src='d3.v4.min.js'></script>
+	<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+	<script src='stickyfill.min.js'></script>
+	<script src='https://unpkg.com/intersection-observer@0.5.0/intersection-observer.js'></script>
+	<script src='scrollama.min.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+
+	<script src="js/grayscale.js"></script>
+	<script src='js/script1.js'></script>
+	<script src="js/plot_rhythm_visualisation.js"></script>
+	<script src="js/plot_rhythm_types.js"></script>
+	<script src='js/plot_song_similarity_score.js'></script>
+	<script src="js/plot_top_unique_songs.js"></script>
+	<!--<script src='js/autocomplete2.js'></script>-->
+	<script src='js/plot_song_discography.js'></script>
+	<!--<script src='js/plot_decade_similarity.js'></script>-->
+	<script src='js/plot_most_similar_songs.js'></script>
+	<script src='js/plot_artists_similarity_score.js'></script>
+	<script src='js/plot_artist_discography.js'></script>
+
+</body>
+
