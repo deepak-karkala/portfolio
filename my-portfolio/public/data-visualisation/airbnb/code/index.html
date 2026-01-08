@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="expires" content="0">
+
+    <title>Airbnb and the tale of many cities</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/brands.min.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/solid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.css" rel="stylesheet">
+    <link href="css/listings1.css" rel="stylesheet">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""/>
+  </head>
+
+  <body id="page-top">
+    <!-- Minimal Navigation -->
+    <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.85); padding: 12px 24px; display: flex; justify-content: space-between; align-items: center;">
+      <a href="/data-visualisation" style="color: #fff; text-decoration: none; font-size: 14px; opacity: 0.9; transition: opacity 0.2s;"
+         onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+        ← Back to Data Visualisation
+      </a>
+      <a href="/" style="color: #fff; text-decoration: none; font-size: 14px; opacity: 0.9; transition: opacity 0.2s;"
+         onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">
+        About Me
+      </a>
+    </nav>
+    <div style="height: 48px;"></div>
+
+    <!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-10 cover_img">
+              <img src="img/cover.gif">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 mx-auto">
+              <h1 class="brand-heading">Airbnb and the tale of many cities</h1>
+              <p class="intro-text">An investigative report of Airbnb's constant battle against city governments across the world.
+              </p>
+              <p class="article_author">Deepak Karkala</p>
+              <p class="article_date">September 2018</p>
+              <a href="#intro_text" class="btn btn-circle js-scroll-trigger">
+                <i class="fa fa-angle-double-down animated"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <!--
+    <section id="about" class="content-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h2>About Grayscale</h2>
+            <p>Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
+              <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.
+              This theme features stock photos by
+              <a href="http://gratisography.com/">Gratisography</a>
+              along with a custom Google Maps skin courtesy of
+              <a href="http://snazzymaps.com/">Snazzy Maps</a>.
+            Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+    <section id="intro_text" class="content-section intro_text">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>
+              Airbnb a Silicon Valley company popularized the concept of sharing one's home with travellers from around the world and help hosts earn some additional income. Over the years, the company has turned into a 30 billion dollars behemoth operating in most countries across the world. However as the company grew, it has attracted quite a few commercial operators exploiting its platform for personal business interests. While the increased number of listings certainly isn't a bad thing for company itself, but it has had serious impact on the availablity of affordable housing, gentrification of neighbourhoods, violation of housing laws, city residents seeing their beloved communities turn into temporary hotels. The hotel industry, affordable housing community along with enraged city residents have mounted relentless pressure on city governments to put restrictions on Airbnb's ever expanding listings. Over the years, this has resulted in Airbnb constanly being engaged in facing lawsuits, growing restrictions on how to operate in various cities and reaching agreements with city governments. 
+            </p>
+            <p>
+              This report investigatives the constant battle of Airbnb against the city governments across the world. We explore What is Airbnb ? What makes it so popular ? Who are the players in this battle against the company ? What has Airbnb done to counter these issues ? And finally look at how this battle may continue in the years ahead.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-12">
+            <img class="img_fight" src="img/city_fight_grey.jpg">
+        </div>
+      </div>
+    </div>
+
+    <section id="airbnb_intro" class="content-section airbnb_intro">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h3 class="section_title">What is Airbnb ?</h3>
+            <p>
+              Airbnb's story starts when two friends who could not find affordable places in San Francisco, ended up renting out some space to make some extra bucks. In a typical silicon valley fairytale, the concept dubbed as <em>home-sharing</em> where any one could rent a part of their room to travellers from around the world was turned into a company in the year 2007. And 10 years later, Airbnb has grown to be a 30 billion dollars company. It now operates in more than 190 countries with more than 150 million people having lived in one of more than 3 million Airbnb homes across the world. Airbnb connects hosts with potential travelers to create a sense of belonging. Airbnb has turned something that’s been a purely commercial endeavor—renting a hotel room—and made it personal.
+            </p>
+            <p>
+              The graphic below shows the number of listings and average price in some of Airbnb's most popular cities across the world. You can also explore the number of listings per 1000 residents in various cities. While NYC, London and Paris are the three largest markets for Airbnb in terms of total number of listings, Copenhagen, Venice, Amsterdam and Mallorca have the most Airbnb listings per 1000 residents. San Francisco, Boston have some of the highest average price to stay at an Airbnb apartment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="listings" class="text-center">
+      <div class="container">
+
+        <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8">
+            <div id="listings_num_title">Airbnb Market</div>
+          </div>
+        </div>  
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="btn-toolbar listings_num_buttongroup  justify-content-center" id="listings_num_buttongroup" aria-label="Basic example">
+              <button type="button" class="button mr-1 active" id="listings_num_button1">All listings</button>
+              <button type="button" class="button mr-1" id="listings_num_button2">Per 1000 residents</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row listings-plot justify-content-center">
+          <div class="col-lg-4 col-md-6 col-6">
+            <div id="market-container1"></div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="row">
+              <div class="col-lg-12 col-12">
+                <div id="market-container3"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-12">
+                <div id="market-container4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="listings_city_text" class="content-section listings_city_text">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <p>
+               In the graphic below, you can explore the Airbnb listings in your city. Click on the buttons to toggle between all individual listings, density of listings in a neighbourhood and average price of listings by neighbourhood.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="listings_city" class="content-section listings_city">
+      <div class="container">
+
+        <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8">
+            <div id="listings_city_title">Airbnb listings in your city</div>
+          </div>
+        </div> 
+
+        <div class="row listings_city_dropdown">
+          <div class="col-lg-12 justify-content-center text-center">
+            <div class="dropdown">
+              Select a city
+              <select class="dropdown_menu classic" id="select_city"></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-12 justify-content-center text-center">
+            <span class="listings_city_buttontext" id="listings_city_buttontext">Click on the buttons to toggle between all individual listings, density of listings in neighbourhood and price of listings by neighbourhood.</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="btn-toolbar listings_city_buttongroup  justify-content-center" id="listings_city_buttongroup" aria-label="Basic example">
+              <button type="button" class="button mr-1 active" id="listings_city_button1">Individual</button>
+              <button type="button" class="button mr-1" id="listings_city_button2">Density</button>
+              <button type="button" class="button" id="listings_city_button3">Price</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8 col-md-10">
+            <div id="listings_city_plottext"></div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center listings_city_plot">
+          <div class="col-lg-8 col-md-10 col-sm-12 col-12">
+            <div id="listings-city-container1" style="height: 400px;"></div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10 col-md-10">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="listings_city_legend_text" id="listings_city_legend_text"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="city_density_type" id="city_density_type">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <p>
+               A closer look at the density of listings reveals something interesting about the presence of Airbnb in different cities. Most cities follow an expected trend with the downtown part being densely populated with listings and neighbourhoods away from the city centre having fewer listings. Cities like Barcelona, Berlin are classic examples of this trend. However it is noteworthy that few cities have Airbnb listings spread across the entire city almost uniformly. The below graphic illustrates that cities like Paris and Copenhagen fall under this category. Finally the other type of cities are where there are multiple clusters across the city with very large number of listings whereas in between neighbourhoods have fewer listings. Large cities like New York City and Los Angeles are typical examples of this category. 
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8">
+            <div id="listings_city_title">Types of cities based on density of listings</div>
+          </div>
+        </div> 
+      </div>
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-6 col-12">
+            <div class="row city_density_type_title">
+              <div class="col-lg-4 col-4">
+                  Dense at centre 
+              </div>
+              <div class="col-lg-4 col-4">
+                  Spread across city
+              </div>
+              <div class="col-lg-4 col-4">
+                  Multiple clusters
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-4">
+                  Barcelona 
+              </div>
+              <div class="col-lg-4 col-4">
+                  Copenhagen
+              </div>
+              <div class="col-lg-4 col-4">
+                  New York City
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-lg-4 col-4">
+                  <img class="section_img" src="img/listings2_analysis/barcelona_crop.png">
+              </div>
+              <div class="col-lg-4 col-4">
+                  <img class="section_img" src="img/listings2_analysis/copenhagen_crop.png">
+              </div>
+              <div class="col-lg-4 col-4">
+                  <img class="section_img" src="img/listings2_analysis/nyc_crop.png">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-4">
+                  Berlin 
+              </div>
+              <div class="col-lg-4 col-4">
+                  Paris
+              </div>
+              <div class="col-lg-4 col-4">
+                  Los Angeles
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-lg-4 col-4">
+                  <img class="section_img" src="img/listings2_analysis/berlin_crop.png">
+              </div>
+              <div class="col-lg-4 col-4">
+                  <img class="section_img" src="img/listings2_analysis/paris_crop.png">
+              </div>
+              <div class="col-lg-4 col-4">
+                  <img class="section_img" src="img/listings2_analysis/losangeles_crop.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="listings_city_text" class="content-section listings_city_text">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <h3 class="section_title">What makes Airbnb so popular ?</h3>
+            <p>
+              For millions of holidaymakers, Airbnb has opened up an entire planet of brilliant and affordable accommodation options - from treehouses to chateaux, penthouses to private islands. It is a win-win for both the hosts and the guests with Airbnb using a part of the rent amount as its commission. Over the years, the Airbnb market has exploded and turned it into a multi-billion dollar company.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <img class="section_img" src="img/airbnb_host-guest_scale70.png">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <p>
+            The single major factor for most travellers to prefer Airbnb over a hotel is accodomation price. More often than not in major cities across the world, it is cheaper to rent an entire apartment on Airbnb than to rent a hotel room. Let us inspect this claim by studying the graphic below. The vertical axis shows the average price per night to rent an entire home on Airbnb. The horizontal axis shows the difference in price between renting on Airbnb as compared to a hotel. The cities are represented as circles with their size proportional to the number of Airbnb listings. 
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <section id="price_hotel" class="text-center">
+      <div class="container">
+
+        <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8">
+            <div id="hotel_plottext">Airbnb Vs Hotels</div>
+          </div>
+        </div>  
+
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-12">
+              <div class="airbnb_hotel_comparison" id="airbnb_hotel_comparison"></div>
+            </div>
+          </div>
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10 col-md-10">
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="hotel_legend_text" id="hotel_legend_text">
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#0444bf" /></svg>
+                  Europe
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#d72f01" /></svg>
+                  North America
+                </div>
+              </div>
+            </div>
+
+            <!--
+            <div class="row justify-content-center text-center">
+              <div class="col-lg-8 fig-description">
+                Figure Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              </div>
+            </div>
+            -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <p>
+            To read this chart is easy, higher a city lies in the vertical direction, the more it costs to rent on Airbnb. For example, cities like San Francisco, Austin, Boston have some of the highest renting price averaging about 200 USD for an apartment per night. The horizontal axis compares this price relative to that with the average cost to rent a hotel room. For instance, it is way more cheaper to rent on Airbnb in a city positioned further to the left (Geneva, Paris, Venice) in the chart. As we move towards right, the cost to rent on Airbnb and hotel gets comparably similar (Los Angeles, Washington DC) and then furthest to the right, it is cheaper to rent a hotel room than on Airbnb (Austin, San Diego).
+          </p>
+          <p>
+            We can spot a few interesting trends in the chart above.
+            <ul>
+              <li>Airbnbs are much cheaper in most European cities.</li>
+              <li>In top tourist attractions such as NYC, London and Venice, while the listings are not cheap, it is still cheaper to rent on Airbnbs compared to exorbitant prices of hotel.</li>
+              <li>In major American cities such as Washington DC, San Francisco, Los Angeles and Boston, the cost of renting on Airbnb is about the same as that in a hotel.</li>
+              <li>Strangely, it is cheaper to rent a hotel room than an Airbnb in few cities like Austin and San Diego. Later on, we shall examine why is this so. </li>
+            </ul> 
+          </p>
+          <p>
+            While Airbnbs are cheaper in most cities across the world, they are particularly attractive in Europe where the tourists save big by choosing an Airbnb over a hotel. The following chart shows this trend. The height of the bars shows the number of listings whereas the horizontal axis denotes the average price to rent on Airbnb. Clearly the bars for Europe (shown in red color) are positioned towards the left on the price axis denoting the cheaper prices compared to the bars for US cities (shown in cream color).
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <section id="us_vs_eu" class="us_vs_eu text-center">
+      <div class="container">
+
+        <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8 col-md-10">
+            <div id="histogram_plottext">Airbnb prices: US vs EU</div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="btn-toolbar histogram_type_buttongroup  justify-content-center" id="histogram_type_buttongroup" aria-label="Basic example">
+              <button type="button" class="button mr-1 active" id="histogram_home_button">Entire home</button>
+              <button type="button" class="button mr-1" id="histogram_room_button">Private room</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="histogram_us_eu" id="histogram_us_eu"></div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10 col-md-10">
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="hotel_legend_text" id="hotel_legend_text">
+                  <svg height="10" width="20"><rect width="55" height="15" stroke="black"  fill="#FF5A60" /></svg>
+                  Europe
+                  &nbsp &nbsp
+                  <svg height="10" width="20"><rect width="55" height="15" stroke="black"  fill="#FFF6E6" /></svg>
+                  USA
+                </div>
+              </div>
+            </div>
+
+            <!--
+            <div class="row justify-content-center text-center">
+              <div class="col-lg-8 fig-description">
+                Figure Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              </div>
+            </div>
+            -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <p>
+            In essence, for most travellers, Airbnb has offered a cheaper alternative especially in most top tourist destinations across Europe. In US too, Airbnb offers cheaper accomodation in otherwise expensive cities such as NYC, Chicago and Seattle. Overall this makes Airbnb an extremely attractive option for both the hosts offering their homes to rent and for guests looking for accomodation in tourist destinations across the world.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    
+    
+    <section id="section_battle" class="content-section section_battle">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <h3 class="section_title">The battle against Airbnb: Who is fighting them and why ?</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-12">
+            <img class="img_fight" src="img/fight.jpg">
+        </div>
+      </div>
+    </div>
+
+    <section id="section_battle" class="content-section section_battle">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <h5 class="section_subtitle">Hosts turning into amateur hoteliers</h5>
+            <p>
+              Airbnb has blurred the line between residential and commercial land use. In the past, visitors to a city usually stayed at a hotel or bed and breakfast, businesses that are required to hold insurance, pass inspections, and operate according to local zoning. But within the sharing economy, anyone can list their property on Airbnb, accept guests, and make extra money as an amateur hotelier. Further by abusing rental contract with landlords, a lot of tenants sublet their apartments on Airbnb to make extra cash.
+            </p>
+            <h5 class="section_subtitle">Commercial operators eroding affordable housing</h5>
+            <p>
+              Airbnb offers 3 types of listings: <em>Shared room</em>, <em>Private room</em>, <em>Entire apartment</em>. The problem is in most cities is invariably with the entire apartment listings. An increasingly number of people are buying or renting many houses across the city with the sole purpose of using them for short term rentals. This means that instead of a host welcoming a visitor into a guest bedroom, most tourists are renting out homes with lock boxes and hotel-like furnishings without ever seeing the homeowner. Studies have shown that the short term rentals will inevitably earn more than the long term rentals (in some cases for as few as less than 100 days). This will invariably drive more affordable houses out of the long term market. This is particularly harsh for people living in rent in affordable neighbourhoods of the big cities.
+            </p>
+            <h5 class="section_subtitle">Hotel industry feels shortchanged</h5>
+            <p>
+              Hotel industry feels shortchanged since despite Airbnb homes being competitors, they face no strict policies such as taxes, permits, regulations, safety standards etc. The hotel industry has retaliated by steps that include lobbying politicians and state attorneys general to reduce the number of Airbnb hosts, funding studies to show Airbnb is filled with people who are quietly running hotels out of residential buildings and highlighting how Airbnb hosts do not collect hotel taxes and are not subject to the same safety and security regulations that hotel operators must follow.
+            </p>
+            <h5 class="section_subtitle">City residents losing their neighbourhoods</h5>
+            <p>
+              Over the years with an steady increase in Airbnb listings there have been a cecline in local resident population in tourist neighbourhoods with increasing number of tourists around the year. Often tourist show no regard for neighbourhood with their bad behaviour, loud parties etc. The residents often feel that there is no longer any local flavour with entire neighbourhoods converted into temporary hotels. 
+            </p>
+            <h5 class="section_subtitle">Racial gentrification of neighbourhoods</h5>
+            <p>
+              A study claimed that black neighborhoods with the most Airbnb use are racially gentrifying, and the (often illegal) economic benefits of Airbnb accrue disproportionately to new, white residents; while the majority black residents in those communities suffer the most from the loss of housing, tenant harassment and the disruption of their communities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <h3 class="section_title">Is Airbnb taking housing off the affordable rental market ?</h3>
+          <p>
+            Airbnb first became popular as a way of occasionally renting an extra bedroom in the apartment. But over the years as the demand grew, commercial operators have started renting a large number of apartments, turning them into makeshift hotels and listing them on Airbnb. In the extreme case, all the individual rooms in the entire building will be listed on Airbnb for short-term rent, effectively making them <em>Ghost hotels</em>. This has meant that the number of affordable long-term rentals available for local residents have shrunk. More concerningly, this often happens in non-white neighbourhood invariably expelling locals of low income minority groups in search of alternate affordable housing. As a result, Airbnb is often criticised for spurring racial gentrification.      
+          </p>
+          <p>
+            But Airbnb’s defenders turn the gentrification argument on its head. Given the city’s high housing costs, they say, people rent out rooms in their primary resi­dences, or in second and third homes they own, to earn enough money to remain in the district. So this naturally raises the question is Airbnb being abused by commercial operators ? Does Airbnb raise rent and take houses off affordable rental market. We shall try to answer these here.
+          </p>
+          <p>
+            Airbnb offers 3 types of listings: <em>Shared room</em>, <em>Private room</em>, <em>Entire apartment</em>. If people do use Airbnb as true to its <em>home-sharing</em> concept, then most listings on Airbnb will invariably have to be <em>Private rooms</em> and the number of hosts offering their entire home by listing them as <em>Entire apartment</em> on Airbnb should be relatively less. But the following chart shows that this is not quite true in a number of cities.
+          </p>
+          <p>
+            The vertical axis in the graphic represents the percentage of all city listings offered as <em>Entire apartment</em> . This number being high for a city most certainly points to the fact that commercial operators are misuing Airbnb for business opportunity. What is startling here is that in cities such as Paris, Mallorca, Venice, Amsterdam, Copenhagen, more than 75% of all Airbnb listings are offered as <em>Entire apartment</em>. The horizontal axis denotes the percentage of hosts offering more than one home in a city. Except for few people owning two or three homes, this percentage should be very less since most people own one home at maximum. But the figure reveals that there a number of cities (Venice, Barcelona, Rome, Mallorca) where more than 25% of all hosts offer more than one listing on Airbnb. 
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <section id="city_commercial" class="plot text-center">
+      <div class="container">
+
+        <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8">
+            <div id="city_commercial_plottext">Misuse of Airbnb</div>
+          </div>
+        </div>  
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10">
+            <div class="city_commercial_plot" id="city_commercial_plot"></div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10 col-md-10">
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="hotel_legend_text" id="hotel_legend_text">
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#0444bf" /></svg>
+                  Europe
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#d72f01" /></svg>
+                  North America
+                </div>
+              </div>
+            </div>
+
+            <!--
+            <div class="row justify-content-center text-center">
+              <div class="col-lg-8 fig-description">
+                Figure Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              </div>
+            </div>
+            -->
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <p>
+            Paris in particular with close to 60,000 listings, provides a staggering example with more than 85% of all offers listed as <em>Entire apartment</em>. To get a better sense of this, let us consider another visualisation where each host in the city is shown as a circle. The size of the circle represents the number of listings offered by the host, so a bigger circle represents a host with more listings on Airbnb. All the hosts of a city are packed in one giant circle with the color of the circle denoting the type of listing offered on Airbnb: <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#fa9742" /></svg> for <em>Private room</em>, <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#cef040" /></svg> for <em>Entire apartment </em> and <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#6738aa" /></svg> for hosts offering both <em>Private room</em> and <em>Entire apartment</em>.
+          </p>
+          <p>
+            If most people are indeed offering only <em>Private room</em> then we should expect a large majority of circles (hosts) to be <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#fa9742" /></svg> in color. But in reality, the following visualisation presents a myriad of different scenarios for various cities. We shall try to uncover these now. 
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <section id="commercial_fraction" class="commercial_fraction plot">
+      <div class="container">
+
+        <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8 col-md-10">
+            <div id="fraction_plottext">Hosts offering more than one Airbnb listing</div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center circle_pack_row">
+          <div class="col-lg-8 col-12">
+            <div class="row city_circle_pack_title">
+              <div class="col-lg-4 col-4">Dublin</div>
+              <div class="col-lg-4 col-4">Berlin</div>
+              <div class="col-lg-4 col-4">Hong Kong</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-4" id="circles_pack7"></div>
+              <div class="col-lg-4 col-4" id="circles_pack8"></div>
+              <div class="col-lg-4 col-4" id="circles_pack9"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center circle_pack_row">
+          <div class="col-lg-8 col-12">
+            <div class="row city_circle_pack_title">
+              <div class="col-lg-4 col-4">NYC</div>
+              <div class="col-lg-4 col-4">London</div>
+              <div class="col-lg-4 col-4">Paris</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-4" id="circles_pack4"></div>
+              <div class="col-lg-4 col-4" id="circles_pack5"></div>
+              <div class="col-lg-4 col-4" id="circles_pack6"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center circle_pack_row">
+          <div class="col-lg-8 col-12">
+            <div class="row city_circle_pack_title">
+              <div class="col-lg-4 col-4">Mallorca</div>
+              <div class="col-lg-4 col-4">Copenhagen</div>
+              <div class="col-lg-4 col-4">Amsterdam</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-4" id="circles_pack1"></div>
+              <div class="col-lg-4 col-4" id="circles_pack2"></div>
+              <div class="col-lg-4 col-4" id="circles_pack3"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10 col-md-10">
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="fraction_legend_text" id="fraction_legend_text">
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#fa9742" /></svg>
+                  Only private room
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#cef040" /></svg>
+                  Only entire home
+                  &nbsp &nbsp
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#6738aa" /></svg>
+                  Both private room and entire home
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-content-center text-center">
+              <div class="col-lg-8 fig-description">
+                Figure Description: Each host in the city is shown as a circle. The size of the circle represents the number of listings offered by the host, so a bigger circle represents a host with more listings on Airbnb. All the hosts of a city are packed in one giant circle with the color of the circle denoting the type of listing offered on Airbnb.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <p>
+            First let us consider three major business centres: <span class="city_name">Dublin</span>, <span class="city_name">Berlin</span> and <span class="city_name">Hong Kong</span>. These three cities present a reasonbale picture with a good combination of <em>Private room</em> and <em>Entire apartment</em> as we would typically expect in a city.
+          </p>
+          <p>
+            Now let us inspect the <em>Big-3</em>, the three largest markets of Airbnb: NYC, London and Paris. As expected they all have a large number of circles (hosts). Of the three <span class="city_name">NYC</span> shows the expected behaviour with most circles being <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#fa9742" /></svg> in color, meaning most hosts are offering <em>Private room</em> only. <span class="city_name">London</span> on the other hand has a higher percentage of hosts offering <em>Entire apartment</em> with few hosts in particular offering a huge number of listings as denoted by circles of larger size. But the most egregious example of commercial exploitation of Airbnb can be seen in <span class="city_name">Paris</span>, where a majority (more than 85%) of all circles are colored in <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#cef040" /></svg> meaning those many hosts are offering <em>Entire apartment</em> on Airbnb. What is also concerning is the large size of significant number of circles representing a hoardes of hosts offering not just one or two but many homes as <em>Entire apartment</em>, showcasing a clear case of commercial operation in the city.
+          </p>
+          <p>
+            Finally let us consider three popular tourist destinations in Europe: <span class="city_name">Mallorca</span>, <span class="city_name">Copenhagen</span> and <span class="city_name">Amsterdam</span>. <span class="city_name">Mallorca</span> is very similar to Paris with close to 90% of all Airbnb offers listed as <em>Entire apartment</em> also strongly suggesting a case of commercialisation.<span class="city_name">Copenhagen</span> presents an interesting case where most hosts are offering both <em>Private room</em> and <em>Entire apartment</em> as seen by a large number of circles colored in <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#6738aa" /></svg>. Meanwhile in <span class="city_name">Amsterdam</span>, few large circles colored in <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#fa9742" /></svg> clearly shows how a few hosts are offering a large number of homes as <em>Entire apartment</em> potentially representing the commercial operators.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8 col-md-10">
+            <div id="fraction_plottext">Top Hosts: Hosts offering multiple homes on Airbnb</div>
+          </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <p>
+            We now know that an unusually large number of hosts in most cities offer much more than one or two Airbnb listings. In order to strengthen this claim, let us look into the total number of listings offered by top 5 hosts in each city. The top 5 hosts are the ones with the most number of listings in a city. 
+          </p>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="container">
+      
+      <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8 col-md-10">
+            <div id="fraction_plottext">Total number of listings offered by top 5 hosts in each city</div>
+          </div>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-10 col-12 justify-content-center text-center">
+          <span class="listings_city_buttontext" id="listings_city_buttontext">Click on the circles to learn more about top hosts in each city.</span>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-10">
+          <div class="top_hosts_numlistings_plot" id="top_hosts_numlistings_plot"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <p>
+            It is very evident from the previous graphic that in most cities, a few handful of hosts offer strikingly high number of Airbnb listings. In fact in London and Mallorca, the top 5 hosts together offer more than 1000 listings. This is not just an anomaly. Just the top 5 hosts offer around 500 Airbnb listings in several cities including Paris, Madrid, Sydeny, Boston, Rome. Similar observation was also made for the city of Berlin in this <a href="http://airbnbvsberlin.com/">report</a>. Clearly such hosts are commercial operators trying to use Airbnb as a means to maximise their earnings. This then leads to following questions, where exactly do such hosts operate ? Do the multiple listings of the same host reside close to each other ? Or are they spread across the entire city ? 
+          </p>
+          <p>
+            To answer these questions, we consider a network map visualisation of the top 5 hosts in each city. Each host is represented by a color, the locations of all the listings offered by a particular host are inter-connected by lines. The top 5 hosts are represented by
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#ff0000" /></svg>Host 1
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#00ff00" /></svg>Host 2
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#0000ff" /></svg>Host 3
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#ffff00" /></svg>Host 4
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#00ffff" /></svg>Host 5 
+            respectively. Let us look at the network map visualisation of the four cities (<span class="city_name">Paris</span>, <span class="city_name">Amsterdam</span>, <span class="city_name">Venice</span> and <span class="city_name">Mallorca</span>) of which we are already deeply suspicious of exploitation by commercial operators. 
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <section id="top_hosts_analysis" class="top_hosts_analysis plot">
+      <div class="container">
+        <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8 col-md-10">
+            <div id="fraction_plottext">Network map visualisation of top 5 hosts in each city</div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-12 col-12">
+            <div class="row">
+              <div class="col-lg-3 col-6 host_polygon_img" id="host_polygon1">Paris<img src="img/host_polygon/paris.png"></div>
+              <div class="col-lg-3 col-6 host_polygon_img" id="host_polygon2">Amsterdam<img src="img/host_polygon/amsterdam.png"></div>
+              <div class="col-lg-3 col-6 host_polygon_img" id="host_polygon3">Venice<img src="img/host_polygon/venice.png"></div>
+              <div class="col-lg-3 col-6 host_polygon_img" id="host_polygon4">Mallorca<img src="img/host_polygon/mallorca.png"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <p>
+            Similar to what we observed in the previous chart, we can now see that in each of these cities, the top 5 hosts are offering an insanely high number of Airbnb listings. In each of these cities, the listings offered by these top hosts are clearly spread out across the entire city. And perhaps not too surprisingly the common thread amongst these cities is that they are all some of the top European tourist destinations with each of them welcoming more than 10 Million visitors per year making them ideal locations for people with commercial interests. This is far from Airbnb's concept of <em>home-sharing</em>, this is commercial exploitation at its best and clearly points to a well thought out business operation. 
+          </p>
+          <p>
+            You can now explore your city and inspect where exactly do the top 5 hosts operate in your city. Ideally assuming each host offers a maximum of two to three listings, the network map should only consist of few sparsely connected locations. But on the other hand if the network is densely connected across the entire city, it almost certainly indicates misuse of Airbnb for commercial success.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <section id="top_hosts" class="top_hosts plot">
+      <div class="container">
+
+        <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8 col-md-10">
+            <div id="tophosts_plottext"></div>
+          </div>
+        </div>
+
+        <div class="row listings_city_dropdown">
+          <div class="col-lg-12 justify-content-center text-center">
+            <div class="dropdown">
+              Select a city
+              <select class="dropdown_menu classic" id="select_city_tophosts"></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10 col-sm-12 col-12  tophosts_plot">
+            <div id="tophosts_plot" style="height: 400px;"></div>
+          </div>
+          <!--
+          <div class="col-lg-4 col-md-4 col-sm-4 col-4  tophosts_sideinfo">
+            <div id="tophosts_sideinfo" style="height: 400px;">
+
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12" id="tophosts_sideinfo_totallistings"></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12" id="tophosts_sideinfo_totalhosts"></div>
+              </div>
+              
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="row">
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-4" id="tophosts_sideinfo_fracHome"></div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-4" id="tophosts_sideinfo_fracUsersMoreThanOne"></div>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12" id="tophosts_sideinfo_tophosts"></div>
+              </div>
+
+            </div>
+          </div>
+          -->
+        </div>
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10 col-md-10">
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="tophosts_legend_text" id="tophosts_legend_text">
+                </div>
+
+                <div class="hotel_legend_text" id="hotel_legend_text">
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#ff0000" /></svg>Host 1
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#00ff00" /></svg>Host 2
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#0000ff" /></svg>Host 3
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#ffff00" /></svg>Host 4
+                  <svg height="20" width="20"><circle cx="10" cy="15" r="5" stroke="black" stroke-width="3" fill="#00ffff" /></svg>Host 5
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row justify-content-center text-center">
+              <div class="col-lg-8 fig-description">
+                Figure Description: Network map visualisation of the top 5 hosts in a city. Each host is represented by a color, the locations of all the listings offered by a particular host are inter-connected by lines.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <p>
+            We started this section with the question <em>Is Airbnb taking housing off the affordable rental market ?</em>. Based on our analysis, the answer is indeed a resounding "YES". In most cities, a few hosts offer a unreasonable number of Airbnb listings aimed purely at commercial interests. Such hosts buy or rent entire apartments and then list them on Airbnb for short term rentals. This comes at the expense of affordable long-term rentals, most often affecting local residents with low income within communities of color.
+          </p>
+          <p>
+            So what exactly has Airbnb done to counter this ? Can we put the blame entirely on Airbnb ? After-all the company started with the noble concept of <em>Shared-community</em> but when turned into 30 Billion dollar behemoth there are bound to be conflicts amongst various players all with their own vested interests. Can the city governments play a role in keeping such bad actors out of the system ? The next section dwells into all these questions.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <h3 class="section_title">What is Airbnb doing to solve the problems ?</h3>
+          <h5 class="section_subtitle">Airbnb's initial resistance to issues</h5>
+          <p>
+            The biggest argument against Airbnb has always been about how they raise rents in already expensive neighbourhoods and thereby shrink the affordable long term rental market. Airbnb has always responded by claiming that majority of listings on their website is <em>Shared room</em>. But reports like these on <a href="https://www.nytimes.com/2016/02/12/business/airbnb-purged-new-york-listings-to-create-a-rosier-portrait-report-says.html">NY Times</a>, <a href="http://insideairbnb.com/nyc-the-war-against-commercial-listings-continues/">Inside Airbnb</a> have shown otherwise. Airbnb often defends by saying that such reports are backed by hotel industry making their claims debatable.
+          </p>
+          <p>
+            Airbnb presents itself as a community driven platform with most of its hosts belonging to lower or mid-income groups, helping themselves earn some extra money to support the ever increasing cost of living in the city. But with more than 150 million people having lived in more than 3 million listings across the world, the scale of the problem makes it hard to ignore the claims made by such studies. For example as reported <a href="https://www.cnbc.com/2018/05/23/unwelcome-guests-airbnb-cities-battle-over-illegal-short-term-rentals.html">here</a>, the New York short-term rental report found that the top 10 percent of hosts earned 48 percent of all revenue in 2017. Similarly more than 70 percent of Airbnb listings in downtown Boston are operated by outside professional companies, according to an analysis by ADCO.
+          </p>
+          <h5 class="section_subtitle">Deceiving numbers</h5>
+          <p>
+            Airbnb has also been accused of presenting with deceiving numbers to potray itself in good light. Based on an <a href="http://insideairbnb.com/how-airbnb-hid-the-facts-in-nyc/">independent study</a>, NY Times <a href="https://www.nytimes.com/2016/02/12/business/airbnb-purged-new-york-listings-to-create-a-rosier-portrait-report-says.html">reported</a> that just before releasing data to the public, Airbnb temporarily purged a significant number of its listings in New York City.
+          </p>
+          <p>
+            The battle is typical of many of the online platforms where the online facilitator often does not hold responsible for the actions of the people using the platform. So when San Francisco after failing to curb the illegal listings, signed a law that penalised the rental websites, Airbnb promptly sued its hometown claiming that it is protected by laws that might hold them responsible for what people do or say on their website. While Airbnb insists that the company is merely a booking agent that facilitates commercial transactions between two parties. Increasingly, however, the company is spending big bucks trying to influence short-term rental laws. It ran grassroots movement of hosts across the country that looks more like an election campaign than standard business strategy while also running major PR campaigns ahead of key legislative votes.
+          </p>
+          <h5 class="section_subtitle">But not all blame can be placed on Airbnb</h5>
+          <p>
+            While Airbnb strongly supports the need for strict enforcement of bad actors who operate illegal hotels and remove housing from the market, quite often the responsibility of taking clear steps to provide for enforcement against these individuals rests on city governments. In June 2018, the New York City Council introduced legislation that would require Airbnb to turn over the personal, sensitive information of these responsible hosts, jeopardizing their privacy and their ability to host. In response, Airbnb worked very hard to oppose this hotel industry backed bill on behalf of the tens of thousands of everyday New Yorkers who depend on home sharing to make ends meet and to safeguard their privacy. 
+          </p>
+          <p>
+            On a broad level, Airbnb listings represent a fraction (0.8%) of the housing stock in New York City. Airbnb also supported <em>a one host, one home</em> policy in New York and ended up removing over 5,000 listings since December 2015. On November 1, 2016, Airbnb launched a new tool that restricts hosts to a single, active entire home listing within the City of New York. In the past, Airbnb has also asked New York lawmakers to change tax rules so that the company can collect and remit hotel and other occupancy taxes on behalf of its hosts and guests citing similar practices in over 400 other jurisdictions around the world. So it seems as long as the government doesn't directly stifle its operation, Airbnb has done its part to keep the bad actors out of the system.
+          </p>
+          <h5 class="section_subtitle">Airbnb has turned increasingly cooperative with city governments</h5>
+          <h6 class="section_subsubtitle">Barcelona</h6>
+          <p>
+            Barcelona’s efforts to rid itself of illegal vacation apartments could be the most effective crackdown on Airbnb yet. In June 2018, the city told the site to remove 2,577 listings that it found to be operating without a city-approved license, or face a court case potentially leading to a substantial fine. Airbnb and the city then launched a new agreement that gives Barcelona officials access to data about what’s being listed around town. For the first time, city officials will be able to refer to host data that details specifically where apartments are located and who their registered hosts are. They will be able to track these hosts ID numbers to verify that their linked apartments do indeed have permission—and it will be far easier to pursue rule-breakers and, if necessary, fine them.
+          </p>
+          <h6 class="section_subsubtitle">New York City</h6>
+          <p>
+            In December 2016, Airbnb settled the lawsuit that it filed against New York City. The suit challenged a New York law which called for fines of as much as $7,500 for illegally listing a property on a rental platform such as Airbnb. New York City is the company’s largest market in the United States. The city’s hosts generated about $1 billion in revenue previous year, the company took a cut of that amount in fees and agreed to drop the suit as long as New York City enforces the new law only against hosts and does not fine Airbnb.
+          </p>
+          <h6 class="section_subsubtitle">New Orleans</h6>
+          <p>
+            In New Orleans, Airbnb agreed to share data of its hosts with the city. Airbnb also agreed that its hosts must operate with a permit, with hosts automatically being registered with the city when they sign up to the service. The company hopes that its collaborative approach in New Orleans can be a model for working with other locales. As part of this intiative, Airbnb also unveiled a “policy tool chest,” a set of guidelines that reflect the more cooperative strategy it took in New Orleans. The company said it intended to use those guidelines elsewhere around the world to help it work better with local officials and lawmakers.
+          </p>
+          <h5 class="section_subtitle">But just removing illegal listings is often ineffective</h5>
+          <p>
+            In the past, Airbnb when faced with scrutiny has been quick to remove illegal listings from its website. But is this really effective ? Although such removals presents a good picture on paper, studies have revealed that most of those listings reappear on the website within a short span of time. The chart presented below illustrates this trend. The horizontal axis shows time and the vertical axis denotes the number of listings. We can notice how a sudden dip in the numbers (triggered when Airbnb removes illegal listings), is often shortly followed by an almost immediate rise in the total number of listings to its usual number. You can hover over the white dots to read more about the battle between Airbnb and the governments in each of the cities shown in the chart.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <section id="numlistings_time" class="text-center">
+      <div class="container">
+
+        <div class="row plot_caption justify-content-center text-center">
+          <div class="col-lg-8">
+            <div id="numlistings_time_plottext">Removing illegal listings. Is it enough though ?</div>
+          </div>
+        </div>  
+
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+              <div class="numlistings_time_plot" id="numlistings_time_plot"></div>
+            </div>
+          </div>
+
+
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10 col-md-10">
+
+            <div class="row justify-content-center text-center">
+              <div class="col-lg-8 fig-description">
+                Figure Description: Timeline of the battle between Airbnb and the city governments. Hover over the white dots to know more details.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mx-auto">
+          <h5 class="section_subtitle">Having said that,</h5>
+          <p>
+            Overall Airbnb seems to have grown increasing keen to co-operate with the city governments over the last few years. But the irony of Airbnb's new found self selective, regulatory conscience, is that they only practice it in cities where they are under intense scrutiny by housing advocates, hospitality workers, journalists, elected officials and city enforcement. A survey across U.S. cities of the percentage of Entire Home listings that belong to hosts with more than one Entire Home, reveals that only in New York City, Oakland and San Francisco, is this community arguably under control. In all other cities, Airbnb allows them to operate at will.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <section id="conclusion" class="content-section conclusion">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h3 class="section_title">In conclusion...</h3>
+            <h5 class="section_subtitle">The undeniable impact: Airbnb take neighbours out of neighbourhoods</h5>
+            <p>
+              Amidst Airbnb’s growing influence and slick PR campaigns, it’s easy to forget how the founders first came up with the idea, "to figure out a way to bring in some extra income to pay their increased rent". Today, rent in big cities is higher than ever and, ironically, some believe Airbnb has made the housing crisis worse. Still others applaud home-sharing services because Airbnb allows hosts to make extra money. Short-term rentals are also transforming neighborhoods. In popular tourist destinations like Venice Beach, New Orleans, Miami beach, Venice, Amsterdam the sound of rolling suitcases  have replaced neighbourly meetups. Critics say that thanks to companies like Airbnb, communities are losing their most important asset: neighbors. Ironically, the company that puts <em>shared community</em> above all else may in fact be contributing to the erosion of the communities in which it operates. And when scaled to a $30 billion company Airbnb’s mission of <em>sharing a home with a stranger</em> pretty much loses most of its value.
+            </p>
+            <h5 class="section_subtitle">Moving forward</h5>
+            <p>
+              The core conflict remains that while commercial operators hosting multiple listings is a misuse of the platform adversely increasing the rental prices in the cities, this is really a concern for the city government and the affordable housing societies only. Such listings are undeniably boost the revenues for Airbnb, critical for the privately owned company in order to justify its valuation. This is precisely why over the last few years Airbnb has tried to work with the city governments only after facing the backlash in those respective cities. There has been no changes in the underlying rules for a host while signing up on the platform. The approach has always been "lets fight it when it comes up". In order to really remove the commercial operators from abusing the platform, it is imperative that Airbnb introduce more stringent regulations and perform regular inspections to ensure that all listings are legal.
+            </p>
+            <p>
+              This leads us to a much broader issue of the responsibility of tech companies in societies with ever increasing use of such online platforms. While it is true that founders Joe and Brian when they started Airbnb, could not have even remotely anticipated that their website would have to fight against city governments across the world, having grown into a global company with such wide outreach, it is part of their responsibility to keep the bad actors out of the system. despite not being in the best economic interest of the company.
+            </p>
+            <h5 class="section_subtitle">The ever so familiar tale of Silicon valley vs Old established industry</h5>
+            <p>
+              The battle between a Silicon Valley startup against the rest of the world is the one that we are increasingly becoming familiar with. Tech companies digitise age old well established industries often disrupting and overshadowing the traditional players who have been around for centuries. With millions of people on their platforms, companies like Airbnb end up having huge impact. Airbnb is battling the hotel industry in very much the same way that Uber did with the rental cab industry.
+            </p>
+            <p>
+              Often the old laws in place, will not consider the scenarios that get played out due to online platforms. This is where the role of local governments become crucial, it is in the best interest of everyone that governments get more proactive and accordingly adapt and reform the laws as we become more and more deeply entrenched in digital societies. The companies on their part should be open to share the un-tampered data with independent researchers with no vested interests since the analysis performed by external community are often discredited by tech giants citing poor data collection strategy and being backed by their rivals. Sharing data is often discarded by citing users' privacy issues while in reality there are well established practices of sharing the data with researchers while protecting users’ privacy. Such increasingly co-operative behaviour between regulatory bodies and tech companies are very much the need of the hour going forward. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-12 mx-auto">
+            <!--
+            <p>
+              All the code for this project can be found on <a href="https://github.com/deepak-karkala/portfolio/tree/master/docs/articles/airbnb/code">Github</a>.
+            </p>
+            -->
+            <p>
+              The data for this research article was obtained from <a href="http://insideairbnb.com/get-the-data.html">Inside Airbnb</a> an independent, non-commercial set of tools and data that allows to explore how Airbnb is being used in cities around the world.
+            </p>
+            <p>
+              This work wouldn't be possible without the help of various data analysis and visualisation tools such as <a href="https://jupyter.org/">jupyter</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://d3js.org/">d3js</a>. The template for this html page was adapted from <a href="https://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap</a>.
+            </p>
+            <!--<p><a href="../about/index.html">Click here</a> to view more about the design, methodology of this project.</p>-->
+            <p class="text-center" style="padding-top:8vh;">For all queries, contact <a href="https://twitter.com/deepak_karkala">@deepak_karkala</a> or send me an email at <a href="mailto:dkarkala01@gmail.com" target="_top"><span class="contact_link">dkarkala01@gmail.com</span></a></p>
+            <p class="text-center">Copyright &copy; Deepak Karkala 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery3.3.1/jquery.min.js"></script>
+    <script src="/vendor/bootstrap4.1.1/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing1.4.1/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>-->
+
+    <!-- D3js -->
+    <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+    <script src="/vendor/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <!-- Legend --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/grayscale.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+
+    <script src="js/bind_dropdown_values.js"></script>
+    <script src="js/plot_numlistings.js"></script>
+    <script src="js/plot_citylistings.js"></script>
+    <script src="js/plot_airbnbHotelDiff.js"></script>
+    <script src="js/plot_city_hosts_circle_pack.js"></script>
+    <script src="js/plot_tophosts.js"></script>
+    <script src="js/plot_city_commercial.js"></script>
+    <script src="js/plot_histogram_us_eu.js"></script>
+    <script src="js/plot_numlistings_time.js"></script>
+  </body>
+
+</html>
