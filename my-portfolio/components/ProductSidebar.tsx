@@ -67,7 +67,7 @@ export default function ProductSidebar({ sections }: ProductSidebarProps) {
                     <button
                         key={section.id}
                         onClick={() => handleClick(section.id)}
-                        className={`block w-full text-left text-sm py-1.5 px-3 rounded transition-colors ${
+                        className={`w-full text-left text-sm py-1.5 px-3 rounded transition-colors cursor-pointer ${
                             activeSection === section.id
                                 ? 'bg-primary/10 text-primary font-medium'
                                 : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'

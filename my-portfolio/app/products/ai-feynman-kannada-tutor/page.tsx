@@ -1,7 +1,26 @@
 import Link from 'next/link';
 import ComparisonView from '@/components/ComparisonView';
 import ProductSidebar from '@/components/ProductSidebar';
-import { getProductBySlug } from '@/lib/content';
+import ProfileLinks from '@/components/ProfileLinks';
+
+function ExternalLinkIcon() {
+    return (
+        <svg
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            />
+        </svg>
+    );
+}
 
 export async function generateMetadata() {
     return {
@@ -11,8 +30,6 @@ export async function generateMetadata() {
 }
 
 export default async function KannadaPhysicsTutorPage() {
-    const product = await getProductBySlug('ai-feynman-kannada-tutor/kannada-physics-tutor');
-
     // Images
     const images = {
         trainingPipeline: "/products/ai-feynman-kannada-tutor/training_pipeline.png",
@@ -111,18 +128,6 @@ export default async function KannadaPhysicsTutorPage() {
 
                 {/* Header */}
                 <header className="mb-12">
-                    {/* Cover Image */}
-                    {product?.image && (
-                        <div className="w-full aspect-video rounded-xl overflow-hidden mb-8 shadow-lg">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                                src={product.image}
-                                alt={product.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    )}
-
                     <h1 className="text-4xl md:text-5xl font-bold mb-6">
                         Building a Kannada Physics Tutor LLM with Feynman-Style Explanations
                     </h1>
@@ -131,6 +136,37 @@ export default async function KannadaPhysicsTutorPage() {
                         Multi-stage fine-tuning pipeline to create a reasoning-first physics tutor in Kannada, combining domain-specific SFT and RAG for intuitive, grounded explanations.
                     </p>
                 </header>
+
+                {/* Resource Links */}
+                <div className="mb-10 flex flex-wrap gap-4">
+                    <a
+                        href="https://huggingface.co/datasets/deepakkarkala/physics_reasoning_kannada"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View Dataset on HuggingFace
+                        <ExternalLinkIcon />
+                    </a>
+                    <a
+                        href="https://huggingface.co/deepakkarkala/gemma3-1b-sft-kannada-general"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View Kannada General SFT Model
+                        <ExternalLinkIcon />
+                    </a>
+                    <a
+                        href="https://huggingface.co/deepakkarkala/gemma3-1b-sft-kannada-physics"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View Kannada Physics SFT Model
+                        <ExternalLinkIcon />
+                    </a>
+                </div>
 
                 {/* Why This Project */}
                 <section id="why-this-project" className="mb-20">
@@ -857,6 +893,40 @@ export default async function KannadaPhysicsTutorPage() {
                         </p>
                     </div>
                 </section>
+
+                {/* Resource Links */}
+                <div className="mb-10 flex flex-wrap gap-4">
+                    <a
+                        href="https://huggingface.co/datasets/deepakkarkala/physics_reasoning_kannada"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View Dataset on HuggingFace
+                        <ExternalLinkIcon />
+                    </a>
+                    <a
+                        href="https://huggingface.co/deepakkarkala/gemma3-1b-sft-kannada-general"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View Kannada General SFT Model
+                        <ExternalLinkIcon />
+                    </a>
+                    <a
+                        href="https://huggingface.co/deepakkarkala/gemma3-1b-sft-kannada-physics"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View Kannada Physics SFT Model
+                        <ExternalLinkIcon />
+                    </a>
+                </div>
+
+                {/* Profile Links */}
+                <ProfileLinks />
 
                     </div>
                 </div>

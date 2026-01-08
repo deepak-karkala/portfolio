@@ -3,6 +3,26 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ComparisonView from '@/components/ComparisonView';
 import ProductSidebar from '@/components/ProductSidebar';
+import ProfileLinks from '@/components/ProfileLinks';
+
+function ExternalLinkIcon() {
+    return (
+        <svg
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            />
+        </svg>
+    );
+}
 
 export async function generateMetadata() {
     const product = await getProductBySlug('ai-scriptwriter/sitcom-office');
@@ -95,18 +115,6 @@ export default async function ProjectSitcomOfficePage() {
 
                 {/* Header */}
                 <header className="mb-12">
-                    {/* Cover Image */}
-                    {product.image && (
-                        <div className="w-full aspect-video rounded-xl overflow-hidden mb-8 shadow-lg">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                                src={product.image}
-                                alt={product.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    )}
-
                     <h1 className="text-4xl md:text-5xl font-bold mb-6">
                         Teaching an Open-Source LLM to Write <em>The Office</em>
                     </h1>
@@ -115,6 +123,37 @@ export default async function ProjectSitcomOfficePage() {
                         Fine-tuning a reasoning-first LLM to generate sitcom screenplays with on-brand humor, character voice, and multi-step setups.
                     </p>
                 </header>
+
+                {/* Resource Links */}
+                <div className="mb-10 flex flex-wrap gap-4">
+                    <a
+                        href="https://huggingface.co/datasets/deepakkarkala/sitcom_storylines_reasoning"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View Dataset on HuggingFace
+                        <ExternalLinkIcon />
+                    </a>
+                    <a
+                        href="https://huggingface.co/deepakkarkala/gemma3-1b-sft-sitcom-office-reasoning"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View SFT Model
+                        <ExternalLinkIcon />
+                    </a>
+                    <a
+                        href="https://huggingface.co/deepakkarkala/gemma3-1b-rft-sitcom-office-reasoning"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View RFT Model
+                        <ExternalLinkIcon />
+                    </a>
+                </div>
 
                 {/* Main Narrative Content - Rendered from Markdown or Custom */}
                 {/* Since we want high fidelity, I'll use the custom components and text here instead of raw markdown for the key parts */}
@@ -805,6 +844,40 @@ export default async function ProjectSitcomOfficePage() {
                         </p>
                     </div>
                 </section>
+
+                {/* Resource Links */}
+                <div className="mb-10 flex flex-wrap gap-4">
+                    <a
+                        href="https://huggingface.co/datasets/deepakkarkala/sitcom_storylines_reasoning"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View Dataset on HuggingFace
+                        <ExternalLinkIcon />
+                    </a>
+                    <a
+                        href="https://huggingface.co/deepakkarkala/gemma3-1b-sft-sitcom-office-reasoning"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View SFT Model
+                        <ExternalLinkIcon />
+                    </a>
+                    <a
+                        href="https://huggingface.co/deepakkarkala/gemma3-1b-rft-sitcom-office-reasoning"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        View RFT Model
+                        <ExternalLinkIcon />
+                    </a>
+                </div>
+
+                {/* Profile Links */}
+                <ProfileLinks />
 
                     </div>
                 </div>

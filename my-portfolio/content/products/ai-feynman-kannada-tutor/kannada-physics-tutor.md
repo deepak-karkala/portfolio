@@ -1,5 +1,5 @@
 ---
-title: 'Building a Kannada Physics Tutor LLM'
+title: 'Building a Kannada Physics Tutor LLM with Feynman-Style Explanations'
 summary: 'Multi-stage fine-tuning pipeline creating a Feynman-style physics tutor in Kannada, combining SFT and RAG for intuitive, grounded explanations'
 date: '2024-11-27'
 category: 'AI/ML Product'
