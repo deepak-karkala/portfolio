@@ -12,7 +12,7 @@ highlights:
   - 'Direct-to-consumer model supporting rural artisans'
   - 'Curated products from Shantiniketan leather, Channapatna toys, Agra marble carvings'
   - 'Focus on preserving traditional Indian crafts and improving artisan livelihoods'
-location: 'India (Pan-India)'
+location: 'Bangalore, India'
 role: 'Co-Founder'
 websiteUrl: 'https://spiticart.com/'
 ---

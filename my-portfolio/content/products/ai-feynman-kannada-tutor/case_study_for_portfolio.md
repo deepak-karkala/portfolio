@@ -1,12 +1,4 @@
-## 1. Full Case Study Page
-
-Feel free to tweak names, numbers, and model details to match your exact setup.
-
----
-
-### **Title**
-
-**Building a Kannada Physics Tutor LLM with Feynman-Style Explanations**
+# **Building a Kannada Physics Tutor LLM with Feynman-Style Explanations**
 
 ---
 
