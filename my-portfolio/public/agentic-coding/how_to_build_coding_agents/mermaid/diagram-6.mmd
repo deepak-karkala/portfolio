@@ -1,0 +1,46 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#334155'
+    edgeLabelBackground: '#FFFFFF'
+    clusterTextSize: '15px'
+    clusterTextWeight: '600'
+    borderRadius: '4'
+    shadowColor: '#000000'
+    shadowOpacity: '0.12'
+    shadowBlur: '4'
+  flowchart:
+    curve: basis
+    nodeSpacing: 50
+    rankSpacing: 70
+---
+flowchart LR
+  DS[Task Suite<br/>real repos + tickets] --> RUN[Agent Runner]
+  RUN --> OUT[Outcomes<br/>diffs + logs + traces]
+
+  OUT --> COR[Correctness<br/>tests/lint pass]
+  OUT --> SUC[Task Success<br/>completed/accepted]
+  OUT --> EFF[Efficiency<br/>time + tool calls + tokens]
+  OUT --> RET[Retrieval<br/>right files/chunks?]
+  OUT --> REC[Recovery<br/>thrash vs converge]
+
+  COR --> REP[Eval Report]
+  SUC --> REP
+  EFF --> REP
+  RET --> REP
+  REC --> REP
+
+  classDef inputStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2px,color:#0F172A;
+  classDef outStyle fill:#EDE9FE,stroke:#8B5CF6,stroke-width:2px,color:#0F172A;
+  classDef metricStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2px,color:#0F172A;
+  classDef reportStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2px,color:#0F172A;
+
+  class DS,RUN inputStyle
+  class OUT outStyle
+  class COR,SUC,EFF,RET,REC metricStyle
+  class REP reportStyle

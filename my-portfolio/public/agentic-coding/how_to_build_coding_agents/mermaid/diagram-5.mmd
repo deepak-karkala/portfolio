@@ -1,0 +1,61 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#334155'
+    edgeLabelBackground: '#FFFFFF'
+    clusterTextSize: '15px'
+    clusterTextWeight: '600'
+    borderRadius: '4'
+    shadowColor: '#000000'
+    shadowOpacity: '0.12'
+    shadowBlur: '4'
+  flowchart:
+    curve: basis
+    nodeSpacing: 50
+    rankSpacing: 70
+---
+flowchart TB
+  subgraph Train[Training Cluster]
+    TR[Trainer<br/>PyTorch updates]
+    RB[Replay/Buffer<br/>trajectories]
+  end
+
+  subgraph Roll[Rollout/Inference]
+    RAY[Rollout Orchestrator<br/>Ray jobs]
+    INF[Inference Servers<br/>policy model]
+  end
+
+  subgraph Env[Environment Fleet]
+    ES1[Env Server<br/>sandbox VM/ctr]
+    ES2[Env Server<br/>sandbox VM/ctr]
+    ESN[Env Server<br/>sandbox VM/ctr]
+  end
+
+  RAY --> INF
+  INF --> ES1
+  INF --> ES2
+  INF --> ESN
+
+  ES1 -->|tool traces + rewards| RB
+  ES2 -->|tool traces + rewards| RB
+  ESN -->|tool traces + rewards| RB
+
+  RB --> TR
+  TR --> INF
+
+  classDef tr fill:#EDE9FE,stroke:#8B5CF6,stroke-width:2px,color:#0F172A;
+  classDef ro fill:#DCFCE7,stroke:#4ADE80,stroke-width:2px,color:#0F172A;
+  classDef ev fill:#FFEDD5,stroke:#FB923C,stroke-width:2px,color:#0F172A;
+
+  class Train,TR,RB tr;
+  class Roll,RAY,INF ro;
+  class Env,ES1,ES2,ESN ev;
+
+  style Train fill:#F8FAFC,stroke:#94A3B8,stroke-width:2px,rx:6,ry:6,font-size:15px,font-weight:600
+  style Roll fill:#F8FAFC,stroke:#94A3B8,stroke-width:2px,rx:6,ry:6,font-size:15px,font-weight:600
+  style Env fill:#F8FAFC,stroke:#94A3B8,stroke-width:2px,rx:6,ry:6,font-size:15px,font-weight:600
