@@ -56,7 +56,7 @@ How is prediction used to trigger action?
 
 ### Fast decision tree
 
-<img src="/playbooks/mlops-production-guide/img/ch1/1.png" width="100%" style="background-color: #FCF1EF;"/>
+<img src="/playbooks/mlops-production-guide/img/ch1/diagram-1.png" width="100%" style="background-color: #FCF1EF;"/>
 
 ### "Use ML when…" checklist
 
@@ -199,7 +199,7 @@ If you have conflicting goals (engagement vs quality vs safety), prefer **decoup
 
 ## 9) A practical framing workflow
 
-<img src="/playbooks/mlops-production-guide/img/ch1/2.png" width="100%" style="background-color: #FCF1EF;"/>
+<img src="/playbooks/mlops-production-guide/img/ch1/diagram-2.png" width="100%" style="background-color: #FCF1EF;"/>
 
 ---
 

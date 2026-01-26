@@ -152,55 +152,7 @@ For real-time pipelines, define and monitor these as first-class SLAs:
 
 # 5) Architecture blueprint (streaming features → online store → inference)
 
-```mermaid
-flowchart TB
-  subgraph SRC[Event Sources]
-    E[Events\n(clicks, views, transactions)]
-    DB[(OLTP/CDC)]
-  end
-
-  subgraph BUS[Transport]
-    K[Kafka/Kinesis]
-    SR[Schema Registry\n(Avro/Protobuf)]
-  end
-
-  subgraph SP[Stream Processing]
-    ENG[Flink/Spark/Samza\nstateful ops]
-    WM[Watermarks + Late data policy]
-    CK[Checkpointing + State store]
-  end
-
-  subgraph STO[Stores]
-    RAW[Offline mirror\n(Data lake/warehouse)]
-    ON[Online store\n(Redis/Cassandra/DynamoDB/Pinot)]
-  end
-
-  subgraph SVC[Serving]
-    FS[Feature Service\nget_features API]
-    INF[Inference Service]
-  end
-
-  subgraph OPS[Ops/Quality]
-    DQ[Stream DQ checks\nschema/nulls/anomalies]
-    SLA[SLA monitors\nfreshness/lag/p99]
-    REPLAY[Backfill/Replay jobs]
-    PAR[Parity canary\nonline vs offline]
-  end
-
-  E --> K --> ENG --> ON
-  DB --> K
-  K --> RAW
-  SR --> ENG
-  WM --> ENG
-  CK --> ENG
-
-  ON --> FS --> INF
-  RAW --> REPLAY --> ON
-  ENG --> DQ --> SLA
-  FS --> SLA
-  RAW --> PAR
-  FS --> PAR
-```
+![MLOps Flowchart with 3 components](/playbooks/mlops-production-guide/img/ch5.2/diagram-1.png)
 
 ---
 

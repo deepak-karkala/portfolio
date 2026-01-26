@@ -1,0 +1,29 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TB
+  PR[PR opened] --> CI["CI: tests + DAG validation<br/>+ build images"]
+  CI -->|pass| M[Merge to main]
+  M --> STG["CD: deploy to Staging<br/>run E2E on small data"]
+  STG -->|pass + approval| PROD["CD: deploy same DAG+images to Prod"]
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef prStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef ciStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef mergeStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef stgStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef prodStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class PR prStyle
+  class CI ciStyle
+  class M mergeStyle
+  class STG stgStyle
+  class PROD prodStyle

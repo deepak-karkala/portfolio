@@ -1,0 +1,46 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TB
+  U["User Request"]
+  G["Gateway / Edge"]
+  R["Experiment Router<br/>bucketing + eligibility"]
+  A["Variant A<br/>Control"]
+  B["Variant B<br/>Treatment"]
+  O["Online Metrics<br/>latency • errors • safety"]
+  L[("Event Log")]
+  W[("Warehouse / Lake")]
+  X["Analysis Jobs<br/>SRM • lift • slices"]
+  D["Decision + Ramp/Rollback"]
+
+  U --> G --> R
+  R --> A
+  R --> B
+  A --> O
+  B --> O
+  A --> L
+  B --> L
+  L --> W --> X --> D
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef requestStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef routingStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef variantStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef metricsStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef storageStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef analysisStyle fill:#FEF3C7,stroke:#FBBF24,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class U requestStyle
+  class G,R routingStyle
+  class A,B variantStyle
+  class O metricsStyle
+  class L,W storageStyle
+  class X,D analysisStyle

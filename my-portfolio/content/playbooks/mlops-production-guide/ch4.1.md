@@ -67,18 +67,7 @@ Write requirements before hunting datasets:
 
 # 3) Batch vs Streaming ingestion (choose by freshness + coupling)
 
-```mermaid
-flowchart TD
-  A[Need data updates] --> B{Freshness needed?}
-  B -->|Daily/Hourly ok| C[Batch ingestion\nscheduled ETL/ELT]
-  B -->|Near real-time| D[Streaming ingestion\nqueues + stream processing]
-  C --> E{Downstream needs\npoint-in-time correctness?}
-  D --> F{Can consumers handle\nout-of-order/retries?}
-  E -->|Yes| G[Partitioned snapshots\n+ versioned datasets]
-  E -->|No| H[Careful incremental logic\n+ backfills]
-  F -->|Yes| I[Event-driven pipelines\nidempotent processing]
-  F -->|No| J[Prefer micro-batch\nor keep batch]
-```
+![Diagram 1](/playbooks/mlops-production-guide/img/ch4.1/diagram-1.png)
 
 **Heuristics**
 

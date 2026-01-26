@@ -1,0 +1,43 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart LR
+  H["Hypothesis + Success criteria"]
+  D["Design<br/>metrics • population • MDE"]
+  I["Instrumentation<br/>logging • exposure • IDs"]
+  S["Safety gates<br/>shadow/canary"]
+  L["Launch<br/>randomization + routing"]
+  M["Monitor<br/>SRM • guardrails • health"]
+  A["Analyze<br/>stats • slices • sanity checks"]
+  R{"Decision"}
+  P["Progressive rollout<br/>+ continued monitoring"]
+  T["Tune / fix / redesign"]
+  B["Rollback + postmortem"]
+
+  H --> D --> I --> S --> L --> M --> A --> R
+  R -->|Ship + Ramp| P
+  R -->|Iterate| T
+  R -->|Rollback| B
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef ideateStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef devStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef testStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef monStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef decisionStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef actionStyle fill:#FEF3C7,stroke:#FBBF24,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class H,D ideateStyle
+  class I,S devStyle
+  class L testStyle
+  class M,A monStyle
+  class R decisionStyle
+  class P,T,B actionStyle

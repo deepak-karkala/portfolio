@@ -1,0 +1,32 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TD
+  A[Latency/Cost issue] --> B{Where is time spent?}
+  B -->|Pre/post + networking| S[Inference Server<br/>concurrency, batching, routing]
+  B -->|H2D/D2H copies + allocs| R[Runtime<br/>buffers, async, pin memory]
+  B -->|Kernel time| C[Compiler/Engine<br/>fusion, tactics, shapes]
+  B -->|Model compute dominates| M[Model<br/>architecture, quant/distill]
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef issueStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef diagStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef serverStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef runtimeStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef compilerStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef modelStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class A issueStyle
+  class B diagStyle
+  class S serverStyle
+  class R runtimeStyle
+  class C compilerStyle
+  class M modelStyle

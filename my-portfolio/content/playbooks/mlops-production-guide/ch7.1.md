@@ -98,22 +98,7 @@ Store:
 
 Use this decision loop to prioritize work:
 
-```mermaid
-flowchart TD
-  A[Evaluate candidate] --> B{High avoidable bias?\n(train err - best achievable)}
-  B -->|Yes| C[Reduce bias:\n- bigger model/arch\n- better optimizer\n- train longer\n- reduce reg\n- better features]
-  B -->|No| D{High variance?\n(dev err - train err)}
-  D -->|Yes| E[Reduce variance:\n- more data\n- augmentation\n- regularization\n- simplify features\n- early stopping]
-  D -->|No| F{Data mismatch?\n(train-dev vs dev)}
-  F -->|Yes| G[Fix mismatch:\n- make train like dev\n- reweight\n- synthesize data]
-  F -->|No| H{Meets thresholds?}
-  H -->|Yes| I[Candidate for registry\n+ deployment validation]
-  H -->|No| J[Reframe:\nmetrics, labels,\nfeature availability,\npipeline design]
-  C --> A
-  E --> A
-  G --> A
-  J --> A
-```
+![Diagram 1](/playbooks/mlops-production-guide/img/ch7.1/diagram-1.png)
 
 ### Learning curves (quick “will more data help?” test)
 

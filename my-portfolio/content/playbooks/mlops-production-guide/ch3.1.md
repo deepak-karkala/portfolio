@@ -117,17 +117,7 @@ Goal: safely release to environments.
 
 # 5) Deployment flow (end-to-end) in one diagram
 
-```mermaid
-flowchart TB
-  Dev[Dev work\nfeature branch] --> PR[Pull Request]
-  PR --> CI[CI: lint + unit tests + scans]
-  CI -->|pass| Merge[Merge to main]
-  Merge --> CD1[CD: deploy to Staging\n(pipeline/system)]
-  CD1 --> IT[Integration/E2E tests\n+ smoke tests]
-  IT -->|pass| Gate[Manual approval gate]
-  Gate --> CD2[CD: promote same artifacts\nto Production]
-  CD2 --> Mon[Observe: logs/metrics/traces\nrollback if needed]
-```
+![Diagram 1](/playbooks/mlops-production-guide/img/ch3.1/diagram-1.png)
 
 ---
 
@@ -145,17 +135,7 @@ Model release should be **registry-driven** (or at least model-version-driven), 
 6. Approve + progressive rollout in prod (canary/shadow/A-B)
 7. Promote to “champion” if online signals are good; otherwise rollback
 
-```mermaid
-flowchart LR
-  T[Training pipeline run] --> V[Offline validation\n(metric floors + checks)]
-  V -->|pass| R[Register candidate\nin Model Registry]
-  R --> S[Deploy to Staging serving]
-  S --> O[Operational tests\nlatency/load/integration]
-  O -->|pass| P[Approve + deploy to Prod\ncanary/shadow/A-B]
-  P --> K{Online signals ok?}
-  K -->|yes| C[Promote to Champion]
-  K -->|no| RB[Rollback to previous Champion]
-```
+![Diagram 2](/playbooks/mlops-production-guide/img/ch3.1/diagram-2.png)
 
 **Heuristic:** Offline validation answers “is it statistically good?”
 Operational validation answers “does it run safely?”

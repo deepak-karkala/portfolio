@@ -36,12 +36,7 @@ You test:
 
 Push tests down for speed and debuggability; keep E2E few.
 
-```mermaid
-flowchart TB
-  U[Many: Unit tests\n(feature transforms, utilities,\nmodel components)] --> I[Some: Integration tests\n(pipeline stages, FS writes,\nmodel load + invoke)]
-  I --> E[Few: E2E tests\n(full pipeline on sample data\nor staging replay)]
-  E --> O[Always-on: Online tests\n(monitoring as tests:\nfreshness, drift, latency,\nquality proxies)]
-```
+![Diagram 1](/playbooks/mlops-production-guide/img/ch9.1/diagram-1.png)
 
 **Rule:** If an E2E test is flaky, replace it with 2–3 lower-level contract + integration tests.
 
@@ -137,12 +132,7 @@ Use three kinds of tests (especially for NLP, but applies broadly):
 * **INV (Invariance):** perturbations that shouldn’t change prediction (typos, synonyms, minor brightness change)
 * **DIR (Directional expectation):** perturbations that should move prediction in a direction (add “not”, increase price, etc.)
 
-```mermaid
-flowchart LR
-  A[Base example] --> B[MFT: must get correct label]
-  A --> C[INV: perturb\nshould not change]
-  A --> D[DIR: perturb\nshould change direction]
-```
+![Diagram 2](/playbooks/mlops-production-guide/img/ch9.1/diagram-2.png)
 
 ## C) Sliced evaluation (mandatory)
 
@@ -228,17 +218,7 @@ Use Impact × Likelihood:
 
 # 11) Debugging flow (when something breaks)
 
-```mermaid
-flowchart TD
-  A[Alert / Degradation] --> B{Infra issue?\n(latency/errors)}
-  B -->|Yes| C[Check serving health\nCPU/Mem, timeouts,\ndeps, rollback]
-  B -->|No| D{Data issue?\n(schema/null/freshness)}
-  D -->|Yes| E[Trace upstream change\nschema contracts,\nDQ dashboards,\nbackfill/replay]
-  D -->|No| F{Skew/Drift?\ntrain vs serve}
-  F -->|Yes| G[Parity checks\nfeature recompute,\nPIT joins,\ntransform codepaths]
-  F -->|No| H[Model behavior regression]
-  H --> I[Slice analysis + regression set\nadd failing examples\nto tests + retrain]
-```
+![Diagram 3](/playbooks/mlops-production-guide/img/ch9.1/diagram-3.png)
 
 ---
 

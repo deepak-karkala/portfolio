@@ -1,0 +1,84 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TB
+  subgraph UX[Developer Experience]
+    SDK["SDK/CLI + Templates"]
+    WS["Workspaces/Notebooks"]
+  end
+
+  subgraph DATA[Data & Feature Layer]
+    DL["Raw Data Lake/Warehouse"]
+    ELT["ELT/Transforms"]
+    FS["Feature Store or Versioned Feature Repo"]
+  end
+
+  subgraph ORCH[Orchestration Layer]
+    WF["Workflow Orchestrator"]
+    META["Metadata/Lineage Store"]
+  end
+
+  subgraph TRAIN[Training Layer]
+    TJ["Training Jobs / Distributed Compute"]
+    HPO["HPO / Experiment Runner"]
+    EXP["Experiment Tracking"]
+  end
+
+  subgraph GOV[Registry & Governance]
+    REG["Model Registry"]
+    ART["Artifact Store"]
+    APPR["Approval Gates / Policies"]
+  end
+
+  subgraph SERVE[Serving Layer]
+    ONLINE["Online Serving"]
+    BATCH["Batch Inference"]
+    DEP["Progressive Delivery<br/>canary/shadow/A-B"]
+  end
+
+  subgraph OBS[Observability]
+    SYS["System Metrics/Logs/Traces"]
+    DRIFT["Data Drift / Feature Health"]
+    PERF["Quality Proxies / Feedback"]
+    ALERT["Alerting + Runbooks"]
+  end
+
+  SDK --> WF
+  WS --> WF
+  DL --> ELT --> FS
+  FS --> WF
+  WF --> TJ --> EXP
+  WF --> HPO --> EXP
+  TJ --> ART --> REG
+  REG --> DEP --> ONLINE
+  REG --> DEP --> BATCH
+  ONLINE --> SYS --> ALERT
+  ONLINE --> DRIFT --> ALERT
+  ONLINE --> PERF --> ALERT
+  WF --> META
+  DEP --> APPR
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef uxStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef dataStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef orchStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef trainStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef govStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef serveStyle fill:#FEF3C7,stroke:#FBBF24,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef obsStyle fill:#FECACA,stroke:#EF4444,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class SDK,WS uxStyle
+  class DL,ELT,FS dataStyle
+  class WF,META orchStyle
+  class TJ,HPO,EXP trainStyle
+  class REG,ART,APPR govStyle
+  class ONLINE,BATCH,DEP serveStyle
+  class SYS,DRIFT,PERF,ALERT obsStyle

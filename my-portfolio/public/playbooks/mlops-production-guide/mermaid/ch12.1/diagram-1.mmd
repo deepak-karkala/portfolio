@@ -1,0 +1,21 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+stateDiagram-v2
+  direction LR
+  S1: Stage 1<br/>Manual stateless retraining
+  S2: Stage 2<br/>Automated stateless retraining
+  S3: Stage 3<br/>Automated stateful training
+  S4: Stage 4<br/>Event-driven continual learning
+
+  S1 --> S2: Orchestrator + model store<br/>+ repeatable pipeline
+  S2 --> S3: Checkpoints + lineage<br/>+ stable eval gates
+  S3 --> S4: Drift/perf triggers<br/>+ safe test-in-prod automation

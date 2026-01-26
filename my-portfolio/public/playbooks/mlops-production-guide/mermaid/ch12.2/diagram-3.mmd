@@ -1,0 +1,44 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TD
+  Q{"Do you need causal<br/>business impact?"}
+  AB["A/B Test - RCT"]
+  RISK{"Is change high risk<br/>or infra-heavy?"}
+  SH["Shadow -> Canary"]
+  CAN["Canary or limited rollout"]
+  RANK{"Is it ranking/reco?"}
+  INT["Consider Interleaving<br/>for faster sensitivity"]
+  STD["Standard RCT + guardrails"]
+  RAMP["Progressive ramp"]
+
+  Q -->|Yes| AB
+  Q -->|No| RISK
+  RISK -->|Yes| SH
+  RISK -->|No| CAN
+  AB --> RANK
+  RANK -->|Yes| INT
+  RANK -->|No| STD
+  STD --> RAMP
+  INT --> RAMP
+  SH --> RAMP
+  CAN --> RAMP
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef decisionStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef testStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef safetyStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef actionStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class Q,RISK,RANK decisionStyle
+  class AB,STD,INT testStyle
+  class SH,CAN safetyStyle
+  class RAMP actionStyle

@@ -1,0 +1,37 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart LR
+  A["Develop<br/>experiment + prototype"]
+  B["Operationalize training<br/>pipeline CI/CD"]
+  C["Continuous training<br/>schedule/data/decay triggers"]
+  D["Validate + register model"]
+  E["Deploy model<br/>canary/shadow/A-B"]
+  F["Serve predictions<br/>online/batch/stream"]
+  G["Monitor<br/>model + data + system"]
+
+  A --> B --> C --> D --> E --> F --> G
+  G -->|drift/decay| C
+  G -->|bugs/incidents| B
+  G -->|new requirements| A
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef ideateStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef devStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef prodStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef serveStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef monitorStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class A ideateStyle
+  class B,C devStyle
+  class D,E prodStyle
+  class F serveStyle
+  class G monitorStyle

@@ -1,0 +1,48 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TB
+  U["Experiment UI / API<br/>hypothesis • metrics • targeting • allocation"]
+  CFG["Config Service<br/>remote config + flags + params"]
+  SDK["Client SDK<br/>assignment + cache + defaults"]
+  APP["Applications/Services"]
+  EXP["Exposure Logging<br/>activation/parameter access"]
+  EVT["Event Logging<br/>outcomes, clicks, orders, etc."]
+  BUS["Event Bus<br/>Kafka/Kinesis"]
+  ETL["Batch/Stream Processing<br/>joins + aggregates"]
+  WH[("Warehouse/Lake")]
+  STATS["Stats Engine<br/>SRM • CUPED • sequential • MHT"]
+  DASH["Dashboards<br/>results + slices + guardrails"]
+  ALERT["Alerts<br/>SRM/guardrails"]
+
+  U --> CFG --> SDK --> APP
+  APP --> EXP
+  APP --> EVT
+  EXP --> BUS
+  EVT --> BUS
+  BUS --> ETL --> WH --> STATS
+  STATS --> DASH
+  STATS --> ALERT
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef configStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef appStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef loggingStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef pipelineStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef storageStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef analysisStyle fill:#FEF3C7,stroke:#FBBF24,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class U,CFG,SDK configStyle
+  class APP appStyle
+  class EXP,EVT loggingStyle
+  class BUS,ETL pipelineStyle
+  class WH storageStyle
+  class STATS,DASH,ALERT analysisStyle

@@ -1,0 +1,38 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TD
+  A[Evaluate candidate] --> B{High avoidable bias?<br/>train err - best achievable}
+  B -->|Yes| C[Reduce bias:<br/>- bigger model/arch<br/>- better optimizer<br/>- train longer<br/>- reduce reg<br/>- better features]
+  B -->|No| D{High variance?<br/>dev err - train err}
+  D -->|Yes| E[Reduce variance:<br/>- more data<br/>- augmentation<br/>- regularization<br/>- simplify features<br/>- early stopping]
+  D -->|No| F{Data mismatch?<br/>train-dev vs dev}
+  F -->|Yes| G[Fix mismatch:<br/>- make train like dev<br/>- reweight<br/>- synthesize data]
+  F -->|No| H{Meets thresholds?}
+  H -->|Yes| I[Candidate for registry<br/>+ deployment validation]
+  H -->|No| J[Reframe:<br/>metrics, labels,<br/>feature availability,<br/>pipeline design]
+  C --> A
+  E --> A
+  G --> A
+  J --> A
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef evalStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef checkStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef actionStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef successStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef refineStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class A evalStyle
+  class B,D,F,H checkStyle
+  class C,E,G actionStyle
+  class I successStyle
+  class J refineStyle

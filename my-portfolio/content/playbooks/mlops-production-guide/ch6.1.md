@@ -33,16 +33,7 @@ A feature is production-grade when it has:
 
 # 2) The feature engineering lifecycle (what to operationalize)
 
-```mermaid
-flowchart LR
-  A[Ideate\nhypotheses + domain input] --> B[Prototype\nEDA + quick transforms]
-  B --> C[Validate\nleakage + coverage + stability]
-  C --> D[Materialize\nbatch/stream/on-demand]
-  D --> E[Register\nmetadata + ownership + version]
-  E --> F[Serve\noffline PIT + online low-latency]
-  F --> G[Monitor\nfreshness + drift + nulls]
-  G -->|new data / decay| A
-```
+![MLOps Flowchart with multiple components](/playbooks/mlops-production-guide/img/ch6.1/diagram-1.png)
 
 **Rule:** EDA insights must become **tests + monitors**, or they’ll be forgotten.
 
@@ -190,51 +181,7 @@ A feature store is a way to operationalize:
 
 # 10) Reference architecture: batch + streaming + on-demand features
 
-```mermaid
-flowchart TB
-  subgraph SRC[Sources]
-    LOG[Events/Logs]
-    DB[(OLTP/CDC)]
-    WH[(Warehouse/Lake)]
-  end
-
-  subgraph FEAT[Feature Computation]
-    BATCH[Batch Feature Jobs]
-    STR[Streaming Feature Jobs]
-    OD[On-demand Transforms\n(in inference)]
-  end
-
-  subgraph STORE[Feature Storage]
-    OFF[Offline Feature Tables\n(PIT capable)]
-    ON[Online Feature Store/KV]
-    REG[Feature Registry\n(metadata+versions)]
-  end
-
-  subgraph SERVE[Serving/Training]
-    TRAIN[Training Dataset Builder\nPIT joins]
-    INF[Inference Service]
-  end
-
-  subgraph OBS[Observability]
-    MON[Freshness/Null/Drift Monitors]
-    PAR[Parity Canary\nonline vs offline]
-  end
-
-  LOG --> STR --> ON
-  DB --> STR
-  WH --> BATCH --> OFF
-  BATCH --> REG
-  STR --> REG
-
-  OFF --> TRAIN
-  ON --> INF
-  OD --> INF
-
-  OFF --> PAR
-  ON --> PAR
-  ON --> MON
-  OFF --> MON
-```
+![MLOps Flowchart with 2 components](/playbooks/mlops-production-guide/img/ch6.1/diagram-2.png)
 
 ---
 

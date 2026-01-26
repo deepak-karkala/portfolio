@@ -27,18 +27,7 @@ ML systems: **code + data + model** all evolve, and any one can break the system
 
 If you don’t explicitly design these loops, they will emerge as outages.
 
-```mermaid
-flowchart LR
-  A[Develop\nexperiment + prototype] --> B[Operationalize training\npipeline CI/CD]
-  B --> C[Continuous training\n(schedule/data/decay triggers)]
-  C --> D[Validate + register model]
-  D --> E[Deploy model\n(canary/shadow/A-B)]
-  E --> F[Serve predictions\n(online/batch/stream)]
-  F --> G[Monitor\n(model + data + system)]
-  G -->|drift/decay| C
-  G -->|bugs/incidents| B
-  G -->|new requirements| A
-```
+![Diagram 1](/playbooks/mlops-production-guide/img/ch2.1/diagram-1.png)
 
 **Heuristic:** if you can’t point to *where* drift is detected and *how* retraining is triggered and validated, you don’t have an MLOps plan yet.
 

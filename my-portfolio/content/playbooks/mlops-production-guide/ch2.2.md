@@ -70,64 +70,7 @@ Treat the platform like you would treat an external product:
 
 # 4) Reference architecture (capability-oriented)
 
-```mermaid
-flowchart TB
-  subgraph UX[Developer Experience]
-    SDK[SDK/CLI + Templates]
-    WS[Workspaces/Notebooks]
-  end
-
-  subgraph DATA[Data & Feature Layer]
-    DL[Raw Data Lake/Warehouse]
-    ELT[ELT/Transforms]
-    FS[Feature Store or Versioned Feature Repo]
-  end
-
-  subgraph ORCH[Orchestration Layer]
-    WF[Workflow Orchestrator]
-    META[Metadata/Lineage Store]
-  end
-
-  subgraph TRAIN[Training Layer]
-    TJ[Training Jobs / Distributed Compute]
-    HPO[HPO / Experiment Runner]
-    EXP[Experiment Tracking]
-  end
-
-  subgraph GOV[Registry & Governance]
-    REG[Model Registry]
-    ART[Artifact Store]
-    APPR[Approval Gates / Policies]
-  end
-
-  subgraph SERVE[Serving Layer]
-    ONLINE[Online Serving]
-    BATCH[Batch Inference]
-    DEP[Progressive Delivery\ncanary/shadow/A-B]
-  end
-
-  subgraph OBS[Observability]
-    SYS[System Metrics/Logs/Traces]
-    DRIFT[Data Drift / Feature Health]
-    PERF[Quality Proxies / Feedback]
-    ALERT[Alerting + Runbooks]
-  end
-
-  SDK --> WF
-  WS --> WF
-  DL --> ELT --> FS
-  FS --> WF
-  WF --> TJ --> EXP
-  WF --> HPO --> EXP
-  TJ --> ART --> REG
-  REG --> DEP --> ONLINE
-  REG --> DEP --> BATCH
-  ONLINE --> SYS --> ALERT
-  ONLINE --> DRIFT --> ALERT
-  ONLINE --> PERF --> ALERT
-  WF --> META
-  DEP --> APPR
-```
+![Diagram 1](/playbooks/mlops-production-guide/img/ch2.2/diagram-1.png)
 
 **Heuristic:** design the platform around **interfaces/contracts** (data schema, feature definitions, model package format), not around a specific vendor tool.
 

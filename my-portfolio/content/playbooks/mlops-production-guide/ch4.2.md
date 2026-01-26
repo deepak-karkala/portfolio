@@ -100,54 +100,7 @@ Push-based ingestion distributes responsibility:
 
 # 5) Reference architecture (Gen 3, event-sourced “changelog is truth”)
 
-```mermaid
-flowchart TB
-  subgraph Producers[Metadata Producers]
-    DW[Warehouse/Lake]
-    ETL[ETL/ELT Jobs]
-    BI[Dashboards/BI]
-    ML[ML Pipelines/Registry]
-  end
-
-  subgraph Ingest[Ingestion]
-    API[Write APIs]
-    EVT[Event Stream / Changelog]
-    Crawl[Bootstrapping Crawlers]
-  end
-
-  subgraph Core[Metadata Core]
-    Model[Typed Metadata Model\n(entities + aspects)]
-    Store[Primary Metadata Store]
-  end
-
-  subgraph Views[Materialized Views]
-    Search[Search Index]
-    Graph[Lineage/Graph View]
-    KV[Low-latency KV Cache]
-  end
-
-  subgraph UX[Consumers]
-    UI[Portal UI]
-    SDK[SDK/CLI]
-    Auto[Automation\n(governance, alerts, backfills)]
-  end
-
-  DW -->|emit| API
-  ETL -->|emit| API
-  BI -->|emit| API
-  ML -->|emit| API
-  Crawl --> Store
-
-  API --> EVT --> Store
-  Store --> Search
-  Store --> Graph
-  Store --> KV
-
-  Search --> UI
-  Graph --> UI
-  KV --> SDK
-  EVT --> Auto
-```
+![MLOps Flowchart with 2 components](/playbooks/mlops-production-guide/img/ch4.2/diagram-1.png)
 
 **Key idea:** treat metadata as a **stream of changes**, not periodic snapshots.
 

@@ -1,0 +1,51 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TD
+  A["Alert: quality/drift/DQ"]
+  B{"Service health broken?<br/>5xx/latency/oom"}
+  C["Infra incident:<br/>rollback, scale, deps, timeouts"]
+  D{"Data quality broken?<br/>schema/freshness/null spike"}
+  E["Upstream fix:<br/>ETL/stream bug, join break,<br/>unit change, backfill"]
+  F{"Skew/drift?<br/>P-X or P-ŷ shifted"}
+  G["Trace drift:<br/>which features + which slices<br/>impacting outputs"]
+  H{"Perf/KPI impacted?"}
+  I["Mitigate:<br/>- fallback model/rules<br/>- retrain/recalibrate<br/>- adjust thresholds<br/>- route to specialized model"]
+  J["Monitor closer:<br/>adjust thresholds,<br/>confirm with labels"]
+  K["Model bug/regression:<br/>wrong version, bad config,<br/>pre/post mismatch"]
+
+  A --> B
+  B -->|Yes| C
+  B -->|No| D
+  D -->|Yes| E
+  D -->|No| F
+  F -->|Yes| G
+  G --> H
+  H -->|Yes| I
+  H -->|No| J
+  F -->|No| K
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef alertStyle fill:#FECACA,stroke:#EF4444,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef decisionStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef infraStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef dataStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef driftStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef actionStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef modelStyle fill:#FEF3C7,stroke:#FBBF24,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class A alertStyle
+  class B,D,F,H decisionStyle
+  class C infraStyle
+  class E dataStyle
+  class G driftStyle
+  class I,J actionStyle
+  class K modelStyle

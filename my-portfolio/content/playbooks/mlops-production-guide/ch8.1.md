@@ -92,17 +92,7 @@ These steps show up across most mature training systems:
 6. **Business validation** (thresholds vs baseline/champion)
 7. **Register** model + metadata + lineage
 
-```mermaid
-flowchart LR
-  A[Versioned Data/Features] --> B[Data Validation\n(schema + DQ gates)]
-  B -->|pass| C[Preprocess/Feature Build]
-  C --> D[Train Model]
-  D --> E[Offline Evaluation\n(metrics + slices)]
-  E --> F{Meets gates?\n(baseline/champion + thresholds)}
-  F -->|no| X[Fail pipeline\n+ alert + report]
-  F -->|yes| G[Package artifact\n(model + signature + deps)]
-  G --> H[Register\n(model registry + lineage)]
-```
+![Diagram 1](/playbooks/mlops-production-guide/img/ch8.1/diagram-1.png)
 
 **Rule:** data validation must happen *before* expensive training. If DQ fails, training should not run.
 
@@ -137,13 +127,7 @@ This chapter stresses an important nuance: CI/CD is for the **pipeline definitio
 * run a staging E2E on a small representative dataset
 * promote the **same** pipeline definition + images to prod
 
-```mermaid
-flowchart TB
-  PR[PR opened] --> CI[CI: tests + DAG validation\n+ build images]
-  CI -->|pass| M[Merge to main]
-  M --> STG[CD: deploy to Staging\n(run E2E on small data)]
-  STG -->|pass + approval| PROD[CD: deploy same DAG+images to Prod]
-```
+![Diagram 2](/playbooks/mlops-production-guide/img/ch8.1/diagram-2.png)
 
 **Rule:** don’t rebuild images between staging and prod. Promote the exact artifact set you validated.
 

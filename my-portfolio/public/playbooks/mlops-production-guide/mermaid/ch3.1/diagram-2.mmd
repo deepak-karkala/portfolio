@@ -1,0 +1,43 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart LR
+  T[Training pipeline run]
+  V["Offline validation<br/>(metric floors + checks)"]
+  R[Register candidate<br/>in Model Registry]
+  S[Deploy to Staging serving]
+  O[Operational tests<br/>latency/load/integration]
+  P[Approve + deploy to Prod<br/>canary/shadow/A-B]
+  K{Online signals ok?}
+  C[Promote to Champion]
+  RB[Rollback to previous Champion]
+
+  T --> V
+  V -->|pass| R
+  R --> S
+  S --> O
+  O -->|pass| P
+  P --> K
+  K -->|yes| C
+  K -->|no| RB
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef trainStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef validateStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef stagingStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef prodStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef actionStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class T trainStyle
+  class V validateStyle
+  class R,S,O stagingStyle
+  class P,K,C prodStyle
+  class RB actionStyle

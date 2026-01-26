@@ -1,0 +1,26 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart LR
+  Q[Request] --> F[Stage-1<br/>cheap filter]
+  F -->|top-K| R[Stage-2<br/>expensive rerank/model]
+  R --> O[Response]
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef reqStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef stage1Style fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef stage2Style fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef respStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class Q reqStyle
+  class F stage1Style
+  class R stage2Style
+  class O respStyle

@@ -1,0 +1,47 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TB
+  DEV["Development<br/>train + eval"]
+  G1["Governance Gates<br/>model card + lineage<br/>slice floors + fairness checks"]
+  REG["Model Registry<br/>versions + approvals<br/>access control"]
+  DEP["Deployment<br/>shadow/canary/A-B"]
+  MON["Monitoring<br/>DQ + drift + quality<br/>latency + cost"]
+  RESP["Response<br/>rollback / retrain / data fix<br/>postmortem -> new tests"]
+
+  subgraph AUD[Auditability Layer]
+    LOGS["Serving Logs + Trace IDs"]
+    META["Metadata Store<br/>code/data/env versions"]
+    POL["Policies<br/>RBAC, retention, PII tags"]
+  end
+
+  DEV --> G1 --> REG --> DEP --> MON --> RESP --> DEV
+  DEP --> LOGS
+  DEV --> META
+  REG --> POL
+  MON --> META
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef devStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef govStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef regStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef depStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef monStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef respStyle fill:#FEF3C7,stroke:#FBBF24,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef audStyle fill:#FECACA,stroke:#EF4444,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class DEV devStyle
+  class G1 govStyle
+  class REG regStyle
+  class DEP depStyle
+  class MON monStyle
+  class RESP respStyle
+  class LOGS,META,POL audStyle

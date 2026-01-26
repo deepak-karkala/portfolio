@@ -1,0 +1,35 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart LR
+  A[Versioned Data/Features] --> B["Data Validation<br/>(schema + DQ gates)"]
+  B -->|pass| C[Preprocess/Feature Build]
+  C --> D[Train Model]
+  D --> E["Offline Evaluation<br/>(metrics + slices)"]
+  E --> F{Meets gates?<br/>baseline/champion + thresholds}
+  F -->|no| X[Fail pipeline<br/>+ alert + report]
+  F -->|yes| G["Package artifact<br/>(model + signature + deps)"]
+  G --> H["Register<br/>(model registry + lineage)"]
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef dataStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef validateStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef processStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef trainStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef packageStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef failStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class A dataStyle
+  class B,F validateStyle
+  class C,E processStyle
+  class D trainStyle
+  class G,H packageStyle
+  class X failStyle

@@ -1,0 +1,80 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TB
+  subgraph SRC[Event Sources]
+    E["Events<br/>(clicks, views, transactions)"]
+    DB["(OLTP/CDC)"]
+  end
+
+  subgraph BUS[Transport]
+    K[Kafka/Kinesis]
+    SR["Schema Registry<br/>(Avro/Protobuf)"]
+  end
+
+  subgraph SP[Stream Processing]
+    ENG[Flink/Spark/Samza<br/>stateful ops]
+    WM[Watermarks + Late data policy]
+    CK[Checkpointing + State store]
+  end
+
+  subgraph STO[Stores]
+    RAW["Offline mirror<br/>(Data lake/warehouse)"]
+    ON["Online store<br/>(Redis/Cassandra/DynamoDB/Pinot)"]
+  end
+
+  subgraph SVC[Serving]
+    FS[Feature Service<br/>get_features API]
+    INF[Inference Service]
+  end
+
+  subgraph OPS[Ops/Quality]
+    DQ[Stream DQ checks<br/>schema/nulls/anomalies]
+    SLA[SLA monitors<br/>freshness/lag/p99]
+    REPLAY[Backfill/Replay jobs]
+    PAR[Parity canary<br/>online vs offline]
+  end
+
+  E --> K --> ENG --> ON
+  DB --> K
+  K --> RAW
+  SR --> ENG
+  WM --> ENG
+  CK --> ENG
+
+  ON --> FS --> INF
+  RAW --> REPLAY --> ON
+  ENG --> DQ --> SLA
+  FS --> SLA
+  RAW --> PAR
+  FS --> PAR
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef sourceStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef transportStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef processStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef storageStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef serveStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef opsStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class E,DB sourceStyle
+  class K,SR transportStyle
+  class ENG,WM,CK processStyle
+  class RAW,ON storageStyle
+  class FS,INF serveStyle
+  class DQ,SLA,REPLAY,PAR opsStyle
+
+  style SRC fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold
+  style BUS fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold
+  style SP fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold
+  style STO fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold
+  style SVC fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold
+  style OPS fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold

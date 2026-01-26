@@ -1,0 +1,35 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TD
+  A[Alert / Degradation] --> B{Infra issue?<br/>latency/errors}
+  B -->|Yes| C[Check serving health<br/>CPU/Mem, timeouts,<br/>deps, rollback]
+  B -->|No| D{Data issue?<br/>schema/null/freshness}
+  D -->|Yes| E[Trace upstream change<br/>schema contracts,<br/>DQ dashboards,<br/>backfill/replay]
+  D -->|No| F{Skew/Drift?<br/>train vs serve}
+  F -->|Yes| G[Parity checks<br/>feature recompute,<br/>PIT joins,<br/>transform codepaths]
+  F -->|No| H[Model behavior regression]
+  H --> I[Slice analysis + regression set<br/>add failing examples<br/>to tests + retrain]
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef alertStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef checkStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef infraStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef dataStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef skewStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef modelStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class A alertStyle
+  class B,D,F checkStyle
+  class C infraStyle
+  class E dataStyle
+  class G skewStyle
+  class H,I modelStyle

@@ -1,0 +1,76 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TB
+  subgraph Producers[Metadata Producers]
+    DW[Warehouse/Lake]
+    ETL[ETL/ELT Jobs]
+    BI[Dashboards/BI]
+    ML[ML Pipelines/Registry]
+  end
+
+  subgraph Ingest[Ingestion]
+    API[Write APIs]
+    EVT[Event Stream / Changelog]
+    Crawl[Bootstrapping Crawlers]
+  end
+
+  subgraph Core[Metadata Core]
+    Model["Typed Metadata Model<br/>(entities + aspects)"]
+    Store[Primary Metadata Store]
+  end
+
+  subgraph Views[Materialized Views]
+    Search[Search Index]
+    Graph[Lineage/Graph View]
+    KV[Low-latency KV Cache]
+  end
+
+  subgraph UX[Consumers]
+    UI[Portal UI]
+    SDK[SDK/CLI]
+    Auto["Automation<br/>(governance, alerts, backfills)"]
+  end
+
+  DW -->|emit| API
+  ETL -->|emit| API
+  BI -->|emit| API
+  ML -->|emit| API
+  Crawl --> Store
+
+  API --> EVT --> Store
+  Store --> Search
+  Store --> Graph
+  Store --> KV
+
+  Search --> UI
+  Graph --> UI
+  KV --> SDK
+  EVT --> Auto
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef sourceStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef ingestionStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef storageStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef viewStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef consumerStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class DW,ETL,BI,ML sourceStyle
+  class API,EVT,Crawl ingestionStyle
+  class Model,Store storageStyle
+  class Search,Graph,KV viewStyle
+  class UI,SDK,Auto consumerStyle
+
+  style Producers fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold
+  style Ingest fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold
+  style Core fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold
+  style Views fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold
+  style UX fill:#F1F5F9,stroke:#64748B,stroke-width:2.5px,rx:10,ry:10,font-size:16px,font-weight:bold

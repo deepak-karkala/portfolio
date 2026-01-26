@@ -1,0 +1,24 @@
+---
+config:
+  look: neo
+  theme: redux-color
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+    clusterTextSize: '18px'
+    clusterTextWeight: '700'
+---
+flowchart TB
+  U["Many: Unit tests<br/>(feature transforms, utilities,<br/>model components)"] --> I["Some: Integration tests<br/>(pipeline stages, FS writes,<br/>model load + invoke)"]
+  I --> E["Few: E2E tests<br/>(full pipeline on sample data<br/>or staging replay)"]
+  E --> O["Always-on: Online tests<br/>(monitoring as tests:<br/>freshness, drift, latency,<br/>quality proxies)"]
+%% Pastel Node Classes (Design System - Thicker Borders)
+classDef sourceStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+classDef ingestionStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+classDef storageStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+classDef transformStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+classDef serveStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+classDef opsStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600

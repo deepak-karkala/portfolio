@@ -1,0 +1,43 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TD
+  A[Need data updates]
+  B{Freshness needed?}
+  C[Batch ingestion<br/>scheduled ETL/ELT]
+  D[Streaming ingestion<br/>queues + stream processing]
+  E{Downstream needs<br/>point-in-time correctness?}
+  F{Can consumers handle<br/>out-of-order/retries?}
+  G[Partitioned snapshots<br/>+ versioned datasets]
+  H[Careful incremental logic<br/>+ backfills]
+  I[Event-driven pipelines<br/>idempotent processing]
+  J[Prefer micro-batch<br/>or keep batch]
+
+  A --> B
+  B -->|Daily/Hourly ok| C
+  B -->|Near real-time| D
+  C --> E
+  D --> F
+  E -->|Yes| G
+  E -->|No| H
+  F -->|Yes| I
+  F -->|No| J
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef questionStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef batchStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef streamStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef solutionStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class A,B,E,F questionStyle
+  class C,G,H batchStyle
+  class D,I streamStyle
+  class J solutionStyle

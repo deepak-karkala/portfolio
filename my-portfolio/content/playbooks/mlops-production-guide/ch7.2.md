@@ -192,19 +192,7 @@ This shows up again and again:
 * ML for nuance and scale
 * HITL for ambiguity, cold start, QA, and continuous improvement
 
-```mermaid
-flowchart TB
-  IN[Input] --> R1[Rules / Heuristics\n(high precision)]
-  R1 -->|confident| OUT[Action]
-  R1 -->|uncertain| M[ML Model\n(score + confidence)]
-  M -->|confident| OUT
-  M -->|low confidence / high risk| H[Human Review / Labeling]
-  H --> OUT
-  H --> FB[Feedback loop\nlabels + rules updates]
-  OUT --> FB
-  FB --> M
-  FB --> R1
-```
+![MLOps Flowchart with 2 components](/playbooks/mlops-production-guide/img/ch7.2/diagram-1.png)
 
 **Heuristic:** the best production system is often the one that **fails gracefully** (fallbacks) rather than the one with the highest offline metric.
 

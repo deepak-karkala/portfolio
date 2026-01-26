@@ -1,0 +1,59 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TB
+  subgraph MON[Monitoring]
+    DR["Drift / Quality / KPI signals"]
+  end
+
+  subgraph DATA[Data & Labels]
+    NEW["Fresh data + labels<br/>or weak labels"]
+    FEAT["Feature pipeline / FS<br/>logged serving features"]
+  end
+
+  subgraph TRAIN[Training]
+    CHAMP[("Champion model")]
+    FT["Train from scratch<br/>or fine-tune"]
+    CAND[("Challenger model")]
+  end
+
+  subgraph EVAL[Evaluation Gates]
+    OFF["Offline eval<br/>+ slices + skew checks"]
+    TIP["Test-in-prod<br/>shadow/canary/A-B"]
+  end
+
+  subgraph REG[Registry & Release]
+    MR["Model registry<br/>versions + lineage"]
+    DEP["Deploy + progressive rollout"]
+    RB["Rollback"]
+  end
+
+  DR --> NEW
+  NEW --> FEAT --> FT
+  CHAMP --> FT --> CAND
+  CAND --> OFF
+  OFF -->|pass| TIP
+  TIP -->|pass| MR --> DEP --> CHAMP
+  OFF -->|fail| RB
+  TIP -->|fail| RB
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef monStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef dataStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef trainStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef evalStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef regStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class DR monStyle
+  class NEW,FEAT dataStyle
+  class CHAMP,FT,CAND trainStyle
+  class OFF,TIP evalStyle
+  class MR,DEP,RB regStyle

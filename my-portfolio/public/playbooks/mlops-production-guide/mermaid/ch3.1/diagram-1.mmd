@@ -1,0 +1,43 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TB
+  Dev[Dev work<br/>feature branch]
+  PR[Pull Request]
+  CI[CI: lint + unit tests + scans]
+  Merge[Merge to main]
+  CD1[CD: deploy to Staging<br/>pipeline/system]
+  IT[Integration/E2E tests<br/>+ smoke tests]
+  Gate[Manual approval gate]
+  CD2[CD: promote same artifacts<br/>to Production]
+  Mon[Observe: logs/metrics/traces<br/>rollback if needed]
+
+  Dev --> PR
+  PR --> CI
+  CI -->|pass| Merge
+  Merge --> CD1
+  CD1 --> IT
+  IT -->|pass| Gate
+  Gate --> CD2
+  CD2 --> Mon
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef devStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef ciStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef stagingStyle fill:#FEF9C3,stroke:#FACC15,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef prodStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef obsStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class Dev,PR devStyle
+  class CI,Merge ciStyle
+  class CD1,IT,Gate stagingStyle
+  class CD2 prodStyle
+  class Mon obsStyle

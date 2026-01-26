@@ -1,0 +1,89 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#0F172A'
+    lineColor: '#000000'
+    edgeLabelBackground: '#FFFFFF'
+---
+flowchart TB
+  subgraph SRC[Sources]
+    APP["Apps/Services"]
+    DB[("OLTP DB")]
+    LOG["Logs/Events"]
+    API["3rd-party API"]
+  end
+
+  subgraph ING[Ingestion]
+    CDC["CDC/Log-based capture"]
+    STR["Stream Bus<br/>Kafka/Kinesis"]
+    BATCH["Batch Extract<br/>schedule"]
+    DLQ["DLQ/Quarantine"]
+  end
+
+  subgraph LAKE[Storage]
+    RAW["Raw Zone<br/>immutable"]
+    CUR["Curated Zone<br/>versioned tables"]
+  end
+
+  subgraph XFORM[Transform]
+    CLEAN["Clean/Validate<br/>DQ tests"]
+    MODEL["Model/Join/Aggregate<br/>ETL/ELT"]
+    FEAT["Feature Tables<br/>point-in-time correct"]
+  end
+
+  subgraph SERVE[Serving]
+    WH["Warehouse/OLAP"]
+    FS["Feature Store/KV"]
+    TRAIN["Training Datasets"]
+    BI["Dashboards"]
+  end
+
+  subgraph OPS[Ops]
+    ORCH["Orchestrator"]
+    OBS["Metrics/Logs/Alerts"]
+    META["Metadata/Lineage"]
+  end
+
+  APP --> STR
+  LOG --> STR
+  DB --> CDC --> STR
+  API --> BATCH
+
+  STR -->|land| RAW
+  BATCH -->|land| RAW
+  STR --> DLQ
+  BATCH --> DLQ
+
+  RAW --> CLEAN --> CUR
+  CUR --> MODEL --> FEAT
+  FEAT --> FS
+  CUR --> WH
+  CUR --> TRAIN
+  WH --> BI
+
+  ORCH --> CLEAN
+  ORCH --> MODEL
+  ORCH --> FEAT
+  CLEAN --> OBS
+  MODEL --> OBS
+  STR --> META
+  ORCH --> META
+
+  %% Pastel Node Classes (Design System - Thicker Borders)
+  classDef srcStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef ingStyle fill:#E9D5FF,stroke:#A78BFA,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef lakeStyle fill:#DCFCE7,stroke:#4ADE80,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef xformStyle fill:#FCE7F3,stroke:#F472B6,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef serveStyle fill:#FFEDD5,stroke:#FB923C,stroke-width:2.5px,color:#0F172A,font-weight:600
+  classDef opsStyle fill:#FEF3C7,stroke:#FBBF24,stroke-width:2.5px,color:#0F172A,font-weight:600
+
+  class APP,DB,LOG,API srcStyle
+  class CDC,STR,BATCH,DLQ ingStyle
+  class RAW,CUR lakeStyle
+  class CLEAN,MODEL,FEAT xformStyle
+  class WH,FS,TRAIN,BI serveStyle
+  class ORCH,OBS,META opsStyle
