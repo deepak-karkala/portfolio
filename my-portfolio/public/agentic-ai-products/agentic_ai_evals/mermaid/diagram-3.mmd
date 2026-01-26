@@ -1,0 +1,50 @@
+---
+config:
+  look: neo
+  theme: base
+  themeVariables:
+    fontFamily: 'Inter, ui-sans-serif, system-ui'
+    fontSize: '16px'
+    primaryTextColor: '#1F2430'
+    lineColor: '#3A3A3A'
+    edgeLabelBackground: '#FFFFFF'
+    clusterTextSize: '15px'
+    clusterTextWeight: '600'
+    borderRadius: '4'
+    shadowColor: '#000000'
+    shadowOpacity: '0.15'
+    shadowBlur: '4'
+  flowchart:
+    curve: basis
+    nodeSpacing: 50
+    rankSpacing: 70
+---
+flowchart LR
+  subgraph EH[Evaluation Harness]
+    Q[Task queue]
+    ENV[Sandboxed env per trial]
+    LOG[Trace logger]
+    AGG[Aggregator<br/>pass&#64;k, pass&#94;k, scorecards]
+  end
+
+  subgraph AH[Agent Harness / Scaffold]
+    ORCH[Planner/Orchestrator]
+    TOOLS[Tool router<br/>allowlist + permissions]
+    MEM[Memory/RAG]
+    GR[Guardrails<br/>policy + safety]
+  end
+
+  Q --> ORCH
+  ORCH --> TOOLS --> ENV
+  ORCH --> MEM
+  ORCH --> GR
+  ENV --> LOG --> AGG
+
+  classDef evalStyle fill:#EDE9FE,stroke:#8B5CF6,stroke-width:2px,color:#0F172A;
+  classDef agentStyle fill:#E0F2FE,stroke:#38BDF8,stroke-width:2px,color:#0F172A;
+
+  class Q,ENV,LOG,AGG evalStyle
+  class ORCH,TOOLS,MEM,GR agentStyle
+
+  style EH fill:#F8FAFC,stroke:#94A3B8,stroke-width:2px,rx:6,ry:6,font-size:15px,font-weight:600
+  style AH fill:#F8FAFC,stroke:#94A3B8,stroke-width:2px,rx:6,ry:6,font-size:15px,font-weight:600

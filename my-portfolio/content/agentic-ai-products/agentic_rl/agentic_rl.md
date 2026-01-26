@@ -22,26 +22,7 @@ Don’t use RFT when:
 
 ### The “Agentic RL Training Flywheel” (portfolio diagram)
 
-```mermaid
-flowchart LR
-  A[Prod traffic + HITL outcomes] --> B[Curate trajectories<br/>state, actions, tool calls, artifacts]
-  B --> C[Define graders<br/>rules + rubric + safety + cost]
-  C --> D[RFT training loop<br/>sample -> grade -> update]
-  D --> E[Checkpoint eval gate<br/>offline + shadow + canary]
-  E --> F[Deploy best checkpoint]
-  F --> A
-
-  subgraph G[Optional scale levers]
-    G1[Process rewards<br/>step-wise scoring]:::x
-    G2[Auto reward design<br/>reward model]:::x
-    G3[Curriculum generation<br/>weakness targeting]:::x
-  end
-  B --> G1
-  B --> G2
-  E --> G3
-
-  classDef x fill:#f6f6f6,stroke:#999,stroke-width:1px;
-```
+![Agentic RL Training Flywheel](/agentic-ai-products/agentic_rl/img/diagram-1.png)
 
 Why those optional levers matter:
 

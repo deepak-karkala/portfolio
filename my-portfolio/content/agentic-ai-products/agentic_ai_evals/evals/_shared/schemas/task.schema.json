@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Eval Task",
+  "type": "object",
+  "required": [
+    "task_id",
+    "suite",
+    "description",
+    "inputs",
+    "graders",
+    "tracked_metrics"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "suite": {
+      "type": "string",
+      "enum": [
+        "golden",
+        "open_ended",
+        "adversarial",
+        "failure_replays"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "sandbox": {
+          "type": "string"
+        },
+        "reset": {
+          "type": "object"
+        },
+        "budgets": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "trials": {
+      "type": "object",
+      "properties": {
+        "k": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "metric": {
+          "type": "string",
+          "enum": [
+            "pass@k",
+            "pass^k"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "graders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "tracked_metrics": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "gates": {
+      "type": "object",
+      "properties": {
+        "ci_merge_gate": {
+          "type": "boolean"
+        },
+        "nightly": {
+          "type": "boolean"
+        },
+        "release_candidate": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

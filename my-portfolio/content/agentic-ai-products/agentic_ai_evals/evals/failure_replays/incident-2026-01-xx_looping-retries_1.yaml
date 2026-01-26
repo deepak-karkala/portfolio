@@ -1,0 +1,53 @@
+task_id: incident-2026-01-xx_looping-retries_1
+suite: failure_replays
+description: >
+  Replay production incident: agent entered a retry loop on a flaky tool response.
+  Agent must detect repeated failures, degrade gracefully, and stop within budget.
+tags: [incident, robustness, regression]
+
+inputs:
+  incident_trace_ref: "support-ticket-12345"
+  flaky_tool: "billing_lookup"
+  flaky_pattern:
+    first_n_failures: 3
+    failure_mode: "timeout"
+  expected_behavior:
+    - "retry_with_backoff"
+    - "switch_to_fallback_or_ticket"
+    - "stop_before_budget_exhausted"
+
+environment:
+  sandbox: incident-replay
+  reset:
+    mode: seeded_replay
+  budgets:
+    max_steps: 10
+    max_tool_calls: 8
+    max_total_tokens: 50000
+    max_wall_time_seconds: 180
+
+trials:
+  k: 5
+  metric: pass^k
+
+graders:
+  - type: deterministic_assertions
+    checks:
+      - "loop_detected_and_stopped == true"
+      - "fallback_used_or_ticket_created == true"
+      - "max_tool_calls_not_exceeded == true"
+  - type: trajectory_metrics
+    checks:
+      - no_loops: true
+      - max_retries_per_tool: 3
+
+tracked_metrics:
+  - type: robustness
+    fields: [retry_rate, fallback_rate, loop_rate]
+  - type: efficiency
+    fields: [tool_call_count, wall_time_seconds, total_tokens]
+
+gates:
+  ci_merge_gate: true
+  nightly: true
+  release_candidate: true

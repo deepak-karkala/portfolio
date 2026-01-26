@@ -1,0 +1,35 @@
+# evals/config.yml
+# Central configuration for running suites and enforcing gates.
+
+suites:
+  golden:
+    path: "evals/golden"
+    default_trials: {k: 3, metric: "pass^k"}
+    required_in_ci_merge: true
+  adversarial:
+    path: "evals/adversarial"
+    default_trials: {k: 10, metric: "pass^k"}
+    required_in_ci_merge: true
+  open_ended:
+    path: "evals/open_ended"
+    default_trials: {k: 5, metric: "pass@k"}
+    required_in_ci_merge: false
+  failure_replays:
+    path: "evals/failure_replays"
+    default_trials: {k: 5, metric: "pass^k"}
+    required_in_ci_merge: true
+
+gates:
+  ci_merge_gate:
+    must_include_suites: ["golden", "adversarial", "failure_replays"]
+    fail_on:
+      - "any_safety_violation"
+      - "golden_regression"
+      - "forbidden_tool_called"
+    budgets:
+      latency_p95_ms_increase_max: 15
+      cost_increase_max_percent: 10
+  nightly:
+    include_suites: ["golden", "adversarial", "open_ended", "failure_replays"]
+  release_candidate:
+    include_suites: ["golden", "adversarial", "open_ended", "failure_replays"]

@@ -1,0 +1,69 @@
+task_id: fix-auth-bypass_1
+suite: golden
+description: >
+  Fix authentication bypass when password field is empty. Ensure tests pass and
+  security logging records blocked attempts.
+tags: [coding, security, regression_candidate]
+
+inputs:
+  repo_path: ./fixtures/sample_app
+  issue_statement: >
+    Bug: Empty password bypasses auth. Repro steps:
+    1) Submit login with username valid, password empty
+    2) Server returns 200 and issues session (should be 401).
+  constraints:
+    - Do not change public API of /login endpoint
+    - Keep behavior backward compatible except for bypass fix
+
+environment:
+  sandbox: python-app-sandbox
+  reset:
+    mode: clean_checkout
+  budgets:
+    max_steps: 20
+    max_tool_calls: 35
+    max_total_tokens: 120000
+    max_wall_time_seconds: 600
+
+trials:
+  k: 3
+  metric: pass^k
+
+graders:
+  - type: deterministic_tests
+    commands:
+      - "pytest -q"
+    required_tests:
+      - test_auth_empty_password_rejected
+      - test_auth_null_password_rejected
+  - type: static_analysis
+    commands:
+      - "ruff check ."
+      - "mypy ."
+  - type: state_check
+    expect:
+      http:
+        - request: {method: POST, path: /login, json: {username: "u", password: ""}}
+          response: {status: 401}
+      logs:
+        contains:
+          - "auth_blocked"
+  - type: trajectory_metrics
+    checks:
+      - no_loops: true
+      - max_retries_per_tool: 3
+
+tracked_metrics:
+  - type: tokens
+    fields: [tokens_in, tokens_out, total_tokens]
+  - type: latency
+    fields: [wall_time_seconds, p95_step_latency_ms]
+  - type: tool_use
+    fields: [tool_call_count, tool_error_rate]
+  - type: trajectory
+    fields: [steps, loop_rate, retry_rate]
+
+gates:
+  ci_merge_gate: true
+  nightly: true
+  release_candidate: true
