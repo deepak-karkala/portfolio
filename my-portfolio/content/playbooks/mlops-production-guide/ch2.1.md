@@ -1,5 +1,5 @@
 ---
-title: 'MLOps Blueprint & Operational Strategy'
+title: 'Chapter 2.1: MLOps Blueprint & Operational Strategy'
 summary: 'Understand the end-to-end MLOps lifecycle and operational principles for shipping ML systems in production'
 date: '2024-12-27'
 order: 2.1

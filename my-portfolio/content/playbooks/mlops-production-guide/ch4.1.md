@@ -1,5 +1,5 @@
 ---
-title: 'Data Sourcing, Discovery & Understanding'
+title: 'Chapter 4.1: Data Sourcing, Discovery & Understanding'
 summary: 'Learn how to identify, evaluate, and source data for ML systems while avoiding common pitfalls like training-serving skew'
 date: '2024-12-27'
 order: 4.1

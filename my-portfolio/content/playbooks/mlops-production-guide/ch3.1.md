@@ -1,5 +1,5 @@
 ---
-title: 'Environments, Branching, CI/CD & Deployments'
+title: 'Chapter 3.1: Environments, Branching, CI/CD & Deployments'
 summary: 'Learn how to structure environments, repos, and CI/CD pipelines for ML systems with code and model deployment lanes'
 date: '2024-12-27'
 order: 3.1

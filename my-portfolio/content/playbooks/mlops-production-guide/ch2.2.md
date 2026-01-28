@@ -1,5 +1,5 @@
 ---
-title: 'MLOps Platforms'
+title: 'Chapter 2.2: MLOps Platforms'
 summary: 'Design, build/buy decisions, and operating models for ML platforms that scale across teams'
 date: '2024-12-27'
 order: 2.2

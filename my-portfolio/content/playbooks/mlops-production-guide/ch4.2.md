@@ -1,5 +1,5 @@
 ---
-title: 'Data Discovery Platforms'
+title: 'Chapter 4.2: Data Discovery Platforms'
 summary: 'Industry case studies and best practices for building data discovery platforms that scale across teams'
 date: '2024-12-27'
 order: 4.2

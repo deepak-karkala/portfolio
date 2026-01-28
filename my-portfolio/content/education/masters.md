@@ -23,7 +23,9 @@ techStack:
   - 'Algorithms'
 ---
 
-## Institution
+##
+
+### Institution
 
 **[EPFL (École polytechnique fédérale de Lausanne)](https://www.epfl.ch/en/)**, Lausanne, Switzerland
 
@@ -37,7 +39,7 @@ techStack:
 
 ---
 
-## [Master's Thesis: Data Analysis & Anomaly Detection in Buildings using Sensor Data](/education/masters_thesis.pdf)
+### [Master's Thesis: Data Analysis & Anomaly Detection in Buildings using Sensor Data](/education/masters_thesis.pdf)
 
 **Supervisors:** Prof. Martin Rajman (EPFL), Fabrizio Lo Conte (eSMART Technologies Ltd)
 **Completion Date:** March 2018
