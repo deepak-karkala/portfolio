@@ -13,6 +13,7 @@ applications:
             - mkdir -p .amplify-hosting/_next
             - cp -R .next/server/app/* .amplify-hosting/
             - cp -R .next/static .amplify-hosting/_next/static
+            - cp -R public/* .amplify-hosting/
       artifacts:
         baseDirectory: .amplify-hosting
         files:
