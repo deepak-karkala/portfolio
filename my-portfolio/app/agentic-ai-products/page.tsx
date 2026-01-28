@@ -14,7 +14,7 @@ const sections = [
         title: 'Technical Strategies & Architecture',
         description: 'Production patterns for reliability, safety, evals, observability, and governance. Learn how to ship the smallest agent that solves the job while keeping it safe, observable, and governable.',
         href: '/agentic-ai-products/technical-strategies',
-        icon: '⚙️',
+        icon: '',
         highlights: ['Orchestration patterns', 'Tool design (ACI)', 'Guardrails & HITL', 'Evals pipeline'],
     },
     {
@@ -22,7 +22,7 @@ const sections = [
         title: 'Product & Business Strategy',
         description: 'How to pick winning agent wedges, design adoption + distribution loops, price safely, and govern rollout. Build agentic products that ship, stick, and scale.',
         href: '/agentic-ai-products/product-business',
-        icon: '📈',
+        icon: '',
         highlights: ['7-step AI Strategic Lens', 'Moats: data, distribution, trust', 'Unit economics', 'Safe rollout'],
     },
     {
@@ -30,7 +30,7 @@ const sections = [
         title: 'Skills, MCP, Context & Subagents',
         description: 'Building blocks for agentic AI workflows. Understand the 4 layers of architecture and when to use skills, subagents, MCP servers, or simple context.',
         href: '/agentic-ai-products/skills-mcp-subagents',
-        icon: '🧩',
+        icon: '',
         highlights: ['4-layer architecture', 'Decision tree', 'MCP integration', 'Subagent orchestration'],
     },
     {
@@ -38,7 +38,7 @@ const sections = [
         title: 'Flagship Product Proposals',
         description: 'Four domain-specific proposals demonstrating full-spectrum competence: product wedge, engineering architecture, reliability, and governance.',
         href: '/agentic-ai-products/product-proposals',
-        icon: '🚀',
+        icon: '',
         subItems: [
             { title: "Writer's Room Copilot", description: 'Script writing with multi-role critique', color: 'border-purple-500' },
             { title: 'Wealth Management Agent', description: 'Financial advisory with compliance guardrails', color: 'border-green-500' },
@@ -51,7 +51,7 @@ const sections = [
         title: 'Context Engineering',
         description: 'The art and science of curating, compressing, and delivering the right context to AI agents. Master the 4 knobs: Write, Select, Compress, Isolate.',
         href: '/agentic-ai-products/context-engineering',
-        icon: '🎯',
+        icon: '',
         highlights: ['Context as compiled view', '4 knobs framework', 'Failure modes', 'Governance posture'],
     },
     {
@@ -59,7 +59,7 @@ const sections = [
         title: 'Claude Agent SDK',
         description: 'Comprehensive guide to building production-ready agentic AI systems using the Claude Agent SDK. Master tools, governance, subagents, and deployment.',
         href: '/agentic-ai-products/claude-agent-sdk',
-        icon: '🤖',
+        icon: '',
         highlights: ['Built-in toolchain', 'Control plane & safety', 'Subagent orchestration', 'Production deployment'],
     },
     {
@@ -67,7 +67,7 @@ const sections = [
         title: 'Agentic RL & RFT',
         description: 'Domain-specific reinforcement learning for AI agents. Optimize workflow policies, improve long-horizon credit assignment, and achieve measurable performance lift.',
         href: '/agentic-ai-products/agentic-rl',
-        icon: '🧠',
+        icon: '',
         highlights: ['RFT training flywheel', 'Multi-grader strategy', 'Process-based supervision', 'Governance posture'],
     },
     {
@@ -75,7 +75,7 @@ const sections = [
         title: 'Evaluation of AI Agents',
         description: 'Comprehensive framework for evaluating agent behavior over time. Master the 6-dimension scorecard, grader types, and 3-tier pipeline for production-ready eval systems.',
         href: '/agentic-ai-products/agentic-ai-evals',
-        icon: '📊',
+        icon: '',
         highlights: ['6-dimension scorecard', 'Grader types', '3-tier pipeline', 'Task suites'],
     },
 ];

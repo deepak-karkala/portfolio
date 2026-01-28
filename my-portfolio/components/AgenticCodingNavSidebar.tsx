@@ -18,70 +18,58 @@ interface Section {
 
 const sections: Section[] = [
     {
-        id: 'technical-strategies',
-        title: 'Technical Strategies',
-        href: '/agentic-ai-products/technical-strategies',
+        id: 'claude-agent-sdk',
+        title: 'Claude Agent SDK',
+        href: '/agentic-coding/claude-agent-sdk',
     },
     {
-        id: 'product-business',
-        title: 'Product & Business Strategy',
-        href: '/agentic-ai-products/product-business',
-    },
-    {
-        id: 'skills-mcp-subagents',
-        title: 'Skills, MCP, Subagents',
-        href: '/agentic-ai-products/skills-mcp-subagents',
-    },
-    {
-        id: 'product-proposals',
-        title: 'Product Proposals',
-        href: '/agentic-ai-products/product-proposals',
+        id: 'claude-code-config',
+        title: 'Configuration',
+        href: '/agentic-coding/claude-code-config',
         subItems: [
-            { id: 'writers-room', title: "Writer's Room Copilot", href: '/agentic-ai-products/product-proposals/writers-room-copilot' },
-            { id: 'wealth-management', title: 'Wealth Management Agent', href: '/agentic-ai-products/product-proposals/wealth-management-agent' },
-            { id: 'retail-operations', title: 'Retail Operations Agent', href: '/agentic-ai-products/product-proposals/retail-operations-agent' },
-            { id: 'founders-os', title: "Founder's OS", href: '/agentic-ai-products/product-proposals/founders-operating-system' },
-            { id: 'mlops-agent', title: 'Agentic MLOps', href: '/agentic-ai-products/product-proposals/mlops-agent' },
-            { id: 'homebuilder-copilot', title: 'Build My Home Copilot', href: '/agentic-ai-products/product-proposals/homebuilder-copilot' },
+            { id: 'everything', title: 'Everything Claude Code', href: '/agentic-coding/claude-code-config/everything-claude-code' },
+            { id: 'oh-my', title: 'Oh My Claude Code', href: '/agentic-coding/claude-code-config/oh-my-claudecode' },
         ],
     },
     {
-        id: 'context-engineering',
-        title: 'Context Engineering',
-        href: '/agentic-ai-products/context-engineering',
-    },
-    {
-        id: 'claude-agent-sdk',
-        title: 'Claude Agent SDK',
-        href: '/agentic-ai-products/claude-agent-sdk',
-    },
-    {
-        id: 'agentic-rl',
-        title: 'Agentic RL & RFT',
-        href: '/agentic-ai-products/agentic-rl',
-    },
-    {
-        id: 'agentic-ai-evals',
-        title: 'Evaluation of AI Agents',
-        href: '/agentic-ai-products/agentic-ai-evals',
+        id: 'claude-code-howto',
+        title: 'How-To Guides',
+        href: '/agentic-coding/claude-code-howto',
         subItems: [
-            { id: 'playbook', title: 'Evaluation Playbook', href: '/agentic-ai-products/agentic-ai-evals/playbook' },
-            { id: 'framework', title: 'Evaluation Framework', href: '/agentic-ai-products/agentic-ai-evals/framework' },
-            { id: 'rubrics', title: 'Scoring Rubrics', href: '/agentic-ai-products/agentic-ai-evals/rubrics' },
-            { id: 'tasks', title: 'Example Tasks', href: '/agentic-ai-products/agentic-ai-evals/tasks' },
+            { id: 'effective', title: 'Effective Claude Code', href: '/agentic-coding/claude-code-howto/effective-claude-code' },
+            { id: 'starter', title: 'Starter Kit', href: '/agentic-coding/claude-code-howto/claude-code-starter-kit' },
+            { id: 'features', title: 'Features', href: '/agentic-coding/claude-code-howto/claude-code-features' },
+        ],
+    },
+    {
+        id: 'build-coding-agents',
+        title: 'Build Coding Agents',
+        href: '/agentic-coding/how-to-build-coding-agents',
+        subItems: [
+            { id: 'playbook', title: 'Complete Playbook', href: '/agentic-coding/how-to-build-coding-agents/how-to-build-coding-agents' },
+            { id: 'learn', title: 'Learn Claude Code', href: '/agentic-coding/how-to-build-coding-agents/learn-claude-code' },
+        ],
+    },
+    {
+        id: 'spec-driven-dev',
+        title: 'Spec-Driven Development',
+        href: '/agentic-coding/spec-driven-development',
+        subItems: [
+            { id: 'framework', title: 'Framework & Patterns', href: '/agentic-coding/spec-driven-development/spec-driven-dev-coding-agents' },
+            { id: 'sisyphus', title: 'Sisyphus Framework', href: '/agentic-coding/spec-driven-development/oh-my-opencode-sisyphus-framework' },
         ],
     },
 ];
 
-export default function AgenticAINavSidebar() {
+export default function AgenticCodingNavSidebar() {
     const pathname = usePathname();
-    const isMainPage = pathname === '/agentic-ai-products';
+    const isMainPage = pathname === '/agentic-coding';
 
     return (
         <div className="hidden lg:block sticky top-24 h-fit max-h-[calc(100vh-120px)] overflow-y-auto">
             <nav className="space-y-1">
                 <Link
-                    href={isMainPage ? '/' : '/agentic-ai-products'}
+                    href={isMainPage ? '/' : '/agentic-coding'}
                     className="text-sm font-semibold mb-3 text-muted-foreground hover:text-foreground block"
                 >
                     {isMainPage ? '← Home' : '← All Sections'}

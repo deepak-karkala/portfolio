@@ -49,7 +49,7 @@ export default async function ExperiencePage({ params }: Props) {
 
   return (
     <div className="min-h-screen py-12">
-      <div className="max-w-6xl mx-auto px-4 lg:px-8 xl:px-0">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Breadcrumb */}
         <div className="mb-8">
           <Link

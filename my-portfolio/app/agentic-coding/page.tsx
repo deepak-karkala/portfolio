@@ -14,7 +14,7 @@ const sections = [
         title: 'Claude Agent SDK',
         description: 'Production-ready agentic AI systems with built-in tools, governance, and deployment patterns',
         href: '/agentic-coding/claude-agent-sdk',
-        icon: '🤖',
+        icon: '',
         highlights: ['State management', 'Built-in toolchain', 'Control plane', 'MCP extensions'],
     },
     {
@@ -22,7 +22,7 @@ const sections = [
         title: 'Configuration & Setup',
         description: 'Complete reference for configuring Claude Code with advanced customization patterns',
         href: '/agentic-coding/claude-code-config',
-        icon: '⚙️',
+        icon: '',
         highlights: ['Settings reference', 'Team workflows', 'Advanced patterns'],
     },
     {
@@ -30,7 +30,7 @@ const sections = [
         title: 'How-To Guides',
         description: 'Senior engineer mental models for composable primitives, slash commands, skills, and team workflows',
         href: '/agentic-coding/claude-code-howto',
-        icon: '📚',
+        icon: '',
         highlights: ['Mental models', 'Prompting patterns', 'Composition recipes', 'Best practices'],
     },
     {
@@ -38,7 +38,7 @@ const sections = [
         title: 'Build Coding Agents',
         description: 'Complete playbook for building coding agents covering architecture, training, evals, and observability',
         href: '/agentic-coding/how-to-build-coding-agents',
-        icon: '🏗️',
+        icon: '',
         highlights: ['Architecture patterns', 'Training pipelines', 'Evaluation systems', 'Observability'],
     },
     {
@@ -46,7 +46,7 @@ const sections = [
         title: 'Spec-Driven Development',
         description: 'Control system designs for turning specs into incremental code changes safely and efficiently',
         href: '/agentic-coding/spec-driven-development',
-        icon: '📋',
+        icon: '',
         highlights: ['Spec plane design', 'Execution loops', 'SDLC frameworks', 'Orchestration'],
     },
 ];

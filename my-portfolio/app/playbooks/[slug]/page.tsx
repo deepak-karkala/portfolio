@@ -418,8 +418,7 @@ export default async function PlaybookPage({ params }: PlaybookPageProps) {
                         <li key={chapter.slug}>
                           <Link
                             href={`/playbooks/${slug}/${chapter.slug}`}
-                            className="text-sm font-semibold hover:opacity-80 transition-opacity block"
-                            style={{ color: 'var(--color-accent)' }}
+                            className="text-sm playbook-link block"
                           >
                             {chapter.shortTitle || getChapterTitle(chapter.title)}
                           </Link>
@@ -543,13 +542,13 @@ export default async function PlaybookPage({ params }: PlaybookPageProps) {
             Work With Me
           </h3>
           <p className="mb-3 max-w-3xl mx-auto text-sm leading-snug" style={{ color: 'var(--color-primary)' }}>
-            I bring hands-on experience delivering production MLOps and GenAI systems at reasonable scale—with minimal infrastructure footprint and cost-effective architectures. I&apos;m excited to collaborate on building next-generation Agentic AI systems. Whether you need expertise in MLOps, GenAI, or Agentic AI—let&apos;s connect.
+            I bring hands-on experience delivering production MLOps and GenAI systems at moderate scale—with minimal infrastructure footprint and cost-effective architectures. I&apos;m excited to collaborate on building next-generation Agentic AI systems. Whether you need expertise in MLOps, GenAI, or Agentic AI—let&apos;s connect.
           </p>
           <Link href="/contact" className="btn-primary inline-block text-sm px-5 py-2">
             Contact Me
           </Link>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

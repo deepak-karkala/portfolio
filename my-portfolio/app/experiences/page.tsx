@@ -141,36 +141,28 @@ export default async function ExperiencesPage() {
 
   return (
     <div className="min-h-screen py-12">
-      <div className="max-w-6xl mx-auto px-4 lg:px-8 xl:px-0">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Breadcrumb */}
-        <div className="mb-8">
-          <Link
-            href="/"
-            className="text-sm hover:opacity-80 transition-opacity"
-            style={{ color: 'var(--color-primary)' }}
-          >
-            ← Back to Home
-          </Link>
-        </div>
 
-        <div className="lg:grid lg:grid-cols-12 lg:gap-6 xl:gap-10">
+
+        <div className="flex gap-12">
           {/* Sidebar */}
-          <aside className="lg:col-span-4 xl:col-span-3 mb-8 lg:mb-0">
+          <aside className="w-64 flex-shrink-0 mb-8 lg:mb-0 hidden lg:block">
             <ExperiencesSidebar experiences={allItems} />
           </aside>
 
           {/* Main Content */}
-          <article className="lg:col-span-8 xl:col-span-9">
+          <article className="flex-1 min-w-0">
             {/* Header */}
             <header className="mb-10">
               <h1
-                className="text-4xl md:text-5xl font-bold mb-4"
+                className="text-2xl md:text-3xl font-bold mb-4"
                 style={{ color: 'var(--color-foreground)' }}
               >
                 Work Experiences
               </h1>
               <p
-                className="text-xl mb-6"
+                className="text mb-6"
                 style={{ color: 'var(--color-primary)' }}
               >
                 Professional ML engineering experience delivering production systems
@@ -203,7 +195,7 @@ export default async function ExperiencesPage() {
                     {/* Title and Duration */}
                     <div className="flex-1 min-w-0">
                       <h2
-                        className="text-2xl font-bold break-words"
+                        className="text-xl font-bold break-words"
                         style={{ color: 'var(--color-foreground)' }}
                       >
                         {renderCategoryTitle(category)}
@@ -245,7 +237,7 @@ export default async function ExperiencesPage() {
                           <div className={`flex-1 ${isIndividualLogo && experience.logo ? 'pr-16 md:pr-20' : ''}`}>
                             <h3
                               className="text-xl font-bold mb-2 group-hover:opacity-80 transition-opacity"
-                              style={{ color: 'var(--color-foreground)' }}
+                              style={{ color: 'var(--color-experience-title)' }}
                             >
                               {renderTitleWithStyledInstitution(experience)}
                             </h3>
@@ -319,22 +311,21 @@ export default async function ExperiencesPage() {
             })}
 
             {/* CTA Section */}
-            <div className="card p-8 text-center mt-12">
+            <div className="card px-6 py-4 text-center mt-12">
               <h3
-                className="text-2xl font-bold mb-4"
+                className="text-lg font-semibold mb-2"
                 style={{ color: 'var(--color-foreground)' }}
               >
-                Interested in Working Together?
+                Work With Me
               </h3>
               <p
-                className="mb-6"
+                className="mb-3 max-w-3xl mx-auto text-sm leading-snug"
                 style={{ color: 'var(--color-primary)' }}
               >
-                I bring hands-on experience delivering production ML systems with
-                measurable business impact. Let&apos;s discuss how I can help with your ML challenges.
+                I bring hands-on experience delivering production MLOps and GenAI systems at moderate scale—with minimal infrastructure footprint and cost-effective architectures. I&apos;m excited to collaborate on building next-generation Agentic AI systems. Whether you need expertise in MLOps, GenAI, or Agentic AI—let&apos;s connect.
               </p>
-              <Link href="/contact" className="btn-primary">
-                Get in Touch
+              <Link href="/contact" className="btn-primary inline-block text-sm px-5 py-2">
+                Contact Me
               </Link>
             </div>
           </article>

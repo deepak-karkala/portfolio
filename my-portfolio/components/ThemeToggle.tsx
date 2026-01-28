@@ -32,11 +32,7 @@ export default function ThemeToggle() {
   };
 
   const toggleTheme = () => {
-    console.log('Theme toggle clicked!'); // Debug log
     const newTheme = theme === 'light' ? 'dark' : 'light';
-    
-    console.log('Switching from', theme, 'to', newTheme); // Debug log
-    
     setTheme(newTheme);
     applyTheme(newTheme);
     localStorage.setItem('theme', newTheme);
@@ -45,12 +41,24 @@ export default function ThemeToggle() {
   // Prevent hydration mismatch
   if (!mounted) {
     return (
-      <div className="p-2 rounded-lg border transition-colors w-10 h-10 flex items-center justify-center"
+      <div
+        className="p-2 rounded-lg border transition-colors w-10 h-10 flex items-center justify-center"
            style={{
              backgroundColor: 'var(--color-card-bg)',
              borderColor: 'var(--color-card-border)',
            }}>
-        🌙
+        <svg
+          className="h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--color-foreground)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M21 12.8A8 8 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+        </svg>
       </div>
     );
   }
@@ -65,7 +73,34 @@ export default function ThemeToggle() {
       }}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
-      {theme === 'dark' ? '☀️' : '🌙'}
+      {theme === 'dark' ? (
+        <svg
+          className="h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--color-foreground)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+      ) : (
+        <svg
+          className="h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--color-foreground)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M21 12.8A8 8 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+        </svg>
+      )}
     </button>
   );
 }

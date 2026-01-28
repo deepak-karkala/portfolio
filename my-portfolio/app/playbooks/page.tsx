@@ -12,7 +12,7 @@ export default async function PlaybooksPage() {
             className="text-5xl font-bold mb-4"
             style={{ color: 'var(--color-foreground)' }}
           >
-            Playbooks & Courses
+            Production Playbooks
           </h1>
           <p
             className="text-xl max-w-3xl mx-auto"
@@ -28,7 +28,7 @@ export default async function PlaybooksPage() {
               <Link href={`/playbooks/${playbook.slug}`} key={playbook.slug}>
                 <div className="card hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer group">
                   <h3
-                    className="text-2xl font-bold mb-3 group-hover:opacity-90 transition-opacity"
+                    className="text-xl font-bold mb-3 group-hover:opacity-90 transition-opacity"
                     style={{ color: 'var(--color-accent)' }}
                   >
                     {playbook.title}

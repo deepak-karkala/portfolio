@@ -268,62 +268,57 @@ export default async function PlaybookChapterPage({ params }: PlaybookChapterPag
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-6xl mx-auto px-4 lg:px-8 xl:px-0">
-        <div className="mb-8">
-          <Link
-            href={`/playbooks/${slug}`}
-            className="text-sm hover:opacity-80 transition-opacity"
-            style={{ color: 'var(--color-primary)' }}
-          >
-            ← Back to {playbook.title}
-          </Link>
-        </div>
+        <div className="flex gap-12">
+          <aside className="w-64 flex-shrink-0 mb-8 lg:mb-0 hidden lg:block">
+            <div className="sticky top-24 h-fit max-h-[calc(100vh-120px)] overflow-y-auto">
+              <nav className="space-y-1">
+                <Link
+                  href={`/playbooks/${slug}`}
+                  className="text-sm font-semibold mb-3 text-muted-foreground hover:text-foreground block"
+                  style={{ color: 'var(--color-primary)' }}
+                >
+                  ← Back to {playbook.title}
+                </Link>
 
-        <div className="lg:grid lg:grid-cols-12 lg:gap-6 xl:gap-10">
-          <aside className="lg:col-span-4 xl:col-span-3 mb-8 lg:mb-0">
-            <div className="card sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
-              <h2
-                className="text-xl font-bold mb-4"
-                style={{ color: 'var(--color-foreground)' }}
-              >
-                Course Chapters
-              </h2>
-              <nav className="space-y-2">
-                {chapters.map((item, index) => {
-                  const isActive = item.slug === chapter.slug;
-                  return (
-                    <Link
-                      key={item.slug}
-                      href={`/playbooks/${slug}/${item.slug}`}
-                      className="block rounded-lg border px-4 py-3 transition-all duration-200"
-                      style={{
-                        backgroundColor: isActive ? 'color-mix(in srgb, var(--color-secondary) 20%, transparent)' : 'transparent',
-                        borderColor: isActive ? 'var(--color-secondary)' : 'transparent',
-                        color: isActive ? 'var(--color-foreground)' : 'var(--color-primary)',
-                      }}
-                      >
-                        <div className="flex items-center justify-between gap-4">
-                          <div>
-                            <p className="text-sm uppercase font-semibold tracking-wide" style={{ color: isActive ? 'var(--color-foreground)' : 'var(--color-primary)' }}>
-                              Chapter {item.order ?? index + 1}
-                            </p>
-                            <p className="font-semibold" style={{ color: 'var(--color-foreground)' }}>
-                              {item.title}
-                            </p>
-                            {item.excerpt && (
-                              <p className="text-sm" style={{ color: isActive ? 'var(--color-foreground)' : 'var(--color-primary)' }}>
-                                {item.excerpt}
-                              </p>
-                            )}
-                          </div>
-                        </div>
-                      </Link>
-                  );
-                })}
+                <h2
+                  className="text-sm font-bold mb-2 mt-4 px-2"
+                  style={{ color: 'var(--color-foreground)' }}
+                >
+                  Chapters
+                </h2>
+
+                <div className="border-t border-muted pt-2" style={{ borderColor: 'var(--color-card-border)' }}>
+                  <div className="ml-2 mt-1 space-y-0.5 border-l-2 pl-2" style={{ borderColor: 'var(--color-card-border)' }}>
+                    {chapters.map((item) => {
+                      const isActive = item.slug === chapter.slug;
+                      return (
+                        <Link
+                          key={item.slug}
+                          href={`/playbooks/${slug}/${item.slug}`}
+                          className={`block w-full text-left text-xs py-1.5 px-2 rounded transition-colors ${isActive
+                            ? 'font-medium'
+                            : 'hover:opacity-80'
+                            }`}
+                          style={{
+                            backgroundColor: isActive
+                              ? 'color-mix(in srgb, var(--color-primary) 10%, transparent)'
+                              : 'transparent',
+                            color: isActive
+                              ? 'var(--color-primary)'
+                              : 'var(--color-primary)',
+                          }}
+                        >
+                          {item.title}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
               </nav>
             </div>
           </aside>
 
-          <article className="lg:col-span-8 xl:col-span-9">
+          <article className="flex-1 min-w-0">
             <header className="mb-10">
               <span
                 className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-3 inline-block"
