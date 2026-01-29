@@ -174,7 +174,7 @@ Tech Stack: Python, PyTorch, YOLOv2`,
     type: 'experience',
     title: 'Signal Processing Engineer',
     organization: '[Signalchip Innovations](https://www.signalchip.com/)',
-    dateRange: 'Mar 2012 - May 2015',
+    dateRange: 'Feb 2012 - May 2015',
     location: 'Bangalore, India',
     summary:
       `Developed advanced signal processing algorithms for wireless base stations (WCDMA/LTE). Joined as the 5th employee at this semiconductor startup, contributing to core IP.
@@ -199,7 +199,7 @@ Tech Stack: MATLAB, Octave, Signal Processing, WCDMA, LTE`,
     type: 'experience',
     title: 'Junior Research Fellow',
     organization: '[Indian Institute of Science (IISc)](https://www.iisc.ac.in/)',
-    dateRange: 'Jul 2011 - Feb 2012',
+    dateRange: 'Jun 2011 - Jan 2012',
     location: 'Bangalore, India',
     summary:
       `Conducted research on diffuse optical tomography at IISc Bangalore. 

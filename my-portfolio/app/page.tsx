@@ -104,9 +104,27 @@ export default function Home() {
             Senior ML Engineer with 6+ years of experience in ML/AI, shipping production ML systems that
             deliver measurable business impact across e-commerce and IoT.
           </p>
+          
           <p className="about-text">
-            Shipped systems for <Link className="about-link" href="/experiences/ecom_rag_product_catalog">RAG based Product discovery</Link>, <Link className="about-link" href="/experiences/ecom_reviews_summarisation">LLM based Reviews Summarisation</Link>, <Link className="about-link" href="/experiences/ecom_customer_lifetime_value">Customer Lifetime Prediction</Link>, <Link className="about-link" href="/experiences/ecom_purchase_intent_scoring">Purchase Intent Scoring, </Link>
-            <Link className="about-link" href="/experiences/iot_forecasting">Time series forecasting</Link>, <Link className="about-link" href="/experiences/iot_anomaly">Anomaly detection for Predictive Maintenance</Link>. End-to-end MLOps ownership across evaluation frameworks (offline
+            For a mid-sized European e-commerce marketplace, I built 4 production ML systems:
+            <ul>
+              <li>• 5% conversion uplift via <Link className="about-link" href="/experiences/ecom_purchase_intent_scoring">real-time purchase intent scoring</Link></li>
+              <li>• 12% higher marketing ROI through <Link className="about-link" href="/experiences/ecom_customer_lifetime_value">CLV prediction</Link></li>
+              <li>• 4% search-to-purchase improvement with <Link className="about-link" href="/experiences/ecom_rag_product_catalog">RAG-powered discovery</Link></li>
+              <li>• 60% cost reduction in <Link className="about-link" href="/experiences/ecom_reviews_summarisation">LLM based review summarization</Link> with fine-tuned Mistral-7B</li>
+            </ul>
+          </p>
+          
+          <p className="about-text">
+            Earlier at <Link className="about-link" href="https://myesmart.com/en/">eSMART Technologies</Link>, I built 2 IoT ML systems:
+            <ul>
+              <li>• 20% reduction in emergency maintenance callouts via <Link className="about-link" href="/experiences/iot_anomaly">predictive maintenance</Link></li>
+              <li>• 10pp increase in solar self-consumption through <Link className="about-link" href="/experiences/iot_forecasting">energy forecasting</Link></li>
+            </ul>
+          </p>
+          
+          <p className="about-text">
+            Led end-to-end ownership spanning the full MLOps lifecycle: evaluation frameworks (offline
             metrics, LLM-as-judge, CI/CD regression tests), production debugging
             (calibration breakdowns, alert fatigue), stakeholder management
             (legal governance, cross-functional experiments), and operational
@@ -122,9 +140,9 @@ export default function Home() {
             infrastructure from requirements to production-ready pipelines with database backed job queues, transparency, guardrails, governance and human-in-the-loop workflows.
           </p>
           <p className="about-text">
-            For <Link className="about-link" href="/agentic-ai-products">Building Agentic AI Products</Link>, I have curated <Link className="about-link" href="/agentic-ai-products/technical-strategies">technical playbooks</Link> on
+            For <Link className="about-link" href="/agentic-ai-products">Building Agentic AI Products</Link>, I have curated <Link className="about-link" href="/agentic-ai-products/technical-strategies">technical strategies</Link> on
             reliability, safety, evals, observability, and governance; <Link className="about-link" href="/agentic-ai-products/product-business">business
-            playbooks</Link> on wedge selection, adoption/distribution loops, pricing,
+            strategies</Link> on wedge selection, adoption/distribution loops, pricing,
             and rollout; plus guides on <Link className="about-link" href="/agentic-ai-products/agentic-ai-evals/playbook">agent evaluation</Link>, <Link className="about-link" href="/agentic-ai-products/agentic-rl">agentic RL workflow</Link>
             policy optimization, <Link className="about-link" href="/agentic-ai-products/context-engineering">context engineering</Link>, and <Link className="about-link" href="/agentic-ai-products/product-proposals">product proposal </Link>  templates. The <Link className="about-link" href="/playbooks/">Playbooks</Link> section distills field-tested patterns and
             decision frameworks from production systems.

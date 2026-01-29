@@ -15,7 +15,7 @@ techStack:
 status: "Active"
 category: "AI/ML Platform"
 githubUrl: "https://github.com/deepak-karkala/agentic-mlops"
-externalUrl: "https://github.com/deepak-karkala/agentic-mlops/tree/main/docs"
+externalUrl: "https://frontend-production-f68d.up.railway.app/"
 docsUrl: "https://github.com/deepak-karkala/agentic-mlops/tree/main/docs"
 ---
 

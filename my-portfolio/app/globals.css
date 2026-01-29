@@ -293,6 +293,16 @@ body {
     margin: 0 auto;
   }
 
+  .intro-content {
+    text-align: center;
+    align-items: center;
+  }
+
+  .intro-name,
+  .intro-tagline {
+    text-align: center;
+  }
+
   .intro-tagline {
     margin: 0 auto;
   }

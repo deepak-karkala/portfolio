@@ -3,7 +3,7 @@ import { Lora, Geist_Mono } from "next/font/google";
 // Font exploration: try swapping Geist with public sans-serif options such as 'Work_Sans', 'Sora', or 'Space_Grotesk'
 // by replacing the import above. Keep variants lightweight for readability.
 import "./globals.css";
-import Header from "../components/Header";
+import Header from "../components/HeaderServer";
 import Footer from "../components/Footer";
 
 const geistSans = Lora({

@@ -133,9 +133,9 @@ export default async function AgenticMLOpsPage() {
                             {/* CTA Buttons */}
                             <div className="flex flex-wrap gap-4">
                                 {/* Primary CTA - Try Agentic MLOps */}
-                                {product.githubUrl && (
+                                {product.externalUrl && (
                                     <a
-                                        href={product.githubUrl}
+                                        href={product.externalUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
